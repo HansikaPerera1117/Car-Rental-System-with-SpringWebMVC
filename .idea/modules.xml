@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/Spring_Back_End.iml" filepath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/Spring_Back_End.iml" />
       <module fileurl="file://$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/Spring_Front_End.iml" filepath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/Spring_Front_End.iml" />
     </modules>
   </component>
