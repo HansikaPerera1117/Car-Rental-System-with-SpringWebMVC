@@ -18,7 +18,7 @@
     <!------------------------------------------------------------------->
     <style>
         #loginImage {
-            background-image: url("assests/images/signUp_pg.jpg");
+            background-image: url("assests/images/sigiUp_pg.jpg");
             background-position: center;
             background-size: cover;
         }
@@ -28,14 +28,67 @@
 <body>
 
 <main class="container-fluid">
-    <section class="row bg-warning" style="height: 729px">
-        <div class="col-8 bg-primary">
-
+    <section class="row" style="height: 729px">
+        <div class="col-8 bg-black">
+            <div class="row bg-light ms-4 mt-5" style="height: 650px;width: 925px; border-radius: 18px">
+                <div class="col-12 mt-2 " style="height:50px;">
+                    <label class="col-12 ms-2 fs-2" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">Sign Up</label>
+                </div>
+                <div class="col " style="height: 590px">
+                    <form class="row g-3 ms-2 me-2 mt-2 ">
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputName">Name</label>
+                            <input class="form-control" id="inputName" type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputAddress">Address</label>
+                            <input class="form-control" id="inputAddress" type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputContact">Contact No</label>
+                            <input class="form-control" id="inputContact" type="tel">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputNIC" class="form-label">NIC</label>
+                            <input type="text" class="form-control" id="inputNIC">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="formFileMultipleNIC" class="form-label">Image Of NIC</label>
+                            <input class="form-control" type="file" id="formFileMultipleNIC" multiple>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputDrivingLicense" class="form-label">Driving License</label>
+                            <input type="text" class="form-control" id="inputDrivingLicense">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="formFileMultipleDL" class="form-label">Image Of Driving License</label>
+                            <input class="form-control" type="file" id="formFileMultipleDL" multiple>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="inputUsername">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputPassword">Password</label>
+                            <input class="form-control" id="inputPassword" type="password" aria-describedby="pwHelp">
+                            <div id="pwHelp" class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
+                        </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn fs-5 col-2 btn-dark me-3 mt-3" type="button">Sign Up</button>
+                             </div>
+                    </form>
+                    <label class="ms-2 mt-3" style="font-family: 'Convergence', sans-serif;">Already have an
+                        account?</label>
+                    <a class="navbar-brand fw-bold" href="index.html">LogIn</a>
+                </div>
+            </div>
         </div>
 
-        <div class="col-4 bg-info" id="loginImage">
-
-        </div>
+        <div class="col-4" id="loginImage"></div>
     </section>
 
 </main>
