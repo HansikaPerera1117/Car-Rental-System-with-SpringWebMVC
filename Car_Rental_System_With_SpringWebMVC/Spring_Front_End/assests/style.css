@@ -9,6 +9,67 @@ body {
 }
 
 .myf{
-    --bs-offcanvas-width: 500px;
+    --bs-offcanvas-width: 650px;
     background-color:  white;
+}
+
+#row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-family: 'PT Root UI', sans-serif;
+}
+
+
+#row .box {
+    position: relative;
+    width: 320px;
+    margin: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#row .box img {
+    position: absolute;
+    width: 435px;
+    height: 320px;
+    z-index: 3;
+    scale: 0.8;
+    transition: 0.5s;
+}
+
+#row .box:hover img{
+    scale: 0.55;
+    opacity: 0.9;
+    transform: translateY(-70px);
+}
+#row .box .content{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s;
+    transform: scale(0);
+    z-index: 3;
+}
+#row .box:hover .content{
+    transform: scale(1);
+    bottom: 20px;
+}
+#row .box h2{
+    position: relative;
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1em;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+}
+#row .box h2 span{
+    font-weight: 300;
+    font-size: 0.75em;
 }

@@ -22,7 +22,7 @@
   <!------------------------------------------------------------------->
 
 </head>
-<body>
+<body class="bg-black">
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="height: 75px;background-color: #bdbdbd">
@@ -57,7 +57,7 @@
       <div class="col-8 ">
         <label class="col-5"></label>
           <label class="col-6 text-end ">U001</label>
-          <label class="col-12 text-end">Hansika madushani Perera</label>
+          <label class="col-12 text-end">Hansika Perera</label>
       </div>
       <button class="navbar-toggler d-inline-block align-text-top align-items-end col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
         <img src="assests/images/profile-user.png" width="50px" height="50px">
@@ -67,16 +67,16 @@
   </nav>
   <!---------------------user acc offcanvas----------------------->
   <div  class=" myf offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
-    <div class="col-12 mt-2 " style="height:30px;">
+    <div class="col-12 mt-2" style="height:30px;">
       <label class="col-7 ms-2 fs-4" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">User Profile</label>
-      <label class="col-4 ms-2 fs-5 text-end" style="height: max-content;">U001</label>
+      <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;">U001</label>
     </div>
     <div class="row justify-content-center" style="height: 100px">
       <div class="col-3 align-self-center">
-        <img src="assests/images/profile-user.png "  width="80px" height="80px">
+        <img src="assests/images/profile-user.png "  width="85px" height="85px">
       </div>
     </div>
-    <form class="row g-1 gx-2 ms-2 me-2 fs-6">
+    <form class="row g-1 gx-2 ms-3 me-3 fs-6">
       <div class="col-md-6">
         <label class="form-label" for="inputName">Name</label>
         <input class="form-control" id="inputName" type="text">
@@ -119,11 +119,11 @@
       </div>
 
       <div class="row mt-2">
-        <div class="col-8">
+        <div class="col-9">
         <label class="col-6 fs-5" style="height: max-content; width: max-content;">Change Password</label>
         </div>
-        <div class="col-4 ">
-          <button class="btn btn-dark me-2" type="button">Update Info </button>
+        <div class="col-3 align-self-end">
+          <button class="btn btn-dark ms-4" type="button" style="width: max-content;">Update Info </button>
         </div>
       </div>
       <div class="col-md-8">
@@ -131,15 +131,15 @@
         <input class="form-control" id="inputNPassword" type="password" aria-describedby="pwHelp">
         <div id="pwHelp" class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-dark mt-5" type="button">Reset Password</button>
+      <div class="col-md-4 align-self-end">
+        <button class="btn btn-dark mt-5 ms-5" type="button">Reset Password</button>
       </div>
-      <div class="row mt-2 justify-content-end">
-      <div class="col-5 bg-light align-items-end">
-        <button class="btn me-0 btn-dark" type="button">Delete Account</button>
+      <div class="row mt-2 ">
+      <div class="col-10 align-items-end">
+        <button class="btn  btn-dark" type="button">Delete Account</button>
       </div>
-      <div class="col-4 ">
-        <button class="btn btn-dark" type="button">LogOut</button>
+      <div class="col-2 align-self-end">
+        <button class="btn btn-dark ms-3" type="button">LogOut</button>
       </div>
       </div>
     </form>
@@ -151,7 +151,7 @@
 </header>
 
 <main class="container-fluid">
-  <div class="row jumbotron jumbotron-fluid text-center bg-primary align-items-center" style="height: 175px">
+  <div class="row jumbotron jumbotron-fluid text-center align-items-center" style="height: 200px; background-color: #f1f1f1">
     <div class="col-12">
       <h1 class="display-4" style="font-family: 'PT Sans', sans-serif;">Welcome to Easy Car Rental PVT(Ltd)</h1>
       <p class="lead">Rent a car that fits your needs and budget with ease</p>
@@ -159,30 +159,24 @@
 
   </div>
   <div class="container">
-    <h2 class="text-center mt-4 mb-4">Our Fleet</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="" class="card-img-top" alt="..."/>
-          <div class="card-body">
-            General Cars
-          </div>
+    <h2 class="text-center mt-4 mb-5" style="color: white">Our Fleet</h2>
+    <div class="row" id="row">
+      <div class="box mt-5">
+        <img src="assests/images/general_cars.jpg">
+        <div class="content">
+          <h2>General Cars<br> <span>We have 30 cars <br>to rent in <br>general car category</span></h2>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="" class="card-img-top" alt="..."/>
-          <div class="card-body">
-            Premium Cars
-          </div>
+      <div class="box mt-5">
+        <img src="assests/images/premium_cars.jpg">
+        <div class="content">
+          <h2>Premium Cars <br> <span>We have 14 cars <br> to rent in <br> premium car category</span></h2>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="" class="card-img-top" alt="..."/>
-          <div class="card-body">
-            Luxury Cars
-          </div>
+      <div class="box mt-5">
+        <img src="assests/images/luxury_Carls.jpg">
+        <div class="content">
+          <h2>Luxury Cars <br> <span>We have 30 cars <br> to rent in <br> luxury car category</span></h2>
         </div>
       </div>
     </div>
