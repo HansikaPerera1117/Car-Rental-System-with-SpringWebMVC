@@ -9,6 +9,6 @@ body {
 }
 
 .myf{
-    --bs-offcanvas-width: 420px;
+    --bs-offcanvas-width: 500px;
     background-color:  white;
 }
