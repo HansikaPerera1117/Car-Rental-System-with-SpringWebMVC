@@ -7,3 +7,8 @@ body {
 *{
     font-family: 'Ubuntu', sans-serif;
 }
+
+.myf{
+    --bs-offcanvas-width: 420px;
+    background-color:  white;
+}

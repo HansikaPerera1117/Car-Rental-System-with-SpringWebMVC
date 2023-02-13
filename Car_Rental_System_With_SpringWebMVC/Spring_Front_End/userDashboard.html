@@ -26,6 +26,7 @@
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="height: 75px;background-color: #bdbdbd">
+      <!---------------------logo----------------------->
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
           <img src="assests/images/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top ms-1" style="border-radius: 40px;">
@@ -33,10 +34,10 @@
         <label class="fw-bold ms-1">|</label>
       </div>
     </nav>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!---------------------nav bar items----------------------->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -50,13 +51,33 @@
         </li>
       </ul>
     </div>
+
+    <!---------------------user acc----------------------->
+    <div class="row me-3" style="width: 300px">
+      <div class="col-8 ">
+        <label class="col-5"></label>
+          <label class="col-6 text-end ">U001</label>
+          <label class="col-12 text-end">Hansika madushani Perera</label>
+      </div>
+      <button class="navbar-toggler d-inline-block align-text-top align-items-end col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <img src="assests/images/profile-user.png" width="50px" height="50px">
+      </button>
+    </div>
+
+
+
   </nav>
+  <!---------------------user acc offcanvas----------------------->
+  <div  class=" myf offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
+
+  </div>
+  <!-------------------------------------------->
 </header>
 
 <main class="container-fluid">
   <div class="row jumbotron jumbotron-fluid text-center bg-primary align-items-center" style="height: 175px">
     <div class="col-12">
-      <h1 class="display-4" style="font-family: 'PT Sans', sans-serif;">Welcome to Car Rental System</h1>
+      <h1 class="display-4" style="font-family: 'PT Sans', sans-serif;">Welcome to Easy Car Rental PVT(Ltd)</h1>
       <p class="lead">Rent a car that fits your needs and budget with ease</p>
     </div>
 
