@@ -32,8 +32,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-#row .box img {
-    position: absolute;
+#row .box a img {
     width: 435px;
     height: 320px;
     z-index: 3;
