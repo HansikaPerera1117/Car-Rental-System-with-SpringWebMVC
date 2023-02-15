@@ -156,11 +156,11 @@
       <h1 class="display-4" style="font-family: 'PT Sans', sans-serif;">Welcome to Easy Car Rental PVT(Ltd)</h1>
       <p class="lead">Rent a car that fits your needs and budget with ease</p>
     </div>
-
   </div>
+
   <div class="container">
     <h2 class="text-center mt-4 mb-5" style="color: white">Our Fleet</h2>
-    <div class="row" id="row">
+    <div class="row" id="row" style="height: 235px">
       <div class="box mt-5">
         <img src="assests/images/general_cars.jpg">
         <div class="content">
@@ -181,6 +181,106 @@
       </div>
     </div>
   </div>
+
+  <!--  user bookings status-->
+  <div class="row mt-5 justify-content-end">
+    <div class="col-2">
+      <button type="button" class="btn btn-light ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Check Booking Status
+      </button>
+    </div>
+  </div>
+
+  <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">User Booking Status</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputState" class="form-label">Rent ID</label>
+              <select id="inputState" class="form-select">
+                <option></option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="inputRentDate" class="form-label">Rent Date</label>
+              <input type="text" class="form-control" id="inputRentDate" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputCraID" class="form-label">Registration Num of Car</label>
+              <input type="text" class="form-control" id="inputCraID" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputTransmissionType" class="form-label">Transmission Type</label>
+              <input type="text" class="form-control" id="inputTransmissionType" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputFreeKMForADay" class="form-label">Free KMs For A Day</label>
+              <input type="text" class="form-control" id="inputFreeKMForADay" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputFreeKMForAMonth" class="form-label">Free KMs For A Month</label>
+              <input type="text" class="form-control" id="inputFreeKMForAMonth" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputPricePerExtraKM" class="form-label">Price Per Extra KM</label>
+              <input type="text" class="form-control" id="inputPricePerExtraKM" readonly>
+            </div>
+            <div class="col-md-5">
+              <label for="inputUserID" class="form-label">User ID</label>
+              <input type="text" class="form-control" id="inputUserID" readonly>
+            </div>
+            <div class="col-md-7">
+              <label for="inputNameOfUser" class="form-label">Name</label>
+              <input type="text" class="form-control" id="inputNameOfUser" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputPickUpDate" class="form-label">PickUp Date</label>
+              <input type="text" class="form-control" id="inputPickUpDate" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputPickUpTime" class="form-label">PickUp Time</label>
+              <input type="text" class="form-control" id="inputPickUpTime" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputPickUpVenue" class="form-label">PickUp Venue</label>
+              <input type="text" class="form-control" id="inputPickUpVenue"  readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputReturnDate" class="form-label">Return Date</label>
+              <input type="text" class="form-control" id="inputReturnDate" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputReturnTime" class="form-label">Return Time</label>
+              <input type="text" class="form-control" id="inputReturnTime" readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputReturnVenue" class="form-label">Return Venue</label>
+              <input type="text" class="form-control" id="inputReturnVenue"  readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputLossDamageWaiver" class="form-label">Loss Damage Waiver</label>
+              <input type="text" class="form-control" id="inputLossDamageWaiver"  readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputDriverName" class="form-label">Driver Name</label>
+              <input type="text" class="form-control" id="inputDriverName"  readonly>
+            </div>
+            <div class="col-md-4">
+              <label for="inputDriverContactNo" class="form-label">Driver Contact No</label>
+              <a href=""></a>
+              <input type="text" class="form-control" id="inputDriverContactNo" readonly>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 

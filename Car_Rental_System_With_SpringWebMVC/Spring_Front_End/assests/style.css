@@ -8,6 +8,8 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+/*----------------user home page--------------------------*/
+
 .myf{
     --bs-offcanvas-width: 650px;
     background-color:  white;
@@ -73,3 +75,5 @@ body {
     font-weight: 300;
     font-size: 0.75em;
 }
+
+/*------------------------------------------*/
