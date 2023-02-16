@@ -2,9 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Car Rental System</title>
+    <meta content="width=device-width initial-scale=1" name="viewport">
+    <link href="assests/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assests/style.css" rel="stylesheet">
+
+    <!-----------------------------fonts-------------------------------------->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <!------------------------------------------------------------------->
+
 </head>
 <body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="height: 75px;background-color: #bdbdbd;z-index: 2">
+        <!---------------------logo----------------------->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <img src="assests/images/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top ms-1" style="border-radius: 40px;">
+                <label class="navbar-brand ms-3" style="font-family: 'Convergence', sans-serif;">Easy Car Rental PVT(Ltd)</label>
+                <label class="fw-bold ms-1">|</label>
+            </div>
+        </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!---------------------nav bar items----------------------->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="userDashboard.html">Back</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<main  class="container-fluid">
+    <div class="row jumbotron jumbotron-fluid text-center align-items-center bg-black" style="height: 110px; color:white;">
+        <div class="col-12">
+            <h1 class="display-5" style="font-family: 'PT Sans', sans-serif;">General Cars</h1>
+            <p class="lead">We can offer you 30 cars for rent under the General Cars category across five brands</p>
+        </div>
+    </div>
+
+        <div class="row bg-success">
+            <div class="col-2">
+                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#NoOfPassengers">No Of Passengers</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#four">Four Passengers</a>
+                            <!--                                <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>-->
+                        </nav>
+                        <a class="nav-link" href="#transmissionType">Transmission Type</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#manual">Manual</a>
+                            <a class="nav-link ms-3 my-1" href="#auto">Auto</a>
+                        </nav>
+                        <a class="nav-link" href="#brand">Brand</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#suzuki">Suzuki</a>
+                            <a class="nav-link ms-3 my-1" href="#perodua">Perodua</a>
+                            <a class="nav-link ms-3 my-1" href="#toyota">Toyota</a>
+                        </nav>
+                        <a class="nav-link" href="#price">Price</a>
+                        <a class="nav-link" href="#fuel">Fuel type</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ms-3 my-1" href="#petrol">Petrol</a>
+                            <a class="nav-link ms-3 my-1" href="#diesel">Diesel</a>
+                        </nav>
+                    </nav>
+                </nav>
+            </div>
+            <div class="col-10">
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+                    <div id="NoOfPassengers">
+                        <h4>No Of Passengers</h4>
+                        <p>...</p>
+                    </div>
+                    <div id="four">
+                        <h5>Four Passengers</h5>
+                        <div class="row bg-primary">
+                            <div class="col-3 bg-warning">jtj</div>
+                            <div class="col-3">yjtjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                        </div>
+                    </div>
+                    <!--                        <div id="item-1-2">-->
+                    <!--                            <h5>Item 1-2</h5>-->
+                    <!--                            <p>...</p>-->
+                    <!--                        </div>-->
+                    <div id="transmissionType">
+                        <h4>Transmission Type</h4>
+                        <p>...</p>
+                    </div>
+                    <div id="manual">
+                        <h5>Manual</h5>
+                        <div class="row bg-primary">
+                            <div class="col-3 bg-warning">jtj</div>
+                            <div class="col-3">yjtjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                        </div>
+                    </div>
+                    <div id="auto">
+                        <h5>Auto</h5>
+                        <p>...</p>
+                    </div>
+                    <div id="brand">
+                        <h4>Brand</h4>
+                        <p>.</p>
+                    </div>
+                    <div id="suzuki">
+                        <h5>Suzuki</h5>
+                        <p>...</p>
+                    </div>
+                    <div id="perodua">
+                        <h5>Perodua</h5>
+                        <p>.. .</p>
+                    </div>
+                    <div id="toyota">
+                        <h5>Toyota</h5>
+                        <p>.. .</p>
+                    </div>
+                    <div id="price">
+                        <h4>Price</h4>
+                        <p>.</p>
+                    </div>
+                    <div id="fuel">
+                        <h4>Fuel Type</h4>
+                        <p>...</p>
+                    </div>
+                    <div id="petrol">
+                        <h5>Petrol</h5>
+                        <div class="row bg-primary">
+                            <div class="col-3 bg-warning">jtj</div>
+                            <div class="col-3">yjtjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                            <div class="col-3">tyjtyj</div>
+                        </div>
+                    </div>
+                    <div id="diesel">
+                        <h5>Diesel</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</main>
+
 
 </body>
 </html>
