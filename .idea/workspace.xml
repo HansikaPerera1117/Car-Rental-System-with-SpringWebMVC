@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/BMW_i8/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/BMW_i8/back.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/BMW_i8/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/BMW_i8/front.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Mercedes/back..jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Mercedes/back..jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Mercedes/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Mercedes/front.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Toyota_Premio/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Toyota_Premio/front.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/luxuryCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/luxuryCars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/Toyota_Premio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -53,11 +50,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\General_Cars" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Luxury_Cars\Toyota_Premio" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Luxury_Cars\Mercedes" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Luxury_Cars\BMW_i8" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Corolla_Axio-NZE141" />
-      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Perodua_Bezza_Prime-Sedan-Auto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium Cars" />
@@ -98,7 +95,7 @@
       <workItem from="1676298154859" duration="540000" />
       <workItem from="1676437024732" duration="15984000" />
       <workItem from="1676522021575" duration="18392000" />
-      <workItem from="1676550861379" duration="2011000" />
+      <workItem from="1676550861379" duration="3404000" />
     </task>
     <servers />
   </component>
