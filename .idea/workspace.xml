@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - front .jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - interior.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium -side.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/luxuryCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/luxuryCars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Wokring/A_Hello_Java_EE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Suzuki Alto - Premium - Manual" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -50,8 +53,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Suzuki Alto - Premium - Manual" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\General Cars" />
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium Cars" />
     </key>
   </component>
   <component name="RunManager">
@@ -88,7 +96,7 @@
       <workItem from="1676275716017" duration="17413000" />
       <workItem from="1676298154859" duration="540000" />
       <workItem from="1676437024732" duration="15984000" />
-      <workItem from="1676522021575" duration="3531000" />
+      <workItem from="1676522021575" duration="8456000" />
     </task>
     <servers />
   </component>
