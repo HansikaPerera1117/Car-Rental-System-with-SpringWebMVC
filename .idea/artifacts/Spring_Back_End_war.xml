@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Spring_Back_End:war">
+    <output-path>$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Spring_Back_End</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Spring_Back_End-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Spring_Back_End:war exploded" />
+    </root>
+  </artifact>
+</component>
