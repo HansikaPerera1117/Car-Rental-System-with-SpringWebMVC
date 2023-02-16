@@ -45,20 +45,21 @@
       <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/front.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/interior.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/side.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/front.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/interior.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/side.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars/Suzuki_Alto-Premium-Manual/back.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - front .jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars/Suzuki_Alto-Premium-Manual/front.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium - interior.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars/Suzuki_Alto-Premium-Manual/interior.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General Cars/Suzuki Alto - Premium - Manual/Suzuki Alto - Premium -side.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars/Suzuki_Alto-Premium-Manual/side.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/back.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/front.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/side.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/side.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/general_cars.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/General_Cars/general_cars.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/luxury_Carls.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Luxury_Cars/luxury_Carls.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/premium_cars.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/premium_cars.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/userDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/userDashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +148,7 @@
       <workItem from="1676275716017" duration="17413000" />
       <workItem from="1676298154859" duration="540000" />
       <workItem from="1676437024732" duration="15984000" />
-      <workItem from="1676522021575" duration="13523000" />
+      <workItem from="1676522021575" duration="18294000" />
     </task>
     <servers />
   </component>
