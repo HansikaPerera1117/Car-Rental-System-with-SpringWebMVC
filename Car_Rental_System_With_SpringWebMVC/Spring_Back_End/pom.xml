@@ -7,10 +7,15 @@
     <groupId>lk.easycarrental.spring</groupId>
     <artifactId>Spring_Back_End</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        
+    </dependencies>
 
 </project>
