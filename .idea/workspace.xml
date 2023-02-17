@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/config/JPAConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/config/WebAppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/config/WebRootConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +98,7 @@
       <workItem from="1676437024732" duration="15984000" />
       <workItem from="1676522021575" duration="18392000" />
       <workItem from="1676550861379" duration="11477000" />
-      <workItem from="1676601276678" duration="15793000" />
+      <workItem from="1676601276678" duration="16356000" />
     </task>
     <servers />
   </component>
