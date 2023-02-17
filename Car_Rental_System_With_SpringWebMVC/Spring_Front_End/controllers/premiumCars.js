@@ -35,6 +35,9 @@ $("#navAll").click(function (){
     $("#rowTransmissionType").css('display','none');
     $("#rowBrand").css('display','none');
     $("#rowFuelType").css('display','none');
+
+    $("#navNoOfPassengers, #navTransmissionType, #navBrand, #navPrice, #navFuel").css("background-color", "black");
+    $("#navAll").css("background-color", "#585858");
 });
 
 $("#navNoOfPassengers").click(function (){
@@ -55,6 +58,9 @@ $("#navNoOfPassengers").click(function (){
     $("#rowTransmissionType").css('display','none');
     $("#rowBrand").css('display','none');
     $("#rowFuelType").css('display','none');
+
+    $("#navAll,#navTransmissionType, #navBrand, #navPrice, #navFuel").css("background-color", "black");
+    $("#navNoOfPassengers").css("background-color", "#585858");
 });
 
 $("#navTransmissionType").click(function (){
@@ -75,6 +81,9 @@ $("#navTransmissionType").click(function (){
     $("#rowTransmissionType").css('display','block');
     $("#rowBrand").css('display','none');
     $("#rowFuelType").css('display','none');
+
+    $("#navAll, #navNoOfPassengers, #navBrand, #navPrice, #navFuel").css("background-color", "black");
+    $("#navTransmissionType").css("background-color", "#585858");
 });
 
 $("#navBrand").click(function (){
@@ -95,6 +104,9 @@ $("#navBrand").click(function (){
     $("#rowTransmissionType").css('display','none');
     $("#rowBrand").css('display','block');
     $("#rowFuelType").css('display','none');
+
+    $("#navAll, #navNoOfPassengers, #navTransmissionType, #navPrice, #navFuel").css("background-color", "black");
+    $("#navBrand").css("background-color", "#585858");
 });
 
 $("#navPrice").click(function (){
@@ -115,6 +127,9 @@ $("#navPrice").click(function (){
     $("#rowTransmissionType").css('display','none');
     $("#rowBrand").css('display','none');
     $("#rowFuelType").css('display','none');
+
+    $("#navAll, #navNoOfPassengers, #navTransmissionType, #navBrand, #navFuel").css("background-color", "black");
+    $("#navPrice").css("background-color", "#585858");
 });
 
 $("#navFuel").click(function (){
@@ -135,4 +150,7 @@ $("#navFuel").click(function (){
     $("#rowTransmissionType").css('display','none');
     $("#rowBrand").css('display','none');
     $("#rowFuelType").css('display','block');
+
+    $("#navAll, #navNoOfPassengers, #navTransmissionType, #navBrand, #navPrice").css("background-color", "black");
+    $("#navFuel").css("background-color", "#585858");
 });
