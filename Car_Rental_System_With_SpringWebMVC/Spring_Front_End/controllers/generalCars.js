@@ -16,6 +16,8 @@ $("#rowNoOfPassengers").css('display','none');
 $("#rowTransmissionType").css('display','none');
 $("#rowBrand").css('display','none');
 $("#rowFuelType").css('display','none');
+// $("#cars").css('display','none');
+
 
 
 $("#navAll").click(function (){
