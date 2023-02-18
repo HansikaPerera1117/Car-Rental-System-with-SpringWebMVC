@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/entity/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/controller/LogInController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,7 @@
       <workItem from="1676522021575" duration="18392000" />
       <workItem from="1676550861379" duration="11477000" />
       <workItem from="1676601276678" duration="23225000" />
-      <workItem from="1676716956952" duration="1767000" />
+      <workItem from="1676716956952" duration="2174000" />
     </task>
     <servers />
   </component>
