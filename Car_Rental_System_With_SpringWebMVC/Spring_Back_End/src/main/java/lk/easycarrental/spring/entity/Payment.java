@@ -24,7 +24,7 @@ public class Payment {
     public String driverPayment;
     public String totalPayment;
 
-    @OneToOne
-    @JoinColumn(name = "rentID")
+    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "rentID",referencedColumnName = "rentID",nullable = false)
     private Rent rentID;
 }
