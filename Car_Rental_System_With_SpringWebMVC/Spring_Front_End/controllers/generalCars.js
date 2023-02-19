@@ -16,7 +16,7 @@ $("#rowNoOfPassengers").css('display','none');
 $("#rowTransmissionType").css('display','none');
 $("#rowBrand").css('display','none');
 $("#rowFuelType").css('display','none');
-// $("#cars").css('display','none');
+$("#cars").css('display','none');
 
 
 
@@ -162,4 +162,12 @@ $("#navFuel").click(function (){
 
     $("#navAll, #navNoOfPassengers, #navTransmissionType, #navBrand, #navPrice").css("background-color", "black");
     $("#navFuel").css("background-color", "#585858");
+});
+
+
+$(".SuzukiAlto-PremiumBtn").click(function (){
+    $("#SuzukiAlto-Premium").css('display','block');
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#SuzukiAltoK10").css('display','none');
 });
