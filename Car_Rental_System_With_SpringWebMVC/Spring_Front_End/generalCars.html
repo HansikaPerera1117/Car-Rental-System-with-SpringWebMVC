@@ -551,14 +551,15 @@
 </main>
 
 <main id="cars" class="container-fluid">
-    <div class="row" style="height: 654px;">
+
+    <div class="row" id="SuzukiAlto-Premium" style="height: 654px;">
         <div class="col-7">
-            <div class="col-12 mt-2 " style="height:100px;">
+            <div class="col-12 " style="height:70px;">
                 <label class="col-12 fs-2 mt-2"
                        style="height: max-content;font-family: 'Convergence', sans-serif;">Suzuki Alto - Premium - Manual</label>
             </div>
             <div class="col ms-5 me-3 bg-black ">
-                    <div id="carouselExampleCaptions" class="carousel slide" style="height: 480px">
+                    <div id="carouselExampleCaptions" class="carousel slide" style="height: 453px">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -605,24 +606,59 @@
                         </button>
                     </div>
                 </div>
+            <div class="col-12 mt-1 ms-2" style="height:110px;">
+                <label class="col-12 fs-5" style="height: max-content;font-family: 'Convergence', sans-serif;">Colors</label>
+                    <div class="container text-center">
+                        <div class="row" style="height: 80px">
+                            <div class="col" id="black">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/black.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="blue">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/blue.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="gray">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/gray.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="green">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/green.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="silver">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/silver.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="red">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/red.png" height="70px" width="99px">
+                            </div>
+                            <div class="col" id="white">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/colors/white.png" height="70px" width="99px">
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
         <div class="col-5">
-            <div class="row bg-light ms-3 mt-4 bg-success" style="height: 590px;width: 560px; border-radius: 18px">
-                <div class="col-12 mt-2 bg-primary " style="height:70px;">
+            <div class="row ms-4 mt-5" style="height: 550px;width: 525px; border-radius: 18px;background-color: #d4d4d4">
+                <div class="col-12 mt-2 " style="height:70px;">
                     <label class="col-12 fs-3 mt-2" style="height: max-content;font-family: 'Convergence', sans-serif;">Details</label>
                 </div>
-                <div class="col-12 bg-warning" style="height: 425px">
-                    <p class="col-12 fs-5 mt-2">Details</p>
+                <div class="col-12" style="height: 385px">
+                    <p class="col-12 fs-5 mt-2">Registration number : LH 1117 <br> Brand : Suzuki <br> Type : General <br> Number of passengers : 04 passengers <br>
+                        Transmission type : Manual<br> Fuel Type : Petrol <br> Daily rate : Rs 2500 <br>Free mileage for a Day : 100km <br> Monthly rate : Rs 64,350.00
+                     <br> Free mileage for a Month : 2400km <br> Price for extra KM : Rs 30.00 <br> Color : Red</p>
                 </div>
-                <div class="col-12 bg-danger" style="height: 65px">
-                    <button type="button" class="btn btn-light ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Book Car
-                    </button>
+                <div class="col-12 " style="height: 65px">
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-dark ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Car</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+   
+
+    <!---------------------- car booking model start------------------------------>
     <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -715,6 +751,7 @@
             </div>
         </div>
     </div>
+    <!---------------------- car booking model end--------------------------------->
 </main>
 
 <script src="assests/js/bootstrap.min.js"></script>
