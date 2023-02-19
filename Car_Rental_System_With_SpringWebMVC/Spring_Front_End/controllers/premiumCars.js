@@ -15,6 +15,7 @@ $("#rowNoOfPassengers").css('display','none');
 $("#rowTransmissionType").css('display','none');
 $("#rowBrand").css('display','none');
 $("#rowFuelType").css('display','none');
+$("#cars").css('display','none');
 
 
 $("#navAll").click(function (){
@@ -153,4 +154,40 @@ $("#navFuel").click(function (){
 
     $("#navAll, #navNoOfPassengers, #navTransmissionType, #navBrand, #navPrice").css("background-color", "black");
     $("#navFuel").css("background-color", "#585858");
+});
+
+$(".ToyotaCorollaAxio").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#ToyotaCorollaAxio").css('display','block');
+    $("#PeroduaBezzaPrimeSedan").css('display','none');
+    $("#ToyotaAllion").css('display','none');
+    $("#ToyotaAxio").css('display','none');
+});
+
+$(".PeroduaBezzaPrimeSedan").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#ToyotaCorollaAxio").css('display','none');
+    $("#PeroduaBezzaPrimeSedan").css('display','block');
+    $("#ToyotaAllion").css('display','none');
+    $("#ToyotaAxio").css('display','none');
+});
+
+$(".ToyotaAllion").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#ToyotaCorollaAxio").css('display','none');
+    $("#PeroduaBezzaPrimeSedan").css('display','none');
+    $("#ToyotaAllion").css('display','block');
+    $("#ToyotaAxio").css('display','none');
+});
+
+$(".ToyotaAxioNKR165").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#ToyotaCorollaAxio").css('display','none');
+    $("#PeroduaBezzaPrimeSedan").css('display','none');
+    $("#ToyotaAllion").css('display','none');
+    $("#ToyotaAxio").css('display','block');
 });

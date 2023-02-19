@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Perodua_Bezza_Prime-Sedan-Auto/colors/blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Perodua_Bezza_Prime-Sedan-Auto/colors/brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Perodua_Bezza_Prime-Sedan-Auto/colors/gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Perodua_Bezza_Prime-Sedan-Auto/colors/red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Perodua_Bezza_Prime-Sedan-Auto/colors/white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/colors/blue.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/colors/red.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/colors/white.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/colors/black.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/colors/red.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/colors/black.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/colors/brown.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/colors/silver.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/colors/white.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/generalCars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/front.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/side.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Allion_NZT_260/side.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/back.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/front.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/side.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165/side.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/back.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/front.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/front.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/side.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141/side.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/premiumCars.js" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/premiumCars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/premiumCars.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +48,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Axio_NKR_165" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/assests/images/Premium_Cars/Toyota_Corolla_Axio-NZE141" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,10 +60,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Axio_NKR_165" />
-      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Allion_NZT_260" />
-      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Perodua_Bezza_Prime-Sedan-Auto" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Corolla_Axio-NZE141" />
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Allion_NZT_260" />
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Toyota_Axio_NKR_165" />
+      <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\Premium_Cars\Perodua_Bezza_Prime-Sedan-Auto" />
       <recent name="E:\Working Directory\works\GitUplode\Car Rental System\Car_Rental_System_With_SpringWebMVC\Spring_Front_End\assests\images\General_Cars\Toyota_PriusC-Aqua-Auto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -115,7 +109,7 @@
       <workItem from="1676601276678" duration="23225000" />
       <workItem from="1676716956952" duration="2656000" />
       <workItem from="1676728955828" duration="4109000" />
-      <workItem from="1676785560634" duration="16583000" />
+      <workItem from="1676785560634" duration="18274000" />
     </task>
     <servers />
   </component>
