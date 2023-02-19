@@ -553,11 +553,11 @@
 <main id="cars" class="container-fluid">
     <div class="row" style="height: 654px;">
         <div class="col-7">
-            <div class="col-12 mt-2 " style="height:80px;">
-                <label class="col-12 fs-2"
-                       style="height: max-content;font-family: 'Convergence', sans-serif;">Welcome to the</label>
+            <div class="col-12 mt-2 " style="height:100px;">
+                <label class="col-12 fs-2 mt-2"
+                       style="height: max-content;font-family: 'Convergence', sans-serif;">Suzuki Alto - Premium - Manual</label>
             </div>
-            <div class="col ms-5 me-3 bg-primary ">
+            <div class="col ms-5 me-3 bg-black ">
                     <div id="carouselExampleCaptions" class="carousel slide" style="height: 480px">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -567,31 +567,31 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="..." class="d-block w-100" alt="...">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/front.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
+                                    <h5>Front View</h5>
+                                    <p>This is a image of Suzuki Alto - Premium - Manual car front view.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" alt="...">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/side.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
+                                    <h5>Side View</h5>
+                                    <p>This is a image of Suzuki Alto - Premium - Manual car side view.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" alt="...">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/back.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
+                                    <h5>Back View</h5>
+                                    <p>This is a image of Suzuki Alto - Premium - Manual car back view.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" alt="...">
+                                <img src="assests/images/General_Cars/Suzuki_Alto-Premium-Manual/interior.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
+                                    <h5>Interior View</h5>
+                                    <p>This is a image of Suzuki Alto - Premium - Manual car interior view </p>
                                 </div>
                             </div>
                         </div>
@@ -607,10 +607,110 @@
                 </div>
         </div>
         <div class="col-5">
-            <div class="row bg-light ms-3 mt-4" style="height: 590px;width: 560px; border-radius: 18px">
-                <div class="col-12 mt-2 " style="height:70px;">
-                    <label class="col-12 fs-2"
-                           style="height: max-content;font-family: 'Convergence', sans-serif;">Welcome to the</label>
+            <div class="row bg-light ms-3 mt-4 bg-success" style="height: 590px;width: 560px; border-radius: 18px">
+                <div class="col-12 mt-2 bg-primary " style="height:70px;">
+                    <label class="col-12 fs-3 mt-2" style="height: max-content;font-family: 'Convergence', sans-serif;">Details</label>
+                </div>
+                <div class="col-12 bg-warning" style="height: 425px">
+                    <p class="col-12 fs-5 mt-2">Details</p>
+                </div>
+                <div class="col-12 bg-danger" style="height: 65px">
+                    <button type="button" class="btn btn-light ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Book Car
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 " id="exampleModalLabel">Car Booking</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputState" class="form-label fs-4 fw-bold">Rent ID : </label>
+                            <label id="inputState" class="form-label fs-4 fw-bold">R001</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputRentDate" class="form-label fs-4 fw-bold">Rent Date : </label>
+                            <label class="form-label fs-4 fw-bold" id="inputRentDate">2023-02-27</label>
+                        </div>
+                        <div class="col-md-7">
+                            <label for="inputCraID" class="form-label fs-5">Registration Num of Car : </label>
+                            <label type="text" class="form-label fs-5" id="inputCraID">LH-1117</label>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="inputId" class="form-label fs-5">User ID : </label>
+                            <label type="text" class="form-label fs-5" id="inputId">U001</label>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputName" class="form-label fs-5">User Name : </label>
+                            <label class="form-label fs-5" id="inputName">Hansika Perera</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPickUpDate" class="form-label">PickUp Date</label>
+                            <input type="date" class="form-control" id="inputPickUpDate">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPickUpTime" class="form-label">PickUp Time</label>
+                            <input type="time" class="form-control" id="inputPickUpTime">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPickUpVenue" class="form-label">PickUp Venue</label>
+                            <input type="text" class="form-control" id="inputPickUpVenue">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputReturnDate" class="form-label">Return Date</label>
+                            <input type="date" class="form-control" id="inputReturnDate">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputReturnTime" class="form-label">Return Time</label>
+                            <input type="time" class="form-control" id="inputReturnTime">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputReturnVenue" class="form-label">Return Venue</label>
+                            <input type="text" class="form-control" id="inputReturnVenue">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputBankSlip" class="form-label">Bank Slip</label>
+                            <input type="file" class="form-control" id="inputBankSlip">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputLossDamageWaiver" class="form-label">Loss Damage Waiver</label>
+                            <input type="text" class="form-control" id="inputLossDamageWaiver" readonly>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="form-check mt-1 ms-3">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                I Want Driver
+                            </label>
+                        </div>
+                        <div class="form-check mt-2 ms-3">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                I Don't Want Driver
+                            </label>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputDriverName" class="form-label">Driver Name</label>
+                            <input type="text" class="form-control" id="inputDriverName"  readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputDriverContactNo" class="form-label">Driver Contact No</label>
+                            <input type="text" class="form-control" id="inputDriverContactNo" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">Place Booking</button>
                 </div>
             </div>
         </div>
