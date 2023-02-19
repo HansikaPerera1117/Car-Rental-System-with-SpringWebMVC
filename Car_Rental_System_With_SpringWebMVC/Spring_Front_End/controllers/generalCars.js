@@ -166,8 +166,51 @@ $("#navFuel").click(function (){
 
 
 $(".SuzukiAlto-PremiumBtn").click(function (){
-    $("#SuzukiAlto-Premium").css('display','block');
     $("#cars").css('display','block');
     $("#main").css('display','none');
+    $("#SuzukiAlto-Premium").css('display','block');
     $("#SuzukiAltoK10").css('display','none');
+    $("#SuzukiCelerio").css('display','none');
+    $("#PeroduaDaihatsuAxia").css('display','none');
+    $("#ToyotaPriusC").css('display','none');
+});
+
+$(".SuzukiAltoK10Btn").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#SuzukiAlto-Premium").css('display','none');
+    $("#SuzukiAltoK10").css('display','block');
+    $("#SuzukiCelerio").css('display','none');
+    $("#PeroduaDaihatsuAxia").css('display','none');
+    $("#ToyotaPriusC").css('display','none');
+});
+
+$(".SuzukiCelerioBtn").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#SuzukiAlto-Premium").css('display','none');
+    $("#SuzukiAltoK10").css('display','none');
+    $("#SuzukiCelerio").css('display','block');
+    $("#PeroduaDaihatsuAxia").css('display','none');
+    $("#ToyotaPriusC").css('display','none');
+});
+
+$(".PeroduaDaihatsuAxiaBtn").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#SuzukiAlto-Premium").css('display','none');
+    $("#SuzukiAltoK10").css('display','none');
+    $("#SuzukiCelerio").css('display','none');
+    $("#PeroduaDaihatsuAxia").css('display','block');
+    $("#ToyotaPriusC").css('display','none');
+});
+
+$(".ToyotaPriusCBtn").click(function (){
+    $("#cars").css('display','block');
+    $("#main").css('display','none');
+    $("#SuzukiAlto-Premium").css('display','none');
+    $("#SuzukiAltoK10").css('display','none');
+    $("#SuzukiCelerio").css('display','none');
+    $("#PeroduaDaihatsuAxia").css('display','none');
+    $("#ToyotaPriusC").css('display','block');
 });
