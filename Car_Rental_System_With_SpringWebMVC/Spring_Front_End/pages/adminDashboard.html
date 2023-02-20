@@ -1012,6 +1012,69 @@
                 </div>
             </div>
             <!---------------------------income page end------------------------------------------------------>
+
+            <!---------------------------maintain page start------------------------------------------------------>
+            <div class="row container-fluid" id="maintains" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-2 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-screwdriver-wrench"></i> Maintains</label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12 mt-3" style="height: 155px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-4 ">
+                            <form class="row g-3">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputMaintainID">Maintain ID</label>
+                                    <input class="form-control" id="inputMaintainID" type="text">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-label" for="inputMaintainDescription">Description</label>
+                                    <input class="form-control" id="inputMaintainDescription" type="text">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="selectMaintainStatus" class="form-label">Status</label>
+                                    <select class="form-select" id="selectMaintainStatus" aria-label="Default select example">
+                                        <option value="1">In Maintains</option>
+                                        <option value="2">Done</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Add To Maintains</button>
+                                        <button class="btn fs-5 btn-dark"  type="button">Remove</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 390px">
+                        <div class="col-12 mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputMaintainSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputMaintainSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2" style="overflow:scroll;height:335px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">MaintainID</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------maintain page end------------------------------------------------------>
         </div>
     </div>
 </main>
