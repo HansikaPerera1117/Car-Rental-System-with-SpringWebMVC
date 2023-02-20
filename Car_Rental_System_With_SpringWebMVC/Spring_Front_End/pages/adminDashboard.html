@@ -417,7 +417,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="inputUserEmail">Email</label>
-                                    <input class="form-control" id="inputUserEmail" type="text" readonly>
+                                    <input class="form-control" id="inputUserEmail" type="email" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputUserNIC" class="form-label">NIC</label>
@@ -577,31 +577,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!---------------------- Driver Schedule model start------------------------------>
-            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-4 " id="exampleModalLabel">Driver Schedule</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="row g-3">
-                                <div class="col-md-3">
-                                    <label for="inputState" class="form-label fs-4 fw-bold">Driver ID : </label>
-                                    <label id="inputState" class="form-label fs-4 fw-bold">D001</label>
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="inputRentDate" class="form-label fs-4 fw-bold">Driver Name : </label>
-                                    <label class="form-label fs-4 fw-bold" id="inputRentDate">Hansika Perera</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="inputDriverCN" class="form-label fs-4 fw-bold">Contact No : </label>
-                                    <label class="form-label fs-4 fw-bold" id="inputDriverCN">0112233665</label>
-                                </div>
-                                <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
-                                    <table class="table table-secondary mt-3">
+                <!---------------------- Driver Schedule model start------------------------------>
+                <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-4 " id="exampleModalLabel">Driver Schedule</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="lblDriverID" class="form-label fs-4 fw-bold">Driver ID : </label>
+                                        <label id="lblDriverID" class="form-label fs-4 fw-bold">D001</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="lblDriverName" class="form-label fs-4 fw-bold">Driver Name : </label>
+                                        <label class="form-label fs-4 fw-bold" id="lblDriverName">Hansika Perera</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="lblDriverContactNo" class="form-label fs-4 fw-bold">Contact No : </label>
+                                        <label class="form-label fs-4 fw-bold" id="lblDriverContactNo">0112233665</label>
+                                    </div>
+                                    <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
+                                        <table class="table table-secondary mt-3">
                                             <thead class="table-dark">
                                             <tr>
                                                 <th scope="col">DriverID</th>
@@ -617,16 +616,131 @@
                                             </thead>
                                             <tbody></tbody>
                                         </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---------------------- Driver Schedule model end--------------------------------->
+            </div>
+            <!---------------------------driver page end------------------------------------------------------>
+
+            <!---------------------------rent page start------------------------------------------------------>
+            <div class="row container-fluid" id="rents" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-file"></i> Rents </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12" style="height: 358px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-2 ">
+                            <form class="row g-2">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputRentID">Rent ID</label>
+                                    <input class="form-control" id="inputRentID" type="text" readonly>
                                 </div>
-
-
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputRentDate">RentDate</label>
+                                    <input class="form-control" id="inputRentDate" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputCarRegNo">Car Registration No</label>
+                                    <input class="form-control" id="inputCarRegNo" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputUserID" class="form-label">User ID</label>
+                                    <input class="form-control" id="inputUserID" type="text" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputNameOrUser">User Name</label>
+                                    <input class="form-control" id="inputNameOrUser" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputPickUpDate" class="form-label">PickUp Date</label>
+                                    <input class="form-control" type="text" id="inputPickUpDate" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputPickUpTime" class="form-label">PickUp Time</label>
+                                    <input type="text" class="form-control" id="inputPickUpTime" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputPickUpVenue" class="form-label">PickUp Venue</label>
+                                    <input type="text" class="form-control" id="inputPickUpVenue" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReturnDate" class="form-label">Return Date</label>
+                                    <input type="text" class="form-control" id="inputReturnDate" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReturnTime" class="form-label">Return Time</label>
+                                    <input type="text" class="form-control" id="inputReturnTime" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReturnVenue" class="form-label">Return Venue</label>
+                                    <input type="text" class="form-control" id="inputReturnVenue" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="selectDriverID" class="form-label">Driver ID</label>
+                                    <select class="form-select" id="selectDriverID" aria-label="Default select example"></select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputNameOfDriver" class="form-label">Driver Name</label>
+                                    <input type="text" class="form-control" id="inputNameOfDriver" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputLossDamageWaiver" class="form-label">Loss Damage Waiver</label>
+                                    <input type="text" class="form-control" id="inputLossDamageWaiver" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputImageOfBankSlip" class="form-label">BankSlip</label>
+                                    <div  class="ms-2" id="inputImageOfBankSlip" style="height: 150px;width: 225px; background-color: white"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 mt-5 me-3 btn-dark"  type="button">Change Driver</button>
+                                    </div>
+                                </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 238px">
+                        <div class="col-12 mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputRentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputRentSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" style="overflow:scroll;height:190px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">RentID</th>
+                                    <th scope="col">RentDate</th>
+                                    <th scope="col">CarRegistrationNo</th>
+                                    <th scope="col">UserID</th>
+                                    <th scope="col">PickUpDate</th>
+                                    <th scope="col">PickUpTime</th>
+                                    <th scope="col">PickUpVenue</th>
+                                    <th scope="col">ReturnDate</th>
+                                    <th scope="col">ReturnDate</th>
+                                    <th scope="col">ReturnVenue</th>
+                                    <th scope="col">LossDamageWaiver</th>
+                                    <th scope="col">DriverID</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!---------------------- Driver Schedule model end--------------------------------->
-            <!---------------------------driver page end------------------------------------------------------>
+            <!---------------------------rent page end------------------------------------------------------>
         </div>
     </div>
 </main>
