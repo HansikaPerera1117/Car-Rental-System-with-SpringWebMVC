@@ -330,8 +330,8 @@
                                     <input type="color" class="form-control" id="inputColour">
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="form-label" for="selectAvailability">Availability</label>
-                                    <select class="form-select" id="selectAvailability" aria-label="Default select example">
+                                    <label class="form-label" for="selectCarAvailability">Availability</label>
+                                    <select class="form-select" id="selectCarAvailability" aria-label="Default select example">
                                         <option value="1">Available</option>
                                         <option value="2">Not Available</option>
                                     </select>
@@ -438,13 +438,12 @@
                                     <label for="inputImageOfUserDrivingLicense" class="form-label">Image of Driving License</label>
                                     <div  class="ms-2" id="inputImageOfUserDrivingLicense" style="height: 150px;width: 225px; background-color: white"></div>
                                 </div>
-<!--                                <div class="col-md-10">-->
-<!--                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">-->
-<!--                                        <button class="btn fs-5 me-3  btn-dark"  type="button">Add Car</button>-->
-<!--                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Update Car</button>-->
-<!--                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Car</button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div class="col-md-4">
+                                    <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 me-3  btn-dark mt-5"  type="button">Correct Data</button>
+                                        <button class="btn fs-5 me-3 btn-dark mt-5"  type="button">Incorrect Data</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -481,6 +480,100 @@
                 </div>
             </div>
             <!---------------------------user page end------------------------------------------------------>
+
+            <!---------------------------driver page start------------------------------------------------------>
+            <div class="row container-fluid" id="drivers" style="height: 654px;">
+                <div class="row" style="height: 53px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-users-rectangle"></i> Driver  </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12" style="height: 265px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-3">
+                            <form class="row g-2">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputDriverID">Driver ID</label>
+                                    <input class="form-control" id="inputDriverID" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputDriverName">Name</label>
+                                    <input class="form-control" id="inputDriverName" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputDriverAddress">Address</label>
+                                    <input class="form-control" id="inputDriverAddress" type="text">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputDriverContactNo" class="form-label">ContactNo</label>
+                                    <input class="form-control" id="inputDriverContactNo" type="tel">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputDriverNIC" class="form-label">NIC</label>
+                                    <input class="form-control" type="text" id="inputDriverNIC">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputDriverDrivingLicense" class="form-label">Driving License</label>
+                                    <input type="text" class="form-control" id="inputDriverDrivingLicense">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputDriverUserName" class="form-label">UserName</label>
+                                    <input type="text" class="form-control" id="inputDriverUserName">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputDriverPassword" class="form-label">Password</label>
+                                    <input type="text" class="form-control" id="inputDriverPassword">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="selectDriverAvailability">Availability</label>
+                                    <select class="form-select" id="selectDriverAvailability" aria-label="Default select example">
+                                        <option value="1">Available</option>
+                                        <option value="2">Not Available</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Add Driver</button>
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Update Driver</button>
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Driver</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 325px">
+                        <div class="col-12 mt-3">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputDriverSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputDriverSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3" style="overflow:scroll;height:245px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">UserID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">ContactNo</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">NIC</th>
+                                    <th scope="col">ImageOfNIC</th>
+                                    <th scope="col">DrivingLicense</th>
+                                    <th scope="col">ImageOfDrivingLicense</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------driver page end------------------------------------------------------>
         </div>
     </div>
 </main>

@@ -2,7 +2,7 @@
 $("#home").css('display','block');
 $("#cars").css('display','none');
 $("#users").css('display','none');
-
+$("#drivers").css('display','none');
 
 $("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
 $("#menuHome").css("background-color", "#B7B7B7");
@@ -15,6 +15,8 @@ $("#menuHome").click(function (){
     $("#home").css('display','block');
     $("#cars").css('display','none');
     $("#users").css('display','none');
+    $("#drivers").css('display','none');
+
 
 });
 
@@ -25,6 +27,8 @@ $("#menuCars").click(function (){
     $("#home").css('display','none');
     $("#cars").css('display','block');
     $("#users").css('display','none');
+    $("#drivers").css('display','none');
+
 
 });
 
@@ -35,11 +39,19 @@ $("#menuUsers").click(function (){
     $("#home").css('display','none');
     $("#cars").css('display','none');
     $("#users").css('display','block');
+    $("#drivers").css('display','none');
+
 });
 
 $("#menuDrivers").click(function (){
     $("#menuHome, #menuCars, #menuUsers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuDrivers").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','none');
+    $("#users").css('display','none');
+    $("#drivers").css('display','block');
+
 });
 
 $("#menuRents").click(function (){
