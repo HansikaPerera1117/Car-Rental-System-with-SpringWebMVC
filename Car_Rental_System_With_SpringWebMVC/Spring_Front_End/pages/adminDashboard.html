@@ -159,7 +159,8 @@
             </div>
         </div>
         <div class="col-10">
-            <div class="row" style="height: 654px;">
+            <!---------------------------home page start------------------------------------------------------>
+            <div class="row" id="home" style="height: 654px;">
                 <div class="row" style="height: 30px">
                     <div class="col-12 ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-house-chimney"></i> Home </label>
@@ -241,6 +242,151 @@
                     </div>
                 </div>
             </div>
+            <!---------------------------home page end------------------------------------------------------>
+
+            <!---------------------------car page start------------------------------------------------------>
+            <div class="row container-fluid" id="cars" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-car-side"></i> Cars </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12" style="height: 358px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-3 ">
+                            <form class="row g-3">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputRegisterNo">Register No</label>
+                                    <input class="form-control" id="inputRegisterNo" type="text">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputBrand">Brand</label>
+                                    <input class="form-control" id="inputBrand" type="text">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="selectType">Type</label>
+                                    <select class="form-select" id="selectType" aria-label="Default select example">
+                                        <option value="1">General</option>
+                                        <option value="2">Premium</option>
+                                        <option value="3">Luxury</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="selectTransmissionType" class="form-label">Transmission Type</label>
+                                    <select class="form-select" id="selectTransmissionType" aria-label="Default select example">
+                                        <option value="1">Auto</option>
+                                        <option value="2">Manual</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="selectFuelType">Fuel Type</label>
+                                    <select class="form-select" id="selectFuelType" aria-label="Default select example">
+                                        <option value="1">Petrol</option>
+                                        <option value="2">Diesel</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputNoOfPassengers" class="form-label">No of Passengers</label>
+                                    <input class="form-control" type="number" id="inputNoOfPassengers">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputFrontImg" class="form-label">Front View Image</label>
+                                    <input type="file" class="form-control" id="inputFrontImg">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputSideImg" class="form-label">Side View Image</label>
+                                    <input type="file" class="form-control" id="inputSideImg">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputBackImg" class="form-label">Back View Image</label>
+                                    <input type="file" class="form-control" id="inputBackImg">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputInteriorImg" class="form-label">Interior Image</label>
+                                    <input type="file" class="form-control" id="inputInteriorImg">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputDailyRate" class="form-label">Daily Rate</label>
+                                    <input type="number" class="form-control" id="inputDailyRate">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputMonthlyRate" class="form-label">Monthly Rate</label>
+                                    <input type="number" class="form-control" id="inputMonthlyRate">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputFreeKmForADay" class="form-label">Free Km for a Day</label>
+                                    <input type="number" class="form-control" id="inputFreeKmForADay">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputFreeKmForAMonth" class="form-label">Free Km for a Month</label>
+                                    <input type="number" class="form-control" id="inputFreeKmForAMonth">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputPricePerExtraKm" class="form-label">Price Per Extra Km</label>
+                                    <input type="number" class="form-control" id="inputPricePerExtraKm">
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="inputColour" class="form-label">Colour</label>
+                                    <input type="color" class="form-control" id="inputColour">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="selectAvailability">Availability</label>
+                                    <select class="form-select" id="selectAvailability" aria-label="Default select example">
+                                        <option value="1">Available</option>
+                                        <option value="2">Not Available</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 me-3  btn-dark"  type="button">Add Car</button>
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Update Car</button>
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Car</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 238px">
+                        <div class="col-12 mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" style="overflow:scroll;height:190px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">RegisterNo</th>
+                                    <th scope="col">Brand</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">TransmissionType</th>
+                                    <th scope="col">FuelType</th>
+                                    <th scope="col">NoOfPassengers</th>
+                                    <th scope="col">FrontImage</th>
+                                    <th scope="col">SideImage</th>
+                                    <th scope="col">BackImage</th>
+                                    <th scope="col">InteriorImage</th>
+                                    <th scope="col">DailyRate</th>
+                                    <th scope="col">MonthlyRate</th>
+                                    <th scope="col">FreeKmForADay</th>
+                                    <th scope="col">FreeKmForAMonth</th>
+                                    <th scope="col">PricePerExtraKm</th>
+                                    <th scope="col">Colour</th>
+                                    <th scope="col">Availability</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------car page end------------------------------------------------------>
         </div>
     </div>
 </main>

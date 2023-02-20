@@ -1,3 +1,10 @@
+
+$("#home").css('display','none');
+$("#cars").css('display','block');
+
+
+
+
 $("#menuHome").click(function (){
     $("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuHome").css("background-color", "#B7B7B7");
