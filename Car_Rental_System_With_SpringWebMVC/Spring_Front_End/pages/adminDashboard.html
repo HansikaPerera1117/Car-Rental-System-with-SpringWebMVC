@@ -532,10 +532,15 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Add Driver</button>
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Update Driver</button>
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Driver</button>
+                                    <div class="row">
+                                        <div class="col-3 mt-4">
+                                            <button class="btn fs-5 me-3 btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Driver Schedule</button>
+                                        </div>
+                                        <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Add Driver</button>
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Update Driver</button>
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Driver</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -573,6 +578,54 @@
                     </div>
                 </div>
             </div>
+            <!---------------------- Driver Schedule model start------------------------------>
+            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4 " id="exampleModalLabel">Driver Schedule</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3">
+                                <div class="col-md-3">
+                                    <label for="inputState" class="form-label fs-4 fw-bold">Driver ID : </label>
+                                    <label id="inputState" class="form-label fs-4 fw-bold">D001</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="inputRentDate" class="form-label fs-4 fw-bold">Driver Name : </label>
+                                    <label class="form-label fs-4 fw-bold" id="inputRentDate">Hansika Perera</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputDriverCN" class="form-label fs-4 fw-bold">Contact No : </label>
+                                    <label class="form-label fs-4 fw-bold" id="inputDriverCN">0112233665</label>
+                                </div>
+                                <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
+                                    <table class="table table-secondary mt-3">
+                                            <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">DriverID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">RentID</th>
+                                                <th scope="col">RentDate</th>
+                                                <th scope="col">CarRegistrationNo</th>
+                                                <th scope="col">PickUpDate</th>
+                                                <th scope="col">PickUpTime</th>
+                                                <th scope="col">ReturnDate</th>
+                                                <th scope="col">ReturnDate</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------- Driver Schedule model end--------------------------------->
             <!---------------------------driver page end------------------------------------------------------>
         </div>
     </div>
