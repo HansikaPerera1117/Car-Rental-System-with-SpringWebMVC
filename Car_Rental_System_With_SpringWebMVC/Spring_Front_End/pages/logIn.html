@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental System</title>
+    <meta content="width=device-width initial-scale=1" name="viewport">
+    <link href="../assests/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assests/style.css" rel="stylesheet">
+
+    <!-----------------------------fonts-------------------------------------->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&display=swap" rel="stylesheet">
+    <!------------------------------------------------------------------->
+
+
+    <style>
+
+        #loginImage {
+            background-image: url("../assests/images/login_pg.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<main class="container-fluid">
+    <section class="row" style="height: 729px">
+        <div class="col-7" id="loginImage"></div>
+        <div class="col-5 bg-black">
+            <div class="row bg-light ms-5 mt-5" style="height: 640px;width: 530px; border-radius: 18px">
+                <div class="col-12 mt-4 " style="height:145px;">
+                    <label class="col-12 text-center mt-3 fs-2"
+                           style="height: max-content;font-family: 'Convergence', sans-serif;">Welcome to the</label>
+                    <label class="col-12 text-center fs-1"
+                           style="height: max-content;font-family: 'Convergence', sans-serif;">Easy Car Rental
+                        PVT(Ltd)</label>
+                </div>
+                <div class="col " style="height: 470px">
+                    <label class="fs-4 ms-2 mt-3"
+                           style="font-family: 'Convergence', sans-serif; text-decoration: underline;">Login</label>
+                    <form class="ms-2 mt-4 me-2">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="inputRole">Role</label>
+                            <select aria-label="Default select example" class="form-select" id="inputRole">
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                                <option value="3">Driver</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputUsername">Username</label>
+                            <input class="form-control" id="inputUsername" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputPassword">Password</label>
+                            <input class="form-control" id="inputPassword" type="password">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input class="form-check-input" id="check" type="checkbox">
+                            <label class="form-check-label" for="check">Show Password</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 "></div>
+                            <button class="btn fs-5 col-4 btn-dark ms-4" type="button">LogIn</button>
+                        </div>
+                    </form>
+                    <label class="ms-2 mt-3" style="font-family: 'Convergence', sans-serif;">Don't have an
+                        account?</label>
+                    <a class="navbar-brand fw-bold" href="signUp.html">SignUp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="../assests/js/bootstrap.min.js"></script>
+<script src="../assests/JQuery/jquery-3.6.1.min.js"></script>
+
+</body>
+</html>
