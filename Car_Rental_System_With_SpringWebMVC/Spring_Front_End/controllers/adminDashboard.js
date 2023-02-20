@@ -1,8 +1,11 @@
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
+$("#users").css('display','none');
 
 
+$("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
+$("#menuHome").css("background-color", "#B7B7B7");
 
 
 $("#menuHome").click(function (){
@@ -11,6 +14,8 @@ $("#menuHome").click(function (){
 
     $("#home").css('display','block');
     $("#cars").css('display','none');
+    $("#users").css('display','none');
+
 });
 
 $("#menuCars").click(function (){
@@ -19,11 +24,17 @@ $("#menuCars").click(function (){
 
     $("#home").css('display','none');
     $("#cars").css('display','block');
+    $("#users").css('display','none');
+
 });
 
 $("#menuUsers").click(function (){
     $("#menuHome, #menuCars, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuUsers").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','none');
+    $("#users").css('display','block');
 });
 
 $("#menuDrivers").click(function (){

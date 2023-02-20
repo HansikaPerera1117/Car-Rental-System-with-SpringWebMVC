@@ -21,6 +21,8 @@ public class Driver {
     public String contactNo;
     public String NIC;
     public String drivingLicense;
+    public String username;
+    public String password;
     public String availability;
 
 }

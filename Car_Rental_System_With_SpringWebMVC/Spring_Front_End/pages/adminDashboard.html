@@ -161,7 +161,7 @@
         <div class="col-10">
             <!---------------------------home page start------------------------------------------------------>
             <div class="row" id="home" style="height: 654px;">
-                <div class="row" style="height: 30px">
+                <div class="row" style="height: 45px">
                     <div class="col-12 ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-house-chimney"></i> Home </label>
                     </div>
@@ -350,10 +350,10 @@
                         <div class="col-12 mt-2">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" for="inputCarSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
-                                    <input class="form-control col-9" id="inputSearch" type="text">
+                                    <input class="form-control col-9" id="inputCarSearch" type="text">
                                 </div>
                             </div>
                         </div>
@@ -387,6 +387,100 @@
                 </div>
             </div>
             <!---------------------------car page end------------------------------------------------------>
+
+            <!---------------------------user page start------------------------------------------------------>
+            <div class="row container-fluid" id="users" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-users"></i> Users </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12" style="height: 358px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-2">
+                            <form class="row g-2">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="selectUserID">User ID</label>
+                                    <select class="form-select" id="selectUserID" aria-label="Default select example"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputUserName">Name</label>
+                                    <input class="form-control" id="inputUserName" type="text" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputUserAddress">Address</label>
+                                    <input class="form-control" id="inputUserAddress" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputUserContactNo" class="form-label">ContactNo</label>
+                                    <input class="form-control" id="inputUserContactNo" type="text" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputUserEmail">Email</label>
+                                    <input class="form-control" id="inputUserEmail" type="text" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputUserNIC" class="form-label">NIC</label>
+                                    <input class="form-control" type="text" id="inputUserNIC" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputUserDrivingLicense" class="form-label">Driving License</label>
+                                    <input type="text" class="form-control" id="inputUserDrivingLicense" readonly>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="inputImgOfNIC" class="form-label">Image Of NIC</label>
+                                    <div class="row" id="inputImgOfNIC">
+                                        <div class="ms-3" id="inputImgOfNICFront" style="height: 150px;width: 225px; background-color: white" ></div>
+                                        <div class="ms-3" id="inputImgOfNICBack" style="height: 150px;width: 225px; background-color: white" ></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputImageOfUserDrivingLicense" class="form-label">Image of Driving License</label>
+                                    <div  class="ms-2" id="inputImageOfUserDrivingLicense" style="height: 150px;width: 225px; background-color: white"></div>
+                                </div>
+<!--                                <div class="col-md-10">-->
+<!--                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">-->
+<!--                                        <button class="btn fs-5 me-3  btn-dark"  type="button">Add Car</button>-->
+<!--                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Update Car</button>-->
+<!--                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Car</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 238px">
+                        <div class="col-12 mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputUserSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputUserSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 " style="overflow:scroll;height:190px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">UserID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">ContactNo</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">NIC</th>
+                                    <th scope="col">ImageOfNIC</th>
+                                    <th scope="col">DrivingLicense</th>
+                                    <th scope="col">ImageOfDrivingLicense</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------user page end------------------------------------------------------>
         </div>
     </div>
 </main>
