@@ -830,6 +830,104 @@
                 </div>
             </div>
             <!---------------------------payment page end------------------------------------------------------>
+
+            <!---------------------------request page start------------------------------------------------------>
+            <div class="row container-fluid" id="requests" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-2 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-message"></i> Rent Requests </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12 mt-3" style="height: 358px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-2 ">
+                            <form class="row g-2">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputReqRentID">Rent ID</label>
+                                    <input class="form-control" id="inputReqRentID" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputReqRentDate">RentDate</label>
+                                    <input class="form-control" id="inputReqRentDate" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputReqCarRegNo">Car Registration No</label>
+                                    <input class="form-control" id="inputReqCarRegNo" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqUserID" class="form-label">User ID</label>
+                                    <input class="form-control" id="inputReqUserID" type="text" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputReqNameOrUser">User Name</label>
+                                    <input class="form-control" id="inputReqNameOrUser" type="text" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqPickUpDate" class="form-label">PickUp Date</label>
+                                    <input class="form-control" type="text" id="inputReqPickUpDate" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqPickUpTime" class="form-label">PickUp Time</label>
+                                    <input type="text" class="form-control" id="inputReqPickUpTime" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqPickUpVenue" class="form-label">PickUp Venue</label>
+                                    <input type="text" class="form-control" id="inputReqPickUpVenue" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqReturnDate" class="form-label">Return Date</label>
+                                    <input type="text" class="form-control" id="inputReqReturnDate" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqReturnTime" class="form-label">Return Time</label>
+                                    <input type="text" class="form-control" id="inputReqReturnTime" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqReturnVenue" class="form-label">Return Venue</label>
+                                    <input type="text" class="form-control" id="inputReqReturnVenue" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqDriverID" class="form-label">Driver ID</label>
+                                    <input type="text" class="form-control" id="inputReqDriverID" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputReqNameOfDriver" class="form-label">Driver Name</label>
+                                    <input type="text" class="form-control" id="inputReqNameOfDriver" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqLossDamageWaiver" class="form-label">Loss Damage Waiver</label>
+                                    <input type="text" class="form-control" id="inputReqLossDamageWaiver" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputReqImageOfBankSlip" class="form-label">BankSlip</label>
+                                    <div  class="ms-2" id="inputReqImageOfBankSlip" style="height: 150px;width: 225px; background-color: white"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 mt-5 me-3 btn-dark" type="button">Accept</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 238px">
+                        <div class="col-12 mt-2">
+                            <div class="row" style="height: 75px">
+                                <div class="col-2 mt-3">
+                                    <label class="mt-1 fs-6 col-3" for="inputReqReasonDeny" style="width: max-content"> Reason For Deny Rent Request </label>
+                                </div>
+                                <div class="col-7 ms-5 mt-3">
+                                    <input class="form-control col-9" id="inputReqReasonDeny" type="text">
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <button class="btn fs-5 btn-dark"  type="button">Deny</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------request page end------------------------------------------------------>
         </div>
     </div>
 </main>

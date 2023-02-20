@@ -5,6 +5,8 @@ $("#users").css('display','none');
 $("#drivers").css('display','none');
 $("#rents").css('display','none');
 $("#payments").css('display','none');
+$("#requests").css('display','none');
+
 
 
 $("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
@@ -21,6 +23,7 @@ $("#menuHome").click(function (){
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
     $("#payments").css('display','none');
+    $("#requests").css('display','none');
 
 });
 
@@ -34,6 +37,7 @@ $("#menuCars").click(function (){
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
     $("#payments").css('display','none');
+    $("#requests").css('display','none');
 
 });
 
@@ -47,6 +51,7 @@ $("#menuUsers").click(function (){
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
     $("#payments").css('display','none');
+    $("#requests").css('display','none');
 
 });
 
@@ -60,6 +65,7 @@ $("#menuDrivers").click(function (){
     $("#drivers").css('display','block');
     $("#rents").css('display','none');
     $("#payments").css('display','none');
+    $("#requests").css('display','none');
 
 });
 
@@ -73,6 +79,7 @@ $("#menuRents").click(function (){
     $("#drivers").css('display','none');
     $("#rents").css('display','block');
     $("#payments").css('display','none');
+    $("#requests").css('display','none');
 
 });
 
@@ -86,12 +93,22 @@ $("#menuPayments").click(function (){
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
     $("#payments").css('display','block');
+    $("#requests").css('display','none');
 
 });
 
 $("#menuRequests").click(function (){
     $("#menuHome, #menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuRequests").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','none');
+    $("#users").css('display','none');
+    $("#drivers").css('display','none');
+    $("#rents").css('display','none');
+    $("#payments").css('display','none');
+    $("#requests").css('display','block');
+
 });
 
 $("#menuIncomes").click(function (){
