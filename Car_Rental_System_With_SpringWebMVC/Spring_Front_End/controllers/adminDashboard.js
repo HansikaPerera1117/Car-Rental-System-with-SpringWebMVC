@@ -6,6 +6,8 @@ $("#drivers").css('display','none');
 $("#rents").css('display','none');
 $("#payments").css('display','none');
 $("#requests").css('display','none');
+$("#incomes").css('display','none');
+
 
 
 
@@ -24,6 +26,7 @@ $("#menuHome").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','none');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -38,6 +41,7 @@ $("#menuCars").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','none');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -52,6 +56,7 @@ $("#menuUsers").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','none');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -66,6 +71,7 @@ $("#menuDrivers").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','none');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -80,6 +86,7 @@ $("#menuRents").click(function (){
     $("#rents").css('display','block');
     $("#payments").css('display','none');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -94,6 +101,7 @@ $("#menuPayments").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','block');
     $("#requests").css('display','none');
+    $("#incomes").css('display','none');
 
 });
 
@@ -108,12 +116,23 @@ $("#menuRequests").click(function (){
     $("#rents").css('display','none');
     $("#payments").css('display','none');
     $("#requests").css('display','block');
+    $("#incomes").css('display','none');
 
 });
 
 $("#menuIncomes").click(function (){
     $("#menuHome, #menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuMaintains").css("background-color", "white");
     $("#menuIncomes").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','none');
+    $("#users").css('display','none');
+    $("#drivers").css('display','none');
+    $("#rents").css('display','none');
+    $("#payments").css('display','none');
+    $("#requests").css('display','none');
+    $("#incomes").css('display','block');
+
 });
 
 $("#menuMaintains").click(function (){

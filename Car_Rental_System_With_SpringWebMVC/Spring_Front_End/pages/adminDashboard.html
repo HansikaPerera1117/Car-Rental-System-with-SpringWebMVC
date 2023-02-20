@@ -839,8 +839,8 @@
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
-                    <div class="col-12 mt-3" style="height: 358px;border-radius: 10px;background-color: #d7d7d7">
-                        <div class="col mt-2 ">
+                    <div class="col-12 mt-3" style="height: 375px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-3 ">
                             <form class="row g-2">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputReqRentID">Rent ID</label>
@@ -910,16 +910,16 @@
                             </form>
                         </div>
                     </div>
-                    <div class=" col-12" style="height: 238px">
-                        <div class="col-12 mt-2">
-                            <div class="row" style="height: 75px">
-                                <div class="col-2 mt-3">
+                    <div class=" col-12" style="height: 130px">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-2">
                                     <label class="mt-1 fs-6 col-3" for="inputReqReasonDeny" style="width: max-content"> Reason For Deny Rent Request </label>
                                 </div>
-                                <div class="col-7 ms-5 mt-3">
+                                <div class="col-7 ms-5">
                                     <input class="form-control col-9" id="inputReqReasonDeny" type="text">
                                 </div>
-                                <div class="col-2 mt-3">
+                                <div class="col-2">
                                     <button class="btn fs-5 btn-dark"  type="button">Deny</button>
                                 </div>
                             </div>
@@ -928,6 +928,90 @@
                 </div>
             </div>
             <!---------------------------request page end------------------------------------------------------>
+
+            <!---------------------------income page start------------------------------------------------------>
+            <div class="row container-fluid" id="incomes" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-2 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-coins"></i> Incomes </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-6" >
+                        <div class="row mt-2" style="background-color: #cbcbcb;border-radius: 10px">
+                            <div class="col-12">
+                                <label class="fs-5" style="width: max-content;"> Daily Income </label>
+                            </div>
+                            <div class="col-12" style="overflow:scroll;height:255px;overflow:auto">
+                                <table class="table table-secondary mt-3">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Total Income</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-2 ms-2"style="background-color: #efefef;border-radius: 10px">
+                            <div class="col-12">
+                                <label class="fs-5" style="width: max-content;"> Weekly Income </label>
+                            </div>
+                            <div class="col-12" style="overflow:scroll;height:255px;overflow:auto">
+                                <table class="table table-secondary mt-3">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Week No</th>
+                                        <th scope="col">Total Income</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-3"style="background-color: #efefef;border-radius: 10px">
+                            <div class="col-12">
+                                <label class="fs-5" style="width: max-content;"> Monthly Income </label>
+                            </div>
+                            <div class="col-12 " style="overflow:scroll;height:255px;overflow:auto">
+                                <table class="table table-secondary mt-3">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Month</th>
+                                        <th scope="col">Total Income</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt-3 ms-2"style="background-color: #cbcbcb;border-radius: 10px">
+                            <div class="col-12">
+                                <label class="fs-5" style="width: max-content;"> Yearly Income </label>
+                            </div>
+                            <div class="col-12" style="overflow:scroll;height:255px;overflow:auto">
+                                <table class="table table-secondary mt-3">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Year</th>
+                                        <th scope="col">Total Income</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------income page end------------------------------------------------------>
         </div>
     </div>
 </main>
