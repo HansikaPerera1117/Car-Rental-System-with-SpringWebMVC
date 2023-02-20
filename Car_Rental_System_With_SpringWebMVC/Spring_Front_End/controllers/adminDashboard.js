@@ -4,6 +4,7 @@ $("#cars").css('display','none');
 $("#users").css('display','none');
 $("#drivers").css('display','none');
 $("#rents").css('display','none');
+$("#payments").css('display','none');
 
 
 $("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
@@ -19,6 +20,7 @@ $("#menuHome").click(function (){
     $("#users").css('display','none');
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
+    $("#payments").css('display','none');
 
 });
 
@@ -31,6 +33,7 @@ $("#menuCars").click(function (){
     $("#users").css('display','none');
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
+    $("#payments").css('display','none');
 
 });
 
@@ -43,6 +46,7 @@ $("#menuUsers").click(function (){
     $("#users").css('display','block');
     $("#drivers").css('display','none');
     $("#rents").css('display','none');
+    $("#payments").css('display','none');
 
 });
 
@@ -55,6 +59,7 @@ $("#menuDrivers").click(function (){
     $("#users").css('display','none');
     $("#drivers").css('display','block');
     $("#rents").css('display','none');
+    $("#payments").css('display','none');
 
 });
 
@@ -67,11 +72,21 @@ $("#menuRents").click(function (){
     $("#users").css('display','none');
     $("#drivers").css('display','none');
     $("#rents").css('display','block');
+    $("#payments").css('display','none');
+
 });
 
 $("#menuPayments").click(function (){
     $("#menuHome, #menuCars, #menuUsers, #menuDrivers, #menuRents, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuPayments").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','none');
+    $("#users").css('display','none');
+    $("#drivers").css('display','none');
+    $("#rents").css('display','none');
+    $("#payments").css('display','block');
+
 });
 
 $("#menuRequests").click(function (){

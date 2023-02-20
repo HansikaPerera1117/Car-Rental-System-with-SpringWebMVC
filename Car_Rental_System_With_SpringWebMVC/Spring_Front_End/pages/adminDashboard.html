@@ -741,6 +741,95 @@
                 </div>
             </div>
             <!---------------------------rent page end------------------------------------------------------>
+
+            <!---------------------------payment page start------------------------------------------------------>
+            <div class="row container-fluid" id="payments" style="height: 654px;">
+                <div class="row" style="height: 50px">
+                    <div class="col-12 ms-2">
+                        <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-money-bill-transfer"></i> Payments  </label>
+                    </div>
+                </div>
+                <div class="row ms-2" style="height: 590px">
+                    <div class="col-12" style="height: 235px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-4 ">
+                            <form class="row g-3">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputPaymentID">Payment ID</label>
+                                    <input class="form-control" id="inputPaymentID" type="text">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputPaymentDate">Date</label>
+                                    <input class="form-control" id="inputPaymentDate" type="date">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputRentPrice" class="form-label">Rent Price</label>
+                                    <input class="form-control" type="number" id="inputRentPrice">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputExtraKM">Extra KMs</label>
+                                    <input class="form-control" type="number" id="inputExtraKM">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputPriseForExtraKM" class="form-label">Prise For Extra KMs</label>
+                                    <input type="number" class="form-control" id="inputPriseForExtraKM">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputDamageCharge">Damage Charge</label>
+                                    <input class="form-control" id="inputDamageCharge" type="number">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputReturnLossDamageWaiver" class="form-label">Return Loss Damage Waiver</label>
+                                    <input class="form-control" id="inputReturnLossDamageWaiver" type="number">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputDriverPayment" class="form-label">Driver Payment</label>
+                                    <input type="number" class="form-control" id="inputDriverPayment">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputTotalPayment" class="form-label">Total Payment</label>
+                                    <input type="number" class="form-control" id="inputTotalPayment" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Payed</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" col-12" style="height: 335px">
+                        <div class="col-12 mt-2">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputPaymentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputPaymentSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" style="overflow:scroll;height:290px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">PaymentID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">DamageCharge</th>
+                                    <th scope="col">ReturnLossDamageWaiver</th>
+                                    <th scope="col">RentPrice</th>
+                                    <th scope="col">ExtraKM</th>
+                                    <th scope="col">PriseForExtraKM</th>
+                                    <th scope="col">DriverPayment</th>
+                                    <th scope="col">TotalPayment</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------payment page end------------------------------------------------------>
         </div>
     </div>
 </main>
