@@ -1,6 +1,6 @@
 
-$("#home").css('display','none');
-$("#cars").css('display','block');
+$("#home").css('display','block');
+$("#cars").css('display','none');
 
 
 
@@ -8,11 +8,17 @@ $("#cars").css('display','block');
 $("#menuHome").click(function (){
     $("#menuCars, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuHome").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','block');
+    $("#cars").css('display','none');
 });
 
 $("#menuCars").click(function (){
     $("#menuHome, #menuUsers, #menuDrivers, #menuRents, #menuPayments, #menuRequests, #menuIncomes, #menuMaintains").css("background-color", "white");
     $("#menuCars").css("background-color", "#B7B7B7");
+
+    $("#home").css('display','none');
+    $("#cars").css('display','block');
 });
 
 $("#menuUsers").click(function (){
