@@ -18,17 +18,17 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    public String userID;
-    public String name;
-    public String address;
-    public String contactNo;
-    public String email;
-    public String NIC;
-    public String imageOfNIC;
-    public String drivingLicense;
-    public String imageOfDrivingLicense;
-    public String username;
-    public String password;
+    private String userID;
+    private String name;
+    private String address;
+    private String contactNo;
+    private String email;
+    private String NIC;
+    private String imageOfNIC;
+    private String drivingLicense;
+    private String imageOfDrivingLicense;
+    private String username;
+    private String password;
 
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<Rent> rents;

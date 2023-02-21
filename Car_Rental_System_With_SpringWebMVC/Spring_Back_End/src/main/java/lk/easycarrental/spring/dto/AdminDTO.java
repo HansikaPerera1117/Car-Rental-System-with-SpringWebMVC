@@ -1,4 +1,4 @@
-package lk.easycarrental.spring.entity;
+package lk.easycarrental.spring.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,13 +12,10 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Data
 @ToString
-@Entity
-public class Admin{
-    @Id
+public class AdminDTO {
     private String adminID;
     private String name;
     private String contactNo;
     private String username;
     private String password;
-
 }

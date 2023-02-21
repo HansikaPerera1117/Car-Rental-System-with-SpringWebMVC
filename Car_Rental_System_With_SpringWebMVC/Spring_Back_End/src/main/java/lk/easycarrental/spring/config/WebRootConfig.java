@@ -8,4 +8,7 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackageClasses = {})
 @Import({JPAConfig.class})
 public class WebRootConfig {
+//    sacnner ekata clas danna
+//    modle mapper eka danna
+
 }

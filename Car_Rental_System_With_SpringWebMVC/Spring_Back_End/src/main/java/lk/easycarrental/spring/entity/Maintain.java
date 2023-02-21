@@ -14,9 +14,9 @@ import javax.persistence.*;
 @Entity
 public class Maintain {
     @Id
-    public String MID;
-    public String description;
-    public String status;
+    private String MID;
+    private String description;
+    private String status;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "registrationNumber",referencedColumnName = "registrationNumber",nullable = false)

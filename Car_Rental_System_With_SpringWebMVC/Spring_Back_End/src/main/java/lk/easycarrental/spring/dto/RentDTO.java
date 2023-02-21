@@ -1,27 +1,21 @@
-package lk.easycarrental.spring.entity;
+package lk.easycarrental.spring.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
 @ToString
-@IdClass(Rent_PK.class)
-public class Rent {
-    @Id
+public class RentDTO {
     private String rentID;
     private LocalDate rentDate;
-    @Id
     private String carID;
-    @Id
     private String userID;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
@@ -32,15 +26,6 @@ public class Rent {
     private double lossDamageWaiver;
     private String BankSlip;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "driverID",referencedColumnName = "driverID",nullable = false)
-    private Driver driverID;
+    private String driverID;
 
-    @ManyToOne
-    @JoinColumn(name = "carID",referencedColumnName = "carID",insertable = false,updatable = false)
-    private Car cars;
-
-    @ManyToOne
-    @JoinColumn(name = "userID",referencedColumnName = "userID",insertable = false,updatable = false)
-    private User users;
 }

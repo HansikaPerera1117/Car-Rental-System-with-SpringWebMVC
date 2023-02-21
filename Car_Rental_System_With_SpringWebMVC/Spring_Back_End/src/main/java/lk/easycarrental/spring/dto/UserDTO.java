@@ -1,5 +1,6 @@
-package lk.easycarrental.spring.entity;
+package lk.easycarrental.spring.dto;
 
+import lk.easycarrental.spring.entity.Rent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,20 +16,18 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @ToString
-@Entity
-public class Driver {
-    @Id
-    private String driverID;
+public class UserDTO {
+    private String userID;
     private String name;
     private String address;
     private String contactNo;
+    private String email;
     private String NIC;
+    private String imageOfNIC;
     private String drivingLicense;
+    private String imageOfDrivingLicense;
     private String username;
     private String password;
-    private String availability;
 
-    @OneToMany(mappedBy = "driverID",cascade = CascadeType.ALL)
-    private List<Rent> rents;
-
+    private List<RentDTO> rents;
 }

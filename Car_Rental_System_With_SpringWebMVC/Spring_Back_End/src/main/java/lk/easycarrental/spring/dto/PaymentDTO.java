@@ -1,5 +1,6 @@
-package lk.easycarrental.spring.entity;
+package lk.easycarrental.spring.dto;
 
+import lk.easycarrental.spring.entity.Rent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @ToString
-@Entity
-public class Payment {
-    @Id
+public class PaymentDTO {
     private String paymentID;
     private LocalDate date;
     private double damageCharge;
@@ -25,7 +24,7 @@ public class Payment {
     private double driverPayment;
     private double totalPayment;
 
-    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "rentID",referencedColumnName = "rentID",nullable = false)
-    private Rent rentID;
+    private String rentID;
+
+
 }

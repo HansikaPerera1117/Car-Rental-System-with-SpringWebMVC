@@ -593,7 +593,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputDriverPassword" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="inputDriverPassword">
+                                    <input type="password" class="form-control" id="inputDriverPassword">
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="selectDriverAvailability">Availability</label>
@@ -830,7 +830,11 @@
                                     <label class="form-label" for="inputPaymentDate">Date</label>
                                     <input class="form-control" id="inputPaymentDate" type="date">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
+                                    <label for="inputPaymentRentID" class="form-label">Rent ID</label>
+                                    <input class="form-control" type="text" id="inputPaymentRentID">
+                                </div>
+                                <div class="col-md-2">
                                     <label for="inputRentPrice" class="form-label">Rent Price</label>
                                     <input class="form-control" type="number" id="inputRentPrice">
                                 </div>
@@ -838,7 +842,7 @@
                                     <label class="form-label" for="inputExtraKM">Extra KMs</label>
                                     <input class="form-control" type="number" id="inputExtraKM">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="inputPriseForExtraKM" class="form-label">Prise For Extra KMs</label>
                                     <input type="number" class="form-control" id="inputPriseForExtraKM">
                                 </div>
@@ -856,7 +860,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputTotalPayment" class="form-label">Total Payment</label>
-                                    <input type="number" class="form-control" id="inputTotalPayment" readonly>
+                                    <input type="number" class="form-control" id="inputTotalPayment">
                                 </div>
                                 <div class="col-md-2">
                                     <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
@@ -883,11 +887,12 @@
                                 <tr>
                                     <th scope="col">PaymentID</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">DamageCharge</th>
-                                    <th scope="col">ReturnLossDamageWaiver</th>
+                                    <th scope="col">RentID</th>
                                     <th scope="col">RentPrice</th>
                                     <th scope="col">ExtraKM</th>
                                     <th scope="col">PriseForExtraKM</th>
+                                    <th scope="col">DamageCharge</th>
+                                    <th scope="col">ReturnLossDamageWaiver</th>
                                     <th scope="col">DriverPayment</th>
                                     <th scope="col">TotalPayment</th>
                                 </tr>
@@ -1097,7 +1102,11 @@
                                     <label class="form-label" for="inputMaintainID">Maintain ID</label>
                                     <input class="form-control" id="inputMaintainID" type="text">
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputMaintainCarRNo">Car Registration No</label>
+                                    <input class="form-control" id="inputMaintainCarRNo" type="text">
+                                </div>
+                                <div class="col-md-3">
                                     <label class="form-label" for="inputMaintainDescription">Description</label>
                                     <input class="form-control" id="inputMaintainDescription" type="text">
                                 </div>
@@ -1133,6 +1142,7 @@
                                 <thead class="table-dark">
                                 <tr>
                                     <th scope="col">MaintainID</th>
+                                    <th scope="col">CarRegistrationNo</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Status</th>
                                 </tr>
