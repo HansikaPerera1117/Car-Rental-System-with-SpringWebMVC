@@ -22,10 +22,82 @@
             background-position: center;
             background-size: cover;
         }
+        /*---------------loader style start--------------------------*/
+         #loaderPage{
+             background-color: #f4e2e1;
+             position: fixed;
+             left: 0;
+             right: 0;
+             top: 0;
+             bottom: 0;
+             z-index: 1;
+         }
+        .load {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 1.8em;
+            height: 1.8em;
+            border-radius: 50%;
+            float: left;
+        }
 
+        .progress {
+            top: 50%;
+            left: -80%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            content: '';
+            width: 0px;
+            height: 0px;
+            border-radius: 50%;
+            background: rgb(255, 255, 255);
+            animation: loading_492 2s ease infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes loading_492 {
+            0% {
+                width: 0%;
+                height: 0%;
+            }
+
+            50% {
+                width: 99%;
+                height: 99%;
+            }
+
+            100% {
+                width: 0%;
+                height: 0%;
+            }
+        }
+
+        .progress:nth-child(2) {
+            left: 50%;
+            animation-delay: 1.3s;
+        }
+
+        .progress:nth-child(3) {
+            left: 180%;
+            animation-delay: 1.7s;
+        }
+        /*---------------loader style end--------------------------*/
     </style>
 </head>
 <body>
+
+<div id="loaderPage" style="background-color: black">
+    <div class="load">
+        <div class="progress"></div>
+        <div class="progress"></div>
+        <div class="progress"></div>
+    </div>
+
+</div>
 
 <main class="container-fluid">
     <section class="row" style="height: 729px">
@@ -87,11 +159,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" id="loginImage"></div>
+        <div class="col-4 bg-black" id="loginImage"></div>
     </section>
 </main>
 
 <script src="../assests/js/bootstrap.min.js"></script>
 <script src="../assests/JQuery/jquery-3.6.1.min.js"></script>
+<script>
+    $(window).on('load',function (){
+        $("#loaderPage").fadeOut(1000);
+    });
+</script>
 </body>
 </html>

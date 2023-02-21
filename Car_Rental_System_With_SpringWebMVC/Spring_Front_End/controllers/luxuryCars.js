@@ -1,3 +1,8 @@
+
+$(window).on('load',function (){
+    $("#loaderPage").fadeOut(1000);
+});
+
 $("#all").css('display','block');
 $("#NoOfPassengers").css('display','none');
 $("#two").css('display','none');

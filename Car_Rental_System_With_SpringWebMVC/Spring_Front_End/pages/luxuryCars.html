@@ -22,6 +22,72 @@
     <!------------------------------------------------------------------->
 
     <style>
+
+        /*---------------loader style start--------------------------*/
+        #loaderPage{
+            background-color: #f4e2e1;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        .load {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 1.8em;
+            height: 1.8em;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .progress {
+            top: 50%;
+            left: -80%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            content: '';
+            width: 0px;
+            height: 0px;
+            border-radius: 50%;
+            background: rgb(255, 255, 255);
+            animation: loading_492 2s ease infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes loading_492 {
+            0% {
+                width: 0%;
+                height: 0%;
+            }
+
+            50% {
+                width: 99%;
+                height: 99%;
+            }
+
+            100% {
+                width: 0%;
+                height: 0%;
+            }
+        }
+
+        .progress:nth-child(2) {
+            left: 50%;
+            animation-delay: 1.3s;
+        }
+
+        .progress:nth-child(3) {
+            left: 180%;
+            animation-delay: 1.7s;
+        }
+        /*---------------loader style end--------------------------*/
+
         .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
             color: var(--bs-nav-pills-link-active-color);
             background-color: #585858;
@@ -30,6 +96,15 @@
 
 </head>
 <body>
+
+<div id="loaderPage" style="background-color: black">
+    <div class="load">
+        <div class="progress"></div>
+        <div class="progress"></div>
+        <div class="progress"></div>
+    </div>
+
+</div>
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="height: 75px;background-color: #bdbdbd">

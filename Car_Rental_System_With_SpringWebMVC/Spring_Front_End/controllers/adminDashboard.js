@@ -1,4 +1,8 @@
 
+$(window).on('load',function (){
+    $("#loaderPage").fadeOut(1000);
+});
+
 $("#home").css('display','block');
 $("#cars").css('display','none');
 $("#users").css('display','none');
