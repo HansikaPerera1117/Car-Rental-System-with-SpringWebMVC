@@ -12,8 +12,8 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
 @ToString
+@Entity
 @IdClass(Rent_PK.class)
 public class Rent {
     @Id

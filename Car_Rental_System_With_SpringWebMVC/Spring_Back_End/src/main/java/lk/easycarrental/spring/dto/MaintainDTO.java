@@ -1,12 +1,10 @@
 package lk.easycarrental.spring.dto;
 
-import lk.easycarrental.spring.entity.Car;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
