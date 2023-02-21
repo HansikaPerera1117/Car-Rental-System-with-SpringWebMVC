@@ -58,8 +58,8 @@
     <div class="row me-3" style="width: 300px">
       <div class="col-8 ">
         <label class="col-5"></label>
-          <label class="col-6 text-end ">U001</label>
-          <label class="col-12 text-end">Hansika Perera</label>
+          <label class="col-6 text-end" id="UserID">U001</label>
+          <label class="col-12 text-end" id="UserName">Hansika Perera</label>
       </div>
       <button class="navbar-toggler d-inline-block align-text-top align-items-end col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
         <img src="../assests/images/profile-user.png" width="50px" height="50px">
@@ -71,7 +71,7 @@
   <div  class=" myf offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
     <div class="col-12 mt-2" style="height:30px;">
       <label class="col-7 ms-2 fs-4" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">User Profile</label>
-      <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;">U001</label>
+      <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;" id="UserProfileID">U001</label>
     </div>
     <div class="row justify-content-center" style="height: 100px">
       <div class="col-3 align-self-center">
@@ -117,7 +117,7 @@
       </div>
       <div class="col-md-6">
         <label class="form-label" for="inputPassword"> Password</label>
-        <input class="form-control" id="inputPassword" type="password" aria-describedby="pwHelp">
+        <input class="form-control" id="inputPassword" type="password" readonly>
       </div>
 
       <div class="row mt-2">
@@ -141,13 +141,10 @@
         <button class="btn  btn-dark" type="button">Delete Account</button>
       </div>
       <div class="col-2 align-self-end">
-        <button class="btn btn-dark ms-3" type="button">LogOut</button>
+        <button class="btn btn-dark ms-3" type="button"><a href="../index.html" style="text-decoration: none; color: white">LogOut</a></button>
       </div>
       </div>
     </form>
-
-
-
   </div>
   <!-------------------------------------------->
 </header>

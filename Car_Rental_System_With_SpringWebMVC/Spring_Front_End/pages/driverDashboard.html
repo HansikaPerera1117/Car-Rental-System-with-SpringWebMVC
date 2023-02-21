@@ -24,6 +24,114 @@
 </head>
 <body>
 
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="height: 75px;background-color: #bdbdbd">
+        <!---------------------logo----------------------->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <img src="../assests/images/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top ms-1" style="border-radius: 40px;">
+                <label class="navbar-brand ms-3" style="font-family: 'Convergence', sans-serif;">Easy Car Rental PVT(Ltd)</label>
+                <label class="fw-bold ms-1">|</label>
+            </div>
+        </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!---------------------nav bar items----------------------->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!---------------------user acc----------------------->
+        <div class="row me-3" style="width: 300px">
+            <div class="col-8 ">
+                <label class="col-5"></label>
+                <label class="col-6 text-end" id="DriverID">D001</label>
+                <label class="col-12 text-end" id="DriverName">Hansika Perera</label>
+            </div>
+            <button class="navbar-toggler d-inline-block align-text-top align-items-end col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <img src="../assests/images/profile-user.png" width="50px" height="50px">
+            </button>
+        </div>
+
+    </nav>
+    <!---------------------user acc offcanvas----------------------->
+    <div  class=" myf offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
+        <div class="col-12 mt-2" style="height:30px;">
+            <label class="col-7 ms-2 fs-4" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">Driver Profile</label>
+            <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;" id="DriverProfileID">D001</label>
+        </div>
+        <div class="row justify-content-center" style="height: 100px">
+            <div class="col-3 align-self-center">
+                <img src="../assests/images/profile-user.png " width="85px" height="85px">
+            </div>
+        </div>
+        <form class="row g-1 gx-2 ms-3 me-3 fs-6">
+            <div class="col-md-6">
+                <label class="form-label" for="inputName">Name</label>
+                <input class="form-control" id="inputName" type="text" readonly>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="inputAddress">Address</label>
+                <input class="form-control" id="inputAddress" type="text" readonly>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="inputContact">Contact No</label>
+                <input class="form-control" id="inputContact" type="text" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputNIC" class="form-label">NIC</label>
+                <input type="text" class="form-control" id="inputNIC" readonly>
+            </div>
+            <div class="col-6">
+                <label for="inputDrivingLicense" class="form-label">Driving License</label>
+                <input type="text" class="form-control" id="inputDrivingLicense"readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputUsername" class="form-label">Username</label>
+                <input type="text" class="form-control" id="inputUsername" readonly>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="inputPassword"> Password</label>
+                <input class="form-control" id="inputPassword" type="password" readonly>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-9">
+                    <label class="col-6 fs-5" style="height: max-content; width: max-content;">Change Password</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <label class="form-label" for="inputNPassword">New Password</label>
+                <input class="form-control" id="inputNPassword" type="password" aria-describedby="pwHelp">
+                <div id="pwHelp" class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
+            </div>
+            <div class="col-md-4 align-self-end">
+                <button class="btn btn-dark mt-5 ms-5" type="button">Reset Password</button>
+            </div>
+            <div class="row mt-2 ">
+                <div class="col-10 align-items-end">
+                    <button class="btn  btn-dark" type="button">Delete Account</button>
+                </div>
+                <div class="col-2 align-self-end">
+                    <button class="btn btn-dark ms-3" type="button"><a href="../index.html" style="text-decoration: none; color: white">LogOut</a></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-------------------------------------------->
+</header>
 <main></main>
 
 <script src="../assests/js/bootstrap.min.js"></script>
