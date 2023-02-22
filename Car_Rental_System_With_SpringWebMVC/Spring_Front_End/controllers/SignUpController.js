@@ -68,7 +68,7 @@ function addUser() {
     })
 }
 
-function uploadCustomerImages(id) {
+function uploadUserImages(id) {
     var fileObjectNic1 = $('#formFileMultipleNICFront')[0].files[0];
     var fileNameNic1 = id + "-nicfront-" + $('#formFileMultipleNICFront')[0].files[0].name;
 
@@ -84,7 +84,7 @@ function uploadCustomerImages(id) {
     data.append("licenceImg", fileObjectLicence, fileNameLicence);
 
     $.ajax({
-        url: baseUrl + "user" + id,
+        url: baseUrl + "user/uploadImg/" + id,
         method: "PUT",
         async: true,
         contentType: false,
