@@ -20,7 +20,7 @@ public class Rent {
     private String rentID;
     private LocalDate rentDate;
     @Id
-    private String carID;
+    private String registrationNumber;
     @Id
     private String userID;
     private LocalDate pickUpDate;
@@ -37,10 +37,11 @@ public class Rent {
     private Driver driverID;
 
     @ManyToOne
-    @JoinColumn(name = "carID",referencedColumnName = "carID",insertable = false,updatable = false)
+    @JoinColumn(name = "registrationNumber",referencedColumnName = "registrationNumber",insertable = false,updatable = false)
     private Car cars;
 
     @ManyToOne
     @JoinColumn(name = "userID",referencedColumnName = "userID",insertable = false,updatable = false)
     private User users;
+
 }

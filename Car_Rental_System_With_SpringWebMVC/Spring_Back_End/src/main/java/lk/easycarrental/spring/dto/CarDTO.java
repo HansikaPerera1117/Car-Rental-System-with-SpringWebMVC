@@ -29,6 +29,4 @@ public class CarDTO {
     private double pricePerExtraKM;
     private String color;
     private String availability;
-
-    private List<MaintainDTO> maintain;
 }

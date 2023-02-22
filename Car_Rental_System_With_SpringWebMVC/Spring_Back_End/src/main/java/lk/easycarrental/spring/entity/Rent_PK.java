@@ -10,7 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class Rent_PK implements Serializable {
-    private String rentID;
-    private String carID;
+    private String registrationNumber;
     private String userID;
 }

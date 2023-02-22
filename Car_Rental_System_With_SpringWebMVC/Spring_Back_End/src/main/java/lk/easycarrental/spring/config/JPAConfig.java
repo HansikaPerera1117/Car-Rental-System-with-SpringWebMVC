@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = {UserRepo.class})
@@ -23,7 +24,7 @@ public class JPAConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter jpa){
-        LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
+        LocalContainerEntityManagerFactoryBean bean= new LocalContainerEntityManagerFactoryBean();
         bean.setPackagesToScan("lk.easycarrental.spring.entity");
         bean.setDataSource(ds);
         bean.setJpaVendorAdapter(jpa);
@@ -32,13 +33,14 @@ public class JPAConfig {
 
     @Bean
     public DataSource dataSource(){
-        DriverManagerDataSource ds =new DriverManagerDataSource();
+        DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/CarRentalSystem?createIfNotExist=true");
+        ds.setUrl("jdbc:mysql://localhost:3306/car_rental_system?createDatabaseIfNotExist=true");
         ds.setUsername("root");
         ds.setPassword("1234");
         return ds;
     }
+
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
@@ -54,4 +56,5 @@ public class JPAConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
         return new JpaTransactionManager(emf);
     }
+
 }

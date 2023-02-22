@@ -105,6 +105,9 @@
             <div class="row bg-light ms-4 mt-5" style="height: 650px;width: 925px; border-radius: 18px">
                 <div class="col-12 mt-2 " style="height:50px;">
                     <label class="col-12 ms-2 fs-2" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">Sign Up</label>
+                    <div class="form-row align-content-end">
+                        <input type="text" class="form-control" id="txtId" hidden name="id">
+                    </div>
                 </div>
                 <div class="col " style="height: 590px">
                     <form class="row g-3 ms-2 me-2 mt-2 ">
@@ -165,10 +168,6 @@
 
 <script src="../assests/js/bootstrap.min.js"></script>
 <script src="../assests/JQuery/jquery-3.6.1.min.js"></script>
-<script>
-    $(window).on('load',function (){
-        $("#loaderPage").fadeOut(1000);
-    });
-</script>
+<script src="../controllers/SignUpController.js/"></script>
 </body>
 </html>

@@ -21,6 +21,4 @@ public class DriverDTO {
     private String password;
     private String availability;
 
-    private List<RentDTO> rents;
-
 }
