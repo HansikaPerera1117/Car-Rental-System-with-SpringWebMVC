@@ -1,6 +1,7 @@
 package lk.easycarrental.spring.service.impl;
 
 import lk.easycarrental.spring.dto.LogInDTO;
+import lk.easycarrental.spring.entity.LogIn;
 import lk.easycarrental.spring.repo.LogInRepo;
 import lk.easycarrental.spring.service.LogInService;
 import org.modelmapper.ModelMapper;
@@ -21,7 +22,11 @@ public class LogInServiceImpl implements LogInService {
 
     @Override
     public void saveLogData(LogInDTO dto) {
-
+        if (!repo.existsById(dto.getLoginID())) {
+            repo.save(mapper.map(dto, LogIn.class));
+        } else {
+            throw new RuntimeException("Login Already Exists...");
+        }
     }
 
     @Override
@@ -54,6 +59,10 @@ public class LogInServiceImpl implements LogInService {
 
     @Override
     public LogInDTO searchLogin(String loginId) {
-        return null;
+        if (repo.existsById(loginId)) {
+            return mapper.map(repo.findById(loginId).get(), LogInDTO.class);
+        } else {
+            throw new RuntimeException("Login Not Found...");
+        }
     }
 }

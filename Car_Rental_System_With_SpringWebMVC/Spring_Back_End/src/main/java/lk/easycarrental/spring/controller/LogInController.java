@@ -5,10 +5,7 @@ import lk.easycarrental.spring.service.LogInService;
 import lk.easycarrental.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -17,6 +14,12 @@ public class LogInController {
 
     @Autowired
     LogInService service;
+
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil saveLogin(@RequestBody LogInDTO dto){
+        service.saveLogData(dto);
+        return new ResponseUtil("200","Saved...",null);
+    }
 
     @GetMapping(path = "/getLastLogin",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getLastLoginId(){
