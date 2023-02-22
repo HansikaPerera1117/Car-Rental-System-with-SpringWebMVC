@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 @RestController
@@ -33,30 +34,33 @@ public class UserController {
     }
 
     @PutMapping(path = "/uploadImg/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadImagesAndPath(@RequestPart("nicf") MultipartFile nicf, @RequestPart("nicb") MultipartFile nicb, @RequestPart("licenceImg") MultipartFile licenceImg, @PathVariable String id) {
+    public ResponseUtil uploadImagesAndPath(@RequestPart("imageOfNICFront") MultipartFile imageOfNICFront, @RequestPart("imageOfNICBack") MultipartFile imageOfNICBack, @RequestPart("imageOfDrivingLicense") MultipartFile imageOfDrivingLicense, @PathVariable String id) {
         try {
 
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
             File uploadsDir = new File(projectPath + "/uploads");
             uploadsDir.mkdir();
 
-            nicf.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nicf.getOriginalFilename()));
-            nicb.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nicb.getOriginalFilename()));
-            licenceImg.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licenceImg.getOriginalFilename()));
+            imageOfNICFront.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfNICFront.getOriginalFilename()));
+            imageOfNICBack.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfNICBack.getOriginalFilename()));
+            imageOfDrivingLicense.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfDrivingLicense.getOriginalFilename()));
 
-            String nicfPath = projectPath + "/uploads" + nicf.getOriginalFilename();
-            String nicbPath = projectPath + "/uploads" + nicb.getOriginalFilename();
-            String licenceImgPath = projectPath + "/uploads" + licenceImg.getOriginalFilename();
+            String nicFrontPath = projectPath + "/uploads" + imageOfNICFront.getOriginalFilename();
+            String nicBackPath = projectPath + "/uploads" + imageOfNICBack.getOriginalFilename();
+            String licenceImgPath = projectPath + "/uploads" + imageOfDrivingLicense.getOriginalFilename();
 
-            service.uploadUserImages(nicfPath, nicbPath, licenceImgPath, id);
+            service.uploadUserImages(nicFrontPath, nicBackPath, licenceImgPath, id);
 
             return new ResponseUtil("200", "Uploaded", null);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseUtil("500", "Error", null);
-        }
-    }
 
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                return new ResponseUtil("500",e.getMessage(),null);
+            } catch (IOException e) {
+                e.printStackTrace();
+                    return new ResponseUtil("500",e.getMessage(),null);
+            }
+    }
 
 }

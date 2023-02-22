@@ -1438,7 +1438,15 @@ userID</ColNames>
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="402" parent="310" name="PRIMARY">
+    <column id="402" parent="310" name="imageOfNICBack">
+      <Position>12</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="403" parent="310" name="imageOfNICFront">
+      <Position>13</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="404" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>

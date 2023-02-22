@@ -22,7 +22,7 @@ public class Driver {
     private String name;
     private String address;
     private String contactNo;
-    private String NIC;
+    private String nic;
     private String drivingLicense;
     private String username;
     private String password;

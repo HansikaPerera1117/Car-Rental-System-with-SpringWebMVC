@@ -30,7 +30,7 @@ public class Rent {
     private LocalTime returnTime;
     private String returnVenue;
     private double lossDamageWaiver;
-    private String BankSlip;
+    private String bankSlip;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "driverID",referencedColumnName = "driverID",nullable = false)

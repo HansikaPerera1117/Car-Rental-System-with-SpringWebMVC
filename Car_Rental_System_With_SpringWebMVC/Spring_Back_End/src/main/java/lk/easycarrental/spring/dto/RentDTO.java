@@ -24,7 +24,7 @@ public class RentDTO {
     private LocalTime returnTime;
     private String returnVenue;
     private double lossDamageWaiver;
-    private String BankSlip;
+    private String bankSlip;
 
     private String driverID;
 

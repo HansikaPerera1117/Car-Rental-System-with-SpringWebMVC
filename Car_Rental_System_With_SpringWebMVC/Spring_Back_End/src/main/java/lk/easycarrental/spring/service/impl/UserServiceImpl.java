@@ -54,9 +54,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void uploadUserImages(String nicfPath, String nicbPath, String licenceImgPath, String id) {
+    public void uploadUserImages(String nicFrontPath, String nicBackPath, String licenceImgPath, String id) {
         if (repo.existsById(id)) {
-            repo.updateUserFilePaths(nicfPath, nicbPath, licenceImgPath, id);
+            repo.updateUserFilePaths(nicFrontPath, nicBackPath, licenceImgPath, id);
         } else {
             throw new RuntimeException("User Not Found");
         }

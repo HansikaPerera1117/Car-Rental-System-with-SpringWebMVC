@@ -16,7 +16,7 @@ public class UserDTO {
     private String address;
     private String contactNo;
     private String email;
-    private String NIC;
+    private String nic;
     private String imageOfNICFront;
     private String imageOfNICBack;
     private String drivingLicense;

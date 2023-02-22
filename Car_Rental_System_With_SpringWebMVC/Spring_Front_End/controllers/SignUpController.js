@@ -2,7 +2,7 @@ $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);
 });
 
-let baseURL = "http://localhost:8080/Spring_Back_End_war/";
+let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
 generateUserId();
 
@@ -15,6 +15,10 @@ function generateUserId() {
         }
     })
 }
+
+$("#btnSignUp").click(function (){
+    addUser();
+});
 
 function addUser() {
 
@@ -29,13 +33,13 @@ function addUser() {
     let password = $('#inputPassword').val();
 
     var user = {
-        userId: id,
+        userID: id,
         name: name,
         address: address,
         contactNo: contactNo,
         email: email,
-        nicNo: nicNo,
-        licenceNo: licenceNo,
+        nic: nicNo,
+        drivingLicense: licenceNo,
         username: username,
         password: password,
     }
@@ -47,41 +51,43 @@ function addUser() {
         data: JSON.stringify(user),
         success: function (resp) {
             uploadUserImages(id);
-            swal({
-                title: "Confirmation",
-                text: resp.message,
-                icon: "success",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
             });
+            clearSignupTextFields();
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
-            swal({
-                title: "Error!",
-                text: errorReason.message,
-                icon: "error",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User Not Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
             });
         }
     })
 }
 
 function uploadUserImages(id) {
+
     var fileObjectNic1 = $('#formFileMultipleNICFront')[0].files[0];
-    var fileNameNic1 = id + "-nicfront-" + $('#formFileMultipleNICFront')[0].files[0].name;
+    var fileNameNic1 = id + "-imageOfNICFront-" + $('#formFileMultipleNICFront')[0].files[0].name;
 
     var fileObjectNic2 = $('#formFileMultipleNICBack')[0].files[0];
-    var fileNameNic2 = id + "-nicback-" + $('#formFileMultipleNICBack')[0].files[0].name;
+    var fileNameNic2 = id + "-imageOfNICBack-" + $('#formFileMultipleNICBack')[0].files[0].name;
 
     var fileObjectLicence = $('#formFileMultipleDL')[0].files[0];
-    var fileNameLicence = id + "-licence-" + $('#formFileMultipleDL')[0].files[0].name;
+    var fileNameLicence = id + "-imageOfDrivingLicense-" + $('#formFileMultipleDL')[0].files[0].name;
 
     var data = new FormData();
-    data.append("nicf", fileObjectNic1, fileNameNic1);
-    data.append("nicb", fileObjectNic2, fileNameNic2);
-    data.append("licenceImg", fileObjectLicence, fileNameLicence);
+    data.append("imageOfNICFront", fileObjectNic1, fileNameNic1);
+    data.append("imageOfNICBack", fileObjectNic2, fileNameNic2);
+    data.append("imageOfDrivingLicense", fileObjectLicence, fileNameLicence);
 
     $.ajax({
         url: baseUrl + "user/uploadImg/" + id,
@@ -92,6 +98,38 @@ function uploadUserImages(id) {
         data: data,
         success: function (res) {
             console.log("Uploaded");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Images Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Images Not Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     })
+}
+
+function clearSignupTextFields() {
+   $('#txtId').val("");
+     $('#inputName').val("");
+     $('#inputAddress').val("");
+    $('#inputContact').val("");
+     $('#inputEmail').val("");
+    $('#inputNIC').val("");
+     $('#inputDrivingLicense').val("");
+     $('#inputUsername').val("");
+     $('#inputPassword').val("");
+    $('#formFileMultipleNICFront').val("");
+    $('#formFileMultipleNICBack').val("");
+    $('#formFileMultipleDL').val("");
 }
