@@ -1,4 +1,7 @@
 
+$(window).on('load',function (){
+    $("#loaderPage").fadeOut(1000);
+});
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
@@ -11,7 +14,6 @@ function getLastLoginUser() {
         success: function (res) {
             let login = res.data;
             console.log(login.logInId);
-           // getAllUserData(login.username, login.password);
         }
     })
 }
