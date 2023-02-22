@@ -71,3 +71,17 @@ function searchUser(role, username, password) {
     })
 }
 
+function searchDriver(role, username, password) {
+    $.ajax({
+        url: baseUrl + "driver/" + username + "/" + password,
+        method: "GET",
+        success: function (res) {
+            console.log(res.data);
+            if (res.data === true) {
+                loginSave(role, username, password);
+            } else {
+                alert(res.massage);
+            }
+        }
+    })
+}
