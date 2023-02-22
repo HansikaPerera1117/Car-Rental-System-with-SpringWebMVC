@@ -85,3 +85,32 @@ function searchDriver(role, username, password) {
         }
     })
 }
+
+function loginSave(role, username, password) {
+    let logId = $('#txtLogId').val();
+    console.log(logId);
+    $.ajax({
+        url: baseUrl + "login",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(
+            {
+                loginID: logId,
+                username: username,
+                password: password,
+                role: role
+            }
+        ),
+        success: function (res) {
+            if (userType==="Admin"){
+                location.replace("adminDashboard.html");
+            } else if (userType==="User"){
+                location.replace("userDashboard.html");
+            } else if (userType==="Driver"){
+                location.replace("driverDashboard.html");
+            }
+            console.log("Login data saved to DB");
+        }
+    })
+}
+
