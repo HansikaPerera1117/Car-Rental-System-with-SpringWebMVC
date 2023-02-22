@@ -171,13 +171,17 @@
         <label for="inputEmail" class="form-label">Email</label>
         <input type="email" class="form-control" id="inputEmail">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <label for="inputNIC" class="form-label">NIC</label>
         <input type="text" class="form-control" id="inputNIC">
       </div>
-      <div class="col-md-6">
-        <label for="formFileMultipleNIC" class="form-label">Image Of NIC</label>
-        <input class="form-control" type="file" id="formFileMultipleNIC" multiple>
+      <div class="col-md-4">
+        <label for="formFileMultipleNICFront" class="form-label">Image Of NIC Front</label>
+        <input class="form-control" type="file" id="formFileMultipleNICFront">
+      </div>
+      <div class="col-md-4">
+        <label for="formFileMultipleNICBack" class="form-label">Image Of NIC Back</label>
+        <input class="form-control" type="file" id="formFileMultipleNICBack">
       </div>
       <div class="col-6">
         <label for="inputDrivingLicense" class="form-label">Driving License</label>
@@ -360,6 +364,7 @@
 
 <script src="../assests/js/bootstrap.min.js"></script>
 <script src="../assests/JQuery/jquery-3.6.1.min.js"></script>
+<script src="assets/Sweet%20Alert/sweetalert.min.js"></script>
 <script>
   $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/user")
@@ -21,6 +19,13 @@ public class UserController {
     @GetMapping(path = "/generateUserId", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateCustomerId() {
         return new ResponseUtil("200", "Ok", service.generateUserId());
+    }
+
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil saveUser(@RequestBody UserDTO dto){
+        System.out.println(dto.toString());
+        service.saveUser(dto);
+        return new ResponseUtil("200","Customer Added Successfully "+dto.toString(),null);
     }
 
 }
