@@ -35,7 +35,7 @@ function login() {
     if (role === "Admin") {
         searchAdmin(role, username, password);
     } else if (role === "User") {
-        searchCustomer(role, username, password);
+        searchUser(role, username, password);
     } else if (role === "Driver") {
         searchDriver(role, username, password);
     }
@@ -55,3 +55,19 @@ function searchAdmin(role, username, password) {
         }
     });
 }
+
+function searchUser(role, username, password) {
+    $.ajax({
+        url: baseUrl + "user/" + username + "/" + password,
+        method: "GET",
+        success: function (res) {
+            console.log(res.data);
+            if (res.data === true) {
+                loginSave(role, username, password);
+            } else {
+                alert(res.massage);
+            }
+        }
+    })
+}
+

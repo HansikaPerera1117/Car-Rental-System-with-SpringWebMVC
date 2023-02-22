@@ -27,4 +27,8 @@ public class AdminController {
         }
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllAdmins() {
+        return new ResponseUtil("200", "Done", service.getAllAdmins());
+    }
 }

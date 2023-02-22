@@ -10,4 +10,10 @@ public interface UserService {
 
     void uploadUserImages(String nicfPath, String nicbPath, String licenceImgPath, String id);
 
+    boolean findUserByUsername(String username);
+
+    boolean findUserByPassword(String password);
+
+    UserDTO findUserByUsernameAndPassword(String username, String password);
+
 }

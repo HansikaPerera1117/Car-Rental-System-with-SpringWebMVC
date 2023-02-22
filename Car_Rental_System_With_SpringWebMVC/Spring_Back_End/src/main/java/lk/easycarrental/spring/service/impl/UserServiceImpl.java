@@ -61,4 +61,22 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User Not Found");
         }
     }
+
+    @Override
+    public boolean findUserByUsername(String username) {
+        return repo.findUserByUsername(username).isPresent();
+    }
+
+    @Override
+    public boolean findUserByPassword(String password) {
+        return repo.findUserByPassword(password).isPresent();
+    }
+
+    @Override
+    public UserDTO findUserByUsernameAndPassword(String username, String password) {
+        return mapper.map(repo.findUserByUsernameAndPassword(username, password).get(), UserDTO.class);
+
+    }
+
+
 }

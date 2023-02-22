@@ -63,4 +63,23 @@ public class UserController {
             }
     }
 
+    @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchCustomerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+        if (service.findUserByUsername(username)) {
+            if (service.findUserByPassword(password)) {
+                return new ResponseUtil("200", "Login Successful", true);
+            } else {
+                return new ResponseUtil("404", "Incorrect Password", false);
+            }
+        } else {
+            return new ResponseUtil("404", "Incorrect Username", false);
+        }
+    }
+
+    @GetMapping(path = "/set/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil findCustomerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+        return new ResponseUtil("200", "Done", service.findUserByUsernameAndPassword(username, password));
+    }
+
+
 }

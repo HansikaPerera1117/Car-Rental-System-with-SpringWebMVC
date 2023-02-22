@@ -5,7 +5,12 @@ import lk.easycarrental.spring.repo.LogInRepo;
 import lk.easycarrental.spring.service.LogInService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class LogInServiceImpl implements LogInService {
 
     @Autowired
