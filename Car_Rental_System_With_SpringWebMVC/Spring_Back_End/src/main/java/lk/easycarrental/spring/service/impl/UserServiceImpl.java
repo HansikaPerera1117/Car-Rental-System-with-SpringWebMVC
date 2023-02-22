@@ -1,6 +1,8 @@
 package lk.easycarrental.spring.service.impl;
 
 
+import lk.easycarrental.spring.dto.UserDTO;
+import lk.easycarrental.spring.entity.User;
 import lk.easycarrental.spring.repo.UserRepo;
 import lk.easycarrental.spring.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -40,5 +42,23 @@ public class UserServiceImpl implements UserService {
             id = "U00-0001";
         }
         return id;
+    }
+
+    @Override
+    public void saveUser(UserDTO dto) {
+        if(repo.existsById(dto.getUserID())){
+            throw new RuntimeException("User "+dto.getUserID()+" Already Exist....!");
+        }
+        User entity = mapper.map(dto, User.class);
+        repo.save(entity);
+    }
+
+    @Override
+    public void uploadUserImages(String nicfPath, String nicbPath, String licenceImgPath, String id) {
+        if (repo.existsById(id)) {
+            repo.updateUserFilePaths(nicfPath, nicbPath, licenceImgPath, id);
+        } else {
+            throw new RuntimeException("User Not Found");
+        }
     }
 }
