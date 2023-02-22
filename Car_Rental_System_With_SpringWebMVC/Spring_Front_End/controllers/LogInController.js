@@ -23,6 +23,7 @@ $('#btnLogIn').click(function () {
     if ($('#inputUsername').val() != "" && $('#inputPassword').val() != "" && role != "Select Your Role") {
         login();
     }
+
 });
 
 function login() {
@@ -102,15 +103,31 @@ function loginSave(role, username, password) {
             }
         ),
         success: function (res) {
-            if (userType==="Admin"){
+            if (role==="Admin"){
                 location.replace("adminDashboard.html");
-            } else if (userType==="User"){
+            } else if (role==="User"){
                 location.replace("userDashboard.html");
-            } else if (userType==="Driver"){
+            } else if (role==="Driver"){
                 location.replace("driverDashboard.html");
             }
             console.log("Login data saved to DB");
+        },
+        error: function (error){
+            console.log("Unsuccessfull");
         }
     })
 }
+
+
+// show password hinde password
+//
+// $('#showPW').on('click', function(){
+//     if($( "#showPW").prop( "checked", true )){
+//         $('#inputPassword').setAttribute("Type","text");
+//     }else{
+//         $('#inputPassword').setAttribute("Type","password");
+//     }
+// })
+
+
 
