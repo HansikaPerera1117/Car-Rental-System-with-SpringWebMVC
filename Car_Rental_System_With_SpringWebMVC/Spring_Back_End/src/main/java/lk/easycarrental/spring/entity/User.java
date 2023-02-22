@@ -24,7 +24,8 @@ public class User {
     private String contactNo;
     private String email;
     private String NIC;
-    private String imageOfNIC;
+    private String imageOfNICFront;
+    private String imageOfNICBack;
     private String drivingLicense;
     private String imageOfDrivingLicense;
     private String username;
