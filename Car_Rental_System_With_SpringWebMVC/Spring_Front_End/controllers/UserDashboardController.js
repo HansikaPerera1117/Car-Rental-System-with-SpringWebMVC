@@ -10,6 +10,8 @@ function getLastLoginUser() {
         method: "GET",
         success: function (res) {
             let login = res.data;
+            console.log(login.logInId);
+           // getAllUserData(login.username, login.password);
         }
     })
 }

@@ -10,13 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7d849d8-3d4f-4a41-acd1-228f95e056c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/service/LogInService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/service/impl/LogInServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/UserDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/LogInController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/controller/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/repo/LogInRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/repo/LogInRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/pages/userDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/pages/userDashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/service/impl/LogInServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Back_End/src/main/java/lk/easycarrental/spring/service/impl/LogInServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/Car_Rental_System_With_SpringWebMVC/Spring_Front_End/controllers/UserDashboardController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +25,9 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -231,7 +228,7 @@
       <workItem from="1676869115954" duration="37026000" />
       <workItem from="1676949918394" duration="4876000" />
       <workItem from="1676962639504" duration="28778000" />
-      <workItem from="1677034172898" duration="23817000" />
+      <workItem from="1677034172898" duration="24541000" />
     </task>
     <servers />
   </component>

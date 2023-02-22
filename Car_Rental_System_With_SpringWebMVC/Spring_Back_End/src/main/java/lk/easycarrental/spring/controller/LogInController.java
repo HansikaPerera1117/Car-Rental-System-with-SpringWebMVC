@@ -24,4 +24,9 @@ public class LogInController {
         return new ResponseUtil("200","Done",dto);
     }
 
+    @GetMapping(path = "/generateLogId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateLogId(){
+        return new ResponseUtil("200","Done",service.generateLoginId());
+    }
+
 }
