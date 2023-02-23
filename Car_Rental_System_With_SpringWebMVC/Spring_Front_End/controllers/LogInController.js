@@ -113,7 +113,7 @@ function loginSave(role, username, password) {
             console.log("Login data saved to DB");
         },
         error: function (error){
-            console.log("Unsuccessfull");
+            console.log("Unsuccessful");
         }
     })
 }

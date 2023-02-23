@@ -36,7 +36,7 @@ public interface UserRepo extends JpaRepository<User,String> {
     @Query(value = "UPDATE User SET imageOfNICFront=:imageOfNICFront,imageOfNICBack=:imageOfNICBack,imageOfDrivingLicense=:imageOfDrivingLicense WHERE userID=:userID", nativeQuery = true)
     void updateUserFilePaths(@Param("imageOfNICFront") String imageOfNICFront, @Param("imageOfNICBack") String imageOfNICBack, @Param("imageOfDrivingLicense") String imageOfDrivingLicense, @Param("userID") String userID);
 
-    @Query(value = "SELECT COUNT(userID) FROM User WHERE status='Accepted'", nativeQuery = true)
+    @Query(value = "SELECT COUNT(userID) FROM User", nativeQuery = true)
     int countByUserID();
 
     @Modifying

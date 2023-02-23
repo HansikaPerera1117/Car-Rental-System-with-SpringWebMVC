@@ -61,6 +61,7 @@ function addUser() {
                 timer: 1500
             });
             clearSignupTextFields();
+            location.replace("logIn.html");
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);

@@ -7,6 +7,7 @@ let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
 setDates();
 loadAllUsers();
+getRegisterUsersCount();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -166,6 +167,9 @@ $("#menuMaintains").click(function (){
 
 });
 
+
+//--------------------home start-------------------------------------------
+
 function setDates() {
     var date = new Date();
     var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
@@ -174,6 +178,9 @@ function setDates() {
     $("#lblDate").text("Date : "+current_date);
     $("#lblTime").text("Time : "+current_time);
 }
+
+//--------------------customer end-------------------------------------------
+
 
 
 //--------------------customer start-------------------------------------------
@@ -260,7 +267,7 @@ $('#btnAcceptUser').click(function () {
         let id = $('#inputUserUserID').val();
         acceptUser(id);
         clearUserFields();
-        loadAllUsers();
+
     } else {
         Swal.fire({
             position: 'top-end',
@@ -285,6 +292,7 @@ function acceptUser(id) {
                 showConfirmButton: false,
                 timer: 1500
             });
+            loadAllUsers();
         }
     })
 }
@@ -304,7 +312,57 @@ function clearUserFields() {
 }
 
 $("#btnDenyUser").click(function (){
-
+    deleteUser();
 });
+
+function deleteUser(){
+
+    let id = $('#inputUserUserID').val();
+    $.ajax({
+        url: baseUrl + "user?id=" + id,
+        method: "DELETE",
+        success: function (resp) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            getRegisterUsersCount();
+            loadAllUsers();
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User Not Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function getRegisterUsersCount() {
+    $.ajax({
+        url: baseUrl + "user/count",
+        method: "GET",
+        success: function (resp) {
+
+            if (resp.data != 0) {
+                if (resp.data < 10) {
+                    $('#lblNoOfUsers').text("0" + resp.data);
+                } else {
+                    $('#lblNoOfUsers').text(resp.data);
+                }
+            } else {
+                $('#lblNoOfUsers').text("00");
+            }
+
+        }
+    })
+}
 
 //--------------------customer end-------------------------------------------
