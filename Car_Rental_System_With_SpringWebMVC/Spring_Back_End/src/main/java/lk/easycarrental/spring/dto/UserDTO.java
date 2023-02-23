@@ -23,5 +23,5 @@ public class UserDTO {
     private String imageOfDrivingLicense;
     private String username;
     private String password;
-
+    private String status;
 }

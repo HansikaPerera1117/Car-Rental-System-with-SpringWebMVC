@@ -192,7 +192,8 @@ function resetPassword(){
 }
 
 $("#btnDeleteUser").click(function (){
-deleteUser();
+    deleteUser();
+    location.replace("logIn.html");
 });
 
 function deleteUser(){
@@ -209,7 +210,6 @@ function deleteUser(){
                 showConfirmButton: false,
                 timer: 1500
             });
-            location.replace("index.html");
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);

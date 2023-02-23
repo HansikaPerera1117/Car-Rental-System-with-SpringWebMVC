@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     UserService service;
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllUses() {
+        return new ResponseUtil("200", "Done", service.getAllUsers());
+    }
+
     @GetMapping(path = "/generateUserId", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateCustomerId() {
         return new ResponseUtil("200", "Ok", service.generateUserId());
@@ -44,6 +49,11 @@ public class UserController {
     public ResponseUtil deleteUser(@RequestParam String id){
         service.deleteUser(id);
         return new ResponseUtil("200",id + "User Deleted Successfully ",null);
+    }
+
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchUser(@PathVariable String id) {
+        return new ResponseUtil("200", "Done", service.searchUser(id));
     }
 
     @PutMapping(path = "/resetPassword/{userID}/{password}",produces = MediaType.APPLICATION_JSON_VALUE)

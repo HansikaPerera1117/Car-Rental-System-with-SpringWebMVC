@@ -2,6 +2,8 @@ package lk.easycarrental.spring.service;
 
 import lk.easycarrental.spring.dto.UserDTO;
 
+import java.util.List;
+
 public interface UserService {
 
     String generateUserId();
@@ -11,6 +13,10 @@ public interface UserService {
     void updateUser(UserDTO dto);
 
     void deleteUser(String userID);
+
+    UserDTO searchUser(String userID);
+
+    List<UserDTO> getAllUsers();
 
     void resetUserPassword(String userID, String password);
 

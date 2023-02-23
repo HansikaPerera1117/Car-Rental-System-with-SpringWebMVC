@@ -3,6 +3,8 @@ $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);
 });
 
+let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
+
 $("#home").css('display','block');
 $("#cars").css('display','none');
 $("#users").css('display','none');
@@ -160,3 +162,27 @@ $("#menuMaintains").click(function (){
     $("#maintains").css('display','block');
 
 });
+
+addUserIdsToComboBox();
+
+//--------------------customer start-------------------------------------------
+
+function addUserIdsToComboBox(){
+    $('#selectUserID').empty();
+    $.ajax({
+        url: baseUrl + "user",
+        method: "GET",
+        success: function (res) {
+            for (const user of res.data) {
+                let userID = user.userID
+                $("#selectUserID").append(`<option value="${userID}">${userID}</option>`);
+            }
+        },
+        error: function (error) {
+            let message = JSON.parse(error.responseText).message;
+            alert(message);
+        }
+    })
+}
+
+//--------------------customer end-------------------------------------------

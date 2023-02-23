@@ -31,6 +31,7 @@ function addUser() {
     let licenceNo = $('#inputDrivingLicense').val();
     let username = $('#inputUsername').val();
     let password = $('#inputPassword').val();
+    let status = "Pending";
 
     var user = {
         userID: id,
@@ -42,6 +43,7 @@ function addUser() {
         drivingLicense: licenceNo,
         username: username,
         password: password,
+        status: status
     }
 
     $.ajax({

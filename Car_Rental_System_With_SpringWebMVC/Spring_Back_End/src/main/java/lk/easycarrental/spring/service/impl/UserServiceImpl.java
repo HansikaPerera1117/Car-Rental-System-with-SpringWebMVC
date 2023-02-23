@@ -6,9 +6,11 @@ import lk.easycarrental.spring.entity.User;
 import lk.easycarrental.spring.repo.UserRepo;
 import lk.easycarrental.spring.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -71,6 +73,21 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new RuntimeException("User " + userID + " Not Exist to Delete....!");
         }
+    }
+
+    @Override
+    public UserDTO searchUser(String userID) {
+        if (repo.existsById(userID)) {
+            return mapper.map(repo.findById(userID).get(),UserDTO.class);
+        } else {
+            throw new RuntimeException("User " + userID + " Not Exist....!");
+        }
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        return mapper.map(repo.findAll(), new TypeToken<List<UserDTO>>() {
+        }.getType());
     }
 
     @Override

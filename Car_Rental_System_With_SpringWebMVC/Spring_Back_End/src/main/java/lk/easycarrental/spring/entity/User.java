@@ -30,6 +30,7 @@ public class User {
     private String imageOfDrivingLicense;
     private String username;
     private String password;
+    private String status;
 
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<Rent> rents;
