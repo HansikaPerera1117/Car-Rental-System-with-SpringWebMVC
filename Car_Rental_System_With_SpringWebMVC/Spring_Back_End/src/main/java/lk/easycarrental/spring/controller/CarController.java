@@ -75,7 +75,7 @@ public class CarController {
         }
     }
 
-    @GetMapping(path = "/count/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/count/{availability}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getCountOfCarsByStatus(@PathVariable String availability) {
         return new ResponseUtil("200", "Done", service.getCountOfCarsByStatus(availability));
     }

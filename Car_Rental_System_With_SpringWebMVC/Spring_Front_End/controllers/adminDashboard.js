@@ -727,24 +727,24 @@ function deleteCar() {
     })
 }
 
-// function getAvailableCarCount() {
-//     let status = "Available";
-//     $.ajax({
-//         url: baseUrl + "api/v1/car/count/" + status,
-//         method: "GET",
-//         success: function (res) {
-//             if (res.data != 0) {
-//                 if (res.data < 10) {
-//                     $('#countAvailableCars').text("0" + res.data);
-//                 } else {
-//                     $('#countAvailableCars').text(res.data);
-//                 }
-//             } else {
-//                 $('#countAvailableCars').text("00");
-//             }
-//         }
-//     })
-// }
+function getAvailableCarCount() {
+    let availability = "Available";
+    $.ajax({
+        url: baseUrl + "car/count/" + availability,
+        method: "GET",
+        success: function (resp) {
+            if (resp.data != 0) {
+                if (resp.data < 10) {
+                    $('#lblNoOfAvailableCars').text("0" + resp.data);
+                } else {
+                    $('#lblNoOfAvailableCars').text(resp.data);
+                }
+            } else {
+                $('#lblNoOfAvailableCars').text("00");
+            }
+        }
+    })
+}
 
 //--------------------Car end-------------------------------------------
 
