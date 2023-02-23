@@ -54,6 +54,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateUser(UserDTO dto) {
+        if (repo.existsById(dto.getUserID())){
+            repo.updateUser(dto.getUserID(),dto.getName(),dto.getAddress(),dto.getContactNo(),dto.getEmail(),dto.getNic(),dto.getDrivingLicense(),dto.getUsername(),dto.getPassword());
+        }
+        throw new RuntimeException("User "+dto.getUserID()+ " Not Exist to Update....!");
+    }
+
+    @Override
+    public void resetUserPassword(String userID, String password) {
+        if (repo.existsById(userID)){
+            repo.resetUserPassword(userID,password);
+        }
+        throw new RuntimeException("User "+userID+ " Not Exist to Reset Password....!");
+    }
+
+    @Override
     public void uploadUserImages(String nicFrontPath, String nicBackPath, String licenceImgPath, String id) {
         if (repo.existsById(id)) {
             repo.updateUserFilePaths(nicFrontPath, nicBackPath, licenceImgPath, id);

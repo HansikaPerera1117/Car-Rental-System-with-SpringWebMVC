@@ -120,15 +120,15 @@ function uploadUserImages(id) {
 }
 
 function clearSignupTextFields() {
-   $('#txtId').val("");
-     $('#inputName').val("");
-     $('#inputAddress').val("");
+    $('#txtId').val("");
+    $('#inputName').val("");
+    $('#inputAddress').val("");
     $('#inputContact').val("");
-     $('#inputEmail').val("");
+    $('#inputEmail').val("");
     $('#inputNIC').val("");
-     $('#inputDrivingLicense').val("");
-     $('#inputUsername').val("");
-     $('#inputPassword').val("");
+    $('#inputDrivingLicense').val("");
+    $('#inputUsername').val("");
+    $('#inputPassword').val("");
     $('#formFileMultipleNICFront').val("");
     $('#formFileMultipleNICBack').val("");
     $('#formFileMultipleDL').val("");

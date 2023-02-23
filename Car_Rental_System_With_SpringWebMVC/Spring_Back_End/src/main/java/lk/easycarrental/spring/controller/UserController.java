@@ -30,7 +30,20 @@ public class UserController {
     public ResponseUtil saveUser(@RequestBody UserDTO dto){
         System.out.println(dto.toString());
         service.saveUser(dto);
-        return new ResponseUtil("200","Customer Added Successfully "+dto.toString(),null);
+        return new ResponseUtil("200","User Added Successfully "+dto.toString(),null);
+    }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateUser(@RequestBody UserDTO dto){
+        System.out.println(dto.toString());
+        service.updateUser(dto);
+        return new ResponseUtil("200","User Updated Successfully "+dto.toString(),null);
+    }
+
+    @PutMapping(path = "/resetPassword",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil resetUserPassword(@PathVariable String userID, @PathVariable String password){
+        service.resetUserPassword(userID,password);
+        return new ResponseUtil("200","User Password Reset Successfully",null);
     }
 
     @PutMapping(path = "/uploadImg/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

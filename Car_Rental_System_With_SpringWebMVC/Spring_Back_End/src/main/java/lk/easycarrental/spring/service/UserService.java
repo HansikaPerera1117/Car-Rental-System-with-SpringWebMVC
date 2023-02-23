@@ -8,6 +8,10 @@ public interface UserService {
 
     void saveUser(UserDTO dto);
 
+    void updateUser(UserDTO dto);
+
+    void resetUserPassword(String userID, String password);
+
     void uploadUserImages(String nicfPath, String nicbPath, String licenceImgPath, String id);
 
     boolean findUserByUsername(String username);

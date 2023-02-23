@@ -171,25 +171,13 @@
         <label for="inputEmail" class="form-label">Email</label>
         <input type="email" class="form-control" id="inputEmail">
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label for="inputNIC" class="form-label">NIC</label>
         <input type="text" class="form-control" id="inputNIC">
-      </div>
-      <div class="col-md-4">
-        <label for="formFileMultipleNICFront" class="form-label">Image Of NIC Front</label>
-        <input class="form-control" type="file" id="formFileMultipleNICFront">
-      </div>
-      <div class="col-md-4">
-        <label for="formFileMultipleNICBack" class="form-label">Image Of NIC Back</label>
-        <input class="form-control" type="file" id="formFileMultipleNICBack">
       </div>
       <div class="col-6">
         <label for="inputDrivingLicense" class="form-label">Driving License</label>
         <input type="text" class="form-control" id="inputDrivingLicense">
-      </div>
-      <div class="col-md-6">
-        <label for="formFileMultipleDL" class="form-label">Image Of Driving License</label>
-        <input class="form-control" type="file" id="formFileMultipleDL" multiple>
       </div>
       <div class="col-md-6">
         <label for="inputUsername" class="form-label">Username</label>
@@ -199,10 +187,24 @@
         <label class="form-label" for="inputPassword"> Password</label>
         <input class="form-control" id="inputPassword" type="password" readonly>
       </div>
-
+      <div class="col-md-4">
+        <label for="formFileMultipleNICFront" class="form-label">Image Of NIC Front</label>
+        <input class="form-control" type="file" id="formFileMultipleNICFront">
+      </div>
+      <div class="col-md-4">
+        <label for="formFileMultipleNICBack" class="form-label">Image Of NIC Back</label>
+        <input class="form-control" type="file" id="formFileMultipleNICBack">
+      </div>
+      <div class="col-md-4">
+        <label for="formFileMultipleDL" class="form-label">Image Of Driving License</label>
+        <input class="form-control" type="file" id="formFileMultipleDL" multiple>
+      </div>
       <div class="row mt-2">
-        <div class="col-9">
+        <div class="col-6">
         <label class="col-6 fs-5" style="height: max-content; width: max-content;">Change Password</label>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-dark ms-4" type="button" style="width: max-content;" id="btnUpdateUserImages">Update Images </button>
         </div>
         <div class="col-3 align-self-end">
           <button class="btn btn-dark ms-4" type="button" style="width: max-content;" id="btnUpdateUser">Update Info </button>

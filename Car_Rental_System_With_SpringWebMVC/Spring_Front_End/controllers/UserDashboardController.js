@@ -48,5 +48,165 @@ function setCustomerDetails(user) {
 
     // upadte eka image wenama anith details wenama karanna
 
+}
+
+$("#btnUpdateUser").click(function (){
+    updateUser();
+});
+function updateUser(){
+
+    var id = $('#UserProfileID').text();
+    var name = $('#inputName').val();
+    var address =  $('#inputAddress').val();
+    var contact = $('#inputContact').val();
+    var email = $('#inputEmail').val();
+    var nic = $('#inputNIC').val();
+    var dLicense = $('#inputDrivingLicense').val();
+    var username = $('#inputUsername').val();
+    var password = $('#inputPassword').val();
+
+    var user = {
+        userID: id,
+        name: name,
+        address: address,
+        contactNo: contact,
+        email: email,
+        nic: nic,
+        drivingLicense: dLicense,
+        username: username,
+        password: password,
+    }
+
+    $.ajax({
+        url: baseUrl + "user",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(user),
+        success: function (resp){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User Not Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+
+}
+
+$("#btnUpdateUserImages").click(function (){
+    var id = $('#UserProfileID').text();
+    uploadUserImages(id);
+});
+
+function uploadUserImages(id) {
+
+    var fileObjectNic1 = $('#formFileMultipleNICFront')[0].files[0];
+    var fileNameNic1 = id + "-imageOfNICFront-" + $('#formFileMultipleNICFront')[0].files[0].name;
+
+    var fileObjectNic2 = $('#formFileMultipleNICBack')[0].files[0];
+    var fileNameNic2 = id + "-imageOfNICBack-" + $('#formFileMultipleNICBack')[0].files[0].name;
+
+    var fileObjectLicence = $('#formFileMultipleDL')[0].files[0];
+    var fileNameLicence = id + "-imageOfDrivingLicense-" + $('#formFileMultipleDL')[0].files[0].name;
+
+    var data = new FormData();
+    data.append("imageOfNICFront", fileObjectNic1, fileNameNic1);
+    data.append("imageOfNICBack", fileObjectNic2, fileNameNic2);
+    data.append("imageOfDrivingLicense", fileObjectLicence, fileNameLicence);
+
+    $.ajax({
+        url: baseUrl + "user/uploadImg/" + id,
+        method: "PUT",
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (res) {
+            console.log("Uploaded");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Images Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Images Not Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+$("#btnResetUserPw").click(function (){
+
+});
+
+function resetPassword(){
+    var id = $('#UserProfileID').text();
+    var name = $('#inputName').val();
+    var address =  $('#inputAddress').val();
+    var contact = $('#inputContact').val();
+    var email = $('#inputEmail').val();
+    var nic = $('#inputNIC').val();
+    var dLicense = $('#inputDrivingLicense').val();
+    var username = $('#inputUsername').val();
+    var newPassword = $('#inputNPassword').val();
+
+    var user = {
+        userID: id,
+        name: name,
+        address: address,
+        contactNo: contact,
+        email: email,
+        nic: nic,
+        drivingLicense: dLicense,
+        username: username,
+        password: password,
+    }
+
+    $.ajax({
+        url: baseUrl + "user",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(user),
+        success: function (resp){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User Not Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 
 }
