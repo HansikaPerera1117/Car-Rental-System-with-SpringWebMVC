@@ -440,7 +440,7 @@ function addCar() {
         pricePerExtraKM: priceForExtraKm,
         completeKm: completeKm,
         color: color,
-        availability: availability,
+        availability: availability
     }
 
     $.ajax({
@@ -749,5 +749,65 @@ function getAvailableCarCount() {
 }
 
 //--------------------Car end-------------------------------------------
+
+
+//--------------------Driver start-------------------------------------------
+
+$("#btnAddDriver").click(function (){
+    saveDriver();
+});
+
+function saveDriver() {
+    var driverID = $('#inputDriverID').val();
+    var name = $('#inputDriverName').val();
+    var address = $('#inputDriverAddress').val();
+    var contact = $('#inputDriverContactNo').val();
+    var nic = $('#inputDriverNIC').val();
+    var drivingLicense = $('#inputDriverDrivingLicense').val();
+    var username = $('#inputDriverUserName').val();
+    var password = $('#inputDriverPassword').val();
+    var availability = "Available";
+
+    var driver = {
+        driverID: driverID,
+        name: name,
+        address: address,
+        contactNo: contact,
+        nic: nic,
+        drivingLicense: drivingLicense,
+        username: username,
+        password: password,
+        availability: availability
+    }
+
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(driver),
+        success: function (res) {
+           
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Not Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+//--------------------Driver end-------------------------------------------
+
 
 

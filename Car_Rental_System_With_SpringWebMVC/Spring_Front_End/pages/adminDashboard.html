@@ -616,12 +616,12 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-3 mt-4">
-                                            <button class="btn fs-5 me-3 btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Driver Schedule</button>
+                                            <button class="btn fs-5 me-3 btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" id="btnDriverSchedule">Driver Schedule</button>
                                         </div>
                                         <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
-                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Add Driver</button>
-                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Update Driver</button>
-                                            <button class="btn fs-5 me-3 btn-dark"  type="button">Delete Driver</button>
+                                            <button class="btn fs-5 me-3 btn-dark" type="button" id="btnDeleteDriver">Delete Driver</button>
+                                            <button class="btn fs-5 me-3 btn-dark" type="button" id="btnUpdateDriver">Update Driver</button>
+                                            <button class="btn fs-5 me-3 btn-dark" type="button" id="btnAddDriver">Add Driver</button>
                                         </div>
                                     </div>
                                 </div>
@@ -632,7 +632,7 @@
                         <div class="col-12 mt-3">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputDriverSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" id="btnSearchDriver" for="inputDriverSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
                                     <input class="form-control col-9" id="inputDriverSearch" type="text">
@@ -652,7 +652,7 @@
                                     <th scope="col">Availability</th>
                                 </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody id="tblDriver"></tbody>
                             </table>
                         </div>
                     </div>
