@@ -1,6 +1,7 @@
 package lk.easycarrental.spring.service.impl;
 
 import lk.easycarrental.spring.dto.DriverDTO;
+import lk.easycarrental.spring.entity.Driver;
 import lk.easycarrental.spring.repo.DriverRepo;
 import lk.easycarrental.spring.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -19,9 +20,14 @@ public class DriverServiceImpl implements DriverService {
     @Autowired
     ModelMapper mapper;
 
+
     @Override
     public void saveDriver(DriverDTO dto) {
-        
+        if (repo.existsById(dto.getDriverID())) {
+            throw new RuntimeException("Driver "+dto.getDriverID()+" Already Exist....!");
+        } else {
+            repo.save(mapper.map(dto, Driver.class));
+        }
     }
 
     @Override
@@ -30,12 +36,12 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void deleteDriver(String licenceNo) {
+    public void deleteDriver(String driverID) {
 
     }
 
     @Override
-    public DriverDTO searchDriver(String licenceNo) {
+    public DriverDTO searchDriver(String driverID) {
         return null;
     }
 

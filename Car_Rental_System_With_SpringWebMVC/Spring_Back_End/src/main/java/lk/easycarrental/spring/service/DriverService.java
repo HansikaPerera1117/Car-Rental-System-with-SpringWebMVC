@@ -10,9 +10,9 @@ public interface DriverService {
 
     void updateDriver(DriverDTO dto);
 
-    void deleteDriver(String licenceNo);
+    void deleteDriver(String driverID);
 
-    DriverDTO searchDriver(String licenceNo);
+    DriverDTO searchDriver(String driverID);
 
     List<DriverDTO> getAllDrivers();
 

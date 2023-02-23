@@ -1,8 +1,11 @@
 package lk.easycarrental.spring.controller;
 
+
+import lk.easycarrental.spring.dto.DriverDTO;
 import lk.easycarrental.spring.service.DriverService;
 import lk.easycarrental.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,14 @@ public class DriverController {
 
     @Autowired
     DriverService service;
+    
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil saveDriver(@RequestBody DriverDTO dto) {
+        System.out.println(dto.toString());
+        service.saveDriver(dto);
+        return new ResponseUtil("200","Driver Added Successfully "+dto.toString(),null);
+    }
+
 
     @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriverByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
