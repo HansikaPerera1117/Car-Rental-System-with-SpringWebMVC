@@ -33,6 +33,11 @@ public class CarController {
 
     }
 
+    @DeleteMapping(params = {"registrationNo"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCar(@RequestParam String registrationNo) {
+        service.deleteCar(registrationNo);
+        return new ResponseUtil("200",registrationNo+" Car Deleted Successfully ",null);
+    }
 
     @PutMapping(path = "/up/{registrationNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationNumber) {

@@ -42,7 +42,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void deleteCar(String registrationNumber) {
-
+        if (repo.existsById(registrationNumber)) {
+            repo.deleteById(registrationNumber);
+        } else {
+            throw new RuntimeException("Car "+registrationNumber+" Not Exist to Delete....!");
+        }
     }
 
     @Override
