@@ -26,6 +26,14 @@ public class CarController {
         return new ResponseUtil("200","Car Added Successfully "+dto.toString(),null);
     }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCar(@RequestBody CarDTO dto) {
+        service.updateCar(dto);
+        return new ResponseUtil("200","Car Update Successfully "+dto.toString(),null);
+
+    }
+
+
     @PutMapping(path = "/up/{registrationNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationNumber) {
         try {

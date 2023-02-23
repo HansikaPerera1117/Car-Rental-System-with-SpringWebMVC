@@ -33,7 +33,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void updateCar(CarDTO dto) {
-
+        if (repo.existsById(dto.getRegistrationNumber())) {
+            repo.updateCar(dto.getRegistrationNumber(),dto.getBrand(),dto.getType(),dto.getNoOfPassengers(),dto.getTransmissionType(),dto.getFuelType(),dto.getDailyRate(),dto.getMonthlyRate(),dto.getFreeKMForADay(),dto.getFreeKMForAMonth(),dto.getPricePerExtraKM(),dto.getCompleteKm(),dto.getColor());
+        } else {
+            throw new RuntimeException("Car "+dto.getRegistrationNumber()+" Not Exist to Update....!");
+        }
     }
 
     @Override
