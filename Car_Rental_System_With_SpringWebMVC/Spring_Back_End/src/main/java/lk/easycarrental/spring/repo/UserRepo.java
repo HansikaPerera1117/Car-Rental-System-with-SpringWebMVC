@@ -22,9 +22,8 @@ public interface UserRepo extends JpaRepository<User,String> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE User SET name=:name,address=:address,contactNo=:contactNo,email=:email,nic=:nic,drivingLicense=:drivingLicense,username=:username,password=:password WHERE userID=:userID", nativeQuery = true)
+    @Query(value = "UPDATE User SET address=:address,contactNo=:contactNo,drivingLicense=:drivingLicense,email=:email,name=:name,nic=:nic,password=:password,username=:username WHERE userID=:userID", nativeQuery = true)
     void updateUser(@Param("userID") String userID, @Param("name") String name, @Param("address") String address, @Param("contactNo") String  contactNo, @Param("email") String email, @Param("nic") String nic, @Param("drivingLicense") String drivingLicense,  @Param("username") String username,  @Param("password") String password);
-
 
     @Modifying
     @Transactional

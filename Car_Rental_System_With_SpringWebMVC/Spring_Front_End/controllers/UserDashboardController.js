@@ -53,6 +53,7 @@ function setCustomerDetails(user) {
 $("#btnUpdateUser").click(function (){
     updateUser();
 });
+
 function updateUser(){
 
     var id = $('#UserProfileID').text();
@@ -157,42 +158,21 @@ function uploadUserImages(id) {
 }
 
 $("#btnResetUserPw").click(function (){
-
+    resetPassword();
 });
 
 function resetPassword(){
     var id = $('#UserProfileID').text();
-    var name = $('#inputName').val();
-    var address =  $('#inputAddress').val();
-    var contact = $('#inputContact').val();
-    var email = $('#inputEmail').val();
-    var nic = $('#inputNIC').val();
-    var dLicense = $('#inputDrivingLicense').val();
-    var username = $('#inputUsername').val();
     var newPassword = $('#inputNPassword').val();
 
-    var user = {
-        userID: id,
-        name: name,
-        address: address,
-        contactNo: contact,
-        email: email,
-        nic: nic,
-        drivingLicense: dLicense,
-        username: username,
-        password: password,
-    }
-
     $.ajax({
-        url: baseUrl + "user",
+        url: baseUrl + "user/resetPassword/"+ id + "/" + newPassword,
         method: "PUT",
-        contentType: "application/json",
-        data: JSON.stringify(user),
         success: function (resp){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: "User Updated Successfully",
+                title: "Reset Password Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -209,4 +189,37 @@ function resetPassword(){
         }
     })
 
+}
+
+$("#btnDeleteUser").click(function (){
+deleteUser();
+});
+
+function deleteUser(){
+
+    var id = $('#UserProfileID').text();
+    $.ajax({
+        url: baseUrl + "user?id=" + id,
+        method: "DELETE",
+        success: function (resp) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            location.replace("index.html");
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User Not Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 }

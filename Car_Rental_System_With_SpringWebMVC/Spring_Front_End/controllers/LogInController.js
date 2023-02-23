@@ -102,7 +102,7 @@ function loginSave(role, username, password) {
                 role: role
             }
         ),
-        success: function (res) {
+        success: function (resp) {
             if (role==="Admin"){
                 location.replace("adminDashboard.html");
             } else if (role==="User"){

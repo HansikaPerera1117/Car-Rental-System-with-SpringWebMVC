@@ -48,25 +48,38 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserDTO dto) {
         if(repo.existsById(dto.getUserID())){
             throw new RuntimeException("User "+dto.getUserID()+" Already Exist....!");
+        }else {
+            User entity = mapper.map(dto, User.class);
+            repo.save(entity);
         }
-        User entity = mapper.map(dto, User.class);
-        repo.save(entity);
+
     }
 
     @Override
     public void updateUser(UserDTO dto) {
-        if (repo.existsById(dto.getUserID())){
+        if (repo.existsById(dto.getUserID())) {
             repo.updateUser(dto.getUserID(),dto.getName(),dto.getAddress(),dto.getContactNo(),dto.getEmail(),dto.getNic(),dto.getDrivingLicense(),dto.getUsername(),dto.getPassword());
+        }else {
+            throw new RuntimeException("User " + dto.getUserID() + " Not Exist to Update....!");
         }
-        throw new RuntimeException("User "+dto.getUserID()+ " Not Exist to Update....!");
+    }
+
+    @Override
+    public void deleteUser(String userID) {
+        if (repo.existsById(userID)) {
+            repo.deleteById(userID);
+        } else {
+            throw new RuntimeException("User " + userID + " Not Exist to Delete....!");
+        }
     }
 
     @Override
     public void resetUserPassword(String userID, String password) {
         if (repo.existsById(userID)){
             repo.resetUserPassword(userID,password);
+        } else {
+            throw new RuntimeException("User "+userID+ " Not Exist to Reset Password....!");
         }
-        throw new RuntimeException("User "+userID+ " Not Exist to Reset Password....!");
     }
 
     @Override

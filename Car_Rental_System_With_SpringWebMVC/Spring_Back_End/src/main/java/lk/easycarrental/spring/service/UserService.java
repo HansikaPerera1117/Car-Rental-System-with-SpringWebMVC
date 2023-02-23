@@ -10,6 +10,8 @@ public interface UserService {
 
     void updateUser(UserDTO dto);
 
+    void deleteUser(String userID);
+
     void resetUserPassword(String userID, String password);
 
     void uploadUserImages(String nicfPath, String nicbPath, String licenceImgPath, String id);

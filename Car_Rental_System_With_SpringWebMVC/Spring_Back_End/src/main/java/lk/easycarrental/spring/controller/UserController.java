@@ -40,7 +40,13 @@ public class UserController {
         return new ResponseUtil("200","User Updated Successfully "+dto.toString(),null);
     }
 
-    @PutMapping(path = "/resetPassword",produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteUser(@RequestParam String id){
+        service.deleteUser(id);
+        return new ResponseUtil("200",id + "User Deleted Successfully ",null);
+    }
+
+    @PutMapping(path = "/resetPassword/{userID}/{password}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil resetUserPassword(@PathVariable String userID, @PathVariable String password){
         service.resetUserPassword(userID,password);
         return new ResponseUtil("200","User Password Reset Successfully",null);
@@ -50,27 +56,23 @@ public class UserController {
     public ResponseUtil uploadImagesAndPath(@RequestPart("imageOfNICFront") MultipartFile imageOfNICFront, @RequestPart("imageOfNICBack") MultipartFile imageOfNICBack, @RequestPart("imageOfDrivingLicense") MultipartFile imageOfDrivingLicense, @PathVariable String id) {
         try {
 
-            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File(projectPath + "/uploads");
+            String projectPath = String.valueOf(new File("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages"));
+            File uploadsDir = new File(projectPath + "\\Users");
             uploadsDir.mkdir();
 
-            imageOfNICFront.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfNICFront.getOriginalFilename()));
-            imageOfNICBack.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfNICBack.getOriginalFilename()));
-            imageOfDrivingLicense.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + imageOfDrivingLicense.getOriginalFilename()));
+            imageOfNICFront.transferTo(new File(uploadsDir.getAbsolutePath() + "\\" + imageOfNICFront.getOriginalFilename()));
+            imageOfNICBack.transferTo(new File(uploadsDir.getAbsolutePath() + "\\" + imageOfNICBack.getOriginalFilename()));
+            imageOfDrivingLicense.transferTo(new File(uploadsDir.getAbsolutePath() + "\\" + imageOfDrivingLicense.getOriginalFilename()));
 
-            String nicFrontPath = projectPath + "/uploads" + imageOfNICFront.getOriginalFilename();
-            String nicBackPath = projectPath + "/uploads" + imageOfNICBack.getOriginalFilename();
-            String licenceImgPath = projectPath + "/uploads" + imageOfDrivingLicense.getOriginalFilename();
+            String nicFrontPath = projectPath + "\\Users\\" + imageOfNICFront.getOriginalFilename();
+            String nicBackPath = projectPath + "\\Users\\" + imageOfNICBack.getOriginalFilename();
+            String licenceImgPath = projectPath + "\\Users\\" + imageOfDrivingLicense.getOriginalFilename();
 
             service.uploadUserImages(nicFrontPath, nicBackPath, licenceImgPath, id);
 
             return new ResponseUtil("200", "Uploaded", null);
 
-
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-                return new ResponseUtil("500",e.getMessage(),null);
-            } catch (IOException e) {
+            }catch (IOException e) {
                 e.printStackTrace();
                     return new ResponseUtil("500",e.getMessage(),null);
             }
