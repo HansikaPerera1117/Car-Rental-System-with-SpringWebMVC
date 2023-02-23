@@ -224,43 +224,76 @@ function bindUserTblClickEvents() {
         searchAndLoadUserImgs(id);
 
     });
-
- function searchAndLoadUserImgs(id) {
-        $('#inputImgOfNICFront').empty();
-        $('#inputImgOfNICBack').empty();
-        $('#inputImageOfUserDrivingLicense').empty();
-
-        $.ajax({
-            url: baseUrl + "user/" + id,
-            method: "GET",
-            success: function (res) {
-                let user = res.data;
-
-                let nicFrontPath = user.imageOfNICFront;
-                let nicFrontImg = nicFrontPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
-                let nicFrontImgSrc = "../assests/savedImages/Users" + nicFrontImg;
-                console.log(nicFrontImgSrc);
-
-                let nicBackPath = user.imageOfNICBack;
-                let nicBackImg = nicBackPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
-                let nicBackImgSrc = "../assests/savedImages/Users" + nicBackImg;
-
-                let licencePath = user.imageOfDrivingLicense;
-                let licenceImg = licencePath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
-                let licenceImgSrc = "../assests/savedImages/Users" + licenceImg;
-
-                let nicfImg = `<img src=${nicFrontImgSrc} alt="NIC Front" style="background-size: cover;width: 100%;height: 100%">`;
-                $('#inputImgOfNICFront').append(nicfImg);
-
-                let nicbImg = `<img src=${nicBackImgSrc} alt="NIC Back" style="background-size: cover;width: 100%;height: 100%">`;
-                $('#inputImgOfNICBack').append(nicbImg);
-
-                let licImg = `<img src=${licenceImgSrc} alt="Licence" style="background-size: cover;width: 100%;height: 100%">`;
-                $('#inputImageOfUserDrivingLicense').append(licImg);
-            }
-        })
-    }
 }
+
+function searchAndLoadUserImgs(id) {
+    $('#inputImgOfNICFront').empty();
+    $('#inputImgOfNICBack').empty();
+    $('#inputImageOfUserDrivingLicense').empty();
+
+    $.ajax({
+        url: baseUrl + "user/" + id,
+        method: "GET",
+        success: function (res) {
+            let user = res.data;
+
+            let nicFrontPath = user.imageOfNICFront;
+            let nicFrontImg = nicFrontPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+            let nicFrontImgSrc = "../assests/savedImages/Users" + nicFrontImg;
+            console.log(nicFrontImgSrc);
+
+            let nicBackPath = user.imageOfNICBack;
+            let nicBackImg = nicBackPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+            let nicBackImgSrc = "../assests/savedImages/Users" + nicBackImg;
+
+            let licencePath = user.imageOfDrivingLicense;
+            let licenceImg = licencePath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+            let licenceImgSrc = "../assests/savedImages/Users" + licenceImg;
+
+            let nicfImg = `<img src=${nicFrontImgSrc} alt="NIC Front" style="background-size: cover;width: 100%;height: 100%">`;
+            $('#inputImgOfNICFront').append(nicfImg);
+
+            let nicbImg = `<img src=${nicBackImgSrc} alt="NIC Back" style="background-size: cover;width: 100%;height: 100%">`;
+            $('#inputImgOfNICBack').append(nicbImg);
+
+            let licImg = `<img src=${licenceImgSrc} alt="Licence" style="background-size: cover;width: 100%;height: 100%">`;
+            $('#inputImageOfUserDrivingLicense').append(licImg);
+        }
+    })
+}
+
+$("#btnUserSearch").click(function () {
+    var id = $("#inputUserSearch").val();
+
+    $.ajax({
+        url: baseUrl + "user/" + id,
+        method: "GET",
+        success: function (res) {
+            let user = res.data;
+
+            $('#inputUserUserID').val(user.userID);
+            $('#inputUserName').val(user.name);
+            $('#inputUserAddress').val(user.address);
+            $('#inputUserContactNo').val(user.contactNo);
+            $('#inputUserEmail').val(user.email);
+            $('#inputUserNIC').val(user.nic);
+            $('#inputUserDrivingLicense').val(user.drivingLicense);
+            $('#inputUserStatus').val(user.status);
+
+            searchAndLoadUserImgs(id);
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "User " + id + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    });
+});
 
 $('#btnAcceptUser').click(function () {
     if ($('#inputUserUserID').val() != "") {

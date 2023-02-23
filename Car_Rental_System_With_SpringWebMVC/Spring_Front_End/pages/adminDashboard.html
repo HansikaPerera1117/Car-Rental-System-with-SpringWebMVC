@@ -402,7 +402,11 @@
                                     <label for="inputPricePerExtraKm" class="form-label">Price Per Extra Km</label>
                                     <input type="number" class="form-control" id="inputPricePerExtraKm">
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
+                                    <label for="inputCompleteKm" class="form-label">Complete Kms</label>
+                                    <input type="number" class="form-control" id="inputCompleteKm">
+                                </div>
+                                <div class="col-md-2">
                                     <label for="inputColour" class="form-label">Colour</label>
                                     <input type="color" class="form-control" id="inputColour">
                                 </div>
@@ -413,7 +417,7 @@
                                         <option value="2">Not Available</option>
                                     </select>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-8">
                                     <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
                                         <button class="btn fs-5 me-3  btn-dark"  type="button">Add Car</button>
                                         <button class="btn fs-5 me-3 btn-dark"  type="button">Update Car</button>
@@ -449,6 +453,7 @@
                                     <th scope="col">FreeKmForADay</th>
                                     <th scope="col">FreeKmForAMonth</th>
                                     <th scope="col">PricePerExtraKm</th>
+                                    <th scope="col">CompleteKms</th>
                                     <th scope="col">Colour</th>
                                     <th scope="col">Availability</th>
                                 </tr>
@@ -528,7 +533,7 @@
                         <div class="col-12 mt-2">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputUserSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" id="btnUserSearch" for="inputUserSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
                                     <input class="form-control col-9" id="inputUserSearch" type="text">

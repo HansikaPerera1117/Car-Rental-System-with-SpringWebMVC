@@ -33,6 +33,7 @@ public class Car {
     private long freeKMForADay;
     private long freeKMForAMonth;
     private double pricePerExtraKM;
+    private double completeKm;
     private String color;
     private String availability;
 
