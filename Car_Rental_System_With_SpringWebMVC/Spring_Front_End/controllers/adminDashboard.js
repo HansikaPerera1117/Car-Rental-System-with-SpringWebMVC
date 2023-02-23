@@ -255,4 +255,56 @@ function bindUserTblClickEvents() {
     }
 }
 
+$('#btnAcceptUser').click(function () {
+    if ($('#inputUserUserID').val() != "") {
+        let id = $('#inputUserUserID').val();
+        acceptUser(id);
+        clearUserFields();
+        loadAllUsers();
+    } else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "User Not Selected By Table",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+});
+
+function acceptUser(id) {
+    $.ajax({
+        url: baseUrl + "user/updateStatus/" + id,
+        method: "PUT",
+        success: function (resp) {
+            console.log(resp);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Accepted",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function clearUserFields() {
+    $('#inputUserUserID').val("");
+    $('#inputUserName').val("");
+    $('#inputUserAddress').val("");
+    $('#inputUserContactNo').val("");
+    $('#inputUserEmail').val("");
+    $('#inputUserNIC').val("");
+    $('#inputUserDrivingLicense').val("");
+    $('#inputUserStatus').val("");
+    $('#inputImgOfNICFront').empty();
+    $('#inputImgOfNICBack').empty();
+    $('#inputImageOfUserDrivingLicense').empty();
+}
+
+$("#btnDenyUser").click(function (){
+
+});
+
 //--------------------customer end-------------------------------------------
