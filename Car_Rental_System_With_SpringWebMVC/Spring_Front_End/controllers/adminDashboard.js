@@ -8,6 +8,7 @@ let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 setDates();
 loadAllUsers();
 getRegisterUsersCount();
+loadAllCars();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -447,7 +448,7 @@ function addCar() {
         data: JSON.stringify(car),
         success: function (resp) {
             uploadCarImages(regNo);
-            // loadAllCars();
+            loadAllCars();
             // getAvailableCarCount();
             Swal.fire({
                 position: 'top-end',
@@ -498,6 +499,23 @@ function uploadCarImages(registrationNumber) {
         success: function (res) {
             console.log("Uploaded");
             clearAddCarFields();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Images Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Images Not Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     })
 }
@@ -562,7 +580,7 @@ function updateCar() {
         contentType: "application/json",
         data: JSON.stringify(car),
         success: function (resp) {
-            // loadAllCars();
+             loadAllCars();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -583,20 +601,20 @@ function updateCar() {
     })
 }
 
-$("#btnUpdateUserImages").click(function (){
+$("#btnUpdateCarImages").click(function (){
     let regNo = $('#inputRegisterNo').val();
     uploadCarImages(regNo)
 });
 
 function loadAllCars() {
-    $('#carTable').empty();
+    $('#tblCars').empty();
     $.ajax({
         url: baseUrl + "car",
         method: "GET",
         success: function (resp) {
             for (const car of resp.data) {
-                let row = `<tr><td>${car.registrationNumber}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td><td>${car.noOfPassengers}</td><td>${car.dailyRate}</td><td>${car.monthlyRate}</td><td>${car.freeKMForADay}</td><td>${car.freeKMForAMonth}</td><td>${car.priceForExtraKm}</td><td>${car.completeKm}</td><td>${car.color}</td><td>${car.availability}</td></tr>`;
-                $('#carTable').append(row);
+                let row = `<tr><td>${car.registrationNumber}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td><td>${car.noOfPassengers}</td><td>${car.dailyRate}</td><td>${car.monthlyRate}</td><td>${car.freeKMForADay}</td><td>${car.freeKMForAMonth}</td><td>${car.pricePerExtraKM}</td><td>${car.completeKm}</td><td>${car.color}</td><td>${car.availability}</td></tr>`;
+                $('#tblCars').append(row);
             }
             bindCarTableClickEvents();
         }
@@ -604,7 +622,7 @@ function loadAllCars() {
 }
 
 function bindCarTableClickEvents() {
-    $('#carTable>tr').click(function () {
+    $('#tblCars>tr').click(function () {
         let regNo = $(this).children().eq(0).text();
         let brand = $(this).children().eq(1).text();
         let type = $(this).children().eq(2).text();
@@ -638,7 +656,7 @@ function bindCarTableClickEvents() {
 }
 
 $("#btnSearchCar").click(function () {
-    let registrationNo = $('#inputRegisterNo').val();
+    let registrationNo = $('#inputCarSearch').val();
 
     $.ajax({
         url: baseUrl + "car/" + registrationNo,
@@ -675,6 +693,38 @@ $("#btnSearchCar").click(function () {
     });
 });
 
+$('#btnDeleteCar').click(function () {
+    deleteCar();
+    clearAddCarFields();
+})
+
+function deleteCar() {
+    let registrationNo = $('#inputRegisterNo').val();
+
+    $.ajax({
+        url: baseUrl + "car?registrationNo=" + registrationNo,
+        method: "DELETE",
+        success: function (resp) {
+            loadAllCars();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Not Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
 
 //--------------------Car end-------------------------------------------
 
