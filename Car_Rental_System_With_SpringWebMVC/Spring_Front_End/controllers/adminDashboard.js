@@ -438,7 +438,6 @@ function addCar() {
         completeKm: completeKm,
         color: color,
         availability: availability,
-
     }
 
     $.ajax({
@@ -518,6 +517,70 @@ function clearAddCarFields() {
      $('#inputSideImg').val("");
      $('#inputBackImg').val("");
      $('#inputInteriorImg').val("");
+}
+
+$('#btnUpdateCar').click(function () {
+    updateCar();
+    clearAddCarFields();
+})
+
+function updateCar() {
+
+    let regNo = $('#inputRegisterNo').val();
+    let brand = $('#inputBrand').val();
+    let type = $('#selectType').find('option:selected').text();
+    let transmission = $('#selectTransmissionType').find('option:selected').text();
+    let fuel = $('#selectFuelType').find('option:selected').text();
+    let noOfPassengers = $('#inputNoOfPassengers').val();
+    let dailyRate = $('#inputDailyRate').val();
+    let monthlyRate = $('#inputMonthlyRate').val();
+    let freeKmForADay = $('#inputFreeKmForADay').val();
+    let freeKmForAMonth = $('#inputFreeKmForAMonth').val();
+    let priceForExtraKm = $('#inputPricePerExtraKm').val();
+    let completeKm = $('#inputCompleteKm').val();
+    let color = $('#inputColour').val();
+
+    var car = {
+        registrationNumber: regNo,
+        brand: brand,
+        type: type,
+        noOfPassengers: noOfPassengers,
+        transmissionType: transmission,
+        fuelType: fuel,
+        dailyRate: dailyRate,
+        monthlyRate: monthlyRate,
+        freeKMForADay: freeKmForADay,
+        freeKMForAMonth: freeKmForAMonth,
+        pricePerExtraKM: priceForExtraKm,
+        completeKm: completeKm,
+        color: color,
+    }
+
+    $.ajax({
+        url: baseUrl + "car",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(car),
+        success: function (resp) {
+            // loadAllCars();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (ob) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 }
 
 //--------------------Car end-------------------------------------------

@@ -49,7 +49,6 @@ public class CarController {
         return new ResponseUtil("200", "Done", service.searchCar(registrationNo));
     }
 
-
     @PutMapping(path = "/up/{registrationNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationNumber) {
         try {
