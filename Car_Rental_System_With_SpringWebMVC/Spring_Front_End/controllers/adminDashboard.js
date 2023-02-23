@@ -583,6 +583,99 @@ function updateCar() {
     })
 }
 
+$("#btnUpdateUserImages").click(function (){
+    let regNo = $('#inputRegisterNo').val();
+    uploadCarImages(regNo)
+});
+
+function loadAllCars() {
+    $('#carTable').empty();
+    $.ajax({
+        url: baseUrl + "car",
+        method: "GET",
+        success: function (resp) {
+            for (const car of resp.data) {
+                let row = `<tr><td>${car.registrationNumber}</td><td>${car.brand}</td><td>${car.type}</td><td>${car.transmissionType}</td><td>${car.fuelType}</td><td>${car.noOfPassengers}</td><td>${car.dailyRate}</td><td>${car.monthlyRate}</td><td>${car.freeKMForADay}</td><td>${car.freeKMForAMonth}</td><td>${car.priceForExtraKm}</td><td>${car.completeKm}</td><td>${car.color}</td><td>${car.availability}</td></tr>`;
+                $('#carTable').append(row);
+            }
+            bindCarTableClickEvents();
+        }
+    });
+}
+
+function bindCarTableClickEvents() {
+    $('#carTable>tr').click(function () {
+        let regNo = $(this).children().eq(0).text();
+        let brand = $(this).children().eq(1).text();
+        let type = $(this).children().eq(2).text();
+        let transmission = $(this).children().eq(3).text();
+        let fuel = $(this).children().eq(4).text();
+        let passengers = $(this).children().eq(5).text();
+        let daily = $(this).children().eq(6).text();
+        let monthly = $(this).children().eq(7).text();
+        let freeKmforADay = $(this).children().eq(8).text();
+        let freeKmforAMonth = $(this).children().eq(9).text();
+        let priseForExtraKm = $(this).children().eq(10).text();
+        let completeKm = $(this).children().eq(11).text();
+        let color = $(this).children().eq(12).text();
+        let availability = $(this).children().eq(13).text();
+
+         $('#inputRegisterNo').val(regNo);
+         $('#inputBrand').val(brand);
+         $('#selectType').find('option:selected').text(type);
+         $('#selectTransmissionType').find('option:selected').text(transmission);
+         $('#selectFuelType').find('option:selected').text(fuel);
+         $('#inputNoOfPassengers').val(passengers);
+         $('#inputDailyRate').val(daily);
+         $('#inputMonthlyRate').val(monthly);
+         $('#inputFreeKmForADay').val(freeKmforADay);
+         $('#inputFreeKmForAMonth').val(freeKmforAMonth);
+         $('#inputPricePerExtraKm').val(priseForExtraKm);
+         $('#inputCompleteKm').val(completeKm);
+         $('#inputColour').val(color);
+         $('#selectCarAvailability').find('option:selected').text(availability);
+    });
+}
+
+$("#btnSearchCar").click(function () {
+    let registrationNo = $('#inputRegisterNo').val();
+
+    $.ajax({
+        url: baseUrl + "car/" + registrationNo,
+        method: "GET",
+        success: function (res) {
+            let car = res.data;
+
+            $('#inputRegisterNo').val(car.registrationNumber);
+            $('#inputBrand').val(car.brand);
+            $('#selectType').find('option:selected').text(car.type);
+            $('#selectTransmissionType').find('option:selected').text(car.transmissionType);
+            $('#selectFuelType').find('option:selected').text(car.fuelType);
+            $('#inputNoOfPassengers').val(car.noOfPassengers);
+            $('#inputDailyRate').val(car.dailyRate);
+            $('#inputMonthlyRate').val(car.monthlyRate);
+            $('#inputFreeKmForADay').val(car.freeKMForADay);
+            $('#inputFreeKmForAMonth').val(car.freeKMForAMonth);
+            $('#inputPricePerExtraKm').val(car.pricePerExtraKM);
+            $('#inputCompleteKm').val(car.completeKm);
+            $('#inputColour').val(car.color);
+            $('#selectCarAvailability').find('option:selected').text(car.availability);
+
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Car " + registrationNo + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    });
+});
+
+
 //--------------------Car end-------------------------------------------
 
 
