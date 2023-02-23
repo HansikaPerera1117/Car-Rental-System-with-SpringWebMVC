@@ -26,8 +26,8 @@ public class CarController {
         return new ResponseUtil("200","Car Added Successfully "+dto.toString(),null);
     }
 
-    @PutMapping(path = "/up/{registrationID}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationID) {
+    @PutMapping(path = "/up/{registrationNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationNumber) {
         try {
             String projectPath = String.valueOf(new File("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages"));
             File uploadsDir = new File(projectPath + "\\Cars");
@@ -42,7 +42,7 @@ public class CarController {
             String interImgPath = projectPath + "\\Cars\\" + interiorImage.getOriginalFilename();
             String sideImgPath = projectPath + "\\Cars\\" + sideImage.getOriginalFilename();
 
-            service.updateCarFilePaths(frontImgPath, backImgPath, interImgPath, sideImgPath, registrationID);
+            service.updateCarFilePaths(frontImgPath, backImgPath, interImgPath, sideImgPath, registrationNumber);
 
             return new ResponseUtil("200", "Uploaded", null);
 

@@ -403,6 +403,123 @@ function getRegisterUsersCount() {
 
 //--------------------Car start-------------------------------------------
 
+$("#btnAddCar").click(function (){
+    addCar();
+})
+
+function addCar() {
+    let regNo = $('#inputRegisterNo').val();
+    let brand = $('#inputBrand').val();
+    let type = $('#selectType').find('option:selected').text();
+    let transmission = $('#selectTransmissionType').find('option:selected').text();
+    let fuel = $('#selectFuelType').find('option:selected').text();
+    let noOfPassengers = $('#inputNoOfPassengers').val();
+    let dailyRate = $('#inputDailyRate').val();
+    let monthlyRate = $('#inputMonthlyRate').val();
+    let freeKmForADay = $('#inputFreeKmForADay').val();
+    let freeKmForAMonth = $('#inputFreeKmForAMonth').val();
+    let priceForExtraKm = $('#inputPricePerExtraKm').val();
+    let completeKm = $('#inputCompleteKm').val();
+    let color = $('#inputColour').val();
+    let availability = "Available";
+
+    var car = {
+        registrationNumber: regNo,
+        brand: brand,
+        type: type,
+        noOfPassengers: noOfPassengers,
+        transmissionType: transmission,
+        fuelType: fuel,
+        dailyRate: dailyRate,
+        monthlyRate: monthlyRate,
+        freeKMForADay: freeKmForADay,
+        freeKMForAMonth: freeKmForAMonth,
+        pricePerExtraKM: priceForExtraKm,
+        completeKm: completeKm,
+        color: color,
+        availability: availability,
+
+    }
+
+    $.ajax({
+        url: baseUrl + "car",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(car),
+        success: function (resp) {
+            uploadCarImages(regNo);
+            // loadAllCars();
+            // getAvailableCarCount();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "User Not Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function uploadCarImages(registrationNumber) {
+    var fileObjectFront = $('#inputFrontImg')[0].files[0];
+    var fileNameFront = registrationNumber + "-frontImage-" + $('#inputFrontImg')[0].files[0].name;
+
+    var fileObjectBack = $('#inputBackImg')[0].files[0];
+    var fileNameBack = registrationNumber + "-backImage-" + $('#inputBackImg')[0].files[0].name;
+
+    var fileObjectSide = $('#inputSideImg')[0].files[0];
+    var fileNameSide = registrationNumber + "-sideImage-" + $('#inputSideImg')[0].files[0].name;
+
+    var fileObjectInterior = $('#inputInteriorImg')[0].files[0];
+    var fileNameInterior = registrationNumber + "-interiorImage-" + $('#inputInteriorImg')[0].files[0].name;
+
+    var data = new FormData();
+    data.append("frontImage", fileObjectFront, fileNameFront);
+    data.append("backImage", fileObjectBack, fileNameBack);
+    data.append("interiorImage", fileObjectInterior, fileNameInterior);
+    data.append("sideImage", fileObjectSide, fileNameSide);
+
+    $.ajax({
+        url: baseUrl + "car/up/" + registrationNumber,
+        method: "PUT",
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (res) {
+            console.log("Uploaded");
+            clearAddCarFields();
+        }
+    })
+}
+
+function clearAddCarFields() {
+     $('#inputRegisterNo').val("");
+     $('#inputBrand').val("");
+     $('#inputNoOfPassengers').val("");
+     $('#inputDailyRate').val("");
+     $('#inputMonthlyRate').val("");
+     $('#inputFreeKmForADay').val("");
+     $('#inputFreeKmForAMonth').val("");
+     $('#inputPricePerExtraKm').val("");
+     $('#inputCompleteKm').val("");
+     $('#inputColour').val("");
+     $('#inputFrontImg').val("");
+     $('#inputSideImg').val("");
+     $('#inputBackImg').val("");
+     $('#inputInteriorImg').val("");
+}
+
 //--------------------Car end-------------------------------------------
 
 
