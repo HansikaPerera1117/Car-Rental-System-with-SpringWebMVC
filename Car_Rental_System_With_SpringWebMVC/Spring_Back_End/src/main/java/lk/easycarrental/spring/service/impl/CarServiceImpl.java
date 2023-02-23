@@ -6,6 +6,7 @@ import lk.easycarrental.spring.entity.Car;
 import lk.easycarrental.spring.repo.CarRepo;
 import lk.easycarrental.spring.service.CarService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,12 +52,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDTO> getAllCars() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<CarDTO>>() {}.getType());
     }
 
     @Override
     public CarDTO searchCar(String registrationNumber) {
-        return null;
+        return mapper.map(repo.findById(registrationNumber).get(), CarDTO.class);
     }
 
     @Override

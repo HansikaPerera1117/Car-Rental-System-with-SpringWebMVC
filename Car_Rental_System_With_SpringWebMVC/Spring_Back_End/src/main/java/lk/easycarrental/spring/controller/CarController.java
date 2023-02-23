@@ -20,6 +20,11 @@ public class CarController {
     @Autowired
     CarService service;
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllCars() {
+        return new ResponseUtil("200", "Done", service.getAllCars());
+    }
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {
         service.saveCar(dto);
@@ -38,6 +43,12 @@ public class CarController {
         service.deleteCar(registrationNo);
         return new ResponseUtil("200",registrationNo+" Car Deleted Successfully ",null);
     }
+
+    @GetMapping(path = "/{registrationNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchCar(@PathVariable String registrationNo) {
+        return new ResponseUtil("200", "Done", service.searchCar(registrationNo));
+    }
+
 
     @PutMapping(path = "/up/{registrationNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadImagesAndPath(@RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage, @RequestPart("sideImage") MultipartFile sideImage, @RequestPart("interiorImage") MultipartFile interiorImage, @PathVariable String registrationNumber) {
