@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -17,6 +18,31 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     ModelMapper mapper;
+
+    @Override
+    public void saveDriver(DriverDTO dto) {
+        
+    }
+
+    @Override
+    public void updateDriver(DriverDTO dto) {
+
+    }
+
+    @Override
+    public void deleteDriver(String licenceNo) {
+
+    }
+
+    @Override
+    public DriverDTO searchDriver(String licenceNo) {
+        return null;
+    }
+
+    @Override
+    public List<DriverDTO> getAllDrivers() {
+        return null;
+    }
 
     @Override
     public boolean findDriverByUsername(String username) {

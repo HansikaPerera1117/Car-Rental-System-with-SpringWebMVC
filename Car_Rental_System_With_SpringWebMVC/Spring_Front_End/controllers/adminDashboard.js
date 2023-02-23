@@ -9,6 +9,7 @@ setDates();
 loadAllUsers();
 getRegisterUsersCount();
 loadAllCars();
+getAvailableCarCount();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -450,7 +451,7 @@ function addCar() {
         success: function (resp) {
             uploadCarImages(regNo);
             loadAllCars();
-             getAvailableCarCount();
+            getAvailableCarCount();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -733,6 +734,7 @@ function getAvailableCarCount() {
         url: baseUrl + "car/count/" + availability,
         method: "GET",
         success: function (resp) {
+            console.log(resp)
             if (resp.data != 0) {
                 if (resp.data < 10) {
                     $('#lblNoOfAvailableCars').text("0" + resp.data);

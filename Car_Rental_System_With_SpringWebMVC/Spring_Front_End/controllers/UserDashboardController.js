@@ -26,8 +26,7 @@ function getAllUserData(username, password) {
         success: function (res) {
             let user = res.data;
             setCustomerDetails(user);
-            meka na
-            //loadMyCarRentsToTable(user.userID);
+            loadMyCarRentsToTable(user.userID);
         }
     })
 }
@@ -222,4 +221,9 @@ function deleteUser(){
             });
         }
     })
+}
+
+//--------------meka karala na thama------------------------------------
+function loadMyCarRentsToTable(userID) {
+
 }
