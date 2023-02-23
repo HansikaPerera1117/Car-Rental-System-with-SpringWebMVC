@@ -68,4 +68,10 @@ public class CarServiceImpl implements CarService {
             throw new RuntimeException("Car "+registrationNumber+" Not Exist to Update....!");
         }
     }
+
+    @Override
+    public int getCountOfCarsByStatus(String availability) {
+        return repo.getCountOfCarsByStatus(availability);
+
+    }
 }

@@ -365,6 +365,7 @@ function deleteUser(){
             });
             getRegisterUsersCount();
             loadAllUsers();
+            clearUserFields();
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
@@ -449,7 +450,7 @@ function addCar() {
         success: function (resp) {
             uploadCarImages(regNo);
             loadAllCars();
-            // getAvailableCarCount();
+             getAvailableCarCount();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -725,6 +726,25 @@ function deleteCar() {
         }
     })
 }
+
+// function getAvailableCarCount() {
+//     let status = "Available";
+//     $.ajax({
+//         url: baseUrl + "api/v1/car/count/" + status,
+//         method: "GET",
+//         success: function (res) {
+//             if (res.data != 0) {
+//                 if (res.data < 10) {
+//                     $('#countAvailableCars').text("0" + res.data);
+//                 } else {
+//                     $('#countAvailableCars').text(res.data);
+//                 }
+//             } else {
+//                 $('#countAvailableCars').text("00");
+//             }
+//         }
+//     })
+// }
 
 //--------------------Car end-------------------------------------------
 

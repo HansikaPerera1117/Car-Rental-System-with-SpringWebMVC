@@ -26,6 +26,7 @@ function getAllUserData(username, password) {
         success: function (res) {
             let user = res.data;
             setCustomerDetails(user);
+            meka na
             //loadMyCarRentsToTable(user.userID);
         }
     })
@@ -45,8 +46,6 @@ function setCustomerDetails(user) {
     $('#inputDrivingLicense').val(user.drivingLicense);
     $('#inputUsername').val(user.username);
     $('#inputPassword').val(user.password);
-
-    // upadte eka image wenama anith details wenama karanna
 
 }
 
@@ -91,6 +90,7 @@ function updateUser(){
                 showConfirmButton: false,
                 timer: 1500
             });
+            getLastLoginUser();
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);

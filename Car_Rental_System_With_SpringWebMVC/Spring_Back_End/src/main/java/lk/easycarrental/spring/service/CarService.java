@@ -18,4 +18,7 @@ public interface CarService {
 
     void updateCarFilePaths(String frontImage, String backImage, String sideImage, String interiorImage, String registrationNumber);
 
+    int getCountOfCarsByStatus(String availability);
+
+
 }

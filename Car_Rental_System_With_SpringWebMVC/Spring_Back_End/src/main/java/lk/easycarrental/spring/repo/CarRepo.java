@@ -19,4 +19,7 @@ public interface CarRepo extends JpaRepository<Car,String> {
     @Query(value = "UPDATE Car SET brand=:brand,color=:color,dailyRate=:dailyRate,freeKMForADay=:freeKMForADay,freeKMForAMonth=:freeKMForAMonth,fuelType=:fuelType,monthlyRate=:monthlyRate,noOfPassengers=:noOfPassengers,pricePerExtraKM=:pricePerExtraKM,transmissionType=:transmissionType,type=:type,completeKm=:completeKm WHERE registrationNumber=:registrationNumber", nativeQuery = true)
     void updateCar(@Param("registrationNumber") String registrationNumber, @Param("brand") String brand, @Param("type") String type, @Param("noOfPassengers") int noOfPassengers, @Param("transmissionType") String transmissionType, @Param("fuelType") String fuelType, @Param("dailyRate") double dailyRate, @Param("monthlyRate") double monthlyRate, @Param("freeKMForADay") long freeKMForADay, @Param("freeKMForAMonth") long freeKMForAMonth, @Param("pricePerExtraKM") double pricePerExtraKM, @Param("completeKm") double completeKm, @Param("color") String  color);
 
+    @Query(value = "SELECT COUNT(registrationNumber) FROM Car WHERE availability=:availability", nativeQuery = true)
+    int getCountOfCarsByStatus(@Param("availability") String availability);
+
 }
