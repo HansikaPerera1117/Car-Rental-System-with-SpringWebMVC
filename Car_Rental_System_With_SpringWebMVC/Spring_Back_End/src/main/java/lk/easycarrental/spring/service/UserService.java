@@ -28,4 +28,8 @@ public interface UserService {
 
     UserDTO findUserByUsernameAndPassword(String username, String password);
 
+    int getCountOfUsersRegistered();
+
+    void updateUserStatus(String userID);
+
 }

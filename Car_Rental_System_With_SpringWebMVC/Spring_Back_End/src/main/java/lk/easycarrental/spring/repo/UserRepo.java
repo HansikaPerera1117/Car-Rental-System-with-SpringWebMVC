@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepo extends JpaRepository<User,String> {
@@ -30,10 +31,17 @@ public interface UserRepo extends JpaRepository<User,String> {
     @Query(value = "UPDATE User SET password=:password WHERE userID=:userID", nativeQuery = true)
     void resetUserPassword(@Param("userID") String userID, @Param("password") String password);
 
-
     @Modifying
     @Transactional
     @Query(value = "UPDATE User SET imageOfNICFront=:imageOfNICFront,imageOfNICBack=:imageOfNICBack,imageOfDrivingLicense=:imageOfDrivingLicense WHERE userID=:userID", nativeQuery = true)
     void updateUserFilePaths(@Param("imageOfNICFront") String imageOfNICFront, @Param("imageOfNICBack") String imageOfNICBack, @Param("imageOfDrivingLicense") String imageOfDrivingLicense, @Param("userID") String userID);
 
-}
+    @Query(value = "SELECT COUNT(userID) FROM User WHERE status='Accepted'", nativeQuery = true)
+    int countByUserID();
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE User SET status='Accepted' WHERE userID=:userID", nativeQuery = true)
+    void updateUserStatus(@Param("userID") String userID);
+
+

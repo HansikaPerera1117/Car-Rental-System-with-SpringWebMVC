@@ -106,5 +106,16 @@ public class UserController {
         return new ResponseUtil("200", "Done", service.findUserByUsernameAndPassword(username, password));
     }
 
+    @GetMapping(path = "/count",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCountOfRegisteredUsers(){
+        return new ResponseUtil("200","Done",service.getCountOfUsersRegistered());
+    }
+
+    @PutMapping(path = "/updateStatus/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateUserStatus(@PathVariable String id) {
+        service.updateUserStatus(id);
+        return new ResponseUtil("200","User Status Updated Successfully ",null);
+    }
+
 
 }

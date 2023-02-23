@@ -124,5 +124,19 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public int getCountOfUsersRegistered() {
+        return repo.countByUserID();
+    }
+
+    @Override
+    public void updateUserStatus(String userID) {
+        if (repo.existsById(userID)) {
+            repo.updateUserStatus(userID);
+        } else {
+            throw new RuntimeException("User " + userID + " Not Exist....!");
+        }
+    }
+
 
 }
