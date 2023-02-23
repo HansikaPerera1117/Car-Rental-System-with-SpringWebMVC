@@ -5,6 +5,9 @@ $(window).on('load',function (){
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
+setDates();
+loadAllUsers();
+
 $("#home").css('display','block');
 $("#cars").css('display','none');
 $("#users").css('display','none');
@@ -163,26 +166,93 @@ $("#menuMaintains").click(function (){
 
 });
 
-addUserIdsToComboBox();
+function setDates() {
+    var date = new Date();
+    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+    var current_time = date.getHours()+":"+date.getMinutes();
+
+    $("#lblDate").text("Date : "+current_date);
+    $("#lblTime").text("Time : "+current_time);
+}
+
 
 //--------------------customer start-------------------------------------------
 
-function addUserIdsToComboBox(){
-    $('#selectUserID').empty();
+function loadAllUsers() {
+    $('#tblUsers').empty();
     $.ajax({
         url: baseUrl + "user",
         method: "GET",
         success: function (res) {
             for (const user of res.data) {
-                let userID = user.userID
-                $("#selectUserID").append(`<option value="${userID}">${userID}</option>`);
+                let row = `<tr><td>${user.userID}</td><td>${user.name}</td><td>${user.address}</td><td>${user.contactNo}</td><td>${user.email}</td><td>${user.nic}</td><td>${user.drivingLicense}</td><td>${user.status}</td></tr>`;
+                $('#tblUsers').append(row);
             }
-        },
-        error: function (error) {
-            let message = JSON.parse(error.responseText).message;
-            alert(message);
+            bindUserTblClickEvents();
         }
     })
+}
+
+function bindUserTblClickEvents() {
+    $('#tblUsers>tr').click(function () {
+        let id = $(this).children().eq(0).text();
+        let name = $(this).children().eq(1).text();
+        let address = $(this).children().eq(2).text();
+        let contact = $(this).children().eq(3).text();
+        let email = $(this).children().eq(4).text();
+        let nic = $(this).children().eq(5).text();
+        let licence = $(this).children().eq(6).text();
+        let status = $(this).children().eq(7).text();
+
+
+        $('#inputUserUserID').val(id);
+        $('#inputUserName').val(name);
+        $('#inputUserAddress').val(address);
+        $('#inputUserContactNo').val(contact);
+        $('#inputUserEmail').val(email);
+        $('#inputUserNIC').val(nic);
+        $('#inputUserDrivingLicense').val(licence);
+        $('#inputUserStatus').val(status);
+
+        searchAndLoadUserImgs(id);
+
+    });
+
+ function searchAndLoadUserImgs(id) {
+        $('#inputImgOfNICFront').empty();
+        $('#inputImgOfNICBack').empty();
+        $('#inputImageOfUserDrivingLicense').empty();
+
+        $.ajax({
+            url: baseUrl + "user/" + id,
+            method: "GET",
+            success: function (res) {
+                let user = res.data;
+
+                let nicFrontPath = user.imageOfNICFront;
+                let nicFrontImg = nicFrontPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+                let nicFrontImgSrc = "../assests/savedImages/Users" + nicFrontImg;
+                console.log(nicFrontImgSrc);
+
+                let nicBackPath = user.imageOfNICBack;
+                let nicBackImg = nicBackPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+                let nicBackImgSrc = "../assests/savedImages/Users" + nicBackImg;
+
+                let licencePath = user.imageOfDrivingLicense;
+                let licenceImg = licencePath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Users")[1];
+                let licenceImgSrc = "../assests/savedImages/Users" + licenceImg;
+
+                let nicfImg = `<img src=${nicFrontImgSrc} alt="NIC Front" style="background-size: cover;width: 100%;height: 100%">`;
+                $('#inputImgOfNICFront').append(nicfImg);
+
+                let nicbImg = `<img src=${nicBackImgSrc} alt="NIC Back" style="background-size: cover;width: 100%;height: 100%">`;
+                $('#inputImgOfNICBack').append(nicbImg);
+
+                let licImg = `<img src=${licenceImgSrc} alt="Licence" style="background-size: cover;width: 100%;height: 100%">`;
+                $('#inputImageOfUserDrivingLicense').append(licImg);
+            }
+        })
+    }
 }
 
 //--------------------customer end-------------------------------------------

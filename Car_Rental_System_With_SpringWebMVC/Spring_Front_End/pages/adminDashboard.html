@@ -133,8 +133,8 @@
         <!---------------------Date - Time----------------------->
         <div class="row me-3" style="width: 300px">
             <div class="col-12">
-                <label class="col-12 text-end fs-5">Date : 2023-02-27</label>
-                <label class="col-12 text-end fs-5">Time : 06:00:00</label>
+                <label class="col-12 text-end fs-5" id="lblDate"></label>
+                <label class="col-12 text-end fs-5" id="lblTime"></label>
             </div>
         </div>
 
@@ -473,8 +473,8 @@
                         <div class="col mt-2">
                             <form class="row g-2">
                                 <div class="col-md-2">
-                                    <label class="form-label" for="selectUserID">User ID</label>
-                                    <select class="form-select" id="selectUserID" aria-label="Default select example"></select>
+                                    <label class="form-label" for="inputUserUserID">User ID</label>
+                                    <input class="form-control" id="inputUserUserID" type="text" readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="inputUserName">Name</label>
@@ -546,6 +546,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">NIC</th>
                                     <th scope="col">DrivingLicense</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                                 </thead>
                                 <tbody id="tblUsers"></tbody>
