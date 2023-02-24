@@ -15,8 +15,6 @@ import java.time.LocalTime;
 public class RentDTO {
     private String rentID;
     private LocalDate rentDate;
-    private String carID;
-    private String userID;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpVenue;
@@ -25,7 +23,10 @@ public class RentDTO {
     private String returnVenue;
     private double lossDamageWaiver;
     private String bankSlip;
+    private String status;
 
-    private String driverID;
+    private CarDTO car;
+    private UserDTO user;
+    private DriverDTO driver;
 
 }

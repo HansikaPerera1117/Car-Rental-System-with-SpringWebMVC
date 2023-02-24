@@ -14,15 +14,15 @@ import java.time.LocalTime;
 @Data
 @ToString
 @Entity
-@IdClass(Rent_PK.class)
+//@IdClass(Rent_PK.class)
 public class Rent {
     @Id
     private String rentID;
     private LocalDate rentDate;
-    @Id
-    private String registrationNumber;
-    @Id
-    private String userID;
+//    @Id
+//    private String registrationNumber;
+//    @Id
+//    private String userID;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpVenue;
@@ -31,6 +31,7 @@ public class Rent {
     private String returnVenue;
     private double lossDamageWaiver;
     private String bankSlip;
+    private String status;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "driverID",referencedColumnName = "driverID",nullable = false)

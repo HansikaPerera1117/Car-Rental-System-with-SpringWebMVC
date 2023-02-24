@@ -74,5 +74,14 @@ public class RentServiceImpl implements RentService {
         return null;
     }
 
+    @Override
+    public void updateBankSlip(String bankSlip, String rentId) {
+        if (repo.existsById(rentId)) {
+            repo.updateRentFilePaths(bankSlip, rentId);
+        } else {
+            throw new RuntimeException("Rent Not Found");
+        }
+    }
+
 
 }

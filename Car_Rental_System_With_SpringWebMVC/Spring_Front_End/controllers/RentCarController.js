@@ -112,7 +112,7 @@ function setCarRegisterNoAndColoursToComboBox(){
 }
 
 function clearRentalFields() {
-    $('#inputCraID').val("");
+    $('#inputCraID').text("");
     $('#inputId').text("");
     $('#inputUName').text("");
     $('#inputPickUpDate').val("");
@@ -123,8 +123,11 @@ function clearRentalFields() {
     $('#inputReturnVenue').val("");
     $('#inputBankSlip').val("");
     $('#inputLossDamageWaiver').val("");
+    $("#inputDriverID").val("");
     $('#inputDriverName').val("");
     $('#inputDriverContactNo').val("");
+
+    generateRentId();
 
 }
 
@@ -160,8 +163,10 @@ function searchRandomDriverForRent() {
         method: "GET",
         success: function (res) {
             for (let driver of res.data) {
+                $("#inputDriverID").val(driver.driverID);
                 $('#inputDriverName').val(driver.name);
                 $('#inputDriverContactNo').val(driver.contactNo);
+
             }
         },
         error: function (error) {
@@ -177,7 +182,161 @@ function searchRandomDriverForRent() {
 }
 
 function clearRentalDriverFields() {
+    $("#inputDriverID").val("");
     $('#inputDriverName').val("");
     $('#inputDriverContactNo').val("");
 }
+
+$("#btnPlaceBooking").click(function (){
+    let regNo = $('#inputCraID').text();
+    let color = $('#carColour').find('option:selected').text();
+
+    if (regNo != "" && color !="" && color != "-Select Car Colour-" && $('#inputPickUpDate').val()!="" && $('#inputPickUpTime').val()!="" && $('#inputPickUpVenue').val()!="" && $('#inputReturnDate').val()!="" && $('#inputReturnTime').val()!="" && $('#inputReturnVenue').val()!="" && $('#inputBankSlip').val()!=""){
+        let userId = $('#inputId').val();
+        searchUserById(userId);
+    }else {
+        alert("Please fill rental fields");
+    }
+});
+
+function searchUserById(userId) {
+    $.ajax({
+        url: baseUrl + "user/" + userId,
+        method: "GET",
+        success: function (res) {
+            let user = res.data;
+            searchCarByRegNo(user);
+        }
+    });
+}
+
+function searchCarByRegNo(user) {
+    let registrationNo = $('#inputCraID').text();
+    $.ajax({
+        url: baseUrl + "car/" + registrationNo,
+        method: "GET",
+        success: function (res) {
+            let car = res.data;
+            searchDriverByDriverID(user, car);
+        }
+    })
+}
+
+function searchDriverByDriverID(user, car) {
+    let driverID = $('#inputDriverID').val();
+    if ($('#inputDriverID').val() === "") {
+        driverID = null;
+    }
+    if (driverID != null) {
+        $.ajax({
+            url: baseUrl + "driver/" + driverID,
+            method: "GET",
+            success: function (res) {
+                let driver = res.data;
+                console.log(res.data);
+                addCarRent(user, car, driver);
+            }
+        })
+    } else {
+        addCarRent(user, car, null);
+    }
+}
+
+function addCarRent(user, car, driver) {
+
+    let rentId = $('#inputRentID').val();
+    let rentDate = $('#inputRentDate').val();
+    let pickupDate = $('#inputPickUpDate').val();
+    let pickupTime = $('#inputPickUpTime').val();
+    let pickupVenue = $('#inputPickUpVenue').val();
+    let returnDate = $('#inputReturnDate').val();
+    let returnTime = $('#inputReturnTime').val();
+    let returnVenue = $('#inputReturnVenue').val();
+    let lossDamWare = $('#inputLossDamageWaiver').val();
+    let status = "Pending";
+
+    var rent = {
+        rentID: rentId,
+        rentDate: rentDate,
+        pickUpDate: pickupDate,
+        pickUpTime: pickupTime,
+        pickUpVenue: pickupVenue,
+        returnDate: returnDate,
+        returnTime: returnTime,
+        returnVenue: returnVenue,
+        lossDamageWaiver: lossDamWare,
+        status:status,
+        user: user,
+        car: car,
+        driver: driver
+    }
+
+    $.ajax({
+        url: baseUrl + "rent",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(rent),
+        success: function (resp) {
+            uploadBankSlip(rentId);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Rent Placed Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            clearRentalFields();
+            location.replace("userDashboard.html");
+        },
+        error: function (ob) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function uploadBankSlip(rentId) {
+
+    var fileObjectNic1 = $('#inputBankSlip')[0].files[0];
+    var fileNameNic1 = rentId + "-bankSlip-" + $('#inputBankSlip')[0].files[0].name;
+
+    var data = new FormData();
+    data.append("bankSlip", fileObjectNic1, fileNameNic1);
+
+
+    $.ajax({
+        url: baseUrl + "rent/uploadImg/" + rentId,
+        method: "PUT",
+        async: true,
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (resp) {
+            console.log("Uploaded");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "BankSip Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
 

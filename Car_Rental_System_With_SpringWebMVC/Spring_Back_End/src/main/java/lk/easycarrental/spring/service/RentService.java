@@ -18,5 +18,6 @@ public interface RentService {
 
     List<RentDTO> getAllRents();
 
+    void updateBankSlip(String bankSlip, String rentId);
 
 }
