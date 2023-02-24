@@ -3,7 +3,6 @@ $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);
 });
 
-
 $("#all").css('display','block');
 $("#NoOfPassengers").css('display','none');
 $("#four").css('display','none');
@@ -23,6 +22,7 @@ $("#rowTransmissionType").css('display','none');
 $("#rowBrand").css('display','none');
 $("#rowFuelType").css('display','none');
 $("#cars").css('display','none');
+
 
 
 $("#navAll").click(function (){
@@ -219,4 +219,3 @@ $(".ToyotaPriusCBtn").click(function (){
     $("#PeroduaDaihatsuAxia").css('display','none');
     $("#ToyotaPriusC").css('display','block');
 });
-
