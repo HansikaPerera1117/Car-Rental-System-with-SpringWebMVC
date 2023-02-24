@@ -80,5 +80,9 @@ public class CarController {
         return new ResponseUtil("200", "Done", service.getCountOfCarsByStatus(availability));
     }
 
+    @GetMapping(path = "/getRegNo/{type}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarRegistrationNoByType(@PathVariable String type){
+        return new ResponseUtil("200","Done",service.getCarRegistrationNumbersByType(type));
+    }
 
 }

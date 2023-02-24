@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface CarRepo extends JpaRepository<Car,String> {
 
     @Modifying
@@ -21,5 +23,8 @@ public interface CarRepo extends JpaRepository<Car,String> {
 
     @Query(value = "SELECT COUNT(registrationNumber) FROM Car WHERE availability=:availability", nativeQuery = true)
     int getCountOfCarsByStatus(@Param("availability") String availability);
+
+    @Query(value = "SELECT registrationNumber FROM Car WHERE type=:type AND availability='Available'", nativeQuery = true)
+    List<String> getCarRegistrationNoByType(@Param("type") String type);
 
 }

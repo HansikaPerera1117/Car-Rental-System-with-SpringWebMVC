@@ -20,5 +20,7 @@ public interface CarService {
 
     int getCountOfCarsByStatus(String availability);
 
+    List<String> getCarRegistrationNumbersByType(String type);
+
 
 }
