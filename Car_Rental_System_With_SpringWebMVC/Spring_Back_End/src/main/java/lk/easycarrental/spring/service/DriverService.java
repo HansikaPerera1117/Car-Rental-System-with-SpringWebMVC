@@ -18,6 +18,8 @@ public interface DriverService {
 
     List<DriverDTO> getAllDrivers();
 
+    void resetDriverPassword(String driverID, String password);
+
     boolean findDriverByUsername(String username);
 
     boolean findDriverByPassword(String password);

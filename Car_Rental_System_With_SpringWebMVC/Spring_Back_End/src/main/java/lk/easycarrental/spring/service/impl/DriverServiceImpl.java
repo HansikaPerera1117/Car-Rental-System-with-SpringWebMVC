@@ -87,6 +87,15 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public void resetDriverPassword(String driverID, String password) {
+        if (repo.existsById(driverID)){
+            repo.resetDriverPassword(driverID,password);
+        } else {
+            throw new RuntimeException("Driver "+driverID+ " Not Exist to Reset Password....!");
+        }
+    }
+
+    @Override
     public boolean findDriverByUsername(String username) {
         return repo.findDriverByUsername(username).isPresent();
     }

@@ -51,6 +51,12 @@ public class DriverController {
         return new ResponseUtil("200", "Done", service.searchDriver(driverID));
     }
 
+    @PutMapping(path = "/resetPassword/{driverID}/{password}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil resetDriverPassword(@PathVariable String driverID, @PathVariable String password){
+        service.resetDriverPassword(driverID,password);
+        return new ResponseUtil("200","Driver Password Reset Successfully",null);
+    }
+
     @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriverByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
         if (service.findDriverByUsername(username)) {

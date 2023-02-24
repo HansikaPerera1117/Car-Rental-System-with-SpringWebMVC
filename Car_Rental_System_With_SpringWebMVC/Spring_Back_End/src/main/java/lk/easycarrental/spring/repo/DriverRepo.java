@@ -30,5 +30,10 @@ public interface DriverRepo extends JpaRepository<Driver,String> {
     @Query(value = "SELECT COUNT(driverID) FROM Driver WHERE availability=:availability",nativeQuery = true)
     int getCountOfDriversByStatus(@Param("availability") String availability);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Driver SET password=:password WHERE driverID=:driverID", nativeQuery = true)
+    void resetDriverPassword(@Param("driverID") String driverID, @Param("password") String password);
+
 
 }
