@@ -22,6 +22,11 @@ public class DriverController {
         return new ResponseUtil("200", "Done", service.generateDriverId());
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllDrivers() {
+        return new ResponseUtil("200","Done",null);
+    }
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveDriver(@RequestBody DriverDTO dto) {
         System.out.println(dto.toString());
@@ -39,6 +44,11 @@ public class DriverController {
     public ResponseUtil deleteDriver(@RequestParam String driverID) {
         service.deleteDriver(driverID);
         return new ResponseUtil("200",driverID+" Driver Deleted Successfully ",null);
+    }
+
+    @GetMapping(path = "/{driverID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchDriver(@PathVariable String driverID) {
+        return new ResponseUtil("200", "Done", service.searchDriver(driverID));
     }
 
     @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)

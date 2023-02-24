@@ -5,6 +5,7 @@ import lk.easycarrental.spring.entity.Driver;
 import lk.easycarrental.spring.repo.DriverRepo;
 import lk.easycarrental.spring.service.DriverService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,12 +74,16 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverDTO searchDriver(String driverID) {
-        return null;
+        if (repo.existsById(driverID)) {
+            return mapper.map(repo.findById(driverID).get(), DriverDTO.class);
+        } else {
+            throw new RuntimeException("Driver "+driverID+" Not Exist...!");
+        }
     }
 
     @Override
     public List<DriverDTO> getAllDrivers() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<DriverDTO>>() {}.getType());
     }
 
     @Override
