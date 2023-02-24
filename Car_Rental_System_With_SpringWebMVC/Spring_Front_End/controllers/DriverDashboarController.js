@@ -45,3 +45,37 @@ function setDriverDetails(driver) {
     $('#inputUsername').val(driver.username);
     $('#inputPassword').val(driver.password);
 }
+
+$("#btnResetDriverPassword").click(function (){
+    resetPassword();
+});
+
+function resetPassword(){
+    var id = $('#DriverProfileID').text();
+    var newPassword = $('#inputNPassword').val();
+
+    $.ajax({
+        url: baseUrl + "driver/resetPassword/"+ id + "/" + newPassword,
+        method: "PUT",
+        success: function (resp){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Reset Password Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: " Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+
+}

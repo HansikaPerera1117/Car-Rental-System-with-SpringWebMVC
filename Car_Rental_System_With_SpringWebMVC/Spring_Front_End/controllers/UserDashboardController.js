@@ -181,7 +181,7 @@ function resetPassword(){
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: "User Not Updated Successfully",
+                title: " Unsuccessfully",
                 showConfirmButton: false,
                 timer: 1500
             });
