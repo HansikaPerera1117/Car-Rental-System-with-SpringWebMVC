@@ -752,6 +752,17 @@ function getAvailableCarCount() {
 
 
 //--------------------Driver start-------------------------------------------
+generateDriverId();
+
+function generateDriverId() {
+    $.ajax({
+        url: baseUrl + "driver/generateDriverId",
+        method: "GET",
+        success: function (res) {
+            $('#inputDriverID').val(res.data);
+        }
+    })
+}
 
 $("#btnAddDriver").click(function (){
     saveDriver();
@@ -786,7 +797,10 @@ function saveDriver() {
         contentType: "application/json",
         data: JSON.stringify(driver),
         success: function (res) {
-           
+            //=======================mewa dannaaaaaaaaaaaaaaaaaaaa====================================================
+            //getAvailableDriverCount();
+           // loadAvailableDrivers();
+           // loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -806,6 +820,7 @@ function saveDriver() {
         }
     })
 }
+
 
 //--------------------Driver end-------------------------------------------
 

@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface DriverService {
 
+    String generateDriverId();
+
     void saveDriver(DriverDTO dto);
 
     void updateDriver(DriverDTO dto);

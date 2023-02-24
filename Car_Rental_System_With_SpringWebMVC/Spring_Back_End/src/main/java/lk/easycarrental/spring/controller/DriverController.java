@@ -17,6 +17,11 @@ public class DriverController {
     @Autowired
     DriverService service;
 
+    @GetMapping(path = "/generateDriverId", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateDriverId() {
+        return new ResponseUtil("200", "Done", service.generateDriverId());
+    }
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveDriver(@RequestBody DriverDTO dto) {
         System.out.println(dto.toString());
