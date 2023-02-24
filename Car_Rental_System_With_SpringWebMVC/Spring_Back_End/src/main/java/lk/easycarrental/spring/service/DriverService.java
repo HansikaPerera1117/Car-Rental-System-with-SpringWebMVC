@@ -28,5 +28,7 @@ public interface DriverService {
 
     int getCountOfDriversByStatus(String  availability);
 
+    List<DriverDTO> getRandomDriver();
+
 
 }

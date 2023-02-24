@@ -35,5 +35,8 @@ public interface DriverRepo extends JpaRepository<Driver,String> {
     @Query(value = "UPDATE Driver SET password=:password WHERE driverID=:driverID", nativeQuery = true)
     void resetDriverPassword(@Param("driverID") String driverID, @Param("password") String password);
 
+    @Query(value = "SELECT * FROM Driver WHERE availability='Available' ORDER BY RAND() LIMIT 1",nativeQuery = true)
+    List<Driver> getRandomDriver();
+
 
 }

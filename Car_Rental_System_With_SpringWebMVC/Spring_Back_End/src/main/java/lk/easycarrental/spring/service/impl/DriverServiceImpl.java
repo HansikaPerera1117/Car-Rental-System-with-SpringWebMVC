@@ -114,4 +114,10 @@ public class DriverServiceImpl implements DriverService {
     public int getCountOfDriversByStatus(String availability) {
         return repo.getCountOfDriversByStatus(availability);
     }
+
+    @Override
+    public List<DriverDTO> getRandomDriver() {
+        return mapper.map(repo.getRandomDriver(), new TypeToken<List<DriverDTO>>() {
+        }.getType());
+    }
 }

@@ -26,9 +26,14 @@ function getAllDriverData(username, password) {
         success: function (res) {
             let driver = res.data;
             setDriverDetails(driver);
-           // loadDriverSchedule(driver.driverID);
+            loadDriverSchedule(driver.driverID);
         }
     })
+}
+
+//===========================meka karala na thama-===============================================
+function loadDriverSchedule(driverID) {
+
 }
 
 function setDriverDetails(driver) {
@@ -78,4 +83,56 @@ function resetPassword(){
         }
     })
 
+}
+
+$("#btnDeleteDriver").click(function (){
+    if ($('#DriverProfileID').text() != "") {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteDriver();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                location.replace("logIn.html");
+            }
+        })
+    }
+});
+
+function deleteDriver(){
+
+    var id = $('#DriverProfileID').text();
+    $.ajax({
+        url: baseUrl + "driver?driverID=" + id,
+        method: "DELETE",
+        success: function (resp) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Your Driver Account Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 }

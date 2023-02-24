@@ -1035,6 +1035,9 @@ function getAvailableDriverCount() {
 }
 
 //==========================================driver schedule button eka hadanna=======================================
+$("#btnDriverSchedule").click(function (){
+
+});
 
 //--------------------Driver end-------------------------------------------
 

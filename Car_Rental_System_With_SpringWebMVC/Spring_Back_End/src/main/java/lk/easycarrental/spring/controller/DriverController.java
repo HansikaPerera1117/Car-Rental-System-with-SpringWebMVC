@@ -80,5 +80,10 @@ public class DriverController {
         return new ResponseUtil("200","Done",service.getCountOfDriversByStatus(availability));
     }
 
+    @GetMapping(path = "/getRandomDriver",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getRandomDriver(){
+        return new ResponseUtil("200","Done",service.getRandomDriver());
+    }
+
 
 }

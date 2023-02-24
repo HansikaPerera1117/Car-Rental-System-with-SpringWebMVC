@@ -224,7 +224,7 @@ function deleteUser(){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: "User Deleted Successfully",
+                title: "Your User Account Deleted Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -234,7 +234,7 @@ function deleteUser(){
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: "User Not Updated Successfully",
+                title: "Unsuccessfully",
                 showConfirmButton: false,
                 timer: 1500
             });
