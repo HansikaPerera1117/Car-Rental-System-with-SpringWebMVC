@@ -545,7 +545,6 @@ $('#btnUpdateCar').click(function () {
 })
 
 function updateCar() {
-
     let regNo = $('#inputRegisterNo').val();
     let brand = $('#inputBrand').val();
     let type = $('#selectType').find('option:selected').text();
@@ -799,7 +798,7 @@ function saveDriver() {
         success: function (res) {
             //=======================mewa dannaaaaaaaaaaaaaaaaaaaa====================================================
             //getAvailableDriverCount();
-           // loadAllDrivers();
+           loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -851,7 +850,7 @@ function deleteDriver() {
         method: "DELETE",
         success: function (resp) {
             //getAvailableDriverCount();
-            //loadAllDrivers();
+            loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -903,7 +902,7 @@ function updateDriver() {
         contentType: "application/json",
         data: JSON.stringify(driver),
         success: function (resp) {
-           // loadAllDrivers();
+           loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -937,6 +936,60 @@ function clearDriverFields() {
     generateDriverId();
 }
 
+function loadAllDrivers() {
+    $('#tblDriver').empty();
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "GET",
+        success: function (resp) {
+            for (const driver of resp.data) {
+                let row = `<tr><td>${driver.driverID}</td><td>${driver.name}</td><td>${driver.address}</td><td>${driver.contactNo}</td><td>${driver.nic}</td><td>${driver.drivingLicense}</td><td>${driver.availability}</td></tr>`;
+                $('#tblDriver').append(row);
+            }
+            bindRegisterDriversClickEvents();
+        }
+    })
+}
+function bindRegisterDriversClickEvents() {
+    $('#tblDriver>tr').click(function () {
+        let driverID = $(this).children().eq(0).text();
+        findDriver(driverID);
+    })
+}
+
+$("#btnSearchDriver").click(function (){
+    var driverID = $('#inputDriverID').val();
+    findDriver(driverID);
+});
+
+function findDriver(driverID) {
+    $.ajax({
+        url: baseUrl + "driver/" + driverID,
+        method: "GET",
+        success: function (resp) {
+            let driver = resp.data;
+            $('#inputDriverID').val(driver.driverID);
+            $('#inputDriverName').val(driver.name);
+            $('#inputDriverAddress').val(driver.address);
+            $('#inputDriverContactNo').val(driverID.contactNo);
+            $('#inputDriverNIC').val(driver.nic);
+            $('#inputDriverDrivingLicense').val(driver.drivingLicense);
+            $('#inputDriverUserName').val(driver.username);
+            $('#inputDriverPassword').val(driver.password);
+            $('#selectDriverAvailability').find('option:selected').text(driver.availability);
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Driver " + driverID + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
 
 //--------------------Driver end-------------------------------------------
 
