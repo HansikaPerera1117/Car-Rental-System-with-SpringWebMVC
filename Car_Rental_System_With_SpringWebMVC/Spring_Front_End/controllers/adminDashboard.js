@@ -799,7 +799,6 @@ function saveDriver() {
         success: function (res) {
             //=======================mewa dannaaaaaaaaaaaaaaaaaaaa====================================================
             //getAvailableDriverCount();
-           // loadAvailableDrivers();
            // loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
@@ -819,6 +818,123 @@ function saveDriver() {
             });
         }
     })
+}
+
+$('#btnDeleteDriver').click(function () {
+    if ($('#inputDriverID').val() != "") {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteDriver();
+                clearDriverFields();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
+})
+
+function deleteDriver() {
+    let driverID = $('#inputDriverID').val();
+    $.ajax({
+        url: baseUrl + "driver?driverID=" + driverID,
+        method: "DELETE",
+        success: function (resp) {
+            //getAvailableDriverCount();
+            //loadAllDrivers();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Not Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+$('#btnUpdateDriver').click(function () {
+    updateDriver();
+    clearDriverFields();
+})
+
+function updateDriver() {
+
+    var driverID = $('#inputDriverID').val();
+    var name = $('#inputDriverName').val();
+    var address = $('#inputDriverAddress').val();
+    var contact = $('#inputDriverContactNo').val();
+    var nic = $('#inputDriverNIC').val();
+    var drivingLicense = $('#inputDriverDrivingLicense').val();
+    var username = $('#inputDriverUserName').val();
+
+    var driver = {
+        driverID: driverID,
+        name: name,
+        address: address,
+        contactNo: contact,
+        nic: nic,
+        drivingLicense: drivingLicense,
+        username: username,
+    }
+
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(driver),
+        success: function (resp) {
+           // loadAllDrivers();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Driver Not Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function clearDriverFields() {
+     $('#inputDriverID').val("");
+     $('#inputDriverName').val("");
+     $('#inputDriverAddress').val("");
+     $('#inputDriverContactNo').val("");
+     $('#inputDriverNIC').val("");
+     $('#inputDriverDrivingLicense').val("");
+     $('#inputDriverUserName').val("");
+     $('#inputDriverPassword').val("");
+
+    generateDriverId();
 }
 
 
