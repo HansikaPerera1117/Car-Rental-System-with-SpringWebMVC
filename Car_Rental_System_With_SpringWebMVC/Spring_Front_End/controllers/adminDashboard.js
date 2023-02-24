@@ -816,7 +816,8 @@ function saveDriver() {
         data: JSON.stringify(driver),
         success: function (res) {
             getAvailableDriverCount();
-           loadAllDrivers();
+            loadAllDrivers();
+            clearDriverFields()
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',

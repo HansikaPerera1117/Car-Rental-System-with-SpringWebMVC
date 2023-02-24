@@ -128,12 +128,12 @@
             </ul>
         </div>
 
-        <!---------------------user acc----------------------->
+        <!---------------------driver acc----------------------->
         <div class="row me-3" style="width: 300px">
             <div class="col-8 ">
                 <label class="col-5"></label>
-                <label class="col-6 text-end" id="DriverID">D001</label>
-                <label class="col-12 text-end" id="DriverName">Hansika Perera</label>
+                <label class="col-6 text-end" id="DriverID"></label>
+                <label class="col-12 text-end" id="DriverName"></label>
             </div>
             <button class="navbar-toggler d-inline-block align-text-top align-items-end col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <img src="../assests/images/profile-user.png" width="50px" height="50px">
@@ -141,11 +141,11 @@
         </div>
 
     </nav>
-    <!---------------------user acc offcanvas----------------------->
+    <!---------------------driver acc offcanvas----------------------->
     <div  class=" myf offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
         <div class="col-12 mt-2" style="height:30px;">
             <label class="col-7 ms-2 fs-4" style="height: max-content;font-family: 'Convergence', sans-serif;text-decoration: underline;">Driver Profile</label>
-            <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;" id="DriverProfileID">D001</label>
+            <label class="col-4 ms-2 fs-4 text-end" style="height: max-content;" id="DriverProfileID"></label>
         </div>
         <div class="row justify-content-center" style="height: 100px">
             <div class="col-3 align-self-center">
@@ -184,7 +184,7 @@
 
             <div class="row mt-2">
                 <div class="col-9">
-                    <label class="col-6 fs-5" style="height: max-content; width: max-content;">Change Password</label>
+                    <label class="col-6 fs-5" style="height: max-content; width: max-content;" >Change Password</label>
                 </div>
             </div>
             <div class="col-md-8">
@@ -193,11 +193,11 @@
                 <div id="pwHelp" class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
             </div>
             <div class="col-md-4 align-self-end">
-                <button class="btn btn-dark mt-5 ms-5" type="button">Reset Password</button>
+                <button class="btn btn-dark mt-5 ms-5" type="button" id="btnResetDriverPassword">Reset Password</button>
             </div>
             <div class="row mt-2 ">
                 <div class="col-10 align-items-end">
-                    <button class="btn  btn-dark" type="button">Delete Account</button>
+                    <button class="btn  btn-dark" type="button" id="btnDeleteDriver">Delete Account</button>
                 </div>
                 <div class="col-2 align-self-end">
                     <button class="btn btn-dark ms-3" type="button"><a href="../index.html" style="text-decoration: none; color: white">LogOut</a></button>
