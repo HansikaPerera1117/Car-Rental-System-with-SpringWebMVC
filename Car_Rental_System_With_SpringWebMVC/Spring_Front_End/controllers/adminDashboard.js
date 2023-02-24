@@ -11,6 +11,7 @@ getRegisterUsersCount();
 loadAllCars();
 getAvailableCarCount();
 loadAllDrivers();
+getAvailableDriverCount();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -814,8 +815,7 @@ function saveDriver() {
         contentType: "application/json",
         data: JSON.stringify(driver),
         success: function (res) {
-            //=======================mewa dannaaaaaaaaaaaaaaaaaaaa====================================================
-            //getAvailableDriverCount();
+            getAvailableDriverCount();
            loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
@@ -868,7 +868,7 @@ function deleteDriver() {
         url: baseUrl + "driver?driverID=" + driverID,
         method: "DELETE",
         success: function (resp) {
-            //getAvailableDriverCount();
+            getAvailableDriverCount();
             loadAllDrivers();
             Swal.fire({
                 position: 'top-end',
@@ -1010,6 +1010,25 @@ function findDriver(driverID) {
                 showConfirmButton: false,
                 timer: 1500
             });
+        }
+    })
+}
+
+function getAvailableDriverCount() {
+    let availability = "Available";
+    $.ajax({
+        url: baseUrl + "driver/count/" + availability,
+        method: "GET",
+        success: function (res) {
+            if (res.data != 0) {
+                if (res.data < 10) {
+                    $('#lblNoOfAvailableDrivers').text("0" + res.data);
+                } else {
+                    $('#lblNoOfAvailableDrivers').text(res.data);
+                }
+            } else {
+                $('#lblNoOfAvailableDrivers').text("00");
+            }
         }
     })
 }
