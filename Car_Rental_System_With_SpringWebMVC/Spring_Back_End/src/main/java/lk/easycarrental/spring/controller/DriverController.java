@@ -24,7 +24,7 @@ public class DriverController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllDrivers() {
-        return new ResponseUtil("200","Done",null);
+        return new ResponseUtil("200", "Done", service.getAllDrivers());
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -69,6 +69,10 @@ public class DriverController {
         return new ResponseUtil("200", "Ok", service.findDriverByUsernameAndPassword(username, password));
     }
 
+    @GetMapping(path = "/count/{availability}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCountOfDriversByAvailability(@PathVariable String availability){
+        return new ResponseUtil("200","Done",service.getCountOfDriversByStatus(availability));
+    }
 
 
 }

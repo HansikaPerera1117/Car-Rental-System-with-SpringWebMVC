@@ -10,6 +10,7 @@ loadAllUsers();
 getRegisterUsersCount();
 loadAllCars();
 getAvailableCarCount();
+loadAllDrivers();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -351,7 +352,6 @@ $("#btnDenyUser").click(function (){
 });
 
 function deleteUser(){
-
     let id = $('#inputUserUserID').val();
     $.ajax({
         url: baseUrl + "user?id=" + id,
@@ -695,13 +695,31 @@ $("#btnSearchCar").click(function () {
 });
 
 $('#btnDeleteCar').click(function () {
-    deleteCar();
-    clearAddCarFields();
+    if ($('#inputRegisterNo').val() != "") {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteCar();
+                clearAddCarFields();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
 })
 
 function deleteCar() {
     let registrationNo = $('#inputRegisterNo').val();
-
     $.ajax({
         url: baseUrl + "car?registrationNo=" + registrationNo,
         method: "DELETE",
@@ -833,6 +851,7 @@ $('#btnDeleteDriver').click(function () {
             if (result.isConfirmed) {
                 deleteDriver();
                 clearDriverFields();
+                generateDriverId();
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
@@ -941,8 +960,9 @@ function loadAllDrivers() {
     $.ajax({
         url: baseUrl + "driver",
         method: "GET",
-        success: function (resp) {
-            for (const driver of resp.data) {
+        success: function (res) {
+            console.log(res)
+            for (const driver of res.data) {
                 let row = `<tr><td>${driver.driverID}</td><td>${driver.name}</td><td>${driver.address}</td><td>${driver.contactNo}</td><td>${driver.nic}</td><td>${driver.drivingLicense}</td><td>${driver.availability}</td></tr>`;
                 $('#tblDriver').append(row);
             }
@@ -950,15 +970,18 @@ function loadAllDrivers() {
         }
     })
 }
+
 function bindRegisterDriversClickEvents() {
     $('#tblDriver>tr').click(function () {
         let driverID = $(this).children().eq(0).text();
+        $("#inputDriverPassword").prop("readonly", true);
         findDriver(driverID);
     })
 }
 
 $("#btnSearchDriver").click(function (){
-    var driverID = $('#inputDriverID').val();
+    var driverID = $('#inputDriverSearch').val();
+    $("#inputDriverPassword").prop("readonly", true);
     findDriver(driverID);
 });
 
@@ -971,7 +994,7 @@ function findDriver(driverID) {
             $('#inputDriverID').val(driver.driverID);
             $('#inputDriverName').val(driver.name);
             $('#inputDriverAddress').val(driver.address);
-            $('#inputDriverContactNo').val(driverID.contactNo);
+            $('#inputDriverContactNo').val(driver.contactNo);
             $('#inputDriverNIC').val(driver.nic);
             $('#inputDriverDrivingLicense').val(driver.drivingLicense);
             $('#inputDriverUserName').val(driver.username);
@@ -990,6 +1013,8 @@ function findDriver(driverID) {
         }
     })
 }
+
+//==========================================driver schedule button eka hadanna=======================================
 
 //--------------------Driver end-------------------------------------------
 

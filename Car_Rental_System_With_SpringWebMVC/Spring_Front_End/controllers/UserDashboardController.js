@@ -191,8 +191,27 @@ function resetPassword(){
 }
 
 $("#btnDeleteUser").click(function (){
-    deleteUser();
-    location.replace("logIn.html");
+    if ($('#UserProfileID').text() != "") {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                location.replace("logIn.html");
+            }
+        })
+    }
 });
 
 function deleteUser(){
@@ -223,7 +242,7 @@ function deleteUser(){
     })
 }
 
-//--------------meka karala na thama------------------------------------
+//===========================meka karala na thama-===============================================
 function loadMyCarRentsToTable(userID) {
 
 }
