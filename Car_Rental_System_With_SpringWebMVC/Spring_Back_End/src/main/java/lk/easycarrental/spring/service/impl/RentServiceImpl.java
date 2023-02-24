@@ -2,6 +2,7 @@ package lk.easycarrental.spring.service.impl;
 
 
 import lk.easycarrental.spring.dto.RentDTO;
+import lk.easycarrental.spring.entity.Rent;
 import lk.easycarrental.spring.repo.RentRepo;
 import lk.easycarrental.spring.service.RentService;
 import org.modelmapper.ModelMapper;
@@ -46,7 +47,11 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public void addRent(RentDTO dto) {
-
+        if (!repo.existsById(dto.getRentID())) {
+            repo.save(mapper.map(dto, Rent.class));
+        } else {
+            throw new RuntimeException("Rent "+dto.getRentID()+" Already Exist....!");
+        }
     }
 
     @Override

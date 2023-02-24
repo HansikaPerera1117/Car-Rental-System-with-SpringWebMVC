@@ -3,11 +3,6 @@ $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);
 });
 
-let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
-
-generateRentId();
-setDates();
-
 
 $("#all").css('display','block');
 $("#NoOfPassengers").css('display','none');
@@ -176,7 +171,6 @@ $("#navFuel").click(function (){
 });
 
 
-
 $(".ToyotaPremio").click(function (){
     $("#cars").css('display','block');
     $("#main").css('display','none');
@@ -201,21 +195,3 @@ $(".BMWi8").click(function (){
     $("#BMWi8").css('display','block');
 });
 
-
-function generateRentId() {
-    $.ajax({
-        url: baseUrl + "rent/generateRentId",
-        method: "GET",
-        success: function (res) {
-            console.log(res)
-            $('#inputRentID').text(res.data);
-        }
-    })
-}
-
-function setDates() {
-    var date = new Date();
-    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-    $("#inputRentDate").text("Date : "+current_date);
-
-}
