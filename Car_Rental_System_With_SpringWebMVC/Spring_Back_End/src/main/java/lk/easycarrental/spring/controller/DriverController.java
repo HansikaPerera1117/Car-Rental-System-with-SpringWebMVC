@@ -29,6 +29,17 @@ public class DriverController {
         return new ResponseUtil("200","Driver Added Successfully "+dto.toString(),null);
     }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateDriver(@RequestBody DriverDTO dto) {
+        service.updateDriver(dto);
+        return new ResponseUtil("200","Driver Updated Successfully "+dto.toString(),null);
+    }
+
+    @DeleteMapping(params = {"driverID"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteDriver(@RequestParam String driverID) {
+        service.deleteDriver(driverID);
+        return new ResponseUtil("200",driverID+" Driver Deleted Successfully ",null);
+    }
 
     @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriverByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
