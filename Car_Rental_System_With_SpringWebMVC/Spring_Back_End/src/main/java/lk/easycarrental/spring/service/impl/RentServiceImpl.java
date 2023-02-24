@@ -2,7 +2,10 @@ package lk.easycarrental.spring.service.impl;
 
 
 import lk.easycarrental.spring.dto.RentDTO;
+import lk.easycarrental.spring.repo.RentRepo;
 import lk.easycarrental.spring.service.RentService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,9 +14,39 @@ import java.util.List;
 @Service
 @Transactional
 public class RentServiceImpl implements RentService {
+
+    @Autowired
+    RentRepo repo;
+
+    @Autowired
+    ModelMapper mapper;
+
+    @Override
+    public String generateRentId() {
+        String lastId = repo.generateRentId();
+        String id = "";
+
+        if (lastId != null) {
+            int tempId = Integer.parseInt(lastId.split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                id = "RNT-000" + tempId;
+            } else if (tempId <= 99) {
+                id = "RNT-00" + tempId;
+            } else if (tempId <= 999) {
+                id = "RNT-0" + tempId;
+            } else if (tempId <= 9999) {
+                id = "RNT-" + tempId;
+            }
+        } else {
+            id = "RNT-0001";
+        }
+        return id;
+    }
+
     @Override
     public void addRent(RentDTO dto) {
-        
+
     }
 
     @Override
@@ -36,8 +69,5 @@ public class RentServiceImpl implements RentService {
         return null;
     }
 
-    @Override
-    public String generateRentId() {
-        return null;
-    }
+
 }

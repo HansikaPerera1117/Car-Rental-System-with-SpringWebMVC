@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface RentService {
 
+    String generateRentId();
+
     void addRent(RentDTO dto);
 
     void updateRent(RentDTO dto);
@@ -16,6 +18,5 @@ public interface RentService {
 
     List<RentDTO> getAllRents();
 
-    String generateRentId();
 
 }
