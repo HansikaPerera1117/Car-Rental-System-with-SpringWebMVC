@@ -24,6 +24,37 @@ function setDates() {
 }
 
 function setCarRegisterNoAndColoursToComboBox(){
-    let type = $("#h1CarType").text();
+    let type = $("#CarType").text();
+    clearRentalFields();
+    $('#carColour').empty();
+    $('#carColour').append(new Option("-Select Car Colour-", ""));
+    $.ajax({
+        url: baseUrl + "car/getRegNo/" + type,
+        method: "GET",
+        success: function (res) {
+            console.log(res);
+            let i = 0;
+            for (let regNo of res.data) {
+                $('#carColour').append(new Option(regNo.color +" - "+regNo.registrationNumber, i));
+                i++;
+            }
+        }
+    })
+}
+
+function clearRentalFields() {
+    $('#inputCraID').val("");
+    $('#inputId').val("");
+    $('#inputName').val("");
+    $('#inputPickUpDate').val("");
+    $('#inputPickUpTime').val("");
+    $('#inputPickUpVenue').val("");
+    $('#inputReturnDate').val("");
+    $('#inputReturnTime').val("");
+    $('#inputReturnVenue').val("");
+    $('#inputBankSlip').val("");
+    $('#inputLossDamageWaiver').val("");
+    $('#inputDriverName').val("");
+    $('#inputDriverContactNo').val("");
 
 }

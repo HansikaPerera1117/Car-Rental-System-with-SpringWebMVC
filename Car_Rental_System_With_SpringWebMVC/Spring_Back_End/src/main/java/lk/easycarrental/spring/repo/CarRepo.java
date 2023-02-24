@@ -1,5 +1,6 @@
 package lk.easycarrental.spring.repo;
 
+import lk.easycarrental.spring.dto.CarDTO;
 import lk.easycarrental.spring.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,7 +25,7 @@ public interface CarRepo extends JpaRepository<Car,String> {
     @Query(value = "SELECT COUNT(registrationNumber) FROM Car WHERE availability=:availability", nativeQuery = true)
     int getCountOfCarsByStatus(@Param("availability") String availability);
 
-    @Query(value = "SELECT registrationNumber FROM Car WHERE type=:type AND availability='Available'", nativeQuery = true)
-    List<String> getCarRegistrationNoByType(@Param("type") String type);
+    @Query(value = "SELECT registrationNumber,color FROM Car WHERE type=:type ,brand=:brand, availability='Available'", nativeQuery = true)
+    List<CarDTO> getCarRegistrationNoByTypeAndBrand(@Param("type") String type,@Param("brand") String brand);
 
 }

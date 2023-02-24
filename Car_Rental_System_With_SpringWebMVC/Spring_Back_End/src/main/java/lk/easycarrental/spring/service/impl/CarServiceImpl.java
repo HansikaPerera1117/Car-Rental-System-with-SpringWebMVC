@@ -76,7 +76,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<String> getCarRegistrationNumbersByType(String type) {
-        return repo.getCarRegistrationNoByType(type);
+    public List<CarDTO> getCarRegistrationNoByTypeAndBrand(String type,String brand) {
+        return repo.getCarRegistrationNoByTypeAndBrand(type,brand);
     }
 }
