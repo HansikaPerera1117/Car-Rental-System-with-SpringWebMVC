@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Maintain {
     @Id
-    private String mID;
+    private String maintainID;
     private String description;
     private String status;
 

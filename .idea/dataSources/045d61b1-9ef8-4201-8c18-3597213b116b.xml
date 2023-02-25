@@ -1209,7 +1209,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ColNames>loginID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="351" parent="307" name="mID">
+    <column id="351" parent="307" name="maintainID">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1233,7 +1233,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </index>
     <key id="356" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>mID</ColNames>
+      <ColNames>maintainID</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="357" parent="307" name="FKwjjrb8kgpbv01orffep7efr0">

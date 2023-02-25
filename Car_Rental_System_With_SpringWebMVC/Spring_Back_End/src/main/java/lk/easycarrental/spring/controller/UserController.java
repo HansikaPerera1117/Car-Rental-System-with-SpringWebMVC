@@ -89,7 +89,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchCustomerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+    public ResponseUtil searchUserByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
         if (service.findUserByUsername(username)) {
             if (service.findUserByPassword(password)) {
                 return new ResponseUtil("200", "Login Successful", true);
@@ -102,7 +102,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/set/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil findCustomerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+    public ResponseUtil findUserByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
         return new ResponseUtil("200", "Done", service.findUserByUsernameAndPassword(username, password));
     }
 

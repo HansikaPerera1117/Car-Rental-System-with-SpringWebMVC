@@ -47,11 +47,11 @@ public class MaintainServiceImpl implements MaintainService {
     }
 
     @Override
-    public void addMaintenance(MaintainDTO dto) {
-        if (!repo.existsById(dto.getMID())) {
+    public void addMaintenance(MaintainDTO dto){
+        if (!repo.existsById(dto.getMaintainID())) {
             repo.save(mapper.map(dto, Maintain.class));
         } else {
-            throw new RuntimeException("Maintain "+dto.getMID()+" Already Exist....!");
+            throw new RuntimeException("Maintain "+dto.getMaintainID()+" Already Exist....!");
         }
     }
 
@@ -61,12 +61,12 @@ public class MaintainServiceImpl implements MaintainService {
     }
 
     @Override
-    public void deleteMaintenance(String maintenanceId) {
+    public void deleteMaintenance(String maintainID) {
 
     }
 
     @Override
-    public MaintainDTO searchMaintenance(String maintenanceId) {
+    public MaintainDTO searchMaintenance(String maintainID) {
         return null;
     }
 

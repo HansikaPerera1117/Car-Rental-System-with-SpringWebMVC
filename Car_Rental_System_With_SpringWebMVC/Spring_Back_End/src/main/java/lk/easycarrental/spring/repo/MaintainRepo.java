@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MaintainRepo extends JpaRepository<Maintain,String> {
 
-    @Query(value = "SELECT mID FROM Maintain ORDER BY mID DESC LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT maintainID FROM Maintain ORDER BY maintainID DESC LIMIT 1", nativeQuery = true)
     String generateMaintenanceId();
 
 }

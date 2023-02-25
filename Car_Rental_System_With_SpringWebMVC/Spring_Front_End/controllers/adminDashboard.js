@@ -15,6 +15,7 @@ loadAllDrivers();
 getAvailableDriverCount();
 
 generateMaintenanceId();
+loadAllCarRegNosToComboBox();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -937,7 +938,7 @@ function updateDriver() {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Driver Not Updated Successfully",
                 showConfirmButton: false,
                 timer: 1500
@@ -1059,6 +1060,134 @@ function generateMaintenanceId() {
         }
     })
 }
+
+function loadAllCarRegNosToComboBox(){
+    $('#selectMaintainCarRNo').empty();
+    $('#selectMaintainCarRNo').append(new Option("-Select Car-", ""));
+    $.ajax({
+        url: baseUrl + "car",
+        method: "GET",
+        success: function (resp) {
+            let i = 0;
+            for (let regNo of resp.data) {
+                $('#selectMaintainCarRNo').append(new Option(regNo.registrationNumber, i));
+                i++;
+            }
+        }
+    });
+}
+
+$('#selectMaintainCarRNo').change(function () {
+    let registrationNo = $('#selectMaintainCarRNo').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "car/" + registrationNo,
+        method: "GET",
+        success: function (res) {
+            let car = res.data;
+            if (car.availability === "Available"){
+                $("#inputMaintainDescription").focus();
+            }else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "This Car Is Not Available at This Moment",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                $("#selectMaintainCarRNo").focus();
+            }
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Car Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
+
+$("#btnAddMaintain").click(function (){
+    addMaintenances();
+});
+
+function addMaintenances(){
+    let maintenanceId = $('#inputMaintainID').val();
+    let registrationNo = $('#selectMaintainCarRNo').find('option:selected').text();
+    let description = $('#inputMaintainDescription').val();
+    let maintainStatus = $('#selectMaintainStatus').find('option:selected').text();
+
+    console.log(maintenanceId)
+    var maintenance = {
+        maintainID: maintenanceId,
+        registrationNumber: registrationNo,
+        description: description,
+        status: maintainStatus,
+    }
+
+    $.ajax({
+        url: baseUrl + "maintain",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(maintenance),
+        success: function (resp) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Maintenances Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            updateCarStatusInMaintain(registrationNo)
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Maintenances Not Added Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+
+function updateCarStatusInMaintain(registrationNo) {
+    let status = "Under Maintenance";
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Added To Maintenances Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            loadAllCars();
+            getAvailableCarCount();
+            loadAllMaintenances();
+            generateMaintenanceId();
+            clearMaintenanceFields();
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Update Car Availability Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+
+
 
 // search eka mid eken carid eken dekenma hoyanna ganna
 

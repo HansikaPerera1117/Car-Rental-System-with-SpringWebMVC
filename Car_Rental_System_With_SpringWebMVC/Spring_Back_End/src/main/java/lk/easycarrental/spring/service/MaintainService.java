@@ -12,9 +12,9 @@ public interface MaintainService {
 
     void updateMaintenance(MaintainDTO dto);
 
-    void deleteMaintenance(String maintenanceId);
+    void deleteMaintenance(String maintainID);
 
-    MaintainDTO searchMaintenance(String maintenanceId);
+    MaintainDTO searchMaintenance(String maintainID);
 
     List<MaintainDTO> getAllMaintenances();
 

@@ -296,7 +296,7 @@ function addCarRent(user, car, driver) {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Unsuccessfully",
                 showConfirmButton: false,
                 timer: 1500

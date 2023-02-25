@@ -11,7 +11,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class MaintainDTO {
-    private String mID;
+    private String maintainID;
     private String description;
     private String status;
 
