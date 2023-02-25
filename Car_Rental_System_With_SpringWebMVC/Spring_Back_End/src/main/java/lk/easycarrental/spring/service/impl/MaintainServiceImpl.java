@@ -1,6 +1,7 @@
 package lk.easycarrental.spring.service.impl;
 
 
+import lk.easycarrental.spring.dto.MaintainDTO;
 import lk.easycarrental.spring.repo.MaintainRepo;
 import lk.easycarrental.spring.service.MaintainService;
 import org.modelmapper.ModelMapper;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -41,5 +43,30 @@ public class MaintainServiceImpl implements MaintainService {
             id = "MT-0001";
         }
         return id;
+    }
+
+    @Override
+    public void addMaintenance(MaintainDTO dto) {
+        
+    }
+
+    @Override
+    public void updateMaintenance(MaintainDTO dto) {
+
+    }
+
+    @Override
+    public void deleteMaintenance(String maintenanceId) {
+
+    }
+
+    @Override
+    public MaintainDTO searchMaintenance(String maintenanceId) {
+        return null;
+    }
+
+    @Override
+    public List<MaintainDTO> getAllMaintenances() {
+        return null;
     }
 }
