@@ -778,8 +778,12 @@
                                     <div  class="ms-2" id="inputImageOfBankSlip" style="height: 150px;width: 225px; background-color: white"></div>
                                 </div>
                                 <div class="col-md-3">
+                                    <div class="col-9  ms-5">
+                                        <label for="inputRentStatus" class="form-label">Status</label>
+                                        <input type="text" class="form-control" id="inputRentStatus" readonly>
+                                    </div>
                                     <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 mt-5 me-3 btn-dark"  type="button">Change Driver</button>
+                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Change Driver</button>
                                     </div>
                                 </div>
                             </form>
@@ -812,6 +816,7 @@
                                     <th scope="col">ReturnVenue</th>
                                     <th scope="col">LossDamageWaiver</th>
                                     <th scope="col">DriverID</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -988,8 +993,12 @@
                                     <div  class="ms-2" id="inputReqImageOfBankSlip" style="height: 150px;width: 225px; background-color: white"></div>
                                 </div>
                                 <div class="col-md-3">
+                                    <div class="col-9  ms-5">
+                                        <label for="inputReqRentStatus" class="form-label">Status</label>
+                                        <input type="text" class="form-control" id="inputReqRentStatus" readonly>
+                                    </div>
                                     <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 mt-5 me-3 btn-dark" type="button">Accept</button>
+                                        <button class="btn fs-5 me-3 btn-dark" type="button">Accept</button>
                                     </div>
                                 </div>
                             </form>
@@ -1130,8 +1139,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Add To Maintains</button>
-                                        <button class="btn fs-5 btn-dark"  type="button">Remove</button>
+                                        <button class="btn fs-5 me-3 btn-dark" type="button" id="btnAddMaintain">Add To Maintains</button>
+                                        <button class="btn fs-5 btn-dark" type="button" id="btnRemoveMaintain">Remove</button>
                                     </div>
                                 </div>
                             </form>
@@ -1141,7 +1150,7 @@
                         <div class="col-12 mt-2">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputMaintainSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" id="btnSearchMaintain" for="inputMaintainSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
                                     <input class="form-control col-9" id="inputMaintainSearch" type="text">
@@ -1158,7 +1167,7 @@
                                     <th scope="col">Status</th>
                                 </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody id="tblMaintain"></tbody>
                             </table>
                         </div>
                     </div>

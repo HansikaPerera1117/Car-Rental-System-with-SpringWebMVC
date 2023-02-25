@@ -25,7 +25,13 @@ public interface CarRepo extends JpaRepository<Car,String> {
     @Query(value = "SELECT COUNT(registrationNumber) FROM Car WHERE availability=:availability", nativeQuery = true)
     int getCountOfCarsByStatus(@Param("availability") String availability);
 
-    @Query(value = "SELECT registrationNumber,color FROM Car WHERE type=:type AND brand=:brand AND availability='Available'", nativeQuery = true)
-    List<CarDTO> getCarRegistrationNoByTypeAndBrand(@Param("type") String type,@Param("brand") String brand);
+    @Query(value = "FROM Car c WHERE c.type=:type AND c.brand=:brand AND c.availability='Available'")
+    List<Car> getCarRegistrationNoByTypeAndBrand(@Param("type") String type,@Param("brand") String brand);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Car SET availability=:availability WHERE registrationNumber=:registrationNumber", nativeQuery = true)
+    void updateCarAvailability(@Param("availability") String availability, @Param("registrationNumber") String registrationNumber);
+
 
 }

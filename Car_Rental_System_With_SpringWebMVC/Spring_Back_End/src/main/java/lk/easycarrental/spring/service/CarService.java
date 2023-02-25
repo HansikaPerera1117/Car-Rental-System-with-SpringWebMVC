@@ -22,5 +22,7 @@ public interface CarService {
 
     List<CarDTO> getCarRegistrationNoByTypeAndBrand(String type,String brand);
 
+    void updateCarAvailability(String registrationNumber, String availability);
+
 
 }

@@ -85,4 +85,10 @@ public class CarController {
         return new ResponseUtil("200","Done",service.getCarRegistrationNoByTypeAndBrand(type,brand));
     }
 
+    @PutMapping(path = "/updateCarAvailability/{registrationNumber}/{availability}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCarAvailability(@PathVariable String registrationNumber, @PathVariable String availability) {
+        service.updateCarAvailability(registrationNumber, availability);
+        return new ResponseUtil("200", "Done", null);
+    }
+
 }

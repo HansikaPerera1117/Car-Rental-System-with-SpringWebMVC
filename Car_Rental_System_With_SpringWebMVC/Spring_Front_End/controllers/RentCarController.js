@@ -16,11 +16,10 @@ function generateRentId() {
 }
 
 function setDates() {
-    var date = new Date();
-    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-    $("#inputRentDate").text("Date : "+current_date);
-
+    let date = new Date().toJSON().split("T")[0];
+    $("#inputRentDate").text(date);
 }
+
 //=================get brand===================================
     //-----------general--------------------------
 var lableBrand = "";
@@ -83,10 +82,8 @@ $(".BMWi8").click(function(){
 $(".btnBookCar").click(function (){
     setCarRegisterNoAndColoursToComboBox();
     setDataToRentFormFields();
-
 });
 
-//====================error================================
 function setCarRegisterNoAndColoursToComboBox(){
     let brand = lableBrand;
     let type = $("#CarType").text();
@@ -102,14 +99,22 @@ function setCarRegisterNoAndColoursToComboBox(){
             let i = 0;
             for (let regNo of res.data) {
                 console.log(regNo);
-                $('#carColour').append(new Option(regNo.color +" - "+regNo.registrationNumber, i));
+                $('#carColour').append(new Option(regNo.color +" : "+regNo.registrationNumber, i));
                 i++;
             }
         }
     })
 
-
 }
+
+$('#carColour').change(function () {
+    let colorAndRegNo = $('#carColour').find('option:selected').text();
+    let split = colorAndRegNo.split(":");
+    let regNo = split[1];
+    let registrationNo = regNo.trim();
+    console.log(registrationNo)
+    $('#inputCraID').text(registrationNo);
+})
 
 function clearRentalFields() {
     $('#inputCraID').text("");
@@ -201,7 +206,7 @@ $("#btnPlaceBooking").click(function (){
 
 function searchUserById(userId) {
     $.ajax({
-        url: baseUrl + "user/" + userId,
+        url: baseURL + "user/" + userId,
         method: "GET",
         success: function (res) {
             let user = res.data;
@@ -213,7 +218,7 @@ function searchUserById(userId) {
 function searchCarByRegNo(user) {
     let registrationNo = $('#inputCraID').text();
     $.ajax({
-        url: baseUrl + "car/" + registrationNo,
+        url: baseURL + "car/" + registrationNo,
         method: "GET",
         success: function (res) {
             let car = res.data;
@@ -229,7 +234,7 @@ function searchDriverByDriverID(user, car) {
     }
     if (driverID != null) {
         $.ajax({
-            url: baseUrl + "driver/" + driverID,
+            url: baseURL + "driver/" + driverID,
             method: "GET",
             success: function (res) {
                 let driver = res.data;
@@ -244,8 +249,8 @@ function searchDriverByDriverID(user, car) {
 
 function addCarRent(user, car, driver) {
 
-    let rentId = $('#inputRentID').val();
-    let rentDate = $('#inputRentDate').val();
+    let rentId = $('#inputRentID').text();
+    let rentDate = $('#inputRentDate').text();
     let pickupDate = $('#inputPickUpDate').val();
     let pickupTime = $('#inputPickUpTime').val();
     let pickupVenue = $('#inputPickUpVenue').val();
@@ -272,7 +277,7 @@ function addCarRent(user, car, driver) {
     }
 
     $.ajax({
-        url: baseUrl + "rent",
+        url: baseURL + "rent",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(rent),
@@ -288,7 +293,7 @@ function addCarRent(user, car, driver) {
             clearRentalFields();
             location.replace("userDashboard.html");
         },
-        error: function (ob) {
+        error: function (error) {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -310,7 +315,7 @@ function uploadBankSlip(rentId) {
 
 
     $.ajax({
-        url: baseUrl + "rent/uploadImg/" + rentId,
+        url: baseURL + "rent/uploadImg/" + rentId,
         method: "PUT",
         async: true,
         contentType: false,

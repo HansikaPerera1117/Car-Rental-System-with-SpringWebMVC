@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/generateUserId", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil generateCustomerId() {
+    public ResponseUtil generateUserId() {
         return new ResponseUtil("200", "Ok", service.generateUserId());
     }
 

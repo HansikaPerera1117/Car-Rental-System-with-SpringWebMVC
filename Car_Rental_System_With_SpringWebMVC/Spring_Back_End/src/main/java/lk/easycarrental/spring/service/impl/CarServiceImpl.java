@@ -77,6 +77,15 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDTO> getCarRegistrationNoByTypeAndBrand(String type,String brand) {
-        return repo.getCarRegistrationNoByTypeAndBrand(type,brand);
+       return mapper.map(repo.getCarRegistrationNoByTypeAndBrand(type,brand),new TypeToken<List<CarDTO>>(){}.getType());
+    }
+
+    @Override
+    public void updateCarAvailability(String registrationNumber, String availability) {
+        if (repo.existsById(registrationNumber)) {
+            repo.updateCarAvailability(availability, registrationNumber);
+        } else {
+            throw new RuntimeException("Car "+registrationNumber+" Not Exist to Update Availability....!");
+        }
     }
 }
