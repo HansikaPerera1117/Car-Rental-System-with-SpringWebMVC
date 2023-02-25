@@ -10,8 +10,11 @@ loadAllUsers();
 getRegisterUsersCount();
 loadAllCars();
 getAvailableCarCount();
+generateDriverId();
 loadAllDrivers();
 getAvailableDriverCount();
+
+generateMaintenanceId();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -770,7 +773,7 @@ function getAvailableCarCount() {
 
 
 //--------------------Driver start-------------------------------------------
-generateDriverId();
+
 
 function generateDriverId() {
     $.ajax({
@@ -1046,6 +1049,16 @@ $("#btnDriverSchedule").click(function (){
 
 
 //--------------------Maintain start-------------------------------------------
+
+function generateMaintenanceId() {
+    $.ajax({
+        url: baseUrl + "maintain/generateMaintenanceId",
+        method: "GET",
+        success: function (res) {
+            $('#inputMaintainID').val(res.data);
+        }
+    })
+}
 
 // search eka mid eken carid eken dekenma hoyanna ganna
 
