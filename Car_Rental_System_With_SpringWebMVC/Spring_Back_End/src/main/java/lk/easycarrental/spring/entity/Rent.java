@@ -34,15 +34,15 @@ public class Rent {
     private String status;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "driverID",referencedColumnName = "driverID",nullable = false)
+    @JoinColumn(name = "driverID",referencedColumnName = "driverID")
     private Driver driverID;
 
-    @ManyToOne
-    @JoinColumn(name = "registrationNumber",referencedColumnName = "registrationNumber",insertable = false,updatable = false)
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "registrationNumber",referencedColumnName = "registrationNumber")
     private Car cars;
 
-    @ManyToOne
-    @JoinColumn(name = "userID",referencedColumnName = "userID",insertable = false,updatable = false)
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "userID",referencedColumnName = "userID")
     private User users;
 
 }

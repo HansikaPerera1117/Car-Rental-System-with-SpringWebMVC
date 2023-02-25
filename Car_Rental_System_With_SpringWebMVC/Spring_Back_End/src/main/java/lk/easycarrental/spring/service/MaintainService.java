@@ -18,5 +18,7 @@ public interface MaintainService {
 
     List<MaintainDTO> getAllMaintenances();
 
+    void updateMaintenanceStatus(String maintainID, String status);
+
 
 }

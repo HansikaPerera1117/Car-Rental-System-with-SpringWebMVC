@@ -43,6 +43,11 @@ public class MaintainController {
 
     }
 
+    @PutMapping(path = "/updateMaintenanceStatus/{maintainID}/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateMaintenanceStatus(@PathVariable String maintainID, @PathVariable String status) {
+        service.updateMaintenanceStatus(maintainID, status);
+        return new ResponseUtil("200", "Done", null);
+    }
 
 
 }

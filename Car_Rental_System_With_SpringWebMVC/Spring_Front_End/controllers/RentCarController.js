@@ -271,9 +271,9 @@ function addCarRent(user, car, driver) {
         returnVenue: returnVenue,
         lossDamageWaiver: lossDamWare,
         status:status,
-        user: user,
-        car: car,
-        driver: driver
+        users: user[0],
+        cars: car,
+        driverID: driver
     }
 
     $.ajax({
@@ -343,5 +343,8 @@ function uploadBankSlip(rentId) {
         }
     })
 }
+
+
+//=========================rent eka dammahama car eke availability eka hadanna
 
 

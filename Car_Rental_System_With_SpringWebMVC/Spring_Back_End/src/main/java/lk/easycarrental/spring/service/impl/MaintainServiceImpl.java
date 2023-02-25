@@ -82,4 +82,13 @@ public class MaintainServiceImpl implements MaintainService {
     public List<MaintainDTO> getAllMaintenances() {
         return null;
     }
+
+    @Override
+    public void updateMaintenanceStatus(String maintainID, String status) {
+        if (repo.existsById(maintainID)) {
+            repo.updateMaintenanceStatus(status, maintainID);
+        } else {
+            throw new RuntimeException("Maintain "+maintainID+" Not Exist to Update Status....!");
+        }
+    }
 }

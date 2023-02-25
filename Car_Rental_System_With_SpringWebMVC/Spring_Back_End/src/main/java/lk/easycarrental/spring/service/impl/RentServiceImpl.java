@@ -48,6 +48,10 @@ public class RentServiceImpl implements RentService {
     @Override
     public void addRent(RentDTO dto) {
         if (!repo.existsById(dto.getRentID())) {
+           Rent d= mapper.map(dto, Rent.class);
+            System.out.println("===================");
+            System.out.println(d.toString());
+            System.out.println("===================");
             repo.save(mapper.map(dto, Rent.class));
         } else {
             throw new RuntimeException("Rent "+dto.getRentID()+" Already Exist....!");

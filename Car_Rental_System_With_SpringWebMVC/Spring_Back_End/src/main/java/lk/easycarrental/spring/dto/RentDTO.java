@@ -15,24 +15,19 @@ import java.time.LocalTime;
 @ToString
 public class RentDTO {
     private String rentID;
-   // @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentDate;
-    //@JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-  //  @JsonFormat(pattern = " HH:mm:ss")
     private LocalTime pickUpTime;
     private String pickUpVenue;
-   // @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
-  //  @JsonFormat(pattern = " HH:mm:ss")
     private LocalTime returnTime;
     private String returnVenue;
     private double lossDamageWaiver;
     private String bankSlip;
     private String status;
 
-    private CarDTO car;
-    private UserDTO user;
-    private DriverDTO driver;
+    private CarDTO cars;
+    private UserDTO users;
+    private DriverDTO driverID;
 
 }

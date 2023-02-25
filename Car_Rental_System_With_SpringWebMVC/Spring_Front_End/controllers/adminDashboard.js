@@ -1086,11 +1086,20 @@ $('#selectMaintainCarRNo').change(function () {
             let car = res.data;
             if (car.availability === "Available"){
                 $("#inputMaintainDescription").focus();
-            }else {
+            }else if (car.availability === "Under Maintenance"){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: "This Car is Already in Maintains at This Moment",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                $("#selectMaintainCarRNo").focus();
+            }else{
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
-                    title: "This Car Is Not Available at This Moment",
+                    title: "This Car is Not Available at This Moment",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -1186,10 +1195,18 @@ function updateCarStatusInMaintain(registrationNo) {
     })
 }
 
+$("#btnRemoveMaintain").click(function (){
+
+    // status eka done walata update wela car status eka awailable walata update wenna one
+})
+
+function removeMaintenances(){
+
+}
 
 
 
-// search eka mid eken carid eken dekenma hoyanna ganna
+// search eka maintainid eken carid eken dekenma hoyanna ganna
 
 //--------------------Maintain end-------------------------------------------
 
