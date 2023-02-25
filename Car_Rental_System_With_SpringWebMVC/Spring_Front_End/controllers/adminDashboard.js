@@ -1196,17 +1196,72 @@ function updateCarStatusInMaintain(registrationNo) {
 }
 
 $("#btnRemoveMaintain").click(function (){
-
-    // status eka done walata update wela car status eka awailable walata update wenna one
+removeMaintenances();
 })
 
 function removeMaintenances(){
+    let maintenanceId = $('#inputMaintainID').val();
+    let status = "Done Maintenance";
+    $.ajax({
+        url: baseUrl + "maintain/updateMaintenanceStatus/" + maintenanceId + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Complete Maintenances of Car",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            updateCarStatusToAvailableDoneMaintain()
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Remover Car From Maintenances Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
 
+function updateCarStatusToAvailableDoneMaintain(){
+    let registrationNo = $('#selectMaintainCarRNo').find('option:selected').text();
+    let status = "Available";
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Available Now",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            loadAllCars();
+            getAvailableCarCount();
+            loadAllMaintenances();
+            clearMaintenanceFields();
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Car Not Available Yet From Maintenances",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 }
 
 
 
 // search eka maintainid eken carid eken dekenma hoyanna ganna
+//combo box eke values ain karala search karapu car id eka ithark danna
 
 //--------------------Maintain end-------------------------------------------
 
