@@ -57,12 +57,20 @@ public class MaintainServiceImpl implements MaintainService {
 
     @Override
     public void updateMaintenance(MaintainDTO dto) {
-
+        if (repo.existsById(dto.getMaintainID())) {
+            repo.save(mapper.map(dto, Maintain.class));
+        } else {
+            throw new RuntimeException("Maintain "+dto.getMaintainID()+" Not Exist To Update....!");
+        }
     }
 
     @Override
     public void deleteMaintenance(String maintainID) {
-
+        if (repo.existsById(maintainID)) {
+            repo.deleteById(maintainID);
+        } else {
+            throw new RuntimeException("Maintain "+maintainID+" Not Exist To Delete....!");
+        }
     }
 
     @Override

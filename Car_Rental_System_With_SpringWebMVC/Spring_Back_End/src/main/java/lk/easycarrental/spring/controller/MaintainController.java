@@ -30,5 +30,19 @@ public class MaintainController {
 
     }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateMaintenance(@RequestBody MaintainDTO dto) {
+        service.updateMaintenance(dto);
+        return new ResponseUtil("200","Maintenance Updated Successfully "+dto.toString(),null);
+    }
+
+    @DeleteMapping(params = {"maintenanceId"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteMaintenance(@RequestParam String maintenanceId) {
+        service.deleteMaintenance(maintenanceId);
+        return new ResponseUtil("200",maintenanceId+" Maintenance Deleted Successfully ",null);
+
+    }
+
+
 
 }
