@@ -16,6 +16,10 @@ public class MaintainController {
     @Autowired
     MaintainService service;
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllMaintenance() {
+        return new ResponseUtil("200", "Done", service.getAllMaintenances());
+    }
 
     @GetMapping(path = "/generateMaintenanceId", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateMaintenanceId() {
@@ -49,5 +53,9 @@ public class MaintainController {
         return new ResponseUtil("200", "Done", null);
     }
 
+    @GetMapping(path = "/{maintainID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchMaintenance(@PathVariable String maintainID) {
+        return new ResponseUtil("200", "Done", service.searchMaintenance(maintainID));
+    }
 
 }

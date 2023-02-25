@@ -6,6 +6,7 @@ import lk.easycarrental.spring.entity.Maintain;
 import lk.easycarrental.spring.repo.MaintainRepo;
 import lk.easycarrental.spring.service.MaintainService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,12 +76,17 @@ public class MaintainServiceImpl implements MaintainService {
 
     @Override
     public MaintainDTO searchMaintenance(String maintainID) {
-        return null;
+        if (repo.existsById(maintainID)) {
+            return mapper.map(repo.findById(maintainID).get(), MaintainDTO.class);
+        } else {
+            throw new RuntimeException("Maintain "+maintainID+" Not Exist....!");
+        }
     }
 
     @Override
     public List<MaintainDTO> getAllMaintenances() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<MaintainDTO>>() {
+        }.getType());
     }
 
     @Override
