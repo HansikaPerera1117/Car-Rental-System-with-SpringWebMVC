@@ -16,6 +16,7 @@ getAvailableDriverCount();
 
 generateMaintenanceId();
 loadAllCarRegNosToComboBox();
+loadAllMaintenances();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -1163,7 +1164,6 @@ function addMaintenances(){
     })
 }
 
-
 function updateCarStatusInMaintain(registrationNo) {
     let status = "Under Maintenance";
     $.ajax({
@@ -1196,7 +1196,7 @@ function updateCarStatusInMaintain(registrationNo) {
 }
 
 $("#btnRemoveMaintain").click(function (){
-removeMaintenances();
+    removeMaintenances();
 })
 
 function removeMaintenances(){
@@ -1245,6 +1245,7 @@ function updateCarStatusToAvailableDoneMaintain(){
             getAvailableCarCount();
             loadAllMaintenances();
             clearMaintenanceFields();
+            loadAllCarRegNosToComboBox()
         },
         error: function (error) {
             Swal.fire({
@@ -1257,6 +1258,50 @@ function updateCarStatusToAvailableDoneMaintain(){
         }
     })
 }
+
+function clearMaintenanceFields(){
+     $('#inputMaintainDescription').val("");
+     generateMaintenanceId();
+}
+
+function loadAllMaintenances(){
+    $('#tblMaintain').empty();
+
+    $.ajax({
+        url: baseUrl + "maintain",
+        method: "GET",
+        success: function (res) {
+            console.log(res)
+            for (let maintenance of res.data) {
+                let row = `<tr><td>${maintenance.maintainID}</td><td>${maintenance.registrationNumber}</td><td>${maintenance.description}</td><td>${maintenance.status}</td></tr>`;
+                $('#tblMaintain').append(row);
+            }
+            bindMaintenancesClickEvents();
+        }
+    })
+}
+
+function bindMaintenancesClickEvents() {
+    $('#tblMaintain>tr').click(function () {
+        let maintaiId = $(this).children().eq(0).text();
+        let carRegistrationNo = $(this).children().eq(1).text();
+        let desc = $(this).children().eq(2).text();
+        let status = $(this).children().eq(3).text();
+
+         $('#selectMaintainCarRNo').empty();
+         $('#inputMaintainID').val(maintaiId);
+         $('#selectMaintainCarRNo').append(new Option(carRegistrationNo));
+         $('#inputMaintainDescription').val(desc);
+         $('#selectMaintainStatus').find('option:selected').text(status);
+
+    })
+}
+
+$("#btnRefresh").click(function (){
+    loadAllCarRegNosToComboBox();
+    clearMaintenanceFields();
+});
+
 
 
 

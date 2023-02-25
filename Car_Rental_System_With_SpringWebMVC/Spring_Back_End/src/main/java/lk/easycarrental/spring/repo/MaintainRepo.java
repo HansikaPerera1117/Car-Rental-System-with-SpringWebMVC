@@ -14,7 +14,7 @@ public interface MaintainRepo extends JpaRepository<Maintain,String> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Car SET status=:status WHERE maintainID=:maintainID", nativeQuery = true)
+    @Query(value = "UPDATE Maintain  SET status=:status WHERE maintainID=:maintainID", nativeQuery = true)
     void updateMaintenanceStatus(@Param("status") String status, @Param("maintainID") String maintainID);
 
 
