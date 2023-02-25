@@ -2,6 +2,7 @@ package lk.easycarrental.spring.service.impl;
 
 
 import lk.easycarrental.spring.dto.MaintainDTO;
+import lk.easycarrental.spring.entity.Maintain;
 import lk.easycarrental.spring.repo.MaintainRepo;
 import lk.easycarrental.spring.service.MaintainService;
 import org.modelmapper.ModelMapper;
@@ -47,7 +48,11 @@ public class MaintainServiceImpl implements MaintainService {
 
     @Override
     public void addMaintenance(MaintainDTO dto) {
-        
+        if (!repo.existsById(dto.getMID())) {
+            repo.save(mapper.map(dto, Maintain.class));
+        } else {
+            throw new RuntimeException("Maintain "+dto.getMID()+" Already Exist....!");
+        }
     }
 
     @Override
