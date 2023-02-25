@@ -1261,7 +1261,9 @@ function updateCarStatusToAvailableDoneMaintain(){
 
 function clearMaintenanceFields(){
      $('#inputMaintainDescription').val("");
-     generateMaintenanceId();
+     $('#inputMaintainSearch').val("");
+
+    generateMaintenanceId();
 }
 
 function loadAllMaintenances(){
@@ -1302,11 +1304,33 @@ $("#btnRefresh").click(function (){
     clearMaintenanceFields();
 });
 
+$("#btnSearchMaintain").click(function (){
+    let maintainID = $('#inputMaintainSearch').val();
 
+    $.ajax({
+        url: baseUrl + "maintain/" + maintainID,
+        method: "GET",
+        success: function (res) {
+            let maintain = res.data;
+            $('#selectMaintainCarRNo').empty();
+            $('#inputMaintainID').val(maintain.maintainID);
+            $('#selectMaintainCarRNo').append(new Option(maintain.registrationNumber));
+            $('#inputMaintainDescription').val(maintain.description);
+            $('#selectMaintainStatus').find('option:selected').text(maintain.status);
 
-
-// search eka maintainid eken carid eken dekenma hoyanna ganna
-//combo box eke values ain karala search karapu car id eka ithark danna
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Maintain " + maintainID + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    });
+});
 
 //--------------------Maintain end-------------------------------------------
 
