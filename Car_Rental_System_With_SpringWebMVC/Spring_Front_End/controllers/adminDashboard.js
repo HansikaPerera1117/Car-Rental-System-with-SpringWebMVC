@@ -6,6 +6,7 @@ $(window).on('load',function (){
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
 setDates();
+loadTodayRents();
 loadAllUsers();
 getRegisterUsersCount();
 loadAllCars();
@@ -196,6 +197,28 @@ function setDates() {
 
     $("#lblDate").text("Date : "+current_date);
     $("#lblTime").text("Time : "+current_time);
+}
+
+
+function loadTodayRents() {
+    let today = $("#lblDate").text();
+    $('#tblTodayRents').empty();
+    $.ajax({
+        url: baseUrl + "rent/getTodayRents/" + today,
+        method: "GET",
+        success: function (res) {
+            for (const booking of res.data) {
+                let driverId;
+                if (booking.driver === null) {
+                    driverId = "No Driver";
+                } else {
+                    driverId = booking.driverID.driverID;
+                }
+                let row = `<tr><td>${booking.rentID}</td><td>${booking.rentDate}</td><td>${booking.users.userID}</td><td>${booking.cars.registrationNumber}</td><td>${booking.pickUpDate}</td><td>${booking.returnDate}</td><td>${driverId}</td><td>${booking.status}</td></tr>`;
+                $('#tblTodayRents').append(row);
+            }
+        }
+    })
 }
 
 //--------------------home end-------------------------------------------
@@ -787,7 +810,7 @@ function getAvailableCarCount() {
 }
 
 function getRentedCarCount() {
-    let availability = "Non Available";
+    let availability = "Not Available";
     $.ajax({
         url: baseUrl + "car/count/" + availability,
         method: "GET",
@@ -1084,7 +1107,7 @@ $("#btnRefreshDriver").click(function (){
     clearDriverFields();
 });
 
-//==========================================driver schedule button eka hadanna=======================================
+//==========================================driver schedule button eka hadanna===============================================
 $("#btnDriverSchedule").click(function (){
 
 });
@@ -1267,7 +1290,7 @@ function clearRentFields(){
     loadAllDriverIDsToComboBox();
 }
 
-//change driver wada krnne na=========================================
+//===============================change driver wada krnne na==================================================================
 
 // $("#btnChangeDriver").click(function (){
 //    // let userId = $('#inputUserID').val();
@@ -1514,7 +1537,7 @@ function acceptRental() {
         success: function (res) {
             loadAllRents();
             loadPendingRentals();
-            //loadTodayBookings();
+            loadTodayRents();
             updateDriverStatus();
             updateCarStatus();
             clearRentRequestFields();
@@ -1538,49 +1561,9 @@ function acceptRental() {
     })
 }
 
-// function updateCarAvailabilityWhenPlaceRent(registrationNo) {
-//     let status = "Non Available";
-//     $.ajax({
-//         url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
-//         method: "PUT",
-//         success: function (res) {
-//             alert("Successfully Booked the Car for Rent");
-//             clearRentalFields();
-//             // Swal.fire({
-//             //     icon: 'success',
-//             //     title: 'Successful',
-//             //     text: 'Successfully Booked the Car for Rent'
-//             // })
-//             // Swal.fire({
-//             //     position: 'top-end',
-//             //     icon: 'success',
-//             //     title: "Successfully Booked the Car for Rent",
-//             //     showConfirmButton: false,
-//             //     timer: 1500
-//             // });
-//
-//         },
-//         error: function (error) {
-//             alert("Booked Car Unsuccessfully");
-//             // Swal.fire({
-//             //     icon: 'error',
-//             //     title: 'Unsuccessful',
-//             //     text: 'Booked Car Unsuccessfully'
-//             // })
-//             // Swal.fire({
-//             //     position: 'top-end',
-//             //     icon: 'error',
-//             //     title: "Booked Car Unsuccessfully",
-//             //     showConfirmButton: false,
-//             //     timer: 1500
-//             // });
-//         }
-//     })
-// }
-
 function updateCarStatus() {
     let registrationNo = $('#inputReqCarRegNo').val();
-    let status = "Non Available";
+    let status = "Not Available";
 
     $.ajax({
         url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
@@ -1595,11 +1578,11 @@ function updateCarStatus() {
 }
 
 function updateDriverStatus() {
-    let driverId = $('#inputReqDriverID').val();
+    let driverID = $('#inputReqDriverID').val();
 
-    if (driverId != "No Driver") {
+    if (driverID != "No Driver") {
         $.ajax({
-            url: baseUrl + "driver/updateNonAvailable/" + driverId,
+            url: baseUrl + "driver/updateNonAvailable/" + driverID,
             method: "PUT",
             success: function (res) {
                 loadAllDrivers();
@@ -1628,6 +1611,7 @@ function clearRentRequestFields(){
     $('#inputReqImageOfBankSlip').empty();
     $('#inputRentReqSearch').val("");
 }
+
 
 //--------------------requests end-------------------------------------------
 

@@ -91,10 +91,25 @@ public class RentController {
         return new ResponseUtil("200", "Done", service.getCarRentsByStatus(status));
     }
 
-
 //    @PutMapping(path = "/updateRentDriver/{rentId}/{driverID}", produces = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseUtil updateRentDriver(@PathVariable String rentId, @PathVariable String driverID) {
 //        service.updateRentDriver(rentId,driverID);
 //        return new ResponseUtil("200", "Done", null);
 //    }
+
+    @GetMapping(path = "/getCarRents/{status}/{driverID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllCarRentsByDrivingID(@PathVariable String status, @PathVariable String driverID) {
+        return new ResponseUtil("200", "Done", service.getAllByDriverID(status, driverID));
+    }
+
+    @GetMapping(path = "/getTodayRents/{today}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getTodayRents(@PathVariable String today) {
+        return new ResponseUtil("200", "Done", service.getTodayRents(today));
+    }
+
+    @GetMapping(path = "/getAllByUserID/{userID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllByUserID(@PathVariable String userID) {
+        return new ResponseUtil("200", "Done", service.getAllByUserID(userID));
+    }
+
 }

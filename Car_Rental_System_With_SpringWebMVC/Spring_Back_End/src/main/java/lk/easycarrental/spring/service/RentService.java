@@ -28,4 +28,11 @@ public interface RentService {
 
     int getCountOfRentsByStatus(String status);
 
+    List<RentDTO> getAllByDriverID(String status, String driverID);
+
+    List<RentDTO> getTodayRents(String today);
+
+    List<RentDTO> getAllByUserID(String userID);
+
+
 }

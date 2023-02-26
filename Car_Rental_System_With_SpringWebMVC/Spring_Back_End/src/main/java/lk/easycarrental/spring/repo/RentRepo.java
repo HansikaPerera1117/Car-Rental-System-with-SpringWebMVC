@@ -37,4 +37,13 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     @Query(value = "SELECT COUNT(rentID) FROM Rent WHERE status=:status", nativeQuery = true)
     int getCountOfRentsByStatus(@Param("status") String status);
 
+    @Query(value = "SELECT * from Rent where status=:status AND driverID=:driverID", nativeQuery = true)
+    List<Rent> getAllByDriverID(@Param("status") String status, @Param("driverID") String driverID);
+
+    @Query(value = "SELECT * FROM Rent WHERE pickUpDate=:today",nativeQuery = true)
+    List<Rent> getTodayRents(@Param("today") String today);
+
+    @Query(value = "SELECT * FROM Rent WHERE userID=:userID",nativeQuery = true)
+    List<Rent> getAllByUserID(@Param("userID") String userID);
+
 }
