@@ -101,5 +101,10 @@ public class RentServiceImpl implements RentService {
         }
     }
 
+    @Override
+    public int getCountOfRentsByStatus(String status) {
+        return repo.getCountOfRentsByStatus(status);
+    }
+
 
 }
