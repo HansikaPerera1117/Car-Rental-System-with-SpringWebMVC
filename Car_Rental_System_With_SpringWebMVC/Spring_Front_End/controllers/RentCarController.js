@@ -285,7 +285,7 @@ function addCarRent(user, car, driver) {
         data: JSON.stringify(rent),
         success: function (resp) {
             uploadBankSlip(rentId);
-            updateCarAvailabilityWhenPlaceRent(car.registrationNumber);
+            // updateCarAvailabilityWhenPlaceRent(car.registrationNumber);
             alert("Rent Placed Successfully");
             location.replace("userDashboard.html");
             // Swal.fire({
@@ -356,6 +356,7 @@ function uploadBankSlip(rentId) {
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
             alert("BankSip did not Uploaded");
+            clearRentalFields();
             // Swal.fire({
             //     icon: 'error',
             //     title: 'Unsuccessful',
@@ -372,45 +373,6 @@ function uploadBankSlip(rentId) {
     })
 }
 
-function updateCarAvailabilityWhenPlaceRent(registrationNo) {
-    let status = "Non Available";
-    $.ajax({
-        url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
-        method: "PUT",
-        success: function (res) {
-            alert("Successfully Booked the Car for Rent");
-            clearRentalFields();
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Successful',
-            //     text: 'Successfully Booked the Car for Rent'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'success',
-            //     title: "Successfully Booked the Car for Rent",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
-
-        },
-        error: function (error) {
-            alert("Booked Car Unsuccessfully");
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'Unsuccessful',
-            //     text: 'Booked Car Unsuccessfully'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'error',
-            //     title: "Booked Car Unsuccessfully",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
-        }
-    })
-}
 
 
 

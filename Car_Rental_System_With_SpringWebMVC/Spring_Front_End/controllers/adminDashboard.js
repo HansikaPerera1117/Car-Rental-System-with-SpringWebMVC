@@ -1490,8 +1490,157 @@ function searchAndLoadRentReqBankSlipImgs(rentId) {
     })
 }
 
+$("#btnRentReqAccept").click(function (){
+    if ($('#inputReqRentID').val() != "") {
+        acceptRental();
+    } else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: "Please Select Car Rent from Table",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+});
+
+function acceptRental() {
+    let rentId = $('#inputReqRentID').val();
+    let status = "Accepted";
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            loadAllRents();
+            loadPendingRentals();
+            //loadTodayBookings();
+            updateDriverStatus();
+            updateCarStatus();
+            clearRentRequestFields();
+            swal({
+                title: "Confirmation!",
+                text: "Car Rental Accepted Successfully",
+                icon: "success",
+                button: "Close",
+                timer: 2000
+            });
+        },
+        error: function (ob) {
+            swal({
+                title: "Error!",
+                text: "Car Rental Not Accepted",
+                icon: "error",
+                button: "Close",
+                timer: 2000
+            });
+        }
+    })
+}
+
+// function updateCarAvailabilityWhenPlaceRent(registrationNo) {
+//     let status = "Non Available";
+//     $.ajax({
+//         url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
+//         method: "PUT",
+//         success: function (res) {
+//             alert("Successfully Booked the Car for Rent");
+//             clearRentalFields();
+//             // Swal.fire({
+//             //     icon: 'success',
+//             //     title: 'Successful',
+//             //     text: 'Successfully Booked the Car for Rent'
+//             // })
+//             // Swal.fire({
+//             //     position: 'top-end',
+//             //     icon: 'success',
+//             //     title: "Successfully Booked the Car for Rent",
+//             //     showConfirmButton: false,
+//             //     timer: 1500
+//             // });
+//
+//         },
+//         error: function (error) {
+//             alert("Booked Car Unsuccessfully");
+//             // Swal.fire({
+//             //     icon: 'error',
+//             //     title: 'Unsuccessful',
+//             //     text: 'Booked Car Unsuccessfully'
+//             // })
+//             // Swal.fire({
+//             //     position: 'top-end',
+//             //     icon: 'error',
+//             //     title: "Booked Car Unsuccessfully",
+//             //     showConfirmButton: false,
+//             //     timer: 1500
+//             // });
+//         }
+//     })
+// }
+
+function updateCarStatus() {
+    let registrationNo = $('#inputReqCarRegNo').val();
+    let status = "Non Available";
+
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            loadAllCars();
+            getAvailableCarCount();
+            getRentCount();
+        }
+
+    })
+}
+
+function updateDriverStatus() {
+    let driverId = $('#inputReqDriverID').val();
+
+    if (driverId != "No Driver") {
+        $.ajax({
+            url: baseUrl + "driver/updateNonAvailable/" + driverId,
+            method: "PUT",
+            success: function (res) {
+                loadAllDrivers();
+                getAvailableDriverCount();
+            }
+        })
+    }
+}
+
+function clearRentRequestFields(){
+    $('#inputReqRentID').val("");
+    $('#inputReqRentDate').val("");
+    $('#inputReqCarRegNo').val("");
+    $('#inputReqUserID').val("");
+    $('#inputReqNameOfUser').val("");
+    $('#inputReqPickUpDate').val("");
+    $('#inputReqPickUpTime').val("");
+    $('#inputReqPickUpVenue').val("");
+    $('#inputReqReturnDate').val("");
+    $('#inputReqReturnTime').val("");
+    $('#inputReqReturnVenue').val("");
+    $('#inputReqDriverID').val("");
+    $('#inputReqNameOfDriver').val("");
+    $('#inputReqLossDamageWaiver').val("");
+    $('#inputReqRentStatus').val("");
+    $('#inputReqImageOfBankSlip').empty();
+    $('#inputRentReqSearch').val("");
+}
 
 //--------------------requests end-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
