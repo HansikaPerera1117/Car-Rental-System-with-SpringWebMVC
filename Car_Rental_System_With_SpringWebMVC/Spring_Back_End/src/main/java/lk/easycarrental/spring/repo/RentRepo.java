@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface RentRepo extends JpaRepository<Rent,String> {
 
     @Query(value = "SELECT rentID FROM Rent ORDER BY rentID DESC LIMIT 1",nativeQuery = true)
@@ -22,6 +24,9 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     @Transactional
     @Query(value = "UPDATE Rent SET status=:status WHERE rentID=:rentID", nativeQuery = true)
     void updateCarRentStatus(@Param("rentID") String rentID, @Param("status") String status);
+
+    List<Rent> getAllByStatus(String status);
+
 
 //    @Modifying
 //    @Transactional

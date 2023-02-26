@@ -110,6 +110,12 @@ public class RentServiceImpl implements RentService {
             throw new RuntimeException("Rent "+rentID+" Not Exist to Update Status....!");
         }
     }
+
+    @Override
+    public List<RentDTO> getCarRentsByStatus(String status) {
+        return mapper.map(repo.getAllByStatus(status), new TypeToken<List<RentDTO>>() {
+        }.getType());
+    }
 //
 //    @Override
 //    public void updateRentDriver(String rentId ,String driverID) {

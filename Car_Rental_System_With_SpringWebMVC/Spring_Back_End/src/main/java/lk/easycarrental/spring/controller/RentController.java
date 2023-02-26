@@ -81,9 +81,14 @@ public class RentController {
     }
 
     @PutMapping(path = "/{rentId}/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCarRentStatus(@PathVariable String rentId, @PathVariable String status) {
+    public ResponseUtil updateRentStatus(@PathVariable String rentId, @PathVariable String status) {
         service.updateCarRentStatus(rentId, status);
         return new ResponseUtil("200", "Done", null);
+    }
+
+    @GetMapping(path = "/get/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllRentsByStatus(@PathVariable String status) {
+        return new ResponseUtil("200", "Done", service.getCarRentsByStatus(status));
     }
 
 

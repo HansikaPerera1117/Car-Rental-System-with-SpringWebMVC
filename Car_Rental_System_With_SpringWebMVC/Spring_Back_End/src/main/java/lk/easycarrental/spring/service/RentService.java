@@ -22,6 +22,8 @@ public interface RentService {
 
     void updateCarRentStatus(String rentID, String status);
 
+    List<RentDTO> getCarRentsByStatus(String status);
+
 //    void updateRentDriver(String rentId ,String driverID);
 
     int getCountOfRentsByStatus(String status);
