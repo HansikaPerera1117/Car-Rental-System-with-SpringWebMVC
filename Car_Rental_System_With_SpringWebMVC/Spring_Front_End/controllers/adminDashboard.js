@@ -1434,11 +1434,14 @@ function bindRentClickEvents(){
 }
 
 function findRent(rentId) {
+    loadAllDriverIDsToComboBox();
+
     $.ajax({
         url: baseUrl + "rent/" + rentId,
         method: "GET",
         success: function (resp) {
             let rent = resp.data;
+
             $('#inputRentID').val(rent.rentID);
             $('#inputRentDate').val(rent.rentDate);
             $('#inputCarRegNo').val(rent.cars.registrationNumber);
@@ -1455,7 +1458,7 @@ function findRent(rentId) {
             $('#inputLossDamageWaiver').val(rent.lossDamageWaiver);
             $('#inputRentStatus').val(rent.status);
 
-            searchAndLoadRentBankSlipImgs(rent.rentID);
+            searchAndLoadRentBankSlipImgs(rentId);
 
         },
         error: function (error) {
@@ -1463,7 +1466,7 @@ function findRent(rentId) {
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: "Driver " + driverID + " Not Exist...",
+                title: "Rent " + rentId + " Not Exist...",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -1491,6 +1494,43 @@ function searchAndLoadRentBankSlipImgs(rentID) {
         }
     })
 }
+
+function loadAllDriverIDsToComboBox(){
+    $('#selectDriverID').empty();
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "GET",
+        success: function (resp) {
+            let i = 0;
+            for (let driver of resp.data) {
+                $('#selectDriverID').append(new Option(driver.driverID, i));
+                i++;
+            }
+        }
+    });
+}
+
+$('#selectDriverID').change(function () {
+    let driverID = $('#selectDriverID').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "driver/" + driverID,
+        method: "GET",
+        success: function (res) {
+            let driver = res.data;
+            $('#inputNameOfDriver').val(driver.name);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Driver Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
+
 
 
 //--------------------rent end-------------------------------------------
