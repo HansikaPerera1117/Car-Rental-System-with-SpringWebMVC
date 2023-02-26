@@ -136,6 +136,12 @@ public class RentServiceImpl implements RentService {
         return mapper.map(repo.getAllByDriverID(status, driverID), new TypeToken<List<RentDTO>>() {
         }.getType());
     }
+//
+//    @Override
+//    public List<RentDTO> getAllByCars(String status, String registrationNumber) {
+//        return mapper.map(repo.getAllByDriverID(status, registrationNumber), new TypeToken<List<RentDTO>>() {
+//        }.getType());
+//    }
 
     @Override
     public List<RentDTO> getTodayRents(String today) {

@@ -102,6 +102,11 @@ public class RentController {
         return new ResponseUtil("200", "Done", service.getAllByDriverID(status, driverID));
     }
 
+//    @GetMapping(path = "/getCarRents/{status}/{registrationNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseUtil getAllCarRentsByRegistrationNumber(@PathVariable String status, @PathVariable String registrationNumber) {
+//        return new ResponseUtil("200", "Done", service.getAllByCars(status, registrationNumber));
+//    }
+
     @GetMapping(path = "/getTodayRents/{today}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getTodayRents(@PathVariable String today) {
         return new ResponseUtil("200", "Done", service.getTodayRents(today));

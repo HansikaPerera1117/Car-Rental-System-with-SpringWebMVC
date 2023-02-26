@@ -393,6 +393,7 @@ function clearUserFields() {
     $('#inputImgOfNICFront').empty();
     $('#inputImgOfNICBack').empty();
     $('#inputImageOfUserDrivingLicense').empty();
+    $("#inputUserSearch").val("");
 }
 
 $("#btnDenyUser").click(function (){
@@ -590,6 +591,7 @@ function clearAddCarFields() {
      $('#inputSideImg').val("");
      $('#inputBackImg').val("");
      $('#inputInteriorImg').val("");
+    $('#inputCarSearch').val("");
 }
 
 $('#btnUpdateCar').click(function () {
@@ -1030,6 +1032,7 @@ function clearDriverFields() {
      $('#inputDriverDrivingLicense').val("");
      $('#inputDriverUserName').val("");
      $('#inputDriverPassword').val("");
+    $('#inputDriverSearch').val("");
 
     generateDriverId();
 }

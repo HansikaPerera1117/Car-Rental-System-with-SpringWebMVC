@@ -31,9 +31,20 @@ function getAllDriverData(username, password) {
     })
 }
 
-//===========================meka karala na thama-===============================================
-function loadDriverSchedule(driverID) {
 
+function loadDriverSchedule(driverID) {
+    $('#tblDriverSchedule').empty();
+    let status = "Accepted";
+    $.ajax({
+        url:"http://localhost:8080/Spring_Back_End_war/rent/getCarRents/" + status + "/" + driverID,
+        method:"GET",
+        success:function (res) {
+            for (let carRent of res.data) {
+                let row = `<tr><td>${carRent.driverID.driverID}</td><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${carRent.cars.registrationNumber}</td><td>${carRent.users.name}</td><td>${carRent.users.contactNo}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.pickUpVenue}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td><td>${carRent.returnVenue}</td></tr>`;
+                $('#tblDriverSchedule').append(row);
+            }
+        }
+    })
 }
 
 function setDriverDetails(driver) {

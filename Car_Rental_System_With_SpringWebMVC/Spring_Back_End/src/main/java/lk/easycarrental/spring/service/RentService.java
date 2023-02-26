@@ -30,6 +30,8 @@ public interface RentService {
 
     List<RentDTO> getAllByDriverID(String status, String driverID);
 
+//    List<RentDTO> getAllByCars(String status, String registrationNumber);
+
     List<RentDTO> getTodayRents(String today);
 
     List<RentDTO> getAllByUserID(String userID);
