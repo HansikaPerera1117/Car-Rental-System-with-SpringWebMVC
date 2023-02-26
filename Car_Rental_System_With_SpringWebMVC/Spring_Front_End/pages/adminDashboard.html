@@ -324,8 +324,13 @@
             <!---------------------------car page start------------------------------------------------------>
             <div class="row container-fluid" id="cars" style="height: 654px;">
                 <div class="row" style="height: 50px">
-                    <div class="col-12 ms-2">
+                    <div class="col-9 ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-car-side"></i> Cars </label>
+                    </div>
+                    <div class="col-2  ms-2">
+                        <div class="d-grid  gap-2 d-md-flex justify-content-md-end">
+                            <button id="btnRefreshCar" class="btn fs-6 mt-2 me-0 btn-dark" type="button">Refresh</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
@@ -470,8 +475,13 @@
             <!---------------------------user page start------------------------------------------------------>
             <div class="row container-fluid" id="users" style="height: 654px;">
                 <div class="row" style="height: 50px">
-                    <div class="col-12 ms-2">
+                    <div class="col-9 ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-users"></i> Users </label>
+                    </div>
+                    <div class="col-2  ms-2">
+                        <div class="d-grid  gap-2 d-md-flex justify-content-md-end">
+                            <button id="btnRefreshUser" class="btn fs-6 mt-2 me-0 btn-dark" type="button">Refresh</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
@@ -566,8 +576,13 @@
             <!---------------------------driver page start------------------------------------------------------>
             <div class="row container-fluid" id="drivers" style="height: 654px;">
                 <div class="row" style="height: 53px">
-                    <div class="col-12 ms-2">
+                    <div class="col-9 ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-users-rectangle"></i> Driver  </label>
+                    </div>
+                    <div class="col-2  ms-2">
+                        <div class="d-grid  gap-2 d-md-flex justify-content-md-end">
+                            <button id="btnRefreshDriver" class="btn fs-6 mt-2 me-0 btn-dark" type="button">Refresh</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
@@ -709,8 +724,13 @@
             <!---------------------------rent page start------------------------------------------------------>
             <div class="row container-fluid" id="rents" style="height: 654px;">
                 <div class="row" style="height: 50px">
-                    <div class="col-12 ms-2">
+                    <div class="col-9  ms-2">
                         <label class="mt-1 fs-4" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-file"></i> Rents </label>
+                    </div>
+                    <div class="col-2  ms-2">
+                        <div class="d-grid  gap-2 d-md-flex justify-content-md-end">
+                            <button id="btnRefreshRent" class="btn fs-6 mt-2 me-0 btn-dark" type="button">Refresh</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
@@ -783,7 +803,7 @@
                                         <input type="text" class="form-control" id="inputRentStatus" readonly>
                                     </div>
                                     <div class="d-grid mt-5 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button">Change Driver</button>
+                                        <button class="btn fs-5 me-3 btn-dark" type="button" id="btnChangeDriver">Change Driver</button>
                                     </div>
                                 </div>
                             </form>
@@ -793,7 +813,7 @@
                         <div class="col-12 mt-2">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputRentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" id="btnSearchRent" for="inputRentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
                                     <input class="form-control col-9" id="inputRentSearch" type="text">

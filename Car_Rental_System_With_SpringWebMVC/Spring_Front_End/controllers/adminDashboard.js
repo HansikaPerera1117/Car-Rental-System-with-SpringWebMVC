@@ -21,7 +21,7 @@ loadAllMaintenances();
 getUnderMaintenanceCarCount();
 
 loadAllRents();
-// getRentCount();
+getRentCount();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -412,6 +412,11 @@ function getRegisterUsersCount() {
     })
 }
 
+$("#btnRefreshUser").click(function (){
+    clearUserFields()
+});
+
+
 //--------------------User end-------------------------------------------
 
 
@@ -796,6 +801,11 @@ function getRentedCarCount() {
     })
 }
 
+$("#btnRefreshCar").click(function (){
+   clearAddCarFields();
+});
+
+
 
 //--------------------Car end-------------------------------------------
 
@@ -1064,6 +1074,10 @@ function getAvailableDriverCount() {
         }
     })
 }
+
+$("#btnRefreshDriver").click(function (){
+    clearDriverFields();
+});
 
 //==========================================driver schedule button eka hadanna=======================================
 $("#btnDriverSchedule").click(function (){
@@ -1425,7 +1439,6 @@ function loadAllRents(){
     })
 }
 
-
 function bindRentClickEvents(){
     $('#tblRent>tr').click(function () {
         let rentId = $(this).children().eq(0).text();
@@ -1474,15 +1487,15 @@ function findRent(rentId) {
     })
 }
 
-function searchAndLoadRentBankSlipImgs(rentID) {
+function searchAndLoadRentBankSlipImgs(rentId) {
     $('#inputImageOfBankSlip').empty();
 
     $.ajax({
-        url: baseUrl + "rent/" + rentID,
+        url: baseUrl + "rent/" + rentId,
         method: "GET",
         success: function (res) {
             let rent = res.data;
-
+            console.log(rent)
             let bankSlipPath = rent.bankSlip;
             let bankSlipImg = bankSlipPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Rent")[1];
             let bankSlipImgScr = "../assests/savedImages/Rent" + bankSlipImg;
@@ -1530,6 +1543,35 @@ $('#selectDriverID').change(function () {
         }
     })
 })
+
+$("#btnSearchRent").click(function (){
+    var rentId = $('#inputRentSearch').val();
+    findRent(rentId);
+});
+
+
+$("#btnRefreshRent").click(function (){
+    clearRentFields();
+});
+
+function clearRentFields(){
+    $('#inputRentID').val("");
+    $('#inputRentDate').val("");
+    $('#inputCarRegNo').val("");
+    $('#inputUserID').val("");
+    $('#inputNameOfUser').val("");
+    $('#inputPickUpDate').val("");
+    $('#inputPickUpTime').val("");
+    $('#inputPickUpVenue').val("");
+    $('#inputReturnDate').val("");
+    $('#inputReturnTime').val("");
+    $('#inputReturnVenue').val("");
+    $('#selectDriverID').empty()
+    $('#inputNameOfDriver').val("");
+    $('#inputLossDamageWaiver').val("");
+    $('#inputRentStatus').val("");
+    $('#inputImageOfBankSlip').empty();
+}
 
 
 
