@@ -103,13 +103,22 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public void updateRentDriver(String rentId ,String driverID) {
-        if (repo.existsById(rentId)) {
-            repo.updateRentFilePaths(driverID, rentId);
+    public void updateCarRentStatus(String rentID, String status) {
+        if (repo.existsById(rentID)) {
+            repo.updateCarRentStatus(rentID, status);
         } else {
-            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
+            throw new RuntimeException("Rent "+rentID+" Not Exist to Update Status....!");
         }
     }
+//
+//    @Override
+//    public void updateRentDriver(String rentId ,String driverID) {
+//        if (repo.existsById(rentId)) {
+//            repo.updateRentFilePaths(driverID, rentId);
+//        } else {
+//            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
+//        }
+//    }
 
     @Override
     public int getCountOfRentsByStatus(String status) {

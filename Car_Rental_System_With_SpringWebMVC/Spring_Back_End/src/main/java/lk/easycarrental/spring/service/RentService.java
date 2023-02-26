@@ -20,7 +20,9 @@ public interface RentService {
 
     void updateBankSlip(String bankSlip, String rentId);
 
-    void updateRentDriver(String rentId ,String driverID);
+    void updateCarRentStatus(String rentID, String status);
+
+//    void updateRentDriver(String rentId ,String driverID);
 
     int getCountOfRentsByStatus(String status);
 

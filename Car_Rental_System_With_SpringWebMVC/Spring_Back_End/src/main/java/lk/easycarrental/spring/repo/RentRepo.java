@@ -20,8 +20,13 @@ public interface RentRepo extends JpaRepository<Rent,String> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Rent SET driverID=:driverID WHERE rentId=:rentId", nativeQuery = true)
-    void updateRentDriver(@Param("rentId") String rentId,@Param("driverID") String driverID);
+    @Query(value = "UPDATE Rent SET status=:status WHERE rentID=:rentID", nativeQuery = true)
+    void updateCarRentStatus(@Param("rentID") String rentID, @Param("status") String status);
+
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE Rent SET driverID=:driverID WHERE rentId=:rentId", nativeQuery = true)
+//    void updateRentDriver(@Param("rentId") String rentId,@Param("driverID") String driverID);
 
 
     @Query(value = "SELECT COUNT(rentID) FROM Rent WHERE status=:status", nativeQuery = true)

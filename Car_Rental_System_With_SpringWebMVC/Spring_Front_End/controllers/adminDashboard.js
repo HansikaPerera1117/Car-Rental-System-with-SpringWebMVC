@@ -21,6 +21,7 @@ loadAllMaintenances();
 getUnderMaintenanceCarCount();
 
 loadAllRents();
+loadAllDriverIDsToComboBox();
 getRentCount();
 
 $("#home").css('display','block');
@@ -1090,7 +1091,7 @@ $("#btnDriverSchedule").click(function (){
 //--------------------rent start-------------------------------------------
 
 function getRentCount() {
-    let status = "";
+    let status = "Accepted";
     $.ajax({
         url: baseUrl + "rent/count/" + status,
         method: "GET",
@@ -1135,8 +1136,6 @@ function bindRentClickEvents(){
 }
 
 function findRent(rentId) {
-    loadAllDriverIDsToComboBox();
-
     $.ajax({
         url: baseUrl + "rent/" + rentId,
         method: "GET",
@@ -1198,12 +1197,14 @@ function searchAndLoadRentBankSlipImgs(rentId) {
 
 function loadAllDriverIDsToComboBox(){
     $('#selectDriverID').empty();
+    $('#selectDriverID').append(new Option("-Select Driver-"));
     $.ajax({
         url: baseUrl + "driver",
         method: "GET",
         success: function (resp) {
             let i = 0;
             for (let driver of resp.data) {
+                console.log(driver.driverID)
                 $('#selectDriverID').append(new Option(driver.driverID, i));
                 i++;
             }
@@ -1237,7 +1238,6 @@ $("#btnSearchRent").click(function (){
     findRent(rentId);
 });
 
-
 $("#btnRefreshRent").click(function (){
     clearRentFields();
 });
@@ -1259,13 +1259,148 @@ function clearRentFields(){
     $('#inputLossDamageWaiver').val("");
     $('#inputRentStatus').val("");
     $('#inputImageOfBankSlip').empty();
+    $('#inputRentSearch').val("");
+    loadAllDriverIDsToComboBox();
 }
 
-$("#btnChangeDriver").click(function (){
+//change driver wada krnne na=========================================
 
-});
+// $("#btnChangeDriver").click(function (){
+//    // let userId = $('#inputUserID').val();
+//    // searchUserById(userId);
+//
+//     let rentId =  $('#inputRentID').val();
+//     let driverId = $('#selectDriverID').find('option:selected').text();
+//
+//     $.ajax({
+//         url: baseUrl + "rent/updateRentDriver/" + rentId + "/" + driverId,
+//         method: "PUT",
+//         success: function (res) {
+//             Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'success',
+//                 title: "Change The Driver Of Rent Successfully",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//             });
+//             loadAllRents();
+//             clearRentFields();
+//         },
+//         error: function (error) {
+//             Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'error',
+//                 title: "Driver Not Changed",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//             });
+//         }
+//     })
+// });
+
+// function searchUserById(userId) {
+//     $.ajax({
+//         url: baseUrl + "user/" + userId,
+//         method: "GET",
+//         success: function (res) {
+//             let user = res.data;
+//             searchCarByRegNo(user);
+//         }
+//     });
+// }
+//
+// function searchCarByRegNo(user) {
+//     let registrationNo = $('#inputCarRegNo').val();
+//     $.ajax({
+//         url: baseUrl + "car/" + registrationNo,
+//         method: "GET",
+//         success: function (res) {
+//             let car = res.data;
+//             searchDriverByDriverID(user, car);
+//         }
+//     })
+// }
+//
+// function searchDriverByDriverID(user, car) {
+//
+//     let driverID =   $('#selectDriverID').find('option:selected').text();
+//         $.ajax({
+//             url: baseUrl + "driver/" + driverID,
+//             method: "GET",
+//             success: function (res) {
+//                 let driver = res.data;
+//                 console.log(res.data);
+//                 updateDriverOfRent(user, car, driver);
+//             }
+//         })
+// }
+//
+// function updateDriverOfRent(user,car,driver){
+//     let rentId = $('#inputRentID').val();
+//     let rentDate = $('#inputRentDate').val();
+//     let pickupDate = $('#inputPickUpDate').val();
+//     let pickupTime = $('#inputPickUpTime').val();
+//     let pickupVenue = $('#inputPickUpVenue').val();
+//     let returnDate = $('#inputReturnDate').val();
+//     let returnTime = $('#inputReturnTime').val();
+//     let returnVenue = $('#inputReturnVenue').val();
+//     let lossDamWare = $('#inputLossDamageWaiver').val();
+//     let status =  $('#inputRentStatus').val();
+//
+//     var rent = {
+//         rentID: rentId,
+//         rentDate: rentDate,
+//         pickUpDate: pickupDate,
+//         pickUpTime: pickupTime,
+//         pickUpVenue: pickupVenue,
+//         returnDate: returnDate,
+//         returnTime: returnTime,
+//         returnVenue: returnVenue,
+//         lossDamageWaiver: lossDamWare,
+//         status:status,
+//         users: user[0],
+//         cars: car,
+//         driverID: driver
+//     }
+//     $.ajax({
+//         url: baseUrl + "rent",
+//         method: "PUT",
+//         contentType: "application/json",
+//         data: JSON.stringify(rent),
+//         success: function (resp) {
+//             Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'success',
+//                 title: "Driver Changed Successfully",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//             });
+//         },
+//         error: function (error) {
+//             Swal.fire({
+//                 position: 'top-end',
+//                 icon: 'error',
+//                 title: "Driver Not Changed",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//             });
+//         }
+//     })
+// }
+
 
 //--------------------rent end-------------------------------------------
+
+
+
+
+//--------------------requests start-------------------------------------------
+
+
+
+//--------------------requests end-------------------------------------------
+
+
 
 
 
