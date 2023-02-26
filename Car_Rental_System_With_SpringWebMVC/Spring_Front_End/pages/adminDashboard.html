@@ -267,7 +267,7 @@
                                     <label class="mt-2 fs-5" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-house-chimney"></i> Number of Rented Cars </label>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <label class="mt-1 fs-1" id="lblNoOfRentedCars" style="width: max-content"> 00 </label>
+                                    <label class="mt-1 fs-1" id="lblNoOfRentedCars" style="width: max-content"></label>
                                 </div>
                             </div>
                             <div class="col-3 ms-3 me-4 mt-4 bg-light" style="height: 140px;border-radius: 8px;box-shadow: 2px 3px 8px 0px #939393e8;">
@@ -291,7 +291,7 @@
                                     <label class="mt-2 fs-5" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-house-chimney"></i> Number of Cars in Maintains </label>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <label class="mt-1 fs-1" id="lblNoOfMaintainCars" style="width: max-content"> 00 </label>
+                                    <label class="mt-1 fs-1" id="lblNoOfMaintainCars" style="width: max-content"></label>
                                 </div>
                             </div>
                         </div>
@@ -929,8 +929,8 @@
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
-                    <div class="col-12 mt-3" style="height: 375px;border-radius: 10px;background-color: #d7d7d7">
-                        <div class="col mt-3 ">
+                    <div class="col-12 mt-1" style="height: 355px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-2 ">
                             <form class="row g-2">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputReqRentID">Rent ID</label>
@@ -1004,8 +1004,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class=" col-12" style="height: 130px">
-                        <div class="col-12">
+                    <div class=" col-12" style="height: 55px">
+                        <div class="col-12 mt-2">
                             <div class="row">
                                 <div class="col-2">
                                     <label class="mt-1 fs-6 col-3" for="inputReqReasonDeny" style="width: max-content"> Reason For Deny Rent Request </label>
@@ -1017,6 +1017,40 @@
                                     <button class="btn fs-5 btn-dark"  type="button">Deny</button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="height: 182px">
+                        <div class="col-12">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <label class="mt-1 fs-4 col-3" for="inputRentReqSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                </div>
+                                <div class="col-6 ms-3">
+                                    <input class="form-control col-9" id="inputRentReqSearch" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" style="overflow:scroll;height:142px;overflow:auto">
+                            <table class="table table-secondary mt-3">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">RentID</th>
+                                    <th scope="col">RentDate</th>
+                                    <th scope="col">CarRegistrationNo</th>
+                                    <th scope="col">UserID</th>
+                                    <th scope="col">PickUpDate</th>
+                                    <th scope="col">PickUpTime</th>
+                                    <th scope="col">PickUpVenue</th>
+                                    <th scope="col">ReturnDate</th>
+                                    <th scope="col">ReturnDate</th>
+                                    <th scope="col">ReturnVenue</th>
+                                    <th scope="col">LossDamageWaiver</th>
+                                    <th scope="col">DriverID</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -247,6 +247,8 @@ function searchDriverByDriverID(user, car) {
     }
 }
 
+// =================wade wenwa sweet alert eke aulk==========================================
+
 function addCarRent(user, car, driver) {
 
     let rentId = $('#inputRentID').text();
@@ -283,24 +285,38 @@ function addCarRent(user, car, driver) {
         data: JSON.stringify(rent),
         success: function (resp) {
             uploadBankSlip(rentId);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: "Rent Placed Successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            clearRentalFields();
+            updateCarAvailabilityWhenPlaceRent(car.registrationNumber);
+            alert("Rent Placed Successfully");
             location.replace("userDashboard.html");
+            // Swal.fire({
+            //     icon: 'success',
+            //     title: 'Successful',
+            //     text: 'Rent Placed Successfully'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'success',
+            //     title: "Rent Placed Successfully",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
+
+
         },
         error: function (error) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: "Unsuccessfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            alert("Unsuccessfully");
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Unsuccessful',
+            //     text: 'Rent Placed Unsuccessfully'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'error',
+            //     title: "Unsuccessfully",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
         }
     })
 }
@@ -323,28 +339,79 @@ function uploadBankSlip(rentId) {
         data: data,
         success: function (resp) {
             console.log("Uploaded");
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: "BankSip Upload Successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            alert("BankSip Upload Successfully");
+            // Swal.fire({
+            //     icon: 'success',
+            //     title: 'Successful',
+            //     text: 'BankSip Upload Successfully'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'success',
+            //     title: "BankSip Upload Successfully",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: "Unsuccessfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            alert("BankSip did not Uploaded");
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Unsuccessful',
+            //     text: 'BankSip did not Uploaded'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'error',
+            //     title: "Unsuccessfully",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
+        }
+    })
+}
+
+function updateCarAvailabilityWhenPlaceRent(registrationNo) {
+    let status = "Non Available";
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNo + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            alert("Successfully Booked the Car for Rent");
+            clearRentalFields();
+            // Swal.fire({
+            //     icon: 'success',
+            //     title: 'Successful',
+            //     text: 'Successfully Booked the Car for Rent'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'success',
+            //     title: "Successfully Booked the Car for Rent",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
+
+        },
+        error: function (error) {
+            alert("Booked Car Unsuccessfully");
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Unsuccessful',
+            //     text: 'Booked Car Unsuccessfully'
+            // })
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'error',
+            //     title: "Booked Car Unsuccessfully",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
         }
     })
 }
 
 
-//=========================rent eka dammahama car eke availability eka hadanna
 
 

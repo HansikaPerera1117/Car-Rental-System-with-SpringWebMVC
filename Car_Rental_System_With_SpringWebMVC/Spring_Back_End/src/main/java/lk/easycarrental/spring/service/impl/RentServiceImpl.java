@@ -6,6 +6,7 @@ import lk.easycarrental.spring.entity.Rent;
 import lk.easycarrental.spring.repo.RentRepo;
 import lk.easycarrental.spring.service.RentService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,22 +61,35 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public void updateRent(RentDTO dto) {
-
+        if (repo.existsById(dto.getRentID())) {
+            repo.save(mapper.map(dto, Rent.class));
+        } else {
+            throw new RuntimeException("Rent "+dto.getRentID()+" Not Exist to Update....!");
+        }
     }
 
     @Override
     public void deleteRent(String rentId) {
-
+        if (repo.existsById(rentId)) {
+            repo.deleteById(rentId);
+        } else {
+            throw new RuntimeException("Rent "+rentId+" Not Exist to Delete....!");
+        }
     }
 
     @Override
     public RentDTO searchRent(String rentId) {
-        return null;
+        if (repo.existsById(rentId)) {
+            return mapper.map(repo.findById(rentId).get(), RentDTO.class);
+        } else {
+            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
+        }
     }
 
     @Override
     public List<RentDTO> getAllRents() {
-        return null;
+        return mapper.map(repo.findAll(), new TypeToken<List<RentDTO>>() {
+        }.getType());
     }
 
     @Override

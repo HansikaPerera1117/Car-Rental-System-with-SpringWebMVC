@@ -20,6 +20,11 @@ public class RentController {
     @Autowired
     RentService service;
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllRents() {
+        return new ResponseUtil("200", "Done", service.getAllRents());
+    }
+
     @GetMapping(path = "/generateRentId", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateRentId() {
         return new ResponseUtil("200", "Done", service.generateRentId());
@@ -30,6 +35,23 @@ public class RentController {
         System.out.println(dto.toString());
         service.addRent(dto);
         return new ResponseUtil("200","Rent Placed Successfully "+dto.toString(),null);
+    }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCarRent(@RequestBody RentDTO dto) {
+        service.updateRent(dto);
+        return new ResponseUtil("200","Rent Updated Successfully "+dto.toString(),null);
+    }
+
+    @DeleteMapping(params = {"rentId"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCarRent(@RequestParam String rentId) {
+        service.deleteRent(rentId);
+        return new ResponseUtil("200",rentId+" Rent Deleted Successfully ",null);
+    }
+
+    @GetMapping(path = "/{rentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRent(@PathVariable String rentId) {
+        return new ResponseUtil("200", "Done", service.searchRent(rentId));
     }
 
     @PutMapping(path = "/uploadImg/{rentId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

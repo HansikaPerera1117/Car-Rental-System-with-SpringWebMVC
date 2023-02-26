@@ -10,6 +10,7 @@ loadAllUsers();
 getRegisterUsersCount();
 loadAllCars();
 getAvailableCarCount();
+getRentedCarCount();
 generateDriverId();
 loadAllDrivers();
 getAvailableDriverCount();
@@ -17,6 +18,7 @@ getAvailableDriverCount();
 generateMaintenanceId();
 loadAllCarRegNosToComboBox();
 loadAllMaintenances();
+getUnderMaintenanceCarCount();
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -771,6 +773,27 @@ function getAvailableCarCount() {
     })
 }
 
+function getRentedCarCount() {
+    let availability = "Non Available";
+    $.ajax({
+        url: baseUrl + "car/count/" + availability,
+        method: "GET",
+        success: function (resp) {
+            console.log(resp)
+            if (resp.data != 0) {
+                if (resp.data < 10) {
+                    $('#lblNoOfRentedCars').text("0" + resp.data);
+                } else {
+                    $('#lblNoOfRentedCars').text(resp.data);
+                }
+            } else {
+                $('#lblNoOfRentedCars').text("00");
+            }
+        }
+    })
+}
+
+
 //--------------------Car end-------------------------------------------
 
 
@@ -1182,6 +1205,8 @@ function updateCarStatusInMaintain(registrationNo) {
             loadAllMaintenances();
             generateMaintenanceId();
             clearMaintenanceFields();
+            getUnderMaintenanceCarCount();
+
         },
         error: function (error) {
             Swal.fire({
@@ -1246,6 +1271,8 @@ function updateCarStatusToAvailableDoneMaintain(){
             loadAllMaintenances();
             clearMaintenanceFields();
             loadAllCarRegNosToComboBox()
+            getUnderMaintenanceCarCount();
+
         },
         error: function (error) {
             Swal.fire({
@@ -1331,6 +1358,26 @@ $("#btnSearchMaintain").click(function (){
         }
     });
 });
+
+function getUnderMaintenanceCarCount() {
+    let availability = "Under Maintenance";
+    $.ajax({
+        url: baseUrl + "car/count/" + availability,
+        method: "GET",
+        success: function (resp) {
+            console.log(resp)
+            if (resp.data != 0) {
+                if (resp.data < 10) {
+                    $('#lblNoOfMaintainCars').text("0" + resp.data);
+                } else {
+                    $('#lblNoOfMaintainCars').text(resp.data);
+                }
+            } else {
+                $('#lblNoOfMaintainCars').text("00");
+            }
+        }
+    })
+}
 
 //--------------------Maintain end-------------------------------------------
 
