@@ -1116,10 +1116,33 @@ $("#btnRefreshDriver").click(function (){
     clearDriverFields();
 });
 
-//==========================================driver schedule button eka hadanna===============================================
-$("#btnDriverSchedule").click(function (){
 
+$("#btnDriverSchedule").click(function (){
+    let driverID = $('#inputDriverID').val();
+    let name = $('#inputDriverName').val();
+    let contactNo = $('#inputDriverContactNo').val();
+
+    loadDriverSchedule(driverID,name,contactNo);
 });
+
+function loadDriverSchedule(driverID,name,contactNo) {
+    $("#lblDriverID").text(driverID);
+    $("#lblDriverName").text(name);
+    $("#lblDriverContactNo").text(contactNo);
+
+    $('#tblDriverSchedule').empty();
+    let status = "Accepted";
+    $.ajax({
+        url:"http://localhost:8080/Spring_Back_End_war/rent/getCarRents/" + status + "/" + driverID,
+        method:"GET",
+        success:function (res) {
+            for (let carRent of res.data) {
+                let row = `<tr><td>${carRent.driverID.driverID}</td><td>${carRent.driverID.name}</td><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${carRent.cars.registrationNumber}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td></tr>`;
+                $('#tblDriverSchedule').append(row);
+            }
+        }
+    })
+}
 
 //--------------------Driver end-------------------------------------------
 
@@ -1694,7 +1717,6 @@ function rejectRentals(rentId) {
 $("#btnRefreshRentRequest").click(function (){
     clearRentRequestFields();
 });
-
 
 //--------------------requests end-------------------------------------------
 
