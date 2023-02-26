@@ -189,6 +189,11 @@ $("#menuMaintains").click(function (){
 
 
 //--------------------home start-------------------------------------------
+function getToday(){
+    var date = new Date();
+    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+    return current_date;
+}
 
 function setDates() {
     var date = new Date();
@@ -197,12 +202,16 @@ function setDates() {
 
     $("#lblDate").text("Date : "+current_date);
     $("#lblTime").text("Time : "+current_time);
+
 }
 
 
 function loadTodayRents() {
-    let today = $("#lblDate").text();
+
+    let today = getToday();
+
     $('#tblTodayRents').empty();
+
     $.ajax({
         url: baseUrl + "rent/getTodayRents/" + today,
         method: "GET",
@@ -214,11 +223,11 @@ function loadTodayRents() {
                 } else {
                     driverId = booking.driverID.driverID;
                 }
-                let row = `<tr><td>${booking.rentID}</td><td>${booking.rentDate}</td><td>${booking.users.userID}</td><td>${booking.cars.registrationNumber}</td><td>${booking.pickUpDate}</td><td>${booking.returnDate}</td><td>${driverId}</td><td>${booking.status}</td></tr>`;
+                let row = `<tr><td>${booking.rentID}</td><td>${booking.rentDate}</td><td>${booking.users.userID}</td><td>${booking.users.name}</td><td>${booking.cars.registrationNumber}</td><td>${booking.pickUpDate}</td><td>${booking.returnDate}</td><td>${driverId}</td><td>${booking.status}</td></tr>`;
                 $('#tblTodayRents').append(row);
             }
         }
-    })
+    });
 }
 
 //--------------------home end-------------------------------------------
@@ -1513,6 +1522,11 @@ function searchAndLoadRentReqBankSlipImgs(rentId) {
     })
 }
 
+$("#btnSearchRentReq").click(function (){
+    var rentId = $('#inputRentReqSearch').val();
+    findRentReq(rentId);
+});
+
 $("#btnRentReqAccept").click(function (){
     if ($('#inputReqRentID').val() != "") {
         acceptRental();
@@ -1610,7 +1624,76 @@ function clearRentRequestFields(){
     $('#inputReqRentStatus').val("");
     $('#inputReqImageOfBankSlip').empty();
     $('#inputRentReqSearch').val("");
+    $('#inputReqReasonDeny').val("");
+
 }
+
+$('#btnRentReqDeny').click(function () {
+
+    if ($('#inputReqRentID').val() != "" && $('#inputReqReasonDeny').val() != "") {
+        let rentId = $('#inputReqRentID').val();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Deny!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                rejectRentals(rentId);
+                Swal.fire(
+                    'Deny!',
+                    'Request has been Denied.',
+                    'success'
+                )
+            }
+        })
+
+    } else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: "Please Select Car Rent from Table Or Send Reason To Deny Request",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+})
+
+function rejectRentals(rentId) {
+    $.ajax({
+        url: baseUrl + "rent?rentId=" + rentId,
+        method: "DELETE",
+        success: function (res) {
+            loadAllRents();
+            loadPendingRentals();
+            loadTodayRents()
+            clearRentRequestFields();
+            swal({
+                title: "Confirmation!",
+                text: "Car Rental Deny",
+                icon: "success",
+                button: "Close",
+                timer: 2000
+            });
+        },
+        error: function (ob) {
+            swal({
+                title: "Error!",
+                text: "Car Rental Not Deny",
+                icon: "error",
+                button: "Close",
+                timer: 2000
+            });
+        }
+    })
+}
+
+$("#btnRefreshRentRequest").click(function (){
+    clearRentRequestFields();
+});
 
 
 //--------------------requests end-------------------------------------------
