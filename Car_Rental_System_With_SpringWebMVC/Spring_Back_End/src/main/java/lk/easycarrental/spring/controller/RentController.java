@@ -77,7 +77,7 @@ public class RentController {
 
     @GetMapping(path = "/count/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getCountOfRentsByStatus(@PathVariable String status) {
-        return new ResponseUtil("200", "Done", service.getCountOfRentsByStatus(status));
+        return new ResponseUtil("200", "rentCount", service.getCountOfRentsByStatus(status));
     }
 
 }

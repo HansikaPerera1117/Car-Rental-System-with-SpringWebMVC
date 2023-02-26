@@ -251,7 +251,7 @@
                                     <label class="mt-2 fs-5" style="width: max-content; border-bottom: 3px solid black"> <i class="fa-solid fa-house-chimney"></i> Number of Rentals </label>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <label class="mt-1 fs-1" id="lblNoOfRents" style="width: max-content"> 00 </label>
+                                    <label class="mt-1 fs-1" id="lblNoOfRents" style="width: max-content"></label>
                                 </div>
                             </div>
                             <div class="col-3 ms-3 me-4 mt-4 bg-light" style="height: 140px;border-radius: 8px;box-shadow: 2px 3px 8px 0px #939393e8;">
@@ -734,8 +734,8 @@
                                     <input class="form-control" id="inputUserID" type="text" readonly>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label" for="inputNameOrUser">User Name</label>
-                                    <input class="form-control" id="inputNameOrUser" type="text" readonly>
+                                    <label class="form-label" for="inputNameOfUser">User Name</label>
+                                    <input class="form-control" id="inputNameOfUser" type="text" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputPickUpDate" class="form-label">PickUp Date</label>
@@ -812,14 +812,14 @@
                                     <th scope="col">PickUpTime</th>
                                     <th scope="col">PickUpVenue</th>
                                     <th scope="col">ReturnDate</th>
-                                    <th scope="col">ReturnDate</th>
+                                    <th scope="col">ReturnTime</th>
                                     <th scope="col">ReturnVenue</th>
                                     <th scope="col">LossDamageWaiver</th>
                                     <th scope="col">DriverID</th>
                                     <th scope="col">Status</th>
                                 </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody id="tblRent"></tbody>
                             </table>
                         </div>
                     </div>
