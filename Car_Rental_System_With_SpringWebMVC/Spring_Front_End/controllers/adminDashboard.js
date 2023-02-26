@@ -24,6 +24,10 @@ loadAllRents();
 loadAllDriverIDsToComboBox();
 getRentCount();
 
+
+
+loadPendingRentals();
+
 $("#home").css('display','block');
 $("#cars").css('display','none');
 $("#users").css('display','none');
@@ -1396,6 +1400,95 @@ function clearRentFields(){
 
 //--------------------requests start-------------------------------------------
 
+function loadPendingRentals() {
+    let status = "Pending";
+
+    $('#tblRentReqTable').empty();
+    $.ajax({
+        url: baseUrl + "rent/get/" + status,
+        method: "GET",
+        success: function (res) {
+            for (const carRent of res.data) {
+                let driverId;
+                if (carRent.driver === null) {
+                    driverId = "No Driver";
+                } else {
+                    driverId = carRent.driverID.driverID;
+                }
+                let row = `<tr><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${carRent.cars.registrationNumber}</td><td>${carRent.users.userID}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.pickUpVenue}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td><td>${carRent.returnVenue}</td><td>${carRent.lossDamageWaiver}</td><td>${driverId}</td><td>${carRent.status}</td></tr>`;
+                $('#tblRentReqTable').append(row);
+            }
+            bindRentalRequestTableClickEvents();
+        }
+    })
+}
+
+function bindRentalRequestTableClickEvents(){
+    $('#tblRentReqTable>tr').click(function () {
+        let rentId = $(this).children().eq(0).text();
+        findRentReq(rentId);
+    })
+}
+
+function findRentReq(rentId) {
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (resp) {
+            let rent = resp.data;
+
+            $('#inputReqRentID').val(rent.rentID);
+            $('#inputReqRentDate').val(rent.rentDate);
+            $('#inputReqCarRegNo').val(rent.cars.registrationNumber);
+            $('#inputReqUserID').val(rent.users.userID);
+            $('#inputReqNameOfUser').val(rent.users.name);
+            $('#inputReqPickUpDate').val(rent.pickUpDate);
+            $('#inputReqPickUpTime').val(rent.pickUpTime);
+            $('#inputReqPickUpVenue').val(rent.pickUpVenue);
+            $('#inputReqReturnDate').val(rent.returnDate);
+            $('#inputReqReturnTime').val(rent.returnTime);
+            $('#inputReqReturnVenue').val(rent.returnVenue);
+            $('#inputReqDriverID').val(rent.driverID.driverID);
+            $('#inputReqNameOfDriver').val(rent.driverID.name);
+            $('#inputReqLossDamageWaiver').val(rent.lossDamageWaiver);
+            $('#inputReqRentStatus').val(rent.status);
+
+            searchAndLoadRentReqBankSlipImgs(rentId);
+
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Rent " + rentId + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function searchAndLoadRentReqBankSlipImgs(rentId) {
+    $('#inputReqImageOfBankSlip').empty();
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            console.log(rent)
+            let bankSlipPath = rent.bankSlip;
+            let bankSlipImg = bankSlipPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Rent")[1];
+            let bankSlipImgScr = "../assests/savedImages/Rent" + bankSlipImg;
+            console.log(bankSlipImgScr);
+
+            let slipImage = `<img src=${bankSlipImgScr} alt="Bank Slip" style="background-size: cover;width: 100%;height: 100%">`;
+            $('#inputReqImageOfBankSlip').append(slipImage);
+
+        }
+    })
+}
 
 
 //--------------------requests end-------------------------------------------
