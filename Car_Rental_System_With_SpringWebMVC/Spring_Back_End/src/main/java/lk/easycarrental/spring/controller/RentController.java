@@ -80,4 +80,9 @@ public class RentController {
         return new ResponseUtil("200", "rentCount", service.getCountOfRentsByStatus(status));
     }
 
+    @PutMapping(path = "/updateRentDriver/{rentId}/{driverID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateRentDriver(@PathVariable String rentId, @PathVariable String driverID) {
+        service.updateRentDriver(rentId,driverID);
+        return new ResponseUtil("200", "Done", null);
+    }
 }

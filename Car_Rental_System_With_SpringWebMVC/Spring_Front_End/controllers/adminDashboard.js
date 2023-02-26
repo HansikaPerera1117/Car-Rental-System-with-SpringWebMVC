@@ -1087,6 +1087,187 @@ $("#btnDriverSchedule").click(function (){
 //--------------------Driver end-------------------------------------------
 
 
+//--------------------rent start-------------------------------------------
+
+function getRentCount() {
+    let status = "";
+    $.ajax({
+        url: baseUrl + "rent/count/" + status,
+        method: "GET",
+        success: function (resp) {
+            console.log(resp)
+            if (resp.data != 0) {
+                if (resp.data < 10) {
+                    console.log(resp);
+                    $('#lblNoOfRents').text("0" + resp.data);
+                } else {
+                    $('#lblNoOfRents').text(resp.data);
+                }
+            } else {
+                $('#lblNoOfRents').text("00");
+            }
+        }
+    })
+}
+
+function loadAllRents(){
+    $('#tblRent').empty();
+
+    $.ajax({
+        url: baseUrl + "rent",
+        method: "GET",
+        success: function (res) {
+            console.log(res)
+            for (let rent of res.data) {
+                let row = `<tr><td>${rent.rentID}</td><td>${rent.rentDate}</td><td>${rent.cars.registrationNumber}</td><td>${rent.users.userID}</td><td>${rent.pickUpDate}</td><td>${rent.pickUpTime}</td><td>${rent.pickUpVenue}</td><td>${rent.returnDate}</td><td>${rent.returnTime}</td><td>${rent.returnVenue}</td><td>${rent.lossDamageWaiver}</td><td>${rent.driverID.driverID}</td><td>${rent.status}</td></tr>`;
+                $('#tblRent').append(row);
+            }
+            bindRentClickEvents();
+        }
+    })
+}
+
+function bindRentClickEvents(){
+    $('#tblRent>tr').click(function () {
+        let rentId = $(this).children().eq(0).text();
+        findRent(rentId);
+    })
+}
+
+function findRent(rentId) {
+    loadAllDriverIDsToComboBox();
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (resp) {
+            let rent = resp.data;
+
+            $('#inputRentID').val(rent.rentID);
+            $('#inputRentDate').val(rent.rentDate);
+            $('#inputCarRegNo').val(rent.cars.registrationNumber);
+            $('#inputUserID').val(rent.users.userID);
+            $('#inputNameOfUser').val(rent.users.name);
+            $('#inputPickUpDate').val(rent.pickUpDate);
+            $('#inputPickUpTime').val(rent.pickUpTime);
+            $('#inputPickUpVenue').val(rent.pickUpVenue);
+            $('#inputReturnDate').val(rent.returnDate);
+            $('#inputReturnTime').val(rent.returnTime);
+            $('#inputReturnVenue').val(rent.returnVenue);
+            $('#selectDriverID').find('option:selected').text(rent.driverID.driverID);
+            $('#inputNameOfDriver').val(rent.driverID.name);
+            $('#inputLossDamageWaiver').val(rent.lossDamageWaiver);
+            $('#inputRentStatus').val(rent.status);
+
+            searchAndLoadRentBankSlipImgs(rentId);
+
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Rent " + rentId + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function searchAndLoadRentBankSlipImgs(rentId) {
+    $('#inputImageOfBankSlip').empty();
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            console.log(rent)
+            let bankSlipPath = rent.bankSlip;
+            let bankSlipImg = bankSlipPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Rent")[1];
+            let bankSlipImgScr = "../assests/savedImages/Rent" + bankSlipImg;
+            console.log(bankSlipImgScr);
+
+            let slipImage = `<img src=${bankSlipImgScr} alt="Bank Slip" style="background-size: cover;width: 100%;height: 100%">`;
+            $('#inputImageOfBankSlip').append(slipImage);
+
+        }
+    })
+}
+
+function loadAllDriverIDsToComboBox(){
+    $('#selectDriverID').empty();
+    $.ajax({
+        url: baseUrl + "driver",
+        method: "GET",
+        success: function (resp) {
+            let i = 0;
+            for (let driver of resp.data) {
+                $('#selectDriverID').append(new Option(driver.driverID, i));
+                i++;
+            }
+        }
+    });
+}
+
+$('#selectDriverID').change(function () {
+    let driverID = $('#selectDriverID').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "driver/" + driverID,
+        method: "GET",
+        success: function (res) {
+            let driver = res.data;
+            $('#inputNameOfDriver').val(driver.name);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Driver Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
+
+$("#btnSearchRent").click(function (){
+    var rentId = $('#inputRentSearch').val();
+    findRent(rentId);
+});
+
+
+$("#btnRefreshRent").click(function (){
+    clearRentFields();
+});
+
+function clearRentFields(){
+    $('#inputRentID').val("");
+    $('#inputRentDate').val("");
+    $('#inputCarRegNo').val("");
+    $('#inputUserID').val("");
+    $('#inputNameOfUser').val("");
+    $('#inputPickUpDate').val("");
+    $('#inputPickUpTime').val("");
+    $('#inputPickUpVenue').val("");
+    $('#inputReturnDate').val("");
+    $('#inputReturnTime').val("");
+    $('#inputReturnVenue').val("");
+    $('#selectDriverID').empty()
+    $('#inputNameOfDriver').val("");
+    $('#inputLossDamageWaiver').val("");
+    $('#inputRentStatus').val("");
+    $('#inputImageOfBankSlip').empty();
+}
+
+$("#btnChangeDriver").click(function (){
+
+});
+
+//--------------------rent end-------------------------------------------
+
+
 
 
 
@@ -1397,185 +1578,4 @@ function getUnderMaintenanceCarCount() {
 }
 
 //--------------------Maintain end-------------------------------------------
-
-
-//--------------------rent start-------------------------------------------
-
-function getRentCount() {
-    let status = "";
-    $.ajax({
-        url: baseUrl + "rent/count/" + status,
-        method: "GET",
-        success: function (resp) {
-            console.log(resp)
-            if (resp.data != 0) {
-                if (resp.data < 10) {
-                    console.log(resp);
-                    $('#lblNoOfRents').text("0" + resp.data);
-                } else {
-                    $('#lblNoOfRents').text(resp.data);
-                }
-            } else {
-                $('#lblNoOfRents').text("00");
-            }
-        }
-    })
-}
-
-function loadAllRents(){
-    $('#tblRent').empty();
-
-    $.ajax({
-        url: baseUrl + "rent",
-        method: "GET",
-        success: function (res) {
-            console.log(res)
-            for (let rent of res.data) {
-                let row = `<tr><td>${rent.rentID}</td><td>${rent.rentDate}</td><td>${rent.cars.registrationNumber}</td><td>${rent.users.userID}</td><td>${rent.pickUpDate}</td><td>${rent.pickUpTime}</td><td>${rent.pickUpVenue}</td><td>${rent.returnDate}</td><td>${rent.returnTime}</td><td>${rent.returnVenue}</td><td>${rent.lossDamageWaiver}</td><td>${rent.driverID.driverID}</td><td>${rent.status}</td></tr>`;
-                $('#tblRent').append(row);
-            }
-            bindRentClickEvents();
-        }
-    })
-}
-
-function bindRentClickEvents(){
-    $('#tblRent>tr').click(function () {
-        let rentId = $(this).children().eq(0).text();
-        findRent(rentId);
-    })
-}
-
-function findRent(rentId) {
-    loadAllDriverIDsToComboBox();
-
-    $.ajax({
-        url: baseUrl + "rent/" + rentId,
-        method: "GET",
-        success: function (resp) {
-            let rent = resp.data;
-
-            $('#inputRentID').val(rent.rentID);
-            $('#inputRentDate').val(rent.rentDate);
-            $('#inputCarRegNo').val(rent.cars.registrationNumber);
-            $('#inputUserID').val(rent.users.userID);
-            $('#inputNameOfUser').val(rent.users.name);
-            $('#inputPickUpDate').val(rent.pickUpDate);
-            $('#inputPickUpTime').val(rent.pickUpTime);
-            $('#inputPickUpVenue').val(rent.pickUpVenue);
-            $('#inputReturnDate').val(rent.returnDate);
-            $('#inputReturnTime').val(rent.returnTime);
-            $('#inputReturnVenue').val(rent.returnVenue);
-            $('#selectDriverID').find('option:selected').text(rent.driverID.driverID);
-            $('#inputNameOfDriver').val(rent.driverID.name);
-            $('#inputLossDamageWaiver').val(rent.lossDamageWaiver);
-            $('#inputRentStatus').val(rent.status);
-
-            searchAndLoadRentBankSlipImgs(rentId);
-
-        },
-        error: function (error) {
-            let errorReason = JSON.parse(error.responseText);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: "Rent " + rentId + " Not Exist...",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
-    })
-}
-
-function searchAndLoadRentBankSlipImgs(rentId) {
-    $('#inputImageOfBankSlip').empty();
-
-    $.ajax({
-        url: baseUrl + "rent/" + rentId,
-        method: "GET",
-        success: function (res) {
-            let rent = res.data;
-            console.log(rent)
-            let bankSlipPath = rent.bankSlip;
-            let bankSlipImg = bankSlipPath.split("E:\\Working Directory\\works\\GitUplode\\Car Rental System\\Car_Rental_System_With_SpringWebMVC\\Spring_Front_End\\assests\\savedImages\\Rent")[1];
-            let bankSlipImgScr = "../assests/savedImages/Rent" + bankSlipImg;
-            console.log(bankSlipImgScr);
-
-            let slipImage = `<img src=${bankSlipImgScr} alt="Bank Slip" style="background-size: cover;width: 100%;height: 100%">`;
-            $('#inputImageOfBankSlip').append(slipImage);
-
-        }
-    })
-}
-
-function loadAllDriverIDsToComboBox(){
-    $('#selectDriverID').empty();
-    $.ajax({
-        url: baseUrl + "driver",
-        method: "GET",
-        success: function (resp) {
-            let i = 0;
-            for (let driver of resp.data) {
-                $('#selectDriverID').append(new Option(driver.driverID, i));
-                i++;
-            }
-        }
-    });
-}
-
-$('#selectDriverID').change(function () {
-    let driverID = $('#selectDriverID').find('option:selected').text();
-    $.ajax({
-        url: baseUrl + "driver/" + driverID,
-        method: "GET",
-        success: function (res) {
-            let driver = res.data;
-            $('#inputNameOfDriver').val(driver.name);
-        },
-        error: function (error) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: "This Driver Is Not Exist...",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
-    })
-})
-
-$("#btnSearchRent").click(function (){
-    var rentId = $('#inputRentSearch').val();
-    findRent(rentId);
-});
-
-
-$("#btnRefreshRent").click(function (){
-    clearRentFields();
-});
-
-function clearRentFields(){
-    $('#inputRentID').val("");
-    $('#inputRentDate').val("");
-    $('#inputCarRegNo').val("");
-    $('#inputUserID').val("");
-    $('#inputNameOfUser').val("");
-    $('#inputPickUpDate').val("");
-    $('#inputPickUpTime').val("");
-    $('#inputPickUpVenue').val("");
-    $('#inputReturnDate').val("");
-    $('#inputReturnTime').val("");
-    $('#inputReturnVenue').val("");
-    $('#selectDriverID').empty()
-    $('#inputNameOfDriver').val("");
-    $('#inputLossDamageWaiver').val("");
-    $('#inputRentStatus').val("");
-    $('#inputImageOfBankSlip').empty();
-}
-
-
-
-//--------------------rent end-------------------------------------------
-
-
 

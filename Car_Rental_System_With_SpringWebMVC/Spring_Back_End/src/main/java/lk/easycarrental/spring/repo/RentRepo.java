@@ -1,5 +1,6 @@
 package lk.easycarrental.spring.repo;
 
+import lk.easycarrental.spring.entity.Driver;
 import lk.easycarrental.spring.entity.Rent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,6 +17,11 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     @Transactional
     @Query(value = "UPDATE Rent SET bankSlip=:bankSlip WHERE rentId=:rentId", nativeQuery = true)
     void updateRentFilePaths(@Param("bankSlip") String bankSlip, @Param("rentId") String rentId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Rent SET driverID=:driverID WHERE rentId=:rentId", nativeQuery = true)
+    void updateRentDriver(@Param("rentId") String rentId,@Param("driverID") String driverID);
 
 
     @Query(value = "SELECT COUNT(rentID) FROM Rent WHERE status=:status", nativeQuery = true)

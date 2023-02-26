@@ -1,6 +1,7 @@
 package lk.easycarrental.spring.service.impl;
 
 
+import lk.easycarrental.spring.dto.DriverDTO;
 import lk.easycarrental.spring.dto.RentDTO;
 import lk.easycarrental.spring.entity.Rent;
 import lk.easycarrental.spring.repo.RentRepo;
@@ -97,7 +98,16 @@ public class RentServiceImpl implements RentService {
         if (repo.existsById(rentId)) {
             repo.updateRentFilePaths(bankSlip, rentId);
         } else {
-            throw new RuntimeException("Rent Not Found");
+            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
+        }
+    }
+
+    @Override
+    public void updateRentDriver(String rentId ,String driverID) {
+        if (repo.existsById(rentId)) {
+            repo.updateRentFilePaths(driverID, rentId);
+        } else {
+            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
         }
     }
 
