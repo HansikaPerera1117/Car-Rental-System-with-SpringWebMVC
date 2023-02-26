@@ -38,5 +38,15 @@ public interface DriverRepo extends JpaRepository<Driver,String> {
     @Query(value = "SELECT * FROM Driver WHERE availability='Available' ORDER BY RAND() LIMIT 1",nativeQuery = true)
     List<Driver> getRandomDriver();
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Driver SET availability = 'Not Available' WHERE driverID=:driverID", nativeQuery = true)
+    void updateDriverNonAvailable(@Param("driverID") String driverID);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Driver SET availability = 'Available' WHERE driverID=:driverID", nativeQuery = true)
+    void updateDriverAvailable(@Param("driverID") String driverID);
+
 
 }

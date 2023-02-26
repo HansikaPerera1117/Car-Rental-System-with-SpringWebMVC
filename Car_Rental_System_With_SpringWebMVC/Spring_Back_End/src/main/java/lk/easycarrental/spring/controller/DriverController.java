@@ -85,5 +85,19 @@ public class DriverController {
         return new ResponseUtil("200","Done",service.getRandomDriver());
     }
 
+    @PutMapping(path = "/updateAvailable/{driverID}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateDriverAvailable(@PathVariable String driverID){
+        service.updateDriverAvailable(driverID);
+        return new ResponseUtil("200",driverID+" Driver Status Updated Successfully ",null);
+
+    }
+
+    @PutMapping(path = "/updateNonAvailable/{driverID}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateDriverNonAvailable(@PathVariable String driverID){
+        service.updateDriverNonAvailable(driverID);
+        return new ResponseUtil("200",driverID+" Driver Status Updated Successfully ",null);
+
+    }
+
 
 }

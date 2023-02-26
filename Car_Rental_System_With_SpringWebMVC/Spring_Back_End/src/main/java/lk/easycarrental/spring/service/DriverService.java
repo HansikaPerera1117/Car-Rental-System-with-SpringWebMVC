@@ -30,5 +30,10 @@ public interface DriverService {
 
     List<DriverDTO> getRandomDriver();
 
+    void updateDriverNonAvailable(String driverID);
+
+    void updateDriverAvailable(String driverID);
+
+
 
 }
