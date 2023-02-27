@@ -24,9 +24,6 @@ getUnderMaintenanceCarCount();
 loadAllRents();
 loadAllDriverIDsToComboBox();
 getRentCount();
-
-
-
 loadPendingRentals();
 
 $("#home").css('display','block');

@@ -26,7 +26,7 @@ function getAllUserData(username, password) {
         success: function (res) {
             let user = res.data;
             setCustomerDetails(user);
-            loadMyCarRentsToTable(user.userID);
+            loadAllMyRentIdsToComboBox(user.userID);
         }
     })
 }
@@ -242,7 +242,195 @@ function deleteUser(){
     })
 }
 
-//===========================meka karala na thama-===============================================
-function loadMyCarRentsToTable(userID) {
+function loadAllMyRentIdsToComboBox(userID){
+    $('#selectUserRentId').empty();
+    $('#selectUserRentId').append(new Option("-Select RentId-", ""));
+    $.ajax({
+        url: "http://localhost:8080/Spring_Back_End_war/rent/getAllByUserID/" + userID,
+        method: "GET",
+        success: function (resp) {
+            let i = 0;
+            for (let rent of resp.data) {
+                $('#selectUserRentId').append(new Option(rent.rentID, i));
+                i++;
+            }
+        }
+    })
+}
 
+$('#selectUserRentId').change(function () {
+    let rentId = $('#selectUserRentId').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            $("#inputRentDate").val(rent.rentDate);
+            $("#inputCraID").val(rent.cars.registrationNumber);
+            $("#inputTransmissionType").val(rent.cars.transmissionType);
+            $("#inputFreeKMForADay").val(rent.cars.freeKMForADay);
+            $("#inputFreeKMForAMonth").val(rent.cars.freeKMForAMonth);
+            $("#inputPricePerExtraKM").val(rent.cars.pricePerExtraKM);
+            $("#inputUserID").val(rent.users.userID);
+            $("#inputNameOfUser").val(rent.users.name);
+            $("#inputPickUpDate").val(rent.pickUpDate);
+            $("#inputPickUpTime").val(rent.pickUpTime);
+            $("#inputPickUpVenue").val(rent.pickUpVenue);
+            $("#inputReturnDate").val(rent.returnDate);
+            $("#inputReturnTime").val(rent.returnTime);
+            $("#inputReturnVenue").val(rent.returnVenue);
+            $("#inputLossDamageWaiver").val(rent.lossDamageWaiver);
+            $("#inputDriverName").val(rent.driverID.name);
+            $("#inputDriverContactNo").val(rent.driverID.contactNo);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Rent Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
+
+
+$("#btnRemoverUserRent").click(function (){
+    let rentId = $('#selectUserRentId').find('option:selected').text();
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            let rentId = rent.rentID;
+            let carRegNo = rent.cars.registrationNumber;
+            let driverId = rent.driverID.driverID;
+            let userId = rent.users.userID;
+
+            if (rent.status === "Pending") {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        cancelRental(rentId,carRegNo,driverId,userId);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "You Can't Delete This Car Reservation...",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+
+            },
+            error: function (error) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Rent Is Not Exist...",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+
+});
+
+
+function cancelRental(rentId,carRegNo,driverId,userId) {
+    let status = "Cancelled";
+    console.log(rentId,carRegNo,driverId,userId);
+
+    $.ajax({
+        url: baseUrl + "api/v1/CarRent/" + rentId + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            console.log(res)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Rent Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            let status = "Available";
+            updateCarStatusByRegNo(status, carRegNo);
+            updateDriverStatusByDriverID(driverId);
+            loadAllMyRentIdsToComboBox(userId);
+            generateRentId();
+            clearRentScheduleFields();
+        },
+        error: function (error){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Rent Not Deleted",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function updateCarStatusByRegNo(availability, registrationNumber) {
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNumber + "/" + availability,
+        method: "PUT",
+        success: function (res) {
+            console.log("Update Car availability to available");
+        },
+        error: function (error){
+            console.log("Update Car availability to not available");
+        }
+    })
+}
+
+function updateDriverStatusByDriverID(driverID) {
+    $.ajax({
+        url: baseUrl + "driver/updateAvailable/" + driverID,
+        method: "PUT",
+        success: function (res) {
+            console.log("Update Driver Availability to available");
+        },
+        error: function (error){
+            console.log("Update Driver Availability to not available");
+        }
+    })
+}
+
+function clearRentScheduleFields(){
+    $("#inputRentDate").val("");
+    $("#inputCraID").val("");
+    $("#inputTransmissionType").val("");
+    $("#inputFreeKMForADay").val("");
+    $("#inputFreeKMForAMonth").val("");
+    $("#inputPricePerExtraKM").val("");
+    $("#inputUserID").val("");
+    $("#inputNameOfUser").val("");
+    $("#inputPickUpDate").val("");
+    $("#inputPickUpTime").val("");
+    $("#inputPickUpVenue").val("");
+    $("#inputReturnDate").val("");
+    $("#inputReturnTime").val("");
+    $("#inputReturnVenue").val("");
+    $("#inputLossDamageWaiver").val("");
+    $("#inputDriverName").val("");
+    $("#inputDriverContactNo").val("");
 }

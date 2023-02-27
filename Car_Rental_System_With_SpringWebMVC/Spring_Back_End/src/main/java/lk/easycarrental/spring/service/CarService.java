@@ -24,5 +24,4 @@ public interface CarService {
 
     void updateCarAvailability(String registrationNumber, String availability);
 
-
 }
