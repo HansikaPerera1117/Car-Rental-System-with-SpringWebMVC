@@ -24,6 +24,9 @@ getUnderMaintenanceCarCount();
 loadAllRents();
 loadAllDriverIDsToComboBox();
 getRentCount();
+
+generatePaymentID();
+
 loadPendingRentals();
 
 $("#home").css('display','block');
@@ -1451,6 +1454,21 @@ function clearRentFields(){
 //--------------------rent end-------------------------------------------
 
 
+//--------------------payment start-------------------------------------------
+
+
+function generatePaymentID() {
+    $.ajax({
+        url: baseUrl + "payment/generatePaymentId",
+        method: "GET",
+        success: function (res) {
+            $('#inputPaymentID').val(res.data);
+        }
+    })
+}
+
+
+//--------------------payment end-------------------------------------------
 
 
 //--------------------requests start-------------------------------------------
