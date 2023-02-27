@@ -24,13 +24,13 @@ public interface RentService {
 
     List<RentDTO> getCarRentsByStatus(String status);
 
-//    void updateRentDriver(String rentId ,String driverID);
+    void updateRentDriver(String rentId ,String driverID);
 
     int getCountOfRentsByStatus(String status);
 
     List<RentDTO> getAllByDriverID(String status, String driverID);
 
-//    List<RentDTO> getAllByCars(String status, String registrationNumber);
+    List<RentDTO> getAllByCars(String status, String registrationNumber);
 
     List<RentDTO> getTodayRents(String today);
 

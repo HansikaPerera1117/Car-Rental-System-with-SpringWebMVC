@@ -425,12 +425,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnDeleteCar">Delete Car</button>
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnUpdateCarImages">Update Car Images</button>
-                                        <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnUpdateCar">Update Car</button>
-                                        <button class="btn fs-5 me-3  btn-dark"  type="button" id="btnAddCar">Add Car</button>
-                                    </div>
+                                        <div class="d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                            <button class="btn fs-6 me-3 btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1" type="button" id="btnCarSchedule">Car Schedule</button>
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnDeleteCar">Delete Car</button>
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnUpdateCarImages">Update Car Images</button>
+                                            <button class="btn fs-5 me-3 btn-dark"  type="button" id="btnUpdateCar">Update Car</button>
+                                            <button class="btn fs-5 me-3  btn-dark"  type="button" id="btnAddCar">Add Car</button>
+                                        </div>
                                 </div>
                             </form>
                         </div>
@@ -472,6 +473,53 @@
                     </div>
                 </div>
             </div>
+            <!---------------------- Car Schedule model start------------------------------>
+            <div class="modal fade modal-xl" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4 " id="exampleModalLabel1">Car Schedule</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="lblCarRegNo" class="form-label fs-4 fw-bold">Car Registration No :  </label>
+                                    <label id="lblCarRegNo" class="form-label fs-4 fw-bold"></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lblCarBrand" class="form-label fs-4 fw-bold">Car Brand :  </label>
+                                    <label class="form-label fs-4 fw-bold" id="lblCarBrand"></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="lblCarColor" class="form-label fs-4 fw-bold">Color :  </label>
+                                    <label class="form-label fs-4 fw-bold" id="lblCarColor"></label>
+                                </div>
+                                <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
+                                    <table class="table table-secondary mt-3">
+                                        <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">UserId</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">RentID</th>
+                                            <th scope="col">RentDate</th>
+                                            <th scope="col">DriverID</th>
+                                            <th scope="col">PickUpDate</th>
+                                            <th scope="col">PickUpTime</th>
+                                            <th scope="col">ReturnDate</th>
+                                            <th scope="col">ReturnDate</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tblCarSchedule"></tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------- Car Schedule model end--------------------------------->
+
             <!---------------------------car page end------------------------------------------------------>
 
             <!---------------------------user page start------------------------------------------------------>
@@ -593,7 +641,7 @@
                             <form class="row g-2">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputDriverID">Driver ID</label>
-                                    <input class="form-control" id="inputDriverID" type="text">
+                                    <input class="form-control" id="inputDriverID" type="text" readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="inputDriverName">Name</label>
@@ -700,7 +748,7 @@
                                         <table class="table table-secondary mt-3">
                                             <thead class="table-dark">
                                             <tr>
-                                                <th scope="col">DriverID</th>
+                                                <th scope="col">UserId</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">RentID</th>
                                                 <th scope="col">RentDate</th>
@@ -867,19 +915,19 @@
                             <form class="row g-3">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputPaymentID">Payment ID</label>
-                                    <input class="form-control" id="inputPaymentID" type="text">
+                                    <input class="form-control" id="inputPaymentID" type="text" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputPaymentDate">Date</label>
-                                    <input class="form-control" id="inputPaymentDate" type="date">
+                                    <input class="form-control" id="inputPaymentDate" type="text" readonly>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="inputPaymentRentID" class="form-label">Rent ID</label>
-                                    <input class="form-control" type="text" id="inputPaymentRentID">
+                                    <label for="selectRentID" class="form-label">Rent ID</label>
+                                    <select class="form-select" id="selectRentID" aria-label="Default select example"></select>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputRentPrice" class="form-label">Rent Price</label>
-                                    <input class="form-control" type="number" id="inputRentPrice">
+                                    <input class="form-control" type="number" id="inputRentPrice" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputExtraKM">Extra KMs</label>
@@ -887,7 +935,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputPriseForExtraKM" class="form-label">Prise For Extra KMs</label>
-                                    <input type="number" class="form-control" id="inputPriseForExtraKM">
+                                    <input type="number" class="form-control" id="inputPriseForExtraKM" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputDamageCharge">Damage Charge</label>
@@ -895,7 +943,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputReturnLossDamageWaiver" class="form-label">Return Loss Damage Waiver</label>
-                                    <input class="form-control" id="inputReturnLossDamageWaiver" type="number">
+                                    <input class="form-control" id="inputReturnLossDamageWaiver" type="number" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputDriverPayment" class="form-label">Driver Payment</label>
@@ -903,7 +951,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputTotalPayment" class="form-label">Total Payment</label>
-                                    <input type="number" class="form-control" id="inputTotalPayment">
+                                    <input type="number" class="form-control" id="inputTotalPayment" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
@@ -917,7 +965,7 @@
                         <div class="col-12 mt-2">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-                                    <label class="mt-1 fs-4 col-3" for="inputPaymentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
+                                    <label class="mt-1 fs-4 col-3" id="btnSearchPayment" for="inputPaymentSearch" style="width: max-content"> <i class="fa-solid fa-magnifying-glass"></i> Search </label>
                                 </div>
                                 <div class="col-6 ms-3">
                                     <input class="form-control col-9" id="inputPaymentSearch" type="text">
@@ -1191,7 +1239,7 @@
                             <form class="row g-3">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputMaintainID">Maintain ID</label>
-                                    <input class="form-control" id="inputMaintainID" type="text">
+                                    <input class="form-control" id="inputMaintainID" type="text" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="selectMaintainCarRNo">Car Registration No</label>

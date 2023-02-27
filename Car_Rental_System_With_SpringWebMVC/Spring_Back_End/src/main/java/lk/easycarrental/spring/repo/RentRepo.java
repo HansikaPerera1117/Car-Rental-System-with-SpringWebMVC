@@ -28,10 +28,10 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     List<Rent> getAllByStatus(String status);
 
 
-//    @Modifying
-//    @Transactional
-//    @Query(value = "UPDATE Rent SET driverID=:driverID WHERE rentId=:rentId", nativeQuery = true)
-//    void updateRentDriver(@Param("rentId") String rentId,@Param("driverID") String driverID);
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Rent SET driverID=:driverID WHERE rentId=:rentId", nativeQuery = true)
+    void updateRentDriver(@Param("rentId") String rentId,@Param("driverID") String driverID);
 
 
     @Query(value = "SELECT COUNT(rentID) FROM Rent WHERE status=:status", nativeQuery = true)
@@ -46,8 +46,8 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     @Query(value = "SELECT * FROM Rent WHERE userID=:userID",nativeQuery = true)
     List<Rent> getAllByUserID(@Param("userID") String userID);
 
-//    @Query(value = "SELECT * from Rent where status=:status AND registrationNumber=:registrationNumber", nativeQuery = true)
-//    List<Rent> getAllByCars(@Param("status") String status, @Param("registrationNumber") String registrationNumber);
+    @Query(value = "SELECT * from Rent where status=:status AND registrationNumber=:registrationNumber", nativeQuery = true)
+    List<Rent> getAllByCars(@Param("status") String status, @Param("registrationNumber") String registrationNumber);
 
 
 }

@@ -1,12 +1,12 @@
 
-let baseURL = "http://localhost:8080/Spring_Back_End_war/";
+var baseURL = "http://localhost:8080/Spring_Back_End_war/";
 
 generateRentId();
 setDates();
 
 function generateRentId() {
     $.ajax({
-        url: baseUrl + "rent/generateRentId",
+        url: baseURL + "rent/generateRentId",
         method: "GET",
         success: function (res) {
             console.log(res)
@@ -164,7 +164,7 @@ $('#radioDontWantDriver').click(function () {
 
 function searchRandomDriverForRent() {
     $.ajax({
-        url: baseUrl + "driver/getRandomDriver",
+        url: baseURL + "driver/getRandomDriver",
         method: "GET",
         success: function (res) {
             for (let driver of res.data) {
@@ -250,7 +250,6 @@ function searchDriverByDriverID(user, car) {
 // =================wade wenwa sweet alert eke aulk==========================================
 
 function addCarRent(user, car, driver) {
-
     let rentId = $('#inputRentID').text();
     let rentDate = $('#inputRentDate').text();
     let pickupDate = $('#inputPickUpDate').val();
@@ -283,40 +282,40 @@ function addCarRent(user, car, driver) {
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(rent),
+
         success: function (resp) {
+
             uploadBankSlip(rentId);
-            // updateCarAvailabilityWhenPlaceRent(car.registrationNumber);
             alert("Rent Placed Successfully");
             location.replace("userDashboard.html");
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Successful',
-            //     text: 'Rent Placed Successfully'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'success',
-            //     title: "Rent Placed Successfully",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
-
+            Swal.fire({
+                icon: 'success',
+                title: 'Successful',
+                text: 'Rent Placed Successfully'
+            })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Rent Placed Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
 
         },
         error: function (error) {
             alert("Unsuccessfully");
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'Unsuccessful',
-            //     text: 'Rent Placed Unsuccessfully'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'error',
-            //     title: "Unsuccessfully",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
+            Swal.fire({
+                icon: 'error',
+                title: 'Unsuccessful',
+                text: 'Rent Placed Unsuccessfully'
+            })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     })
 }
@@ -340,35 +339,35 @@ function uploadBankSlip(rentId) {
         success: function (resp) {
             console.log("Uploaded");
             alert("BankSip Upload Successfully");
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Successful',
-            //     text: 'BankSip Upload Successfully'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'success',
-            //     title: "BankSip Upload Successfully",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
+            Swal.fire({
+                icon: 'success',
+                title: 'Successful',
+                text: 'BankSip Upload Successfully'
+            })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "BankSip Upload Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
             alert("BankSip did not Uploaded");
             clearRentalFields();
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'Unsuccessful',
-            //     text: 'BankSip did not Uploaded'
-            // })
-            // Swal.fire({
-            //     position: 'top-end',
-            //     icon: 'error',
-            //     title: "Unsuccessfully",
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
+            Swal.fire({
+                icon: 'error',
+                title: 'Unsuccessful',
+                text: 'BankSip did not Uploaded'
+            })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     })
 }

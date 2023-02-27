@@ -26,6 +26,7 @@ loadAllDriverIDsToComboBox();
 getRentCount();
 
 generatePaymentID();
+loadAllRentIdsToPaymentComboBox();
 
 loadPendingRentals();
 
@@ -218,7 +219,7 @@ function loadTodayRents() {
         success: function (res) {
             for (const booking of res.data) {
                 let driverId;
-                if (booking.driver === null) {
+                if (booking.driverID === null) {
                     driverId = "No Driver";
                 } else {
                     driverId = booking.driverID.driverID;
@@ -844,6 +845,39 @@ $("#btnRefreshCar").click(function (){
    clearAddCarFields();
 });
 
+$("#btnCarSchedule").click(function (){
+    let regNo = $('#inputRegisterNo').val();
+    let brand = $('#inputBrand').val();
+    let color = $('#inputColour').val();
+
+    loadCarSchedule(regNo,brand,color);
+});
+
+function loadCarSchedule(registrationNumber,brand,color) {
+    $("#lblCarRegNo").text(registrationNumber);
+    $("#lblCarBrand").text(brand);
+    $("#lblCarColor").text(color);
+
+    $('#tblCarSchedule').empty();
+    let status = "Accepted";
+    $.ajax({
+        url:"http://localhost:8080/Spring_Back_End_war/rent/getCarRents/" + status + "/" + registrationNumber,
+        method:"GET",
+        success:function (res) {
+            for (let carRent of res.data) {
+                console.log(carRent);
+                let driverId;
+                if (carRent.driverID === null) {
+                    driverId = "No Driver";
+                } else {
+                    driverId = carRent.driverID.driverID;
+                }
+                let row = `<tr><td>${carRent.users.userID}</td><td>${carRent.users.name}</td><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${driverId}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td></tr>`;
+                $('#tblCarSchedule').append(row);
+            }
+        }
+    })
+}
 
 
 //--------------------Car end-------------------------------------------
@@ -1140,7 +1174,7 @@ function loadDriverSchedule(driverID,name,contactNo) {
         method:"GET",
         success:function (res) {
             for (let carRent of res.data) {
-                let row = `<tr><td>${carRent.driverID.driverID}</td><td>${carRent.driverID.name}</td><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${carRent.cars.registrationNumber}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td></tr>`;
+                let row = `<tr><td>${carRent.users.userID}</td><td>${carRent.users.name}</td><td>${carRent.rentID}</td><td>${carRent.rentDate}</td><td>${carRent.cars.registrationNumber}</td><td>${carRent.pickUpDate}</td><td>${carRent.pickUpTime}</td><td>${carRent.returnDate}</td><td>${carRent.returnTime}</td></tr>`;
                 $('#tblDriverSchedule').append(row);
             }
         }
@@ -1151,6 +1185,7 @@ function loadDriverSchedule(driverID,name,contactNo) {
 
 
 //--------------------rent start-------------------------------------------
+let oldDriverId = "";
 
 function getRentCount() {
     let status = "Accepted";
@@ -1182,7 +1217,14 @@ function loadAllRents(){
         success: function (res) {
             console.log(res)
             for (let rent of res.data) {
-                let row = `<tr><td>${rent.rentID}</td><td>${rent.rentDate}</td><td>${rent.cars.registrationNumber}</td><td>${rent.users.userID}</td><td>${rent.pickUpDate}</td><td>${rent.pickUpTime}</td><td>${rent.pickUpVenue}</td><td>${rent.returnDate}</td><td>${rent.returnTime}</td><td>${rent.returnVenue}</td><td>${rent.lossDamageWaiver}</td><td>${rent.driverID.driverID}</td><td>${rent.status}</td></tr>`;
+                let driverId;
+                if (rent.driverID === null) {
+                    driverId = "No Driver";
+                } else {
+                    driverId = rent.driverID.driverID;
+                    oldDriverId = rent.driverID.driverID;
+                }
+                let row = `<tr><td>${rent.rentID}</td><td>${rent.rentDate}</td><td>${rent.cars.registrationNumber}</td><td>${rent.users.userID}</td><td>${rent.pickUpDate}</td><td>${rent.pickUpTime}</td><td>${rent.pickUpVenue}</td><td>${rent.returnDate}</td><td>${rent.returnTime}</td><td>${rent.returnVenue}</td><td>${rent.lossDamageWaiver}</td><td>${driverId}</td><td>${rent.status}</td></tr>`;
                 $('#tblRent').append(row);
             }
             bindRentClickEvents();
@@ -1204,6 +1246,17 @@ function findRent(rentId) {
         success: function (resp) {
             let rent = resp.data;
 
+            let driverId;
+            let driverName;
+            if (rent.driverID === null) {
+                driverId = "No Driver";
+                driverName ="No Driver";
+            } else {
+                driverId = rent.driverID.driverID;
+                driverName = rent.driverID.name
+            }
+
+
             $('#inputRentID').val(rent.rentID);
             $('#inputRentDate').val(rent.rentDate);
             $('#inputCarRegNo').val(rent.cars.registrationNumber);
@@ -1215,8 +1268,8 @@ function findRent(rentId) {
             $('#inputReturnDate').val(rent.returnDate);
             $('#inputReturnTime').val(rent.returnTime);
             $('#inputReturnVenue').val(rent.returnVenue);
-            $('#selectDriverID').find('option:selected').text(rent.driverID.driverID);
-            $('#inputNameOfDriver').val(rent.driverID.name);
+            $('#selectDriverID').find('option:selected').text(driverId);
+            $('#inputNameOfDriver').val(driverName);
             $('#inputLossDamageWaiver').val(rent.lossDamageWaiver);
             $('#inputRentStatus').val(rent.status);
 
@@ -1327,129 +1380,83 @@ function clearRentFields(){
 
 //===============================change driver wada krnne na==================================================================
 
-// $("#btnChangeDriver").click(function (){
-//    // let userId = $('#inputUserID').val();
-//    // searchUserById(userId);
-//
-//     let rentId =  $('#inputRentID').val();
-//     let driverId = $('#selectDriverID').find('option:selected').text();
-//
-//     $.ajax({
-//         url: baseUrl + "rent/updateRentDriver/" + rentId + "/" + driverId,
-//         method: "PUT",
-//         success: function (res) {
-//             Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'success',
-//                 title: "Change The Driver Of Rent Successfully",
-//                 showConfirmButton: false,
-//                 timer: 1500
-//             });
-//             loadAllRents();
-//             clearRentFields();
-//         },
-//         error: function (error) {
-//             Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'error',
-//                 title: "Driver Not Changed",
-//                 showConfirmButton: false,
-//                 timer: 1500
-//             });
-//         }
-//     })
-// });
+$("#btnChangeDriver").click(function (){
+    let rentId =  $('#inputRentID').val();
+    let driverId = $('#selectDriverID').find('option:selected').text();
+     let status =  $('#inputRentStatus').val();
 
-// function searchUserById(userId) {
-//     $.ajax({
-//         url: baseUrl + "user/" + userId,
-//         method: "GET",
-//         success: function (res) {
-//             let user = res.data;
-//             searchCarByRegNo(user);
-//         }
-//     });
-// }
-//
-// function searchCarByRegNo(user) {
-//     let registrationNo = $('#inputCarRegNo').val();
-//     $.ajax({
-//         url: baseUrl + "car/" + registrationNo,
-//         method: "GET",
-//         success: function (res) {
-//             let car = res.data;
-//             searchDriverByDriverID(user, car);
-//         }
-//     })
-// }
-//
-// function searchDriverByDriverID(user, car) {
-//
-//     let driverID =   $('#selectDriverID').find('option:selected').text();
-//         $.ajax({
-//             url: baseUrl + "driver/" + driverID,
-//             method: "GET",
-//             success: function (res) {
-//                 let driver = res.data;
-//                 console.log(res.data);
-//                 updateDriverOfRent(user, car, driver);
-//             }
-//         })
-// }
-//
-// function updateDriverOfRent(user,car,driver){
-//     let rentId = $('#inputRentID').val();
-//     let rentDate = $('#inputRentDate').val();
-//     let pickupDate = $('#inputPickUpDate').val();
-//     let pickupTime = $('#inputPickUpTime').val();
-//     let pickupVenue = $('#inputPickUpVenue').val();
-//     let returnDate = $('#inputReturnDate').val();
-//     let returnTime = $('#inputReturnTime').val();
-//     let returnVenue = $('#inputReturnVenue').val();
-//     let lossDamWare = $('#inputLossDamageWaiver').val();
-//     let status =  $('#inputRentStatus').val();
-//
-//     var rent = {
-//         rentID: rentId,
-//         rentDate: rentDate,
-//         pickUpDate: pickupDate,
-//         pickUpTime: pickupTime,
-//         pickUpVenue: pickupVenue,
-//         returnDate: returnDate,
-//         returnTime: returnTime,
-//         returnVenue: returnVenue,
-//         lossDamageWaiver: lossDamWare,
-//         status:status,
-//         users: user[0],
-//         cars: car,
-//         driverID: driver
-//     }
-//     $.ajax({
-//         url: baseUrl + "rent",
-//         method: "PUT",
-//         contentType: "application/json",
-//         data: JSON.stringify(rent),
-//         success: function (resp) {
-//             Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'success',
-//                 title: "Driver Changed Successfully",
-//                 showConfirmButton: false,
-//                 timer: 1500
-//             });
-//         },
-//         error: function (error) {
-//             Swal.fire({
-//                 position: 'top-end',
-//                 icon: 'error',
-//                 title: "Driver Not Changed",
-//                 showConfirmButton: false,
-//                 timer: 1500
-//             });
-//         }
-//     })
-// }
+    $.ajax({
+        url: baseUrl + "rent/updateRentDriver/" + rentId + "/" + driverId,
+        method: "PUT",
+        success: function (res) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Change The Driver Of Rent Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            loadAllRents();
+            clearRentFields();
+            updateOldDriverStatusAvailable(status,oldDriverId,driverId);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Driver Not Changed",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+});
 
+
+// driverStatus eka upadte wenna one
+function updateOldDriverStatusAvailable(status,oldDriverId,newDriverId) {
+    if (status === "Accepted") {
+        $.ajax({
+            url: baseUrl + "driver/updateAvailable/" + oldDriverId,
+            method: "PUT",
+            success: function (res) {
+                loadAllDrivers();
+                getAvailableDriverCount();
+                updateNewDriverStatusAvailable(newDriverId);
+            },
+            error: function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Driver Availability Not Changed",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+    }
+
+}
+
+function updateNewDriverStatusAvailable(newDriverId){
+    $.ajax({
+        url: baseUrl + "driver/updateNonAvailable/" + newDriverId,
+        method: "PUT",
+        success: function (res) {
+            loadAllDrivers();
+            getAvailableDriverCount();
+        },
+        error: function (error){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Driver Availability Not Changed",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
 
 //--------------------rent end-------------------------------------------
 
@@ -1468,6 +1475,48 @@ function generatePaymentID() {
     })
 }
 
+$("#inputPaymentDate").val(getToday());
+
+function loadAllRentIdsToPaymentComboBox(){
+    $('#selectRentID').empty();
+    $('#selectRentID').append(new Option("-Select RentID-"));
+    $.ajax({
+        url: baseUrl + "rent",
+        method: "GET",
+        success: function (resp) {
+            let i = 0;
+            for (let rent of resp.data) {
+                $('#selectRentID').append(new Option(rent.rentID, i));
+                i++;
+            }
+        }
+    });
+}
+
+$('#selectRentID').change(function () {
+    let rentID = $('#selectRentID').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "rent/" + rentID,
+        method: "GET",
+        success: function (res) {
+
+            let rent = res.data;
+            calculateTotalRentDates(rent);
+
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Rent Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+})
+
+
 
 //--------------------payment end-------------------------------------------
 
@@ -1484,7 +1533,7 @@ function loadPendingRentals() {
         success: function (res) {
             for (const carRent of res.data) {
                 let driverId;
-                if (carRent.driver === null) {
+                if (carRent.driverID === null) {
                     driverId = "No Driver";
                 } else {
                     driverId = carRent.driverID.driverID;
@@ -1511,6 +1560,16 @@ function findRentReq(rentId) {
         success: function (resp) {
             let rent = resp.data;
 
+            let driverId;
+            let driverName;
+            if (rent.driverID === null) {
+                driverId = "No Driver";
+                driverName ="No Driver";
+            } else {
+                driverId = rent.driverID.driverID;
+                driverName = rent.driverID.name
+            }
+
             $('#inputReqRentID').val(rent.rentID);
             $('#inputReqRentDate').val(rent.rentDate);
             $('#inputReqCarRegNo').val(rent.cars.registrationNumber);
@@ -1522,8 +1581,8 @@ function findRentReq(rentId) {
             $('#inputReqReturnDate').val(rent.returnDate);
             $('#inputReqReturnTime').val(rent.returnTime);
             $('#inputReqReturnVenue').val(rent.returnVenue);
-            $('#inputReqDriverID').val(rent.driverID.driverID);
-            $('#inputReqNameOfDriver').val(rent.driverID.name);
+            $('#inputReqDriverID').val(driverId);
+            $('#inputReqNameOfDriver').val(driverName);
             $('#inputReqLossDamageWaiver').val(rent.lossDamageWaiver);
             $('#inputReqRentStatus').val(rent.status);
 
@@ -1597,22 +1656,21 @@ function acceptRental() {
             updateDriverStatus();
             updateCarStatus();
             clearRentRequestFields();
-            swal({
-                title: "Confirmation!",
-                text: "Car Rental Accepted Successfully",
-                icon: "success",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Rental Accepted Successfully",
+                timer: 1500
             });
         },
         error: function (ob) {
-            swal({
-                title: "Error!",
-                text: "Car Rental Not Accepted",
-                icon: "error",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Rental Not Accepted",
+                timer: 1500
             });
+
         }
     })
 }
@@ -1713,21 +1771,20 @@ function rejectRentals(rentId) {
             loadPendingRentals();
             loadTodayRents()
             clearRentRequestFields();
-            swal({
-                title: "Confirmation!",
-                text: "Car Rental Deny",
-                icon: "success",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Rental Deny",
+                timer: 1500
             });
+
         },
         error: function (ob) {
-            swal({
-                title: "Error!",
-                text: "Car Rental Not Deny",
-                icon: "error",
-                button: "Close",
-                timer: 2000
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Car Rental Not Deny",
+                timer: 1500
             });
         }
     })

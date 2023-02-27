@@ -251,8 +251,11 @@ function loadAllMyRentIdsToComboBox(userID){
         success: function (resp) {
             let i = 0;
             for (let rent of resp.data) {
-                $('#selectUserRentId').append(new Option(rent.rentID, i));
-                i++;
+                console.log(rent);
+               if ((rent.status === "Pending") || (rent.status === "Accepted")){
+                   $('#selectUserRentId').append(new Option(rent.rentID, i));
+                   i++;
+               }
             }
         }
     })
@@ -265,6 +268,21 @@ $('#selectUserRentId').change(function () {
         method: "GET",
         success: function (res) {
             let rent = res.data;
+
+            let driverId;
+            let driverName;
+            let driverContact;
+            if (rent.driverID === null) {
+                driverId = "No Driver";
+                driverName ="No Driver";
+                driverContact="No Driver";
+            } else {
+                driverId = rent.driverID.driverID;
+                driverName = rent.driverID.name
+                driverContact = rent.driverID.contactNo;
+            }
+
+
             $("#inputRentDate").val(rent.rentDate);
             $("#inputCraID").val(rent.cars.registrationNumber);
             $("#inputTransmissionType").val(rent.cars.transmissionType);
@@ -280,8 +298,8 @@ $('#selectUserRentId').change(function () {
             $("#inputReturnTime").val(rent.returnTime);
             $("#inputReturnVenue").val(rent.returnVenue);
             $("#inputLossDamageWaiver").val(rent.lossDamageWaiver);
-            $("#inputDriverName").val(rent.driverID.name);
-            $("#inputDriverContactNo").val(rent.driverID.contactNo);
+            $("#inputDriverName").val(driverName);
+            $("#inputDriverContactNo").val(driverContact);
         },
         error: function (error) {
             Swal.fire({
@@ -295,7 +313,6 @@ $('#selectUserRentId').change(function () {
     })
 })
 
-
 $("#btnRemoverUserRent").click(function (){
     let rentId = $('#selectUserRentId').find('option:selected').text();
 
@@ -304,9 +321,17 @@ $("#btnRemoverUserRent").click(function (){
         method: "GET",
         success: function (res) {
             let rent = res.data;
+
+            let driverid;
+            if (rent.driverID === null) {
+                driverid = "No Driver";
+            } else {
+                driverid = rent.driverID.driverID;
+            }
+
             let rentId = rent.rentID;
             let carRegNo = rent.cars.registrationNumber;
-            let driverId = rent.driverID.driverID;
+            let driverId = driverid;
             let userId = rent.users.userID;
 
             if (rent.status === "Pending") {
@@ -353,13 +378,12 @@ $("#btnRemoverUserRent").click(function (){
 
 });
 
-
 function cancelRental(rentId,carRegNo,driverId,userId) {
     let status = "Cancelled";
     console.log(rentId,carRegNo,driverId,userId);
 
     $.ajax({
-        url: baseUrl + "api/v1/CarRent/" + rentId + "/" + status,
+        url: baseUrl + "rent/" + rentId + "/" + status,
         method: "PUT",
         success: function (res) {
             console.log(res)
@@ -374,7 +398,6 @@ function cancelRental(rentId,carRegNo,driverId,userId) {
             updateCarStatusByRegNo(status, carRegNo);
             updateDriverStatusByDriverID(driverId);
             loadAllMyRentIdsToComboBox(userId);
-            generateRentId();
             clearRentScheduleFields();
         },
         error: function (error){
@@ -403,16 +426,21 @@ function updateCarStatusByRegNo(availability, registrationNumber) {
 }
 
 function updateDriverStatusByDriverID(driverID) {
-    $.ajax({
-        url: baseUrl + "driver/updateAvailable/" + driverID,
-        method: "PUT",
-        success: function (res) {
-            console.log("Update Driver Availability to available");
-        },
-        error: function (error){
-            console.log("Update Driver Availability to not available");
-        }
-    })
+    if (driverID === "No Driver") {
+        console.log("This Rent Has No Driver to Update Driver Availability.");
+    }else{
+
+        $.ajax({
+            url: baseUrl + "driver/updateAvailable/" + driverID,
+            method: "PUT",
+            success: function (res) {
+                console.log("Update Driver Availability to available");
+            },
+            error: function (error) {
+                console.log("Update Driver Availability to not available");
+            }
+        })
+    }
 }
 
 function clearRentScheduleFields(){

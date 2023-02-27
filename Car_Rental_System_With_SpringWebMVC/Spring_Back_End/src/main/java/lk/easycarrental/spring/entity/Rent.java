@@ -34,7 +34,7 @@ public class Rent {
     private String status;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "driverID",referencedColumnName = "driverID")
+    @JoinColumn(name = "driverID",referencedColumnName = "driverID",nullable = true)
     private Driver driverID;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})

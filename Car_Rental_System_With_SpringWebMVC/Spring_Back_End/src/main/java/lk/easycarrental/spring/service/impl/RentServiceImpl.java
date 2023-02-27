@@ -116,15 +116,15 @@ public class RentServiceImpl implements RentService {
         return mapper.map(repo.getAllByStatus(status), new TypeToken<List<RentDTO>>() {
         }.getType());
     }
-//
-//    @Override
-//    public void updateRentDriver(String rentId ,String driverID) {
-//        if (repo.existsById(rentId)) {
-//            repo.updateRentFilePaths(driverID, rentId);
-//        } else {
-//            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
-//        }
-//    }
+
+    @Override
+    public void updateRentDriver(String rentId ,String driverID) {
+        if (repo.existsById(rentId)) {
+            repo.updateRentDriver(driverID, rentId);
+        } else {
+            throw new RuntimeException("Rent "+rentId+" Not Exist....!");
+        }
+    }
 
     @Override
     public int getCountOfRentsByStatus(String status) {
@@ -136,12 +136,12 @@ public class RentServiceImpl implements RentService {
         return mapper.map(repo.getAllByDriverID(status, driverID), new TypeToken<List<RentDTO>>() {
         }.getType());
     }
-//
-//    @Override
-//    public List<RentDTO> getAllByCars(String status, String registrationNumber) {
-//        return mapper.map(repo.getAllByDriverID(status, registrationNumber), new TypeToken<List<RentDTO>>() {
-//        }.getType());
-//    }
+
+    @Override
+    public List<RentDTO> getAllByCars(String status, String registrationNumber) {
+        return mapper.map(repo.getAllByCars(status, registrationNumber), new TypeToken<List<RentDTO>>() {
+        }.getType());
+    }
 
     @Override
     public List<RentDTO> getTodayRents(String today) {
