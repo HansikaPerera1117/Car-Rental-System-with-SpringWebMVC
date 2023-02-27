@@ -1516,7 +1516,96 @@ $('#selectRentID').change(function () {
     })
 })
 
+function calculateTotalRentDates(carRent) {
 
+    var pickupDate = new Date(carRent.pickUpDate);
+    var day = getToday();
+    var differenceInTime = day.getTime() - pickupDate.getTime();
+    var differenceIndays = differenceInTime / (1000 * 3600 * 24);
+
+    searchCarDailyRate(carRent.cars.registrationNumber, differenceIndays);
+}
+
+function searchCarDailyRate(registrationNo, days) {
+    $.ajax({
+        url: baseUrl + "car/" + registrationNo,
+        method: "GET",
+        success: function (res) {
+            let car = res.data;
+            let dailyRate = car.dailyRate;
+            let cost = dailyRate * days;
+            $('#inputRentPrice').val(cost);
+        }
+    })
+}
+
+$('#inputExtraKM').on('keyup', function (event) {
+    if (event.key === "Enter") {
+        if ($('#inputExtraKM').val() != "") {
+            let extraKMs = $('#inputExtraKM').val();
+           calculatePriceForExtraKMs(extraKMs);
+        } else {
+            $('#inputExtraKM').focus();
+        }
+    }
+})
+
+function calculatePriceForExtraKMs(extraKMs){
+    let rentID = $('#selectRentID').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "rent/" + rentID,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            let pricePerExtraKM = rent.cars.pricePerExtraKM;
+            let costForExtraKMs = extraKMs * pricePerExtraKM;
+            $('#inputPriseForExtraKM').val(costForExtraKMs);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Rent Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+$('#inputDamageCharge').on('keyup', function (event) {
+    if (event.key === "Enter") {
+        if ($('#inputDamageCharge').val() != "") {
+            let damageCharge = $('#inputDamageCharge').val();
+            calculateReturnLossDamageWaiver(damageCharge);
+        } else {
+            $('#inputDamageCharge').focus();
+        }
+    }
+})
+
+function calculateReturnLossDamageWaiver(damageCharge){
+    let rentID = $('#selectRentID').find('option:selected').text();
+    $.ajax({
+        url: baseUrl + "rent/" + rentID,
+        method: "GET",
+        success: function (res) {
+            let rent = res.data;
+            let lossDamageWaiver = rent.lossDamageWaiver;
+            let returnLossDamageWaiver = lossDamageWaiver - damageCharge;
+            $('#inputReturnLossDamageWaiver').val(returnLossDamageWaiver);
+        },
+        error: function (error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "This Rent Is Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
 
 //--------------------payment end-------------------------------------------
 
