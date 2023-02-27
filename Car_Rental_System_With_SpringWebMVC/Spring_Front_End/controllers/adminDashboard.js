@@ -1456,6 +1456,7 @@ function clearRentFields(){
 
 //--------------------payment start-------------------------------------------
 
+generatePaymentID();
 
 function generatePaymentID() {
     $.ajax({

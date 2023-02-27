@@ -1,13 +1,17 @@
 package lk.easycarrental.spring.service.impl;
 
 
+import lk.easycarrental.spring.dto.PaymentDTO;
+import lk.easycarrental.spring.entity.Payment;
 import lk.easycarrental.spring.repo.PaymentRepo;
 import lk.easycarrental.spring.service.PaymentService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -40,5 +44,48 @@ public class PaymentServiceImpl implements PaymentService {
             id = "PAY-0001";
         }
         return id;
+    }
+
+    @Override
+    public void savePayment(PaymentDTO dto) {
+        if (!repo.existsById(dto.getPaymentID())) {
+            repo.save(mapper.map(dto, Payment.class));
+        } else {
+            throw new RuntimeException("Payment "+dto.getPaymentID()+" Already Exist....!");
+        }
+    }
+
+    @Override
+    public void updatePayment(PaymentDTO dto) {
+        if (repo.existsById(dto.getPaymentID())) {
+            repo.save(mapper.map(dto, Payment.class));
+        } else {
+            throw new RuntimeException("Payment "+dto.getPaymentID()+" Not Exist to Update....!");
+        }
+    }
+
+    @Override
+    public void deletePayment(String paymentID) {
+        if (repo.existsById(paymentID)) {
+            repo.deleteById(paymentID);
+        } else {
+            throw new RuntimeException("Payment "+paymentID+" Not Exist to Delete....!");
+        }
+    }
+
+    @Override
+    public PaymentDTO searchPayment(String paymentID) {
+        if (repo.existsById(paymentID)) {
+            return mapper.map(repo.findById(paymentID).get(), PaymentDTO.class);
+        } else {
+            throw new RuntimeException("Payment "+paymentID+" Not Exist....!");
+
+        }
+    }
+
+    @Override
+    public List<PaymentDTO> getAllPayments() {
+        return mapper.map(repo.findAll(), new TypeToken<List<PaymentDTO>>() {
+        }.getType());
     }
 }
