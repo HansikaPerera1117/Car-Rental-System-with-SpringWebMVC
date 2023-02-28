@@ -107,5 +107,11 @@ public class PaymentServiceImpl implements PaymentService {
         }.getType());
     }
 
+    @Override
+    public List<PaymentDTO> getAllPaymentsByYearly() {
+        return mapper.map(repo.getAllPaymentsByYearly(), new TypeToken<List<PaymentDTO>>() {
+        }.getType());
+    }
+
 
 }

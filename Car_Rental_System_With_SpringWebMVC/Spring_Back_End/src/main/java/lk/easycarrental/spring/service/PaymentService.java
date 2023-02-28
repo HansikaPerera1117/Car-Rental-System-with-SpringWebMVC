@@ -24,5 +24,5 @@ public interface PaymentService {
 
     List<PaymentDTO> getAllPaymentsByMonthly();
 
-
+    List<PaymentDTO> getAllPaymentsByYearly();
 }
