@@ -56,4 +56,9 @@ public class PaymentController {
         return new ResponseUtil("200", "Done", service.getAllPaymentsByDaily());
     }
 
+    @GetMapping(path = "/weeklyIncome", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllPaymentsByWeekly() {
+        return new ResponseUtil("200", "Done", service.getAllPaymentsByWeekly());
+    }
+
 }
