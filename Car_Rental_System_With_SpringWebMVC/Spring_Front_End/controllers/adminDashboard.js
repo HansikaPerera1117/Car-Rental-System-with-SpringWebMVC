@@ -1540,6 +1540,7 @@ function clearPaymentFields(){
     $('#inputReturnLossDamageWaiver').val("");
 
     loadAllRentIdsToPaymentComboBox();
+    generatePaymentID();
 
     $('#btnPaymentPayed').prop("disabled",false);
 }
@@ -1547,6 +1548,42 @@ function clearPaymentFields(){
 $("#btnRefreshPayment").click(function (){
     clearPaymentFields();
 })
+
+$("#btnSearchPayment").click(function () {
+    let paymentID = $('#inputPaymentSearch').val();
+
+    $.ajax({
+        url: baseUrl + "payment/" + paymentID,
+        method: "GET",
+        success: function (res) {
+            let payment = res.data;
+
+            $('#selectRentID').empty();
+            $('#inputPaymentID').val(payment.paymentID);
+            $('#inputPaymentDate').val(payment.date);
+            $('#selectRentID').append(new Option(payment.rentID));
+            $('#inputRentPrice').val(payment.rentPrice);
+            $('#inputExtraKM').val(payment.extraKM);
+            $('#inputPriseForExtraKM').val(payment.priseForExtraKM);
+            $('#inputDriverPayment').val(payment.driverPayment);
+            $('#inputTotalPayment').val(payment.totalPayment);
+            $('#inputDamageCharge').val(payment.damageCharge);
+            $('#inputReturnLossDamageWaiver').val(payment.returnLossDamageWaiver);
+
+            $('#btnPaymentPayed').prop("disabled",true);
+        },
+        error: function (error) {
+            let errorReason = JSON.parse(error.responseText);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Payment " + paymentID + " Not Exist...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    });
+});
 
 $("#inputPaymentDate").val(getToday());
 
