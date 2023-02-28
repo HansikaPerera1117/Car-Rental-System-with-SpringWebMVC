@@ -16,11 +16,6 @@ generateDriverId();
 loadAllDrivers();
 getAvailableDriverCount();
 
-generateMaintenanceId();
-loadAllCarRegNosToComboBox();
-loadAllMaintenances();
-getUnderMaintenanceCarCount();
-
 loadAllRents();
 loadAllDriverIDsToComboBox();
 getRentCount();
@@ -30,6 +25,15 @@ loadAllPayments();
 loadAllRentIdsToPaymentComboBox();
 
 loadPendingRentals();
+
+loadAllDailyIncomes();
+
+generateMaintenanceId();
+loadAllCarRegNosToComboBox();
+loadAllMaintenances();
+getUnderMaintenanceCarCount();
+
+
 
 $("#home").css('display','block');
 $("#cars").css('display','none');
@@ -2026,7 +2030,20 @@ $("#btnRefreshRentRequest").click(function (){
 //-----------------------------incomes start-----------------------------
 
 
-
+function loadAllDailyIncomes() {
+    $('#tblDailyIncome').empty();
+    $.ajax({
+        url: baseUrl + "payment/dailyIncome",
+        method: "GET",
+        success: function (res) {
+            for (const income of res.data) {
+                console.log(income);
+                let row = `<tr><td>${income.date}</td><td>${income.totalPayment}</td></tr>`;
+                $('#tblDailyIncome').append(row);
+            }
+        }
+    })
+}
 
 
 

@@ -52,7 +52,7 @@ public class PaymentController {
     }
 
     @GetMapping(path = "/dailyIncome", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getAllPaymentsByDateRange() {
+    public ResponseUtil getAllPaymentsByDaily() {
         return new ResponseUtil("200", "Done", service.getAllPaymentsByDaily());
     }
 
