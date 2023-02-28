@@ -1500,8 +1500,53 @@ function loadAllPayments(){
 }
 
 function bindPaymentClickEvents(){
+    $('#tblPayment>tr').click(function () {
+        let paymentId = $(this).children().eq(0).text();
+        let date = $(this).children().eq(1).text();
+        let rentId = $(this).children().eq(2).text();
+        let rentPrice = $(this).children().eq(3).text();
+        let extraKms = $(this).children().eq(4).text();
+        let priseForExtraKm = $(this).children().eq(5).text();
+        let damageCharge = $(this).children().eq(6).text();
+        let returnLossDamW = $(this).children().eq(7).text();
+        let driverPayment = $(this).children().eq(8).text();
+        let totalPayment = $(this).children().eq(9).text();
 
+        $('#selectRentID').empty();
+        $('#inputPaymentID').val(paymentId);
+        $('#inputPaymentDate').val(date);
+        $('#selectRentID').append(new Option(rentId));
+        $('#inputRentPrice').val(rentPrice);
+        $('#inputExtraKM').val(extraKms);
+        $('#inputPriseForExtraKM').val(priseForExtraKm);
+        $('#inputDriverPayment').val(driverPayment);
+        $('#inputTotalPayment').val(totalPayment);
+        $('#inputDamageCharge').val(damageCharge);
+        $('#inputReturnLossDamageWaiver').val(returnLossDamW);
+
+        $('#btnPaymentPayed').prop("disabled",true);
+    });
 }
+
+function clearPaymentFields(){
+    $('#inputPaymentID').val("");
+    $('#inputPaymentDate').val("");
+    $('#inputRentPrice').val("");
+    $('#inputExtraKM').val("");
+    $('#inputPriseForExtraKM').val("");
+    $('#inputDriverPayment').val("");
+    $('#inputTotalPayment').val("");
+    $('#inputDamageCharge').val("");
+    $('#inputReturnLossDamageWaiver').val("");
+
+    loadAllRentIdsToPaymentComboBox();
+
+    $('#btnPaymentPayed').prop("disabled",false);
+}
+
+$("#btnRefreshPayment").click(function (){
+    clearPaymentFields();
+})
 
 $("#inputPaymentDate").val(getToday());
 
