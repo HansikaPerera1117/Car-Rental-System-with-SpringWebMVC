@@ -1,6 +1,7 @@
 
 var baseURL = "http://localhost:8080/Spring_Back_End_war/";
 
+let patternVenue = /^[A-z0-9 ,/]{6,30}$/;
 
 generateRentId();
 setDates();
@@ -79,6 +80,45 @@ $(".BMWi8").click(function(){
     console.log(lableBrand);
 });
 //================================================================
+
+
+//----------------validation check and add style to inputFields start--------------------
+$('#inputPickUpVenue').on('keyup', function () {
+    checkInputPickUpVenue();
+})
+
+function checkInputPickUpVenue() {
+    var pv = $('#inputPickUpVenue').val();
+    if (patternName.test(pv)) {
+        $("#inputPickUpVenue").css('border', '2px solid green');
+        $('#btnPlaceBooking').prop('disabled', false);
+        return true;
+    } else {
+        $("#inputPickUpVenue").css('border', '2px solid red');
+        $('#btnPlaceBooking').prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputReturnVenue').on('keyup', function () {
+    checkInputReturnVenue();
+})
+
+function checkInputReturnVenue() {
+    var pv = $('#inputReturnVenue').val();
+    if (patternName.test(pv)) {
+        $("#inputReturnVenue").css('border', '2px solid green');
+        $('#btnPlaceBooking').prop('disabled', false);
+        return true;
+    } else {
+        $("#inputReturnVenue").css('border', '2px solid red');
+        $('#btnPlaceBooking').prop('disabled', true);
+        return false;
+    }
+}
+
+//----------------validation check and add style to inputFields end--------------------
+
 
 $(".btnBookCar").click(function (){
     setCarRegisterNoAndColoursToComboBox();
@@ -197,11 +237,21 @@ $("#btnPlaceBooking").click(function (){
     let regNo = $('#inputCraID').text();
     let color = $('#carColour').find('option:selected').text();
 
-    if (regNo != "" && color !="" && color != "-Select Car Colour-" && $('#inputPickUpDate').val()!="" && $('#inputPickUpTime').val()!="" && $('#inputPickUpVenue').val()!="" && $('#inputReturnDate').val()!="" && $('#inputReturnTime').val()!="" && $('#inputReturnVenue').val()!="" && $('#inputBankSlip').val()!=""){
+    let pVenue = $('#inputPickUpVenue').val();
+    let rVenue = $('#inputReturnVenue').val();
+
+
+    if (regNo != "" && color !="" && color != "-Select Car Colour-" && $('#inputPickUpDate').val()!="" && $('#inputPickUpTime').val()!="" && $('#inputPickUpVenue').val()!="" && $('#inputReturnDate').val()!="" && $('#inputReturnTime').val()!="" && $('#inputReturnVenue').val()!="" && $('#inputBankSlip').val()!="" && patternVenue.test(pVenue) && patternVenue.test(rVenue)){
         let userId = $('#inputId').val();
         searchUserById(userId);
     }else {
-        alert("Please fill rental fields");
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please fill rental fields",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 });
 

@@ -63,6 +63,7 @@ function  checkIfSignUpUserFormValid(){
                                 let password = $('#inputPassword').val();
                                 if (patternLoginPassword.test(password)){
                                     addUser();
+
                                 }
                             }
                         }
@@ -83,9 +84,11 @@ function checkInputName() {
     var name = $('#inputName').val();
     if (patternName.test(name)) {
         $("#inputName").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputName").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -98,9 +101,11 @@ function checkInputAddress() {
     var address = $('#inputAddress').val();
     if (patternAddress.test(address)) {
         $("#inputAddress").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputAddress").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -113,9 +118,11 @@ function checkInputContact() {
     var contact = $('#inputContact').val();
     if (patternContactNo.test(contact)) {
         $("#inputContact").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputContact").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -128,9 +135,11 @@ function checkInputEmail() {
     var email = $('#inputEmail').val();
     if (patternEmail.test(email)) {
         $("#inputEmail").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputEmail").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -143,9 +152,11 @@ function checkInputNIC() {
     var nic = $('#inputNIC').val();
     if (patternNicNo.test(nic)) {
         $("#inputNIC").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputNIC").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -158,9 +169,11 @@ function checkInputDrivingLicense() {
     var licenseNO = $('#inputDrivingLicense').val();
     if (patternDrivingLicenceNo.test(licenseNO)) {
         $("#inputDrivingLicense").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputDrivingLicense").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -173,9 +186,11 @@ function checkInputUsername() {
     var username = $('#inputUsername').val();
     if (patternLoginUsername.test(username)) {
         $("#inputUsername").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputUsername").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
@@ -188,9 +203,11 @@ function checkInputPassword() {
     var password = $('#inputPassword').val();
     if (patternLoginPassword.test(password)) {
         $("#inputPassword").css('border', '2px solid green');
+        $('#btnSignUp').prop('disabled', false);
         return true;
     } else {
         $("#inputPassword").css('border', '2px solid red');
+        $('#btnSignUp').prop('disabled', true);
         return false;
     }
 }
