@@ -22,6 +22,7 @@ public interface PaymentService {
 
     List<PaymentDTO> getAllPaymentsByWeekly();
 
+    List<PaymentDTO> getAllPaymentsByMonthly();
 
 
 }

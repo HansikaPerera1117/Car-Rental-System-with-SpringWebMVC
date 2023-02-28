@@ -61,4 +61,9 @@ public class PaymentController {
         return new ResponseUtil("200", "Done", service.getAllPaymentsByWeekly());
     }
 
+    @GetMapping(path = "/monthlyIncome", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllPaymentsByMonthly() {
+        return new ResponseUtil("200", "Done", service.getAllPaymentsByMonthly());
+    }
+
 }
