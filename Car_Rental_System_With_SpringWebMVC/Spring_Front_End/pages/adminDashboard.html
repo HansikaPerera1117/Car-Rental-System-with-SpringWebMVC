@@ -937,14 +937,7 @@
                                     <label for="inputPriseForExtraKM" class="form-label">Prise For Extra KMs</label>
                                     <input type="number" class="form-control" id="inputPriseForExtraKM" readonly>
                                 </div>
-                                <div class="col-md-2">
-                                    <label class="form-label" for="inputDamageCharge">Damage Charge</label>
-                                    <input class="form-control" id="inputDamageCharge" type="number">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="inputReturnLossDamageWaiver" class="form-label">Return Loss Damage Waiver</label>
-                                    <input class="form-control" id="inputReturnLossDamageWaiver" type="number" readonly>
-                                </div>
+
                                 <div class="col-md-2">
                                     <label for="inputDriverPayment" class="form-label">Driver Payment</label>
                                     <input type="number" class="form-control" id="inputDriverPayment">
@@ -952,6 +945,14 @@
                                 <div class="col-md-3">
                                     <label for="inputTotalPayment" class="form-label">Total Payment</label>
                                     <input type="number" class="form-control" id="inputTotalPayment" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label" for="inputDamageCharge">Damage Charge</label>
+                                    <input class="form-control" id="inputDamageCharge" type="number">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputReturnLossDamageWaiver" class="form-label">Return Loss Damage Waiver</label>
+                                    <input class="form-control" id="inputReturnLossDamageWaiver" type="number" readonly>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
@@ -988,7 +989,7 @@
                                     <th scope="col">TotalPayment</th>
                                 </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody id="tblPayment"></tbody>
                             </table>
                         </div>
                     </div>

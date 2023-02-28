@@ -26,6 +26,7 @@ loadAllDriverIDsToComboBox();
 getRentCount();
 
 generatePaymentID();
+loadAllPayments();
 loadAllRentIdsToPaymentComboBox();
 
 loadPendingRentals();
@@ -518,8 +519,8 @@ function addCar() {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
-                title: "User Not Added Successfully",
+                icon: 'error',
+                title: "Car Not Added Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -649,8 +650,8 @@ function updateCar() {
         error: function (ob) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
-                title: "Car Updated Successfully",
+                icon: 'error',
+                title: "Car Not Updated Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -792,7 +793,7 @@ function deleteCar() {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Car Not Deleted Successfully",
                 showConfirmButton: false,
                 timer: 1500
@@ -943,7 +944,7 @@ function saveDriver() {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Driver Not Added Successfully",
                 showConfirmButton: false,
                 timer: 1500
@@ -996,7 +997,7 @@ function deleteDriver() {
         error: function (error) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Driver Not Deleted Successfully",
                 showConfirmButton: false,
                 timer: 1500
@@ -1463,8 +1464,6 @@ function updateNewDriverStatusAvailable(newDriverId){
 
 //--------------------payment start-------------------------------------------
 
-generatePaymentID();
-
 function generatePaymentID() {
     $.ajax({
         url: baseUrl + "payment/generatePaymentId",
@@ -1473,6 +1472,35 @@ function generatePaymentID() {
             $('#inputPaymentID').val(res.data);
         }
     })
+}
+
+function loadAllPayments(){
+    $('#tblPayment').empty();
+    $.ajax({
+        url: baseUrl + "payment",
+        method: "GET",
+        success: function (res) {
+            console.log(res)
+            for (let payment of res.data) {
+                let driver;
+                if (payment.driverPayment === 0) {
+                    driver = "No Driver";
+                } else {
+                    driver = payment.driverPayment;
+                }
+                let row = `<tr><td>${payment.paymentID}</td><td>${payment.date}</td><td>${payment.rentID}</td><td>${payment.rentPrice}</td><td>${payment.extraKM}</td><td>${payment.priseForExtraKM}</td><td>${payment.damageCharge}</td><td>${payment.returnLossDamageWaiver}</td><td>${driver}</td><td>${payment.totalPayment}</td></tr>`;
+                $('#tblPayment').append(row);
+            }
+            bindPaymentClickEvents();
+        },
+        error : function (error){
+            console.log("not load")
+        }
+    })
+}
+
+function bindPaymentClickEvents(){
+
 }
 
 $("#inputPaymentDate").val(getToday());
@@ -1607,7 +1635,10 @@ function calculateReturnLossDamageWaiver(damageCharge){
     })
 }
 
+
+
 //--------------------payment end-------------------------------------------
+
 
 
 //--------------------requests start-------------------------------------------
@@ -1755,7 +1786,7 @@ function acceptRental() {
         error: function (ob) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Car Rental Not Accepted",
                 timer: 1500
             });
@@ -1871,7 +1902,7 @@ function rejectRentals(rentId) {
         error: function (ob) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
+                icon: 'error',
                 title: "Car Rental Not Deny",
                 timer: 1500
             });
@@ -1886,6 +1917,7 @@ $("#btnRefreshRentRequest").click(function (){
 //--------------------requests end-------------------------------------------
 
 
+//-----------------------------incomes start-----------------------------
 
 
 
@@ -1897,9 +1929,7 @@ $("#btnRefreshRentRequest").click(function (){
 
 
 
-
-
-
+//-----------------------------incomes end-----------------------------
 
 
 //--------------------Maintain start-------------------------------------------
@@ -2209,4 +2239,3 @@ function getUnderMaintenanceCarCount() {
 }
 
 //--------------------Maintain end-------------------------------------------
-
