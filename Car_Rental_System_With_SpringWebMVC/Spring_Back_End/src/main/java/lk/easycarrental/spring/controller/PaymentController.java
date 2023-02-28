@@ -51,4 +51,9 @@ public class PaymentController {
         return new ResponseUtil("200", "Done", service.searchPayment(paymentID));
     }
 
+    @GetMapping(path = "/dailyIncome", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllPaymentsByDateRange() {
+        return new ResponseUtil("200", "Done", service.getAllPaymentsByDaily());
+    }
+
 }

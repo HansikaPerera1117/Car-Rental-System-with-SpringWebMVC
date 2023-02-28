@@ -18,4 +18,7 @@ public interface PaymentService {
 
     List<PaymentDTO> getAllPayments();
 
+    List<PaymentDTO> getAllPaymentsByDaily();
+
+
 }

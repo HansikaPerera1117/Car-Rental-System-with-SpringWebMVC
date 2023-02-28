@@ -1538,6 +1538,7 @@ function clearPaymentFields(){
     $('#inputTotalPayment').val("");
     $('#inputDamageCharge').val("");
     $('#inputReturnLossDamageWaiver').val("");
+    $('#inputPaymentSearch').val("");
 
     loadAllRentIdsToPaymentComboBox();
     generatePaymentID();
@@ -1602,6 +1603,7 @@ function loadAllRentIdsToPaymentComboBox(){
         }
     });
 }
+
 
 $('#selectRentID').change(function () {
     let rentID = $('#selectRentID').find('option:selected').text();
@@ -1717,6 +1719,28 @@ function calculateReturnLossDamageWaiver(damageCharge){
     })
 }
 
+$('#inputDriverPayment').on('keyup', function (event) {
+    if (event.key === "Enter") {
+        if ($('#inputDriverPayment').val() != "") {
+            let driverPayment = $('#inputDriverPayment').val();
+            calculateTotalPayment(driverPayment);
+        } else {
+            $('#inputDriverPayment').focus();
+        }
+    }
+})
+
+function calculateTotalPayment(driverCost){
+    let rp = $('#inputRentPrice').val();
+    let ppekms = $('#inputPriseForExtraKM').val();
+
+    let driverPayment = parseFloat(driverCost);
+    let rentPrice = parseFloat(rp);
+    let priceForExtraKMs = parseFloat(ppekms);
+
+    let totalPayment = driverPayment + rentPrice + priceForExtraKMs;
+    $('#inputTotalPayment').val(totalPayment);
+}
 
 
 //--------------------payment end-------------------------------------------

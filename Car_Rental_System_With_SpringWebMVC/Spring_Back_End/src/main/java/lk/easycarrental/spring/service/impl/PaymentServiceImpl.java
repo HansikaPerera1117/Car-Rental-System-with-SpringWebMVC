@@ -88,4 +88,12 @@ public class PaymentServiceImpl implements PaymentService {
         return mapper.map(repo.findAll(), new TypeToken<List<PaymentDTO>>() {
         }.getType());
     }
+
+    @Override
+    public List<PaymentDTO> getAllPaymentsByDaily() {
+        return mapper.map(repo.getAllPaymentsByDaily(), new TypeToken<List<PaymentDTO>>() {
+        }.getType());
+    }
+
+
 }
