@@ -13,7 +13,7 @@ let patternLoginPassword = /^[A-z0-9@#$%&!*]{8,}$/;
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
-$('#inputName,#inputAddress,#inputContact,#inputEmail,#inputNIC,#inputDrivingLicense,#inputUsername,#inputPassword,#formFileMultipleNICFront,#formFileMultipleNICBack,#inputDrivingLicense').on('keydown', function (event) {
+$('#inputName,#inputAddress,#inputContact,#inputEmail,#inputNIC,#inputDrivingLicense,#inputUsername,#inputPassword,#formFileMultipleNICFront,#formFileMultipleNICBack,#formFileMultipleDL').on('keydown', function (event) {
     if (event.key == "Tab") {
         event.preventDefault();
     }
@@ -198,7 +198,7 @@ function checkInputPassword() {
 //----------------validation check and add style to inputFields end--------------------
 
 $("#btnSignUp").click(function (){
-   if ($("#inputName").val() != "" && $("#inputAddress").val() != "" && $("#inputContact").val() != "" && $("#inputEmail").val() != "" && $("#inputNIC").val() != "" && $("#inputDrivingLicense").val() != "" && $("#inputUsername").val() != "" && $("#inputPassword").val() != "" && $("#formFileMultipleNICFront").val() != "" && $("#formFileMultipleNICBack").val() != "" && $("#inputDrivingLicense").val() != ""){
+   if ($("#inputName").val() != "" && $("#inputAddress").val() != "" && $("#inputContact").val() != "" && $("#inputEmail").val() != "" && $("#inputNIC").val() != "" && $("#inputDrivingLicense").val() != "" && $("#inputUsername").val() != "" && $("#inputPassword").val() != "" && $("#formFileMultipleNICFront").val() != "" && $("#formFileMultipleNICBack").val() != "" && $("#formFileMultipleDL").val() != ""){
        addUser();
    }else {
        Swal.fire({
