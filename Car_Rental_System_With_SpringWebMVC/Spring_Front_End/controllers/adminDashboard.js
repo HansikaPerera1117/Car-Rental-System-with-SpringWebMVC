@@ -5,6 +5,11 @@ $(window).on('load',function (){
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
+
+//--------------maintains----------------
+let patternDescription = /^[A-z /-]{6,25}$/;
+
+
 setDates();
 loadTodayRents();
 loadAllUsers();
@@ -2223,6 +2228,26 @@ function loadAllAnnuallyIncomes() {
 
 
 //--------------------Maintain start-------------------------------------------
+//----------validation----------------
+
+$('#inputMaintainDescription').on('keyup', function () {
+    checkInputMaintainDescription();
+})
+
+function checkInputMaintainDescription() {
+    var desc = $('#inputMaintainDescription').val();
+    if (patternDescription.test(desc)) {
+        $("#inputMaintainDescription").css('border', '2px solid green');
+        $("#btnAddMaintain").prop('disabled', false)
+        return true;
+    } else {
+        $("#inputMaintainDescription").css('border', '2px solid red');
+        $("#btnAddMaintain").prop('disabled', true)
+        return false;
+    }
+}
+
+//--------------------------------------
 
 function generateMaintenanceId() {
     $.ajax({
@@ -2292,7 +2317,19 @@ $('#selectMaintainCarRNo').change(function () {
 })
 
 $("#btnAddMaintain").click(function (){
-    addMaintenances();
+    let des = $('#inputMaintainDescription').val();
+    if ( $('#inputMaintainDescription').val() != "" && patternDescription.test(des)){
+        addMaintenances();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Add Description",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
 });
 
 function addMaintenances(){
