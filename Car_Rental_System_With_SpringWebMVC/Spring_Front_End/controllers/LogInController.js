@@ -5,6 +5,7 @@ $(window).on('load',function (){
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
+
 getNewLoginId();
 
 function getNewLoginId() {
@@ -22,6 +23,14 @@ $('#btnLogIn').click(function () {
 
     if ($('#inputUsername').val() != "" && $('#inputPassword').val() != "" && role != "Select Your Role") {
         login();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Re Check and fill all details",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 
 });
@@ -51,7 +60,13 @@ function searchAdmin(role, username, password) {
                 loginSave(role, username, password);
 
             } else {
-                alert(res.massage);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Incorrect Date.Try Again...",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         }
     });
@@ -66,7 +81,13 @@ function searchUser(role, username, password) {
             if (res.data === true) {
                 loginSave(role, username, password);
             } else {
-                alert(res.massage);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Incorrect Date.Try Again...",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         }
     })
@@ -81,8 +102,13 @@ function searchDriver(role, username, password) {
             if (res.data === true) {
                 loginSave(role, username, password);
             } else {
-                alert(res.massage);
-            }
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Incorrect Date.Try Again...",
+                    showConfirmButton: false,
+                    timer: 1500
+                });            }
         }
     })
 }
@@ -111,8 +137,22 @@ function loginSave(role, username, password) {
                 location.replace("driverDashboard.html");
             }
             console.log("Login data saved to DB");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "LogIn Successful",
+                showConfirmButton: false,
+                timer: 1500
+            });
         },
         error: function (error){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "LogIn Unsuccessful",
+                showConfirmButton: false,
+                timer: 1500
+            });
             console.log("Unsuccessful");
         }
     })
