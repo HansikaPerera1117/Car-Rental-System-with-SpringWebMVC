@@ -3,6 +3,7 @@ package lk.easycarrental.spring.service.impl;
 
 import lk.easycarrental.spring.dto.DriverDTO;
 import lk.easycarrental.spring.dto.RentDTO;
+import lk.easycarrental.spring.entity.Driver;
 import lk.easycarrental.spring.entity.Rent;
 import lk.easycarrental.spring.repo.RentRepo;
 import lk.easycarrental.spring.service.RentService;
@@ -120,7 +121,7 @@ public class RentServiceImpl implements RentService {
     @Override
     public void updateRentDriver(String rentId ,String driverID) {
         if (repo.existsById(rentId)) {
-            repo.updateRentDriver(driverID, rentId);
+            repo.updateRentDriver(rentId, new Driver(driverID));
         } else {
             throw new RuntimeException("Rent "+rentId+" Not Exist....!");
         }

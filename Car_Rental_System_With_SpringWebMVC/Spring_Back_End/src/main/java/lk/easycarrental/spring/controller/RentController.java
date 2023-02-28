@@ -102,7 +102,7 @@ public class RentController {
         return new ResponseUtil("200", "Done", service.getAllByDriverID(status, driverID));
     }
 
-    @GetMapping(path = "/getCarRents/{status}/{registrationNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/getCarRentSchedules/{status}/{registrationNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCarRentsByRegistrationNumber(@PathVariable String status, @PathVariable String registrationNumber) {
         return new ResponseUtil("200", "Done", service.getAllByCars(status, registrationNumber));
     }

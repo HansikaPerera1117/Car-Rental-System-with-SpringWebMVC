@@ -1,6 +1,7 @@
 
 var baseURL = "http://localhost:8080/Spring_Back_End_war/";
 
+
 generateRentId();
 setDates();
 
@@ -247,8 +248,6 @@ function searchDriverByDriverID(user, car) {
     }
 }
 
-// =================wade wenwa sweet alert eke aulk==========================================
-
 function addCarRent(user, car, driver) {
     let rentId = $('#inputRentID').text();
     let rentDate = $('#inputRentDate').text();
@@ -283,23 +282,18 @@ function addCarRent(user, car, driver) {
         contentType: "application/json",
         data: JSON.stringify(rent),
 
-        success: function (resp) {
+        success: function (resp) {//wait ok sir
 
             uploadBankSlip(rentId);
             alert("Rent Placed Successfully");
-            location.replace("userDashboard.html");
+
             Swal.fire({
                 icon: 'success',
                 title: 'Successful',
                 text: 'Rent Placed Successfully'
-            })
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: "Rent Placed Successfully",
-                showConfirmButton: false,
-                timer: 1500
             });
+
+             location.replace("userDashboard.html");
 
         },
         error: function (error) {
@@ -309,13 +303,6 @@ function addCarRent(user, car, driver) {
                 title: 'Unsuccessful',
                 text: 'Rent Placed Unsuccessfully'
             })
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: "Unsuccessfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
         }
     })
 }
@@ -340,11 +327,6 @@ function uploadBankSlip(rentId) {
             console.log("Uploaded");
             alert("BankSip Upload Successfully");
             Swal.fire({
-                icon: 'success',
-                title: 'Successful',
-                text: 'BankSip Upload Successfully'
-            })
-            Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: "BankSip Upload Successfully",
@@ -356,11 +338,6 @@ function uploadBankSlip(rentId) {
             let errorReason = JSON.parse(error.responseText);
             alert("BankSip did not Uploaded");
             clearRentalFields();
-            Swal.fire({
-                icon: 'error',
-                title: 'Unsuccessful',
-                text: 'BankSip did not Uploaded'
-            })
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',

@@ -31,4 +31,7 @@ public class Driver {
     @OneToMany(mappedBy = "driverID",cascade = CascadeType.ALL)
     private List<Rent> rents;
 
+    public Driver(String driverID) {
+        this.driverID = driverID;
+    }
 }

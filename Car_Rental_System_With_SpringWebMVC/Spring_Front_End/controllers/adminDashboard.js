@@ -9,9 +9,11 @@ setDates();
 loadTodayRents();
 loadAllUsers();
 getRegisterUsersCount();
+
 loadAllCars();
 getAvailableCarCount();
 getRentedCarCount();
+
 generateDriverId();
 loadAllDrivers();
 getAvailableDriverCount();
@@ -27,6 +29,9 @@ loadAllRentIdsToPaymentComboBox();
 loadPendingRentals();
 
 loadAllDailyIncomes();
+loadAllWeeklyIncomes();
+loadAllMonthlyIncomes();
+loadAllAnnuallyIncomes();
 
 generateMaintenanceId();
 loadAllCarRegNosToComboBox();
@@ -866,7 +871,7 @@ function loadCarSchedule(registrationNumber,brand,color) {
     $('#tblCarSchedule').empty();
     let status = "Accepted";
     $.ajax({
-        url:"http://localhost:8080/Spring_Back_End_war/rent/getCarRents/" + status + "/" + registrationNumber,
+        url:"http://localhost:8080/Spring_Back_End_war/rent/getCarRentSchedules/" + status + "/" + registrationNumber,//ara request eke methanta null gihin ne ekai meke url ek wens krnm sir ehenmok ha sir eka hadanm mn thawa ekama ekak thiynwa anthima eka kiyannada ok rent eke driver change krhama success eken enwa response eka.e unata driver change wela na db eke
         method:"GET",
         success:function (res) {
             for (let carRent of res.data) {
@@ -889,7 +894,6 @@ function loadCarSchedule(registrationNumber,brand,color) {
 
 
 //--------------------Driver start-------------------------------------------
-
 
 function generateDriverId() {
     $.ajax({
@@ -1383,8 +1387,6 @@ function clearRentFields(){
     loadAllDriverIDsToComboBox();
 }
 
-//===============================change driver wada krnne na==================================================================
-
 $("#btnChangeDriver").click(function (){
     let rentId =  $('#inputRentID').val();
     let driverId = $('#selectDriverID').find('option:selected').text();
@@ -1417,9 +1419,8 @@ $("#btnChangeDriver").click(function (){
     })
 });
 
-
-// driverStatus eka upadte wenna one
 function updateOldDriverStatusAvailable(status,oldDriverId,newDriverId) {
+    console.log(oldDriverId);
     if (status === "Accepted") {
         $.ajax({
             url: baseUrl + "driver/updateAvailable/" + oldDriverId,
@@ -1608,7 +1609,6 @@ function loadAllRentIdsToPaymentComboBox(){
     });
 }
 
-
 $('#selectRentID').change(function () {
     let rentID = $('#selectRentID').find('option:selected').text();
     $.ajax({
@@ -1635,9 +1635,10 @@ $('#selectRentID').change(function () {
 function calculateTotalRentDates(carRent) {
 
     var pickupDate = new Date(carRent.pickUpDate);
-    var day = getToday();
+    var day = new Date(carRent.returnDate)
     var differenceInTime = day.getTime() - pickupDate.getTime();
     var differenceIndays = differenceInTime / (1000 * 3600 * 24);
+    console.log("date difference : "+differenceIndays);
 
     searchCarDailyRate(carRent.cars.registrationNumber, differenceIndays);
 }
@@ -1650,6 +1651,7 @@ function searchCarDailyRate(registrationNo, days) {
             let car = res.data;
             let dailyRate = car.dailyRate;
             let cost = dailyRate * days;
+            console.log("cost : "+cost)
             $('#inputRentPrice').val(cost);
         }
     })
@@ -1744,6 +1746,134 @@ function calculateTotalPayment(driverCost){
 
     let totalPayment = driverPayment + rentPrice + priceForExtraKMs;
     $('#inputTotalPayment').val(totalPayment);
+}
+
+$("#btnPaymentPayed").click(function (){
+    submitPayment();
+});
+
+function submitPayment() {
+    let rentId = $('#selectRentID').find('option:selected').text();
+    if (rentId != null) {
+        searchCarRentForPayment(rentId);
+    }
+}
+
+function searchCarRentForPayment(rentId) {
+    $.ajax({
+        url: baseUrl + "rent/" + rentId,
+        method: "GET",
+        success: function (res) {
+            let carRent = res.data;
+            console.log(carRent);
+            addPayment(carRent);
+        }
+    })
+}
+
+function addPayment(carRent) {
+
+    let paymentId = $('#inputPaymentID').val();
+    let date = getToday().toLocaleString();
+    let rentPrice = $('#inputRentPrice').val();
+    let extraKMs = $('#inputExtraKM').val();
+    let priceForEctraKMs = $('#inputPriseForExtraKM').val();
+    let driverPayment = $('#inputDriverPayment').val();
+    let totalPayment = $('#inputTotalPayment').val();
+    let damageCharge = $('#inputDamageCharge').val();
+    let returnLossDamage = $('#inputReturnLossDamageWaiver').val();
+
+
+    var payment = {
+        paymentID: paymentId,
+        date: date,
+        damageCharge: damageCharge,
+        returnLossDamageWaiver: returnLossDamage,
+        rentPrice: rentPrice,
+        extraKM: extraKMs,
+        priseForExtraKM: priceForEctraKMs,
+        driverPayment: driverPayment,
+        totalPayment: totalPayment,
+        rentID: carRent,
+    }
+
+    $.ajax({
+        url: baseUrl + "payment",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(payment),
+        success: function (res) {
+            console.log("Success");
+            generatePaymentID();
+            updateCarRentFinished(carRent.rentID);
+            updateCStatus(carRent.cars.registrationNumber);
+            if (carRent.driverID != null) {
+                updateDStatus(carRent.driverID.driverID);
+            }
+            loadAllPayments();
+            clearPaymentFields();
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "Payment Saved To The System Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (error){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Unsuccessfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
+}
+
+function updateCarRentFinished(rentId) {
+    let status = "Finished";
+
+    $.ajax({
+        url: baseUrl + "rent/" + rentId + "/" + status,
+        method: "PUT",
+        success: function (res) {
+            console.log("rent status updated");
+            loadAllRents();
+            loadTodayRents()
+        },
+        error: function (error){
+            console.log("rent status not updated");
+        }
+    })
+}
+
+function updateCStatus(registrationNumber) {
+    let availability = "Available";
+
+    $.ajax({
+        url: baseUrl + "car/updateCarAvailability/" + registrationNumber + "/" + availability,
+        method: "PUT",
+        success: function (res) {
+            getAvailableCarCount();
+            getRentedCarCount();
+            loadAllCars();
+        }
+    })
+}
+
+function updateDStatus(driverID) {
+
+    $.ajax({
+        url: baseUrl + "driver/updateAvailable/" + driverID,
+        method: "PUT",
+        success: function (res) {
+            getAvailableDriverCount();
+            loadAllDrivers();
+        }
+    })
 }
 
 
@@ -2029,7 +2159,6 @@ $("#btnRefreshRentRequest").click(function (){
 
 //-----------------------------incomes start-----------------------------
 
-
 function loadAllDailyIncomes() {
     $('#tblDailyIncome').empty();
     $.ajax({
@@ -2038,19 +2167,57 @@ function loadAllDailyIncomes() {
         success: function (res) {
             for (const income of res.data) {
                 console.log(income);
-                let row = `<tr><td>${income.date}</td><td>${income.totalPayment}</td></tr>`;
+                let row = `<tr><td>${income.rentPrice}</td><td>${income.totalPayment}</td></tr>`;
                 $('#tblDailyIncome').append(row);
             }
         }
     })
 }
 
+function loadAllWeeklyIncomes() {
+    $('#tblWeeklyIncome').empty();
+    $.ajax({
+        url: baseUrl + "payment/weeklyIncome",
+        method: "GET",
+        success: function (res) {
+            for (const income of res.data) {
+                console.log(income);
+                let row = `<tr><td>${income.rentPrice}</td><td>${income.totalPayment}</td></tr>`;
+                $('#tblWeeklyIncome').append(row);
+            }
+        }
+    })
+}
 
+function loadAllMonthlyIncomes() {
+    $('#tblMonthlyIncome').empty();
+    $.ajax({
+        url: baseUrl + "payment/monthlyIncome",
+        method: "GET",
+        success: function (res) {
+            for (const income of res.data) {
+                console.log(income);
+                let row = `<tr><td>${income.paymentID}</td><td>${income.totalPayment}</td></tr>`;
+                $('#tblMonthlyIncome').append(row);
+            }
+        }
+    })
+}
 
-
-
-
-
+function loadAllAnnuallyIncomes() {
+    $('#tblAnnuallyIncome').empty();
+    $.ajax({
+        url: baseUrl + "payment/yearlyIncome",
+        method: "GET",
+        success: function (res) {
+            for (const income of res.data) {
+                console.log(income);
+                let row = `<tr><td>${income.rentPrice}</td><td>${income.totalPayment}</td></tr>`;
+                $('#tblAnnuallyIncome').append(row);
+            }
+        }
+    })
+}
 
 //-----------------------------incomes end-----------------------------
 

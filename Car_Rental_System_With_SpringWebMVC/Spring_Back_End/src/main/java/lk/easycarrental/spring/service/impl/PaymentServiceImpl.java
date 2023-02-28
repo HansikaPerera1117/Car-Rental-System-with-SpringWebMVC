@@ -2,6 +2,7 @@ package lk.easycarrental.spring.service.impl;
 
 
 import lk.easycarrental.spring.dto.PaymentDTO;
+import lk.easycarrental.spring.entity.CustomEntity;
 import lk.easycarrental.spring.entity.Payment;
 import lk.easycarrental.spring.repo.PaymentRepo;
 import lk.easycarrental.spring.service.PaymentService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -97,20 +99,35 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public List<PaymentDTO> getAllPaymentsByWeekly() {
-        return mapper.map(repo.getAllPaymentsByWeekly(), new TypeToken<List<PaymentDTO>>() {
-        }.getType());
+        List<CustomEntity> pay = repo.getAllPaymentsByWeekly();
+
+        ArrayList<PaymentDTO> list= new ArrayList<>();
+        for (CustomEntity c : pay) {
+            list.add(new PaymentDTO(c.getWeek(),c.getIncome()));
+        }
+        return list;
     }
 
     @Override
     public List<PaymentDTO> getAllPaymentsByMonthly() {
-        return mapper.map(repo.getAllPaymentsByMonthly(), new TypeToken<List<PaymentDTO>>() {
-        }.getType());
+        List<CustomEntity> pay = repo.getAllPaymentsByMonthly();
+
+        ArrayList<PaymentDTO> list= new ArrayList<>();
+        for (CustomEntity c : pay) {
+            list.add(new PaymentDTO(c.getMonthName(),c.getIncome()));
+        }
+        return list;
     }
 
     @Override
     public List<PaymentDTO> getAllPaymentsByYearly() {
-        return mapper.map(repo.getAllPaymentsByYearly(), new TypeToken<List<PaymentDTO>>() {
-        }.getType());
+        List<CustomEntity> pay = repo.getAllPaymentsByYearly();
+
+        ArrayList<PaymentDTO> list= new ArrayList<>();
+        for (CustomEntity c : pay) {
+            list.add(new PaymentDTO(c.getWeek(),c.getIncome()));
+        }
+        return list;
     }
 
 

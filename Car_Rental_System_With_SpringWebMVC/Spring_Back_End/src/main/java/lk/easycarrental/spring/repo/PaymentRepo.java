@@ -1,10 +1,12 @@
 package lk.easycarrental.spring.repo;
 
+import lk.easycarrental.spring.entity.CustomEntity;
 import lk.easycarrental.spring.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface PaymentRepo extends JpaRepository<Payment,String> {
@@ -12,15 +14,16 @@ public interface PaymentRepo extends JpaRepository<Payment,String> {
     @Query(value = "SELECT paymentId FROM Payment ORDER BY paymentId DESC LIMIT 1", nativeQuery = true)
     String generatePaymentId();
 
-    @Query(value = "SELECT date,totalPayment as Income FROM Payment GROUP BY date ORDER BY date", nativeQuery = true)
+    @Query(value = "FROM Payment p GROUP BY p.date ORDER BY p.date")
     List<Payment> getAllPaymentsByDaily();
 
-    @Query(value = "SELECT WEEK(date) weeks,sum(totalPayment) as Income FROM payment WHERE date >    DATE_SUB(NOW(), INTERVAL 5 WEEK) GROUP BY WEEK(date) ORDER BY date", nativeQuery = true)
-    List<Payment> getAllPaymentsByWeekly();
 
-    @Query(value = "SELECT MONTHNAME(date) as 'Month Name', sum(totalPayment) as Income FROM payment WHERE YEAR(date) = YEAR(CURDATE()- INTERVAL 1 YEAR) GROUP BY YEAR(date),MONTH(date)", nativeQuery = true)
-    List<Payment> getAllPaymentsByMonthly();
+    @Query(value = "SELECT WEEK(date) as week, sum(totalPayment) as income FROM payment WHERE date >    DATE_SUB(NOW(), INTERVAL 5 WEEK) GROUP BY WEEK(date) ORDER BY date", nativeQuery = true)
+    List<CustomEntity> getAllPaymentsByWeekly();
 
-    @Query(value = "SELECT sum(totalPayment) as Income,YEAR(date) as Year FROM payment GROUP BY YEAR(date)", nativeQuery = true)
-    List<Payment> getAllPaymentsByYearly();
+    @Query(value = "SELECT MONTHNAME(date) as monthName,sum(totalPayment) as income FROM payment WHERE date > YEAR(CURDATE()- INTERVAL 1 YEAR) GROUP BY MONTH(date) ORDER BY date", nativeQuery = true)
+    List<CustomEntity> getAllPaymentsByMonthly();
+
+    @Query(value = "SELECT sum(totalPayment) as income,YEAR(date) as week FROM payment GROUP BY YEAR(date)", nativeQuery = true)
+    List<CustomEntity> getAllPaymentsByYearly();
 }
