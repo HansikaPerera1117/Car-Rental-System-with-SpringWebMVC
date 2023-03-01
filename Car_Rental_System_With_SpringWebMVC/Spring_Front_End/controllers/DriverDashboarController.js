@@ -3,7 +3,45 @@ $(window).on('load',function (){
     $("#loaderPage").fadeOut(1000);
 });
 
+let patternLoginPassword = /^[A-z0-9@#$%&!*]{8,}$/;
+
+
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
+
+//-----------validation start------------
+
+$('#inputNPassword').on('keyup', function () {
+    var password = $('#inputNPassword').val();
+    checkInputNewPassword();
+    if (event.key === "Enter") {
+        if (patternLoginPassword.test(password)) {
+            resetPassword();
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Password PPattern Wrong!...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+})
+
+function checkInputNewPassword() {
+    var nPassword = $('#inputNPassword').val();
+    if (patternLoginPassword.test(nPassword)) {
+        $("#inputNPassword").css('border', '2px solid green');
+        $('#btnResetDriverPassword').prop('disabled', false);
+        return true;
+    } else {
+        $("#inputNPassword").css('border', '2px solid red');
+        $('#btnResetDriverPassword').prop('disabled', true);
+        return false;
+    }
+}
+
+//-----------validation end------------
 
 getLastLoginDriver();
 
@@ -63,7 +101,18 @@ function setDriverDetails(driver) {
 }
 
 $("#btnResetDriverPassword").click(function (){
-    resetPassword();
+    if ($("#inputNPassword").val() != ""){
+        resetPassword();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Add New Password",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
 });
 
 function resetPassword(){
