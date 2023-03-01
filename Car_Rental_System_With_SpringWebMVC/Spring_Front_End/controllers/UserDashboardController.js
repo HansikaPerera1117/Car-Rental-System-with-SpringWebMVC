@@ -39,7 +39,6 @@ function  checkIfSignUpUserFormValid(){
     }
 }
 
-
 //----------------validation check and add style to inputFields start--------------------
 $('#inputName').on('keyup', function () {
     checkInputName();

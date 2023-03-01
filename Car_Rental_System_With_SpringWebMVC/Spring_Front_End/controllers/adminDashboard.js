@@ -5,6 +5,22 @@ $(window).on('load',function (){
 
 let baseUrl = "http://localhost:8080/Spring_Back_End_war/";
 
+//----------------cars--------------------------
+let patternRegNo = /^[A-Z ]{2,3}(-)[0-9]{4}$/;
+let patternBrand = /^[A-z0-9 ,:.-]{8,30}$/;
+let patternNoOfPassengers = /^[1-9][0-9]{0,1}$/;
+let patternDailyRate = /^[1-9][0-9]*(.[0-9]{1,2})?$/;
+let patternMonthlyRate = /^[1-9][0-9]*(.[0-9]{1,2})?$/;
+let patternFreeKmForADay = /^[1-9][0-9]{0,3}$/;
+let patternFreeKmForAMonth = /^[1-9][0-9]{0,6}$/;
+let patternPriceForExtraKm = /^[1-9][0-9]*(.[0-9]{1,2})?$/;
+let patternCompleteKm = /^[1-9][0-9]{0,}$/;
+let patternColor = /^[A-z]{2,10}$/;
+
+$("#btnAddCar").prop('disabled', true);
+$("#btnUpdateCar").prop('disabled', true);
+
+
 
 //--------------maintains----------------
 let patternDescription = /^[A-z /-]{6,25}$/;
@@ -476,8 +492,351 @@ $("#btnRefreshUser").click(function (){
 
 //--------------------Car start-------------------------------------------
 
+//------validation-------
+$('#inputRegisterNo').on('keyup', function (event) {
+    var regNo = $('#inputRegisterNo').val();
+    checkRegNo();
+    if (event.key === "Enter") {
+        if (patternRegNo.test(regNo)) {
+            $('#inputBrand').focus();
+        } else {
+            $('#inputBrand').focus();
+        }
+    }
+});
+
+function checkRegNo() {
+    var regNo = $('#inputRegisterNo').val();
+
+    if (patternRegNo.test(regNo)) {
+        $("#inputRegisterNo").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputRegisterNo").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputBrand').on('keyup', function (event) {
+    var brand = $('#inputBrand').val();
+    checkBrand();
+    if (event.key === "Enter") {
+        if (patternBrand.test(brand)) {
+            $('#selectType').focus();
+        } else {
+            $('#selectType').focus();
+        }
+    }
+});
+
+function checkBrand() {
+    var brand = $('#inputBrand').val();
+    if (patternBrand.test(brand)) {
+        $("#inputBrand").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputBrand").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#selectType').click(function () {
+    checkType();
+})
+
+function checkType() {
+    var type = $('#selectType').find('option:selected').text();
+    if (type != "- Select Car Type -") {
+        $("#selectType").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#selectType").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#selectTransmissionType').click(function () {
+    checkTransmission();
+})
+
+function checkTransmission() {
+    var transType = $('#selectTransmissionType').find('option:selected').text();
+    if (transType != "- Select Transmission -") {
+        $("#selectTransmissionType").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#selectTransmissionType").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#selectFuelType').click(function () {
+    checkFuel();
+})
+
+function checkFuel() {
+    var fuel = $('#selectFuelType').find('option:selected').text();
+    if (fuel != "- Select Fuel Type -") {
+        $("#selectFuelType").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#selectFuelType").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputNoOfPassengers').on('keyup', function (event) {
+    var noOfPassengers = $('#inputNoOfPassengers').val();
+    checkNoOfPassengers();
+    if (event.key === "Enter") {
+        if (patternNoOfPassengers.test(noOfPassengers)) {
+            $('#inputFrontImg').focus();
+        } else {
+            $('#inputFrontImg').focus();
+        }
+    }
+});
+
+function checkNoOfPassengers() {
+    var noOfPassengers = $('#inputNoOfPassengers').val();
+
+    if (patternNoOfPassengers.test(noOfPassengers)) {
+        $("#inputNoOfPassengers").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputNoOfPassengers").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDailyRate').on('keyup', function (event) {
+    var dailyRate = $('#inputDailyRate').val();
+    checkDailyRate();
+    if (event.key === "Enter") {
+        if (patternDailyRate.test(dailyRate)) {
+            $('#inputMonthlyRate').focus();
+        } else {
+            $('#inputMonthlyRate').focus();
+        }
+    }
+});
+
+function checkDailyRate() {
+    var dailyRate = $('#inputDailyRate').val();
+    if (patternDailyRate.test(dailyRate)) {
+        $("#inputDailyRate").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDailyRate").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputMonthlyRate').on('keyup', function (event) {
+    var monthlyRate = $('#inputMonthlyRate').val();
+    checkMonthlyRate();
+    if (event.key === "Enter") {
+        if (patternMonthlyRate.test(monthlyRate)) {
+            $('#inputFreeKmForADay').focus();
+        } else {
+            $('#inputFreeKmForADay').focus();
+        }
+    }
+});
+
+function checkMonthlyRate() {
+    var monthlyRate = $('#inputMonthlyRate').val();
+    if (patternMonthlyRate.test(monthlyRate)) {
+        $("#inputMonthlyRate").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputMonthlyRate").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputFreeKmForADay').on('keyup', function (event) {
+    var freeKmForADay = $('#inputFreeKmForADay').val();
+    checkFreeKmForPrice();
+    if (event.key === "Enter") {
+        if (patternFreeKmForADay.test(freeKmForADay)) {
+            $('#inputFreeKmForAMonth').focus();
+        } else {
+            $('#inputFreeKmForAMonth').focus();
+        }
+    }
+});
+
+function checkFreeKmForPrice() {
+    var freeKmForADay = $('#inputFreeKmForADay').val();
+    if (patternFreeKmForADay.test(freeKmForADay)) {
+        $("#inputFreeKmForADay").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputFreeKmForADay").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputFreeKmForAMonth').on('keyup', function (event) {
+    var freeKmForAMonth = $('#inputFreeKmForAMonth').val();
+    checkFreeKmForDuration();
+    if (event.key === "Enter") {
+        if (patternFreeKmForAMonth.test(freeKmForAMonth)) {
+            $('#inputPricePerExtraKm').focus();
+        } else {
+            $('#inputPricePerExtraKm').focus();
+        }
+    }
+});
+
+function checkFreeKmForDuration() {
+    var freeKmForAMonth = $('#inputFreeKmForAMonth').val();
+    if (patternFreeKmForAMonth.test(freeKmForAMonth)) {
+        $("#inputFreeKmForAMonth").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputFreeKmForAMonth").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputPricePerExtraKm').on('keyup', function (event) {
+    var priceForExtraKm = $('#inputPricePerExtraKm').val();
+    checkPriceForExtraKm();
+    if (event.key === "Enter") {
+        if (patternPriceForExtraKm.test(priceForExtraKm)) {
+            $('#inputCompleteKm').focus();
+        } else {
+            $('#inputCompleteKm').focus();
+        }
+    }
+});
+
+function checkPriceForExtraKm() {
+    var priceForExtraKm = $('#inputPricePerExtraKm').val();
+    if (patternPriceForExtraKm.test(priceForExtraKm)) {
+        $("#inputPricePerExtraKm").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputPricePerExtraKm").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputCompleteKm').on('keyup', function () {
+    var completeKm = $('#inputCompleteKm').val();
+    checkCompleteKm();
+    if (event.key === "Enter") {
+        if (patternCompleteKm.test(completeKm)) {
+            $('#inputColour').focus();
+        } else {
+            $('#inputColour').focus();
+        }
+    }
+});
+
+function checkCompleteKm() {
+    var completeKm = $('#inputCompleteKm').val();
+    if (patternCompleteKm.test(completeKm)) {
+        $("#inputCompleteKm").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputCompleteKm").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputColour').on('keyup', function () {
+    var color = $('#inputColour').val();
+    checkColor();
+    if (event.key === "Enter") {
+        if (patternColor.test(color)) {
+            $('#selectCarAvailability').focus();
+        } else {
+            $('#selectCarAvailability').focus();
+        }
+    }
+});
+
+function checkColor() {
+    var color = $('#inputColour').val();
+    if (patternColor.test(color)) {
+        $("#inputColour").css('border', '3px solid green').focus();
+        $("#btnAddCar").prop('disabled', false);
+        $("#btnUpdateCar").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputColour").css('border', '3px solid red').focus();
+        $("#btnAddCar").prop('disabled', true);
+        $("#btnUpdateCar").prop('disabled', true);
+        return false;
+    }
+}
+
+
+//----------------------------------------------------------------
+
 $("#btnAddCar").click(function (){
-    addCar();
+    if ($("#inputRegisterNo").val() != "" && $("#inputBrand").val() != "" && $('#selectType').find('option:selected').text() != "- Select Car Type -" && $('#selectTransmissionType').find('option:selected').text() != "- Select Transmission -" && $('#selectFuelType').find('option:selected').text() != "- Select Fuel Type -" && $("#inputNoOfPassengers").val() != "" && $("#inputFrontImg").val() != "" && $("#inputSideImg").val() != "" && $("#inputBackImg").val() != "" && $("#inputInteriorImg").val() != "" && $("#inputDailyRate").val() != "" && $("#inputMonthlyRate").val() != "" && $("#inputFreeKmForADay").val() != "" && $("#inputFreeKmForAMonth").val() != "" && $("#inputPricePerExtraKm").val() != "" && $("#inputCompleteKm").val() != "" && $("#inputColour").val() != ""){
+        addCar();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Check Again and Fill All Details",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
 })
 
 function addCar() {
@@ -608,6 +967,27 @@ function clearAddCarFields() {
      $('#inputBackImg').val("");
      $('#inputInteriorImg').val("");
     $('#inputCarSearch').val("");
+
+    $('#inputRegisterNo').css('border', 'none').focus();
+    $('#inputBrand').css('border','none');
+    $('#selectType').css('border','none');
+    $('#selectTransmissionType').css('border','none');
+    $('#selectFuelType').css('border','none');
+    $('#inputNoOfPassengers').css('border','none');
+    $('#inputDailyRate').css('border','none');
+    $('#inputMonthlyRate').css('border','none');
+    $('#inputFreeKmForADay').css('border','none');
+    $('#inputFreeKmForAMonth').css('border','none');
+    $('#inputPricePerExtraKm').css('border','none');
+    $('#inputCompleteKm').css('border','none');
+    $("#inputColour").css('border','none');
+    $('#inputFrontImg').css('border','none');
+    $('#inputSideImg').css('border','none');
+    $('#inputBackImg').css('border','none');
+    $('#inputInteriorImg').css('border','none');
+    $('#inputCarSearch').css('border','none');
+    $("#btnAddCar").prop('disabled', true);
+    $("#btnUpdateCar").prop('disabled', true);
 }
 
 $('#btnUpdateCar').click(function () {
@@ -675,6 +1055,17 @@ function updateCar() {
 
 $("#btnUpdateCarImages").click(function (){
     let regNo = $('#inputRegisterNo').val();
+    if ($("#inputFrontImg").val() != "" && $("#inputSideImg").val() != "" && $("#inputBackImg").val() != "" && $("#inputInteriorImg").val() != ""){
+        uploadUserImages(id);
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please Upload All Images Details To Update",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
     uploadCarImages(regNo)
 });
 
@@ -725,6 +1116,7 @@ function bindCarTableClickEvents() {
          $('#inputColour').val(color);
          $('#selectCarAvailability').find('option:selected').text(availability);
     });
+
 }
 
 $("#btnSearchCar").click(function () {
@@ -786,6 +1178,14 @@ $('#btnDeleteCar').click(function () {
                 )
             }
         })
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please Select A Car To Delete",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 })
 
@@ -865,7 +1265,19 @@ $("#btnCarSchedule").click(function (){
     let brand = $('#inputBrand').val();
     let color = $('#inputColour').val();
 
-    loadCarSchedule(regNo,brand,color);
+    if (regNo != "") {
+        loadCarSchedule(regNo,brand,color);
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please Select A Car",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+
 });
 
 function loadCarSchedule(registrationNumber,brand,color) {
