@@ -475,54 +475,54 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!---------------------- Car Schedule model start------------------------------>
-            <div class="modal fade modal-xl" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-4 " id="exampleModalLabel1">Car Schedule</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="row g-3">
-                                <div class="col-md-4">
-                                    <label for="lblCarRegNo" class="form-label fs-4 fw-bold">Car Registration No :  </label>
-                                    <label id="lblCarRegNo" class="form-label fs-4 fw-bold"></label>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="lblCarBrand" class="form-label fs-4 fw-bold">Car Brand :  </label>
-                                    <label class="form-label fs-4 fw-bold" id="lblCarBrand"></label>
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="lblCarColor" class="form-label fs-4 fw-bold">Color :  </label>
-                                    <label class="form-label fs-4 fw-bold" id="lblCarColor"></label>
-                                </div>
-                                <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
-                                    <table class="table table-secondary mt-3">
-                                        <thead class="table-dark">
-                                        <tr>
-                                            <th scope="col">UserId</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">RentID</th>
-                                            <th scope="col">RentDate</th>
-                                            <th scope="col">DriverID</th>
-                                            <th scope="col">PickUpDate</th>
-                                            <th scope="col">PickUpTime</th>
-                                            <th scope="col">ReturnDate</th>
-                                            <th scope="col">ReturnDate</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="tblCarSchedule"></tbody>
-                                    </table>
-                                </div>
-                            </form>
+                <!---------------------- Car Schedule model start------------------------------>
+                <div class="modal fade modal-xl" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-4 " id="exampleModalLabel1">Car Schedule</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="lblCarRegNo" class="form-label fs-4 fw-bold">Car Registration No :  </label>
+                                        <label id="lblCarRegNo" class="form-label fs-4 fw-bold"></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lblCarBrand" class="form-label fs-4 fw-bold">Car Brand :  </label>
+                                        <label class="form-label fs-4 fw-bold" id="lblCarBrand"></label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="lblCarColor" class="form-label fs-4 fw-bold">Color :  </label>
+                                        <label class="form-label fs-4 fw-bold" id="lblCarColor"></label>
+                                    </div>
+                                    <div class="col-12 mt-3" style="overflow:scroll;height:450px;overflow:auto">
+                                        <table class="table table-secondary mt-3">
+                                            <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">UserId</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">RentID</th>
+                                                <th scope="col">RentDate</th>
+                                                <th scope="col">DriverID</th>
+                                                <th scope="col">PickUpDate</th>
+                                                <th scope="col">PickUpTime</th>
+                                                <th scope="col">ReturnDate</th>
+                                                <th scope="col">ReturnDate</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="tblCarSchedule"></tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!---------------------- Car Schedule model end--------------------------------->
+                <!---------------------- Car Schedule model end--------------------------------->
 
+            </div>
             <!---------------------------car page end------------------------------------------------------>
 
             <!---------------------------user page start------------------------------------------------------>
@@ -639,8 +639,8 @@
                     </div>
                 </div>
                 <div class="row ms-2" style="height: 590px">
-                    <div class="col-12" style="height: 265px;border-radius: 10px;background-color: #d7d7d7">
-                        <div class="col mt-3">
+                    <div class="col-12" style="height: 290px;border-radius: 10px;background-color: #d7d7d7">
+                        <div class="col mt-2">
                             <form class="row g-2">
                                 <div class="col-md-2">
                                     <label class="form-label" for="inputDriverID">Driver ID</label>
@@ -668,11 +668,13 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputDriverUserName" class="form-label">UserName</label>
-                                    <input type="text" class="form-control" id="inputDriverUserName">
+                                    <input type="text" class="form-control" id="inputDriverUserName" aria-describedby="unHelp">
+                                    <div id="unHelp" class="form-text">Use 5 or more characters with a mix of letters, numbers</div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="inputDriverPassword" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="inputDriverPassword">
+                                    <input type="password" class="form-control" id="inputDriverPassword" aria-describedby="pwHelp">
+                                    <div id="pwHelp" class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label" for="selectDriverAvailability">Availability</label>
@@ -683,10 +685,10 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-3 mt-4">
+                                        <div class="col-3 ">
                                             <button class="btn fs-5 me-3 btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" id="btnDriverSchedule">Driver Schedule</button>
                                         </div>
-                                        <div class="col-9 d-grid mt-4 gap-2 d-md-flex justify-content-md-end">
+                                        <div class="col-9 d-grid  gap-2 d-md-flex justify-content-md-end">
                                             <button class="btn fs-5 me-3 btn-dark" type="button" id="btnDeleteDriver">Delete Driver</button>
                                             <button class="btn fs-5 me-3 btn-dark" type="button" id="btnUpdateDriver">Update Driver</button>
                                             <button class="btn fs-5 me-3 btn-dark" type="button" id="btnAddDriver">Add Driver</button>
@@ -696,7 +698,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class=" col-12" style="height: 325px">
+                    <div class="col-12" style="height: 300px">
                         <div class="col-12 mt-3">
                             <div class="row justify-content-center">
                                 <div class="col-1">
@@ -707,7 +709,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-3" style="overflow:scroll;height:245px;overflow:auto">
+                        <div class="col-12 mt-3" style="overflow:scroll;height:225px;overflow:auto">
                             <table class="table table-secondary mt-3">
                                 <thead class="table-dark">
                                 <tr>

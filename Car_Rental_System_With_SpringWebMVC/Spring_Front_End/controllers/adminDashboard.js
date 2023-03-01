@@ -20,7 +20,17 @@ let patternColor = /^[A-z]{2,10}$/;
 $("#btnAddCar").prop('disabled', true);
 $("#btnUpdateCar").prop('disabled', true);
 
+//----------------driver--------------------------
+let patternName = /^[A-z ]{6,25}$/;
+let patternAddress = /^[A-z0-9 ,/]{6,30}$/;
+let patternContactNo = /^(011|070|071|072|074|075|076|077|078)[0-9]{7}$/;
+let patternDrivingLicenceNo = /^(B)[0-9]{7}$/;
+let patternNicNo = /^([0-9]{10}V)$|^([0-9]{12})$/;
+let patternLoginUsername = /^[A-z0-9]{5,10}$/;
+let patternLoginPassword = /^[A-z0-9@#$%&!*]{8,}$/;
 
+$("#btnAddDriver").prop('disabled', true);
+$("#btnUpdateDriver").prop('disabled', true);
 
 //--------------maintains----------------
 let patternDescription = /^[A-z /-]{6,25}$/;
@@ -492,7 +502,8 @@ $("#btnRefreshUser").click(function (){
 
 //--------------------Car start-------------------------------------------
 
-//------validation-------
+//------validation start-------
+
 $('#inputRegisterNo').on('keyup', function (event) {
     var regNo = $('#inputRegisterNo').val();
     checkRegNo();
@@ -822,8 +833,7 @@ function checkColor() {
     }
 }
 
-
-//----------------------------------------------------------------
+//--------------validation end--------------------------------------------------
 
 $("#btnAddCar").click(function (){
     if ($("#inputRegisterNo").val() != "" && $("#inputBrand").val() != "" && $('#selectType').find('option:selected').text() != "- Select Car Type -" && $('#selectTransmissionType').find('option:selected').text() != "- Select Transmission -" && $('#selectFuelType').find('option:selected').text() != "- Select Fuel Type -" && $("#inputNoOfPassengers").val() != "" && $("#inputFrontImg").val() != "" && $("#inputSideImg").val() != "" && $("#inputBackImg").val() != "" && $("#inputInteriorImg").val() != "" && $("#inputDailyRate").val() != "" && $("#inputMonthlyRate").val() != "" && $("#inputFreeKmForADay").val() != "" && $("#inputFreeKmForAMonth").val() != "" && $("#inputPricePerExtraKm").val() != "" && $("#inputCompleteKm").val() != "" && $("#inputColour").val() != ""){
@@ -968,6 +978,8 @@ function clearAddCarFields() {
      $('#inputInteriorImg').val("");
     $('#inputCarSearch').val("");
 
+    //------validation-------
+
     $('#inputRegisterNo').css('border', 'none').focus();
     $('#inputBrand').css('border','none');
     $('#selectType').css('border','none');
@@ -986,6 +998,7 @@ function clearAddCarFields() {
     $('#inputBackImg').css('border','none');
     $('#inputInteriorImg').css('border','none');
     $('#inputCarSearch').css('border','none');
+
     $("#btnAddCar").prop('disabled', true);
     $("#btnUpdateCar").prop('disabled', true);
 }
@@ -1056,7 +1069,7 @@ function updateCar() {
 $("#btnUpdateCarImages").click(function (){
     let regNo = $('#inputRegisterNo').val();
     if ($("#inputFrontImg").val() != "" && $("#inputSideImg").val() != "" && $("#inputBackImg").val() != "" && $("#inputInteriorImg").val() != ""){
-        uploadUserImages(id);
+        uploadCarImages(regNo)
     }else {
         Swal.fire({
             position: 'top-end',
@@ -1066,7 +1079,6 @@ $("#btnUpdateCarImages").click(function (){
             timer: 1500
         });
     }
-    uploadCarImages(regNo)
 });
 
 function loadAllCars() {
@@ -1276,8 +1288,6 @@ $("#btnCarSchedule").click(function (){
             timer: 1500
         });
     }
-
-
 });
 
 function loadCarSchedule(registrationNumber,brand,color) {
@@ -1312,6 +1322,201 @@ function loadCarSchedule(registrationNumber,brand,color) {
 
 //--------------------Driver start-------------------------------------------
 
+
+//----------------validation start--------------------
+$('#inputDriverName').on('keyup', function () {
+    var name = $('#inputDriverName').val();
+    checkInputName();
+    if (event.key === "Enter") {
+        if (patternName.test(name)) {
+            $('#inputDriverAddress').focus();
+        } else {
+            $('#inputDriverAddress').focus();
+        }
+    }
+})
+
+function checkInputName() {
+    var name = $('#inputDriverName').val();
+    if (patternName.test(name)) {
+        $("#inputDriverName").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverName").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDriverAddress').on('keyup', function () {
+    var address = $('#inputDriverAddress').val();
+    checkInputAddress();
+    if (event.key === "Enter") {
+        if (patternAddress.test(address)) {
+            $('#inputDriverContactNo').focus();
+        } else {
+            $('#inputDriverContactNo').focus();
+        }
+    }
+})
+
+function checkInputAddress() {
+    var address = $('#inputDriverAddress').val();
+    if (patternAddress.test(address)) {
+        $("#inputDriverAddress").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverAddress").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDriverContactNo').on('keyup', function () {
+    var contact = $('#inputDriverContactNo').val();
+    checkInputContact();
+    if (event.key === "Enter") {
+        if (patternContactNo.test(contact)) {
+            $('#inputDriverNIC').focus();
+        } else {
+            $('#inputDriverNIC').focus();
+        }
+    }
+})
+
+function checkInputContact() {
+    var contact = $('#inputDriverContactNo').val();
+    if (patternContactNo.test(contact)) {
+        $("#inputDriverContactNo").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverContactNo").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+
+$('#inputDriverNIC').on('keyup', function () {
+    var nic = $('#inputDriverNIC').val();
+    checkInputNIC();
+    if (event.key === "Enter") {
+        if (patternNicNo.test(nic)) {
+            $('#inputDriverDrivingLicense').focus();
+        } else {
+            $('#inputDriverDrivingLicense').focus();
+        }
+    }
+})
+
+function checkInputNIC() {
+    var nic = $('#inputDriverNIC').val();
+    if (patternNicNo.test(nic)) {
+        $("#inputDriverNIC").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverNIC").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDriverDrivingLicense').on('keyup', function () {
+    var licenseNO = $('#inputDriverDrivingLicense').val();
+    checkInputDrivingLicense();
+    if (event.key === "Enter") {
+        if (patternDrivingLicenceNo.test(licenseNO)) {
+            $('#inputDriverUserName').focus();
+        } else {
+            $('#inputDriverUserName').focus();
+        }
+    }
+})
+
+function checkInputDrivingLicense() {
+    var licenseNO = $('#inputDriverDrivingLicense').val();
+    if (patternDrivingLicenceNo.test(licenseNO)) {
+        $("#inputDriverDrivingLicense").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverDrivingLicense").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDriverUserName').on('keyup', function () {
+    var username = $('#inputDriverUserName').val();
+    checkInputUsername();
+    if (event.key === "Enter") {
+        if (patternLoginUsername.test(username)) {
+            $('#inputDriverPassword').focus();
+        } else {
+            $('#inputDriverPassword').focus();
+        }
+    }
+})
+
+function checkInputUsername() {
+    var username = $('#inputDriverUserName').val();
+    if (patternLoginUsername.test(username)) {
+        $("#inputDriverUserName").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverUserName").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+$('#inputDriverPassword').on('keyup', function () {
+    var password = $('#inputDriverPassword').val();
+    checkInputPassword();
+    if (event.key === "Enter") {
+        if (patternLoginPassword.test(password)) {
+            $('#selectDriverAvailability').focus();
+        } else {
+            $('#selectDriverAvailability').focus();
+        }
+    }
+})
+
+function checkInputPassword() {
+    var password = $('#inputDriverPassword').val();
+    if (patternLoginPassword.test(password)) {
+        $("#inputDriverPassword").css('border', '2px solid green');
+        $("#btnAddDriver").prop('disabled', false);
+        $("#btnUpdateDriver").prop('disabled', false);
+        return true;
+    } else {
+        $("#inputDriverPassword").css('border', '2px solid red');
+        $("#btnAddDriver").prop('disabled', true);
+        $("#btnUpdateDriver").prop('disabled', true);
+        return false;
+    }
+}
+
+//----------------validation end--------------------
+
+
 function generateDriverId() {
     $.ajax({
         url: baseUrl + "driver/generateDriverId",
@@ -1323,7 +1528,18 @@ function generateDriverId() {
 }
 
 $("#btnAddDriver").click(function (){
-    saveDriver();
+    if ($("#inputDriverID").val() != "" && $("#inputDriverName").val() != ""  && $("#inputDriverAddress").val() != "" && $("#inputDriverContactNo").val() != "" && $("#inputDriverNIC").val() != "" && $("#inputDriverDrivingLicense").val() != "" && $("#inputDriverUserName").val() != "" && $("#inputDriverPassword").val() != "" ){
+        saveDriver();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Check Again and Fill All Details",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
 });
 
 function saveDriver() {
@@ -1379,7 +1595,7 @@ function saveDriver() {
 }
 
 $('#btnDeleteDriver').click(function () {
-    if ($('#inputDriverID').val() != "") {
+    if ($('#inputDriverID').val() != "" && $('#inputDriverName').val() != "") {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -1400,6 +1616,14 @@ $('#btnDeleteDriver').click(function () {
                 )
             }
         })
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please Select A Driver From Table To Delete",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 })
 
@@ -1438,22 +1662,22 @@ $('#btnUpdateDriver').click(function () {
 
 function updateDriver() {
 
-    var driverID = $('#inputDriverID').val();
-    var name = $('#inputDriverName').val();
-    var address = $('#inputDriverAddress').val();
-    var contact = $('#inputDriverContactNo').val();
-    var nic = $('#inputDriverNIC').val();
-    var drivingLicense = $('#inputDriverDrivingLicense').val();
-    var username = $('#inputDriverUserName').val();
+    var driverIDU = $('#inputDriverID').val();
+    var nameU = $('#inputDriverName').val();
+    var addressU = $('#inputDriverAddress').val();
+    var contactU = $('#inputDriverContactNo').val();
+    var nicU = $('#inputDriverNIC').val();
+    var drivingLicenseU = $('#inputDriverDrivingLicense').val();
+    var usernameU = $('#inputDriverUserName').val();
 
     var driver = {
-        driverID: driverID,
-        name: name,
-        address: address,
-        contactNo: contact,
-        nic: nic,
-        drivingLicense: drivingLicense,
-        username: username,
+        driverID: driverIDU,
+        name: nameU,
+        address: addressU,
+        contactNo: contactU,
+        nic: nicU,
+        drivingLicense: drivingLicenseU,
+        username: usernameU,
     }
 
     $.ajax({
@@ -1494,7 +1718,23 @@ function clearDriverFields() {
      $('#inputDriverPassword').val("");
     $('#inputDriverSearch').val("");
 
+    $("#inputDriverPassword").prop("readonly", false);
+
     generateDriverId();
+
+    //------validation-------
+    $('#inputDriverID').css('border', 'none');
+    $('#inputDriverName').css('border','none').focus();
+    $('#inputDriverAddress').css('border','none');
+    $('#inputDriverContactNo').css('border','none');
+    $('#inputDriverNIC').css('border','none');
+    $('#inputDriverDrivingLicense').css('border','none');
+    $('#inputDriverUserName').css('border','none');
+    $('#inputDriverPassword').css('border','none');
+    $('#inputDriverSearch').css('border','none');
+
+    $("#btnAddDriver").prop('disabled', true);
+    $("#btnUpdateDriver").prop('disabled', true);
 }
 
 function loadAllDrivers() {
@@ -1579,13 +1819,25 @@ $("#btnRefreshDriver").click(function (){
     clearDriverFields();
 });
 
-
 $("#btnDriverSchedule").click(function (){
     let driverID = $('#inputDriverID').val();
     let name = $('#inputDriverName').val();
     let contactNo = $('#inputDriverContactNo').val();
 
-    loadDriverSchedule(driverID,name,contactNo);
+    if (driverID != "" && name != "") {
+
+        loadDriverSchedule(driverID,name,contactNo);
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Please Select A Driver",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+
 });
 
 function loadDriverSchedule(driverID,name,contactNo) {
