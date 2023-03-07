@@ -212,7 +212,6 @@ function searchRandomDriverForRent() {
                 $("#inputDriverID").val(driver.driverID);
                 $('#inputDriverName').val(driver.name);
                 $('#inputDriverContactNo').val(driver.contactNo);
-
             }
         },
         error: function (error) {
@@ -335,7 +334,6 @@ function addCarRent(user, car, driver) {
         success: function (resp) {//wait ok sir
 
             uploadBankSlip(rentId);
-            alert("Rent Placed Successfully");
 
             Swal.fire({
                 icon: 'success',
@@ -347,7 +345,6 @@ function addCarRent(user, car, driver) {
 
         },
         error: function (error) {
-            alert("Unsuccessfully");
             Swal.fire({
                 icon: 'error',
                 title: 'Unsuccessful',
@@ -375,18 +372,9 @@ function uploadBankSlip(rentId) {
         data: data,
         success: function (resp) {
             console.log("Uploaded");
-            alert("BankSip Upload Successfully");
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: "BankSip Upload Successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
         },
         error: function (error) {
             let errorReason = JSON.parse(error.responseText);
-            alert("BankSip did not Uploaded");
             clearRentalFields();
             Swal.fire({
                 position: 'top-end',

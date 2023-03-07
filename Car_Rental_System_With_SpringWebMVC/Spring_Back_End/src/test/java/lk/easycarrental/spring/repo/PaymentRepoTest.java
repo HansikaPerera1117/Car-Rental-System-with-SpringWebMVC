@@ -26,7 +26,18 @@ class PaymentRepoTest {
     PaymentRepo repo;
 
     @Test
-    void getAllPaymentsByWeekly()  {
+    void getAllPaymentsByDaily() {
+//        List<Object> allPaymentsByWeekly = repo.getAllPaymentsByWeekly();
+        List<CustomEntity> a = repo.getAllPaymentsByDaily();
+        for (CustomEntity c : a) {
+            System.out.println(c.getIncome());
+            System.out.println(c.getDate());
+        }
+    }
+
+
+    @Test
+    void getAllPaymentsByWeekly() {
 //        List<Object> allPaymentsByWeekly = repo.getAllPaymentsByWeekly();
         List<CustomEntity> a = repo.getAllPaymentsByWeekly();
         for (CustomEntity c : a) {

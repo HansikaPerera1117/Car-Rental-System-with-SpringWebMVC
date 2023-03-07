@@ -93,8 +93,14 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public List<PaymentDTO> getAllPaymentsByDaily() {
-        return mapper.map(repo.getAllPaymentsByDaily(), new TypeToken<List<PaymentDTO>>() {
-        }.getType());
+        List<CustomEntity> pay = repo.getAllPaymentsByDaily();
+
+        ArrayList<PaymentDTO> list= new ArrayList<>();
+        for (CustomEntity c : pay) {
+            list.add(new PaymentDTO(c.getDate(),c.getIncome()));
+        }
+        return list;
+
     }
 
     @Override

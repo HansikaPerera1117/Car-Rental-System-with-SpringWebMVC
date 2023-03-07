@@ -232,9 +232,7 @@ $("#menuMaintains").click(function (){
 
 //--------------------home start-------------------------------------------
 function getToday(){
-    var date = new Date();
-    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-    return current_date;
+    return   new Date().toJSON().split("T")[0];
 }
 
 function setDates() {
@@ -2162,7 +2160,7 @@ function loadAllPayments(){
                 } else {
                     driver = payment.driverPayment;
                 }
-                let row = `<tr><td>${payment.paymentID}</td><td>${payment.date}</td><td>${payment.rentID}</td><td>${payment.rentPrice}</td><td>${payment.extraKM}</td><td>${payment.priseForExtraKM}</td><td>${payment.damageCharge}</td><td>${payment.returnLossDamageWaiver}</td><td>${driver}</td><td>${payment.totalPayment}</td></tr>`;
+                let row = `<tr><td>${payment.paymentID}</td><td>${payment.date}</td><td>${payment.rentID.rentID}</td><td>${payment.rentPrice}</td><td>${payment.extraKM}</td><td>${payment.priseForExtraKM}</td><td>${payment.damageCharge}</td><td>${payment.returnLossDamageWaiver}</td><td>${driver}</td><td>${payment.totalPayment}</td></tr>`;
                 $('#tblPayment').append(row);
             }
             bindPaymentClickEvents();
@@ -2216,6 +2214,7 @@ function clearPaymentFields(){
 
     loadAllRentIdsToPaymentComboBox();
     generatePaymentID();
+    $('#inputPaymentDate').val(getToday());
 
     $('#btnPaymentPayed').prop("disabled",false);
 }
@@ -2418,7 +2417,18 @@ function calculateTotalPayment(driverCost){
 }
 
 $("#btnPaymentPayed").click(function (){
-    submitPayment();
+    if ($("#inputPaymentID").val() != "" && $("#inputPaymentDate").val() != ""  && $('#selectRentID').find('option:selected').text() != "-Select RentID-" && $("#inputRentPrice").val() != "" && $("#inputExtraKM").val() != "" && $("#inputPriseForExtraKM").val() != "" && $("#inputDriverPayment").val() != "" && $("#inputTotalPayment").val() != "" && $("#inputDamageCharge").val() != "" && $("#inputReturnLossDamageWaiver").val() != "" ){
+        submitPayment();
+    }else {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Check Again and Fill All Details",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
 });
 
 function submitPayment() {
@@ -2443,7 +2453,7 @@ function searchCarRentForPayment(rentId) {
 function addPayment(carRent) {
 
     let paymentId = $('#inputPaymentID').val();
-    let date = getToday().toLocaleString();
+    let date = getToday();
     let rentPrice = $('#inputRentPrice').val();
     let extraKMs = $('#inputExtraKM').val();
     let priceForEctraKMs = $('#inputPriseForExtraKM').val();
@@ -2534,7 +2544,6 @@ function updateCStatus(registrationNumber) {
 }
 
 function updateDStatus(driverID) {
-
     $.ajax({
         url: baseUrl + "driver/updateAvailable/" + driverID,
         method: "PUT",
@@ -2834,9 +2843,10 @@ function loadAllDailyIncomes() {
         url: baseUrl + "payment/dailyIncome",
         method: "GET",
         success: function (res) {
+            console.log("daily income"+res.data);
             for (const income of res.data) {
-                console.log(income);
-                let row = `<tr><td>${income.rentPrice}</td><td>${income.totalPayment}</td></tr>`;
+                console.log("daily"+income);
+                let row = `<tr><td>${income.date}</td><td>${income.totalPayment}</td></tr>`;
                 $('#tblDailyIncome').append(row);
             }
         }

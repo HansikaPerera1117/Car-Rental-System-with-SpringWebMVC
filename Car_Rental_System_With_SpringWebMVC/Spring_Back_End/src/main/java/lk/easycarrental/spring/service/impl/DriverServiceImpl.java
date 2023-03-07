@@ -57,7 +57,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public void updateDriver(DriverDTO dto) {
         if (repo.existsById(dto.getDriverID())) {
-            repo.updateDriver(dto.getDriverID(),dto.getAddress(),dto.getContactNo(),dto.getDrivingLicense(),dto.getName(),dto.getNic(),dto.getUsername());
+            repo.updateDriver(dto.getDriverID(),dto.getName(),dto.getAddress(),dto.getContactNo(),dto.getNic(),dto.getDrivingLicense(),dto.getUsername());
         } else {
             throw new RuntimeException("Driver "+dto.getDriverID()+" Not Exist to Update....!");
         }

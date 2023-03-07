@@ -47,5 +47,4 @@ public interface RentRepo extends JpaRepository<Rent,String> {
     @Query(value = "SELECT * from Rent where status=:status AND registrationNumber=:registrationNumber", nativeQuery = true)
     List<Rent> getAllByCars(@Param("status") String status, @Param("registrationNumber") String registrationNumber);
 
-
 }
