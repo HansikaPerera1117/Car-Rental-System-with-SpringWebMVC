@@ -241,7 +241,7 @@ $("#btnPlaceBooking").click(function (){
 
 
     if (regNo != "" && color !="" && color != "-Select Car Colour-" && $('#inputPickUpDate').val()!="" && $('#inputPickUpTime').val()!="" && $('#inputPickUpVenue').val()!="" && $('#inputReturnDate').val()!="" && $('#inputReturnTime').val()!="" && $('#inputReturnVenue').val()!="" && $('#inputBankSlip').val()!="" && patternVenue.test(pVenue) && patternVenue.test(rVenue)){
-        let userId = $('#inputId').val();
+        let userId = $('#inputId').text();
         searchUserById(userId);
     }else {
         Swal.fire({
@@ -320,7 +320,7 @@ function addCarRent(user, car, driver) {
         returnVenue: returnVenue,
         lossDamageWaiver: lossDamWare,
         status:status,
-        users: user[0],
+        users: user,
         cars: car,
         driverID: driver
     }
@@ -331,7 +331,7 @@ function addCarRent(user, car, driver) {
         contentType: "application/json",
         data: JSON.stringify(rent),
 
-        success: function (resp) {//wait ok sir
+        success: function (resp) {
 
             uploadBankSlip(rentId);
 
